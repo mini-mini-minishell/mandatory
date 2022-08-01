@@ -1,3 +1,5 @@
+#include "../includes/minishell.h"
+
 int	main(int argc, char **argv, char **envp)
 {
 	check_arguments(argc, argv);  //예외처리 하는곳

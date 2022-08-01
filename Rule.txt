@@ -5,3 +5,7 @@ Ground Rule
 2. 명명시 동사가 먼저 나온다 ex> check_argument()
 3. 약어는 최대한 사용하지 않는다.(놈 보다 우선)
 4. include가 필요한 소스파일에만 헤더 넣기(리링크 방지, 데이터 절약)
+
+해야할것 
+1. print 하는 함수 만들기 
+2. MAKEFILE 만들기
