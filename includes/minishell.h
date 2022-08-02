@@ -20,6 +20,11 @@ typedef struct s_env_data
 	char	*value;
 }	t_env_data;
 
+typedef struct s_all_lists
+{
+	t_list	envp_list;
+}	t_all_lists;
+
 /* parsing.c */
 void	check_arguments(int	argc, char **argv);
 
