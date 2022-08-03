@@ -1,10 +1,9 @@
 
 #include "../includes/minishell.h"
-#include <stdlib.h>
 
-void	get_envp(t_all_lists *all_lists, char **envp)
+static void	get_envp(t_all_lists *all_lists, char **envp)
 {
-	all_lists->envp_list 
+	all_lists->envp_list;
 }
 
 void	init_all(t_all_lists *all_lists, char **envp)
