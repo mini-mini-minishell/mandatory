@@ -1,5 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -46,4 +47,18 @@ char	*ft_strdup(const char *s)
 	}
 	copy[size] = '\0';
 	return (copy);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
+
+void	exit_with_message(char *s)
+{
+	ft_putstr_fd(s, 2);
+	ft_putstr_fd("\n", 2);
+	exit(EXIT_FAILURE);
 }

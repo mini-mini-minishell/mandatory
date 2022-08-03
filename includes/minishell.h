@@ -51,5 +51,6 @@ void	ft_putstr_fd(char *s, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
+void	exit_with_message(char *s);
 
 #endif

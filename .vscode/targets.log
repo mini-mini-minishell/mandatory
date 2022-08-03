@@ -8,13 +8,14 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Tue Aug  2 13:52:41 2022
+# Make data base, printed on Wed Aug  3 11:05:44 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
+ 
 ?F = $(notdir $?)
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -39,11 +40,11 @@ MAKEFILE_LIST :=  Makefile
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-INFOPATH = /opt/homebrew/share/info:
+INFOPATH = /opt/homebrew/share/info:/opt/homebrew/share/info:
 # environment
 VSCODE_CWD = /Users/solpang/minishell
 # environment
-PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/opt/homebrew/bin:/opt/homebrew/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -53,7 +54,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.GlPuPVrF3W/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.cVZfBQq9cW/Listeners
 # automatic
 %F = $(notdir $%)
 # makefile (from `Makefile', line 17)
@@ -65,7 +66,7 @@ HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /opt/homebrew/share/man::
+MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -77,7 +78,7 @@ VSCODE_CODE_CACHE_PATH = /Users/solpang/Library/Application Support/Code/CachedD
 # environment
 LOGNAME = solpang
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /Users/solpang/.oh-my-zsh
 # environment
@@ -107,7 +108,7 @@ USER = jkwak
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:E4282DF7-218C-4215-BF5B-799A29178D43
+TERM_SESSION_ID = w0t0p0:4B259C0E-D4E7-4C1A-B28B-9981021260B5
 # makefile (from `Makefile', line 1)
 NAME = minishell
 # environment
@@ -139,7 +140,7 @@ TERM_PROGRAM_VERSION = 3.4.16
 # environment
 MAIL = jkwak@student.42seoul.kr
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.6014454.6014460.E070530C-C3E7-4C71-A9D2-9D973076BA59
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.6014454.6014460.72D0FE17-7ADE-4C07-BB18-2392F71C34A2
 # environment
 LC_TERMINAL_VERSION = 3.4.16
 # environment
@@ -149,7 +150,7 @@ HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:E4282DF7-218C-4215-BF5B-799A29178D43
+ITERM_SESSION_ID = w0t0p0:4B259C0E-D4E7-4C1A-B28B-9981021260B5
 # environment
 HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
@@ -164,6 +165,7 @@ MAKEFILES :=
 SRC_DIR = ./sources/
 # automatic
 <F = $(notdir $<)
+ 
 # environment
 ITERM_PROFILE = Default
 # environment
@@ -183,7 +185,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 1692
+VSCODE_PID = 1805
 # makefile (from `Makefile', line 12)
 FILES = main.c parsing.c utils_print.c
 # variable set hash-table stats:
@@ -195,10 +197,10 @@ FILES = main.c parsing.c utils_print.c
 
 # Directories
 
-# . (device 16777233, inode 6225903): 9 files, no impossibilities.
-# sources (device 16777233, inode 6225973): 5 files, no impossibilities so far.
+# . (device 16777232, inode 6225903): 9 files, no impossibilities.
+# sources (device 16777232, inode 6225973): 8 files, no impossibilities so far.
 
-# 14 files, no impossibilities in 2 directories.
+# 17 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -314,7 +316,6 @@ re:
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 36):
 	make fclean
- 
 	make all
 	
 
@@ -330,7 +331,7 @@ clean:
 # Not a target:
 sources/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-02 13:52:30
+#  Last modified 2022-08-03 11:05:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -349,6 +350,6 @@ sources/main.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Aug  2 13:52:41 2022
+# Finished Make data base on Wed Aug  3 11:05:44 2022
 
  

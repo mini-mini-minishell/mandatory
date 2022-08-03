@@ -50,7 +50,7 @@ t_node	*list_new_node(void *data)
 
 	new = malloc(sizeof(t_node));
 	if (!new)
-		
+		exit_with_message("Memory Error");
 	new->data = data;
 	new->next = NULL;
 	return (new);
