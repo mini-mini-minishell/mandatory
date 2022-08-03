@@ -49,6 +49,8 @@ t_node	*list_new_node(void *data)
 	t_node	*new;
 
 	new = malloc(sizeof(t_node));
+	if (!new)
+		
 	new->data = data;
 	new->next = NULL;
 	return (new);
