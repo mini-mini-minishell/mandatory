@@ -1,46 +1,27 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
-// t_env_data	*
 
-static void	envp_free_node(t_node **node)
+void	print_envp(t_all_lists *all_lists)
 {
-	t_env_data	*temp_data;
+	t_list		env;
+	t_node		*current_node;
+	t_env_data	*current_env;
+	int			index;
 
-	temp_data = (t_env_data *)((*node)->data);
-	free(temp_data->key);
-	free(temp_data->value);
-	free(temp_data);
-	free(*node);
-}
-
-void	envp_delete_node(t_list *list, int index)
-{
-	int		i;
-	t_node	*temp;
-	t_node	*current;
-
-	if (index == 0)
+	env = all_lists->envp_list;
+	current_node = env.head;
+	index = 0;
+	while (index < env.count)
 	{
-		temp = list->head;
-		list->head = temp->next;
-		--(list->count);
+		current_env = (t_env_data *)current_node->data;
+		ft_putstr_fd(current_env->key, 1);
+		ft_putstr_fd("=", 1);
+		ft_putstr_fd(current_env->value, 1);
+		ft_putstr_fd("\n", 1);
+		current_node = current_node->next;
+		++index;
 	}
-	else if (list->count == index)
-		temp = list_pop_back(list);
-	else
-	{
-		current = list->head;
-		i = 0;
-		while (i < index - 1)
-		{
-			current = current->next;
-			++i;
-		}
-		temp = current->next;
-		current->next = temp->next;
-		--(list->count);
-	}
-	envp_free_node(&temp);
+	exit(0); // ---------
 }
 
 int	envp_search_node(t_list *list, char *key)
@@ -66,21 +47,9 @@ int	envp_search_node(t_list *list, char *key)
 	return (-1);
 }
 
-t_env_data	*create_envp_data(char *key, char *value)
-{
-	t_env_data	*new;
-	
-	new = malloc(sizeof(t_env_data));
-	if (!new)
-		exit_with_message("Memory Error");
-	new->key = key;
-	new->value = value;
-	return (new);
-}
-
 static void	get_envp_list(t_list *envp_list, char **envp)
 {
-	t_node		*new_node; // node 생성 함수
+	t_node		*new_node;
 	int			index;
 	char		**current_envp;
 
@@ -97,9 +66,9 @@ static void	get_envp_list(t_list *envp_list, char **envp)
 
 void	get_envp(t_all_lists *all_lists, char **envp)
 {
-	t_list	envp_list;
+	t_list	*envp_list;
 
-	envp_list = all_lists->envp_list;
-	list_init(&envp_list);
-	get_envp_list(&envp_list, envp);
+	envp_list = &all_lists->envp_list;
+	list_init(envp_list);
+	get_envp_list(envp_list, envp);
 }

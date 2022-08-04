@@ -35,9 +35,12 @@ void	exit_with_message(char *s);
 void	init_all(t_all_lists *all_lists, char **envp);
 
 /* list_envp.c */
+void	print_envp(t_all_lists *all_lists);
 int		envp_search_node(t_list *list, char *key);
 void	envp_delete_node(t_list *list, int index);
 void	get_envp(t_all_lists *all_lists, char **envp);
+t_env_data	*create_envp_data(char *key, char *value);
+void	envp_delete_node(t_list *list, int index);
 
 
 /* list.c */ //node_number start from zero
