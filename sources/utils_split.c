@@ -1,7 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
 
-
 static char	**free_str(char **str, int count)
 {
 	int	i;

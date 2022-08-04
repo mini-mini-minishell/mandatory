@@ -1,32 +1,28 @@
 
 #include "../includes/minishell.h"
-#include <stdio.h> //+++++++++++++++++++
-#include <stdlib.h> //+++++++++++++++++++
+#include <stdlib.h>
 
-static void	get_envp_list(t_list *envp_list, char **envp)
+void	print_envp(t_all_lists *all_lists)
 {
-	int	index;
+	t_list		env;
+	t_node		*current_node;
+	t_env_data	*current_env;
+	int			index;
 
+	env = all_lists->envp_list;
+	current_node = env.head;
 	index = 0;
-	while(envp[index])
+	while (index < env.count)
 	{
-		printf("%s\n", envp[index]);
+		current_env = (t_env_data *)current_node->data;
+		ft_putstr_fd(current_env->key, 1);
+		ft_putstr_fd("=", 1);
+		ft_putstr_fd(current_env->value, 1);
+		ft_putstr_fd("\n", 1);
+		current_node = current_node->next;
 		++index;
-		//list_new_node()
 	}
-	exit(0); //++++++++++++
-}
-
-
-static void	get_envp(t_all_lists *all_lists, char **envp)
-{
-	t_list	envp_list;
-
-	envp_list = all_lists->envp_list;
-	list_init(&envp_list);
-	get_envp_list(&envp_list, envp);
-	//스플릿 -> '=', '\n' 얘 기준 스플릿해서 
-	//t_env_data에 저장 key / value
+	exit(0); // ---------
 }
 
 void	init_all(t_all_lists *all_lists, char **envp)
@@ -34,4 +30,5 @@ void	init_all(t_all_lists *all_lists, char **envp)
 	//init_lexing();
 	//init_parsing();
 	get_envp(all_lists, envp);
+	print_envp(all_lists);
 }

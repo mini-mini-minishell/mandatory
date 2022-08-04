@@ -37,6 +37,7 @@ void	init_all(t_all_lists *all_lists, char **envp);
 /* list_envp.c */
 int		envp_search_node(t_list *list, char *key);
 void	envp_delete_node(t_list *list, int index);
+void	get_envp(t_all_lists *all_lists, char **envp);
 
 
 /* list.c */ //node_number start from zero
@@ -51,6 +52,9 @@ void	check_arguments(int	argc, char **argv);
 /* utils_print.c */
 void	ft_putstr_fd(char *s, int fd);
 
+/* utils_split.c */
+char	**ft_split(char const *s, char *set);
+
 /* utils_string.c */
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
@@ -58,7 +62,5 @@ char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t detsize);
 
-/* utils_split_1.c */
-char	**ft_split(char const *s, char *set);
 
 #endif
