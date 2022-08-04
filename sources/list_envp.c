@@ -66,23 +66,30 @@ int	envp_search_node(t_list *list, char *key)
 	return (-1);
 }
 
+t_env_data	*create_envp_data(char *key, char *value)
+{
+	t_env_data	*new;
+	
+	new = malloc(sizeof(t_env_data));
+	if (!new)
+		exit_with_message("Memory Error");
+	new->key = key;
+	new->value = value;
+	return (new);
+}
+
 static void	get_envp_list(t_list *envp_list, char **envp)
 {
 	t_node		*new_node; // node 생성 함수
-	t_env_data	*new;
 	int			index;
 	char		**current_envp;
 
 	index = 0;
 	while(envp[index])
 	{
-		new = malloc(sizeof(t_env_data));
-		if (!new)
-			exit_with_message("Memory Error");
 		current_envp = ft_split(envp[index], "=");
-		new->key = current_envp[0];
-		new->value = current_envp[1];
-		list_push_back(envp_list, new);
+		new_node = list_new_node(create_envp_data(current_envp[0], current_envp[1]));
+		list_push_back(envp_list, new_node);
 		free(current_envp);
 		++index;
 	}

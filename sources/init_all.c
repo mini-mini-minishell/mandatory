@@ -1,6 +1,7 @@
 
 #include "../includes/minishell.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void	print_envp(t_all_lists *all_lists)
 {
