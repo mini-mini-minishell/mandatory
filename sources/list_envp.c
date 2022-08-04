@@ -1,10 +1,17 @@
 #include "../includes/minishell.h"
+#include <stdlib.h>
+// t_env_data	*
 
 static void	envp_free_node(t_node **node)
 {
-	free((*node)->((t_env_data *)data)->key);
-	free((*node)->((t_env_data *)data)->value);
-	free((*node)->((t_env_data *)data));
+	t_env_data	*temp_data;
+
+	temp_data = (t_env_data *)((*node)->data);
+	free(temp_data->key);
+	free(temp_data->value);
+	// free((*node)->((struct s_env_data *)temp_data)->key);
+	// free((*node)->((struct s_env_data *)temp_data)->value);
+	free(temp_data);
 	free(*node);
 }
 
@@ -40,18 +47,20 @@ void	envp_delete_node(t_list *list, int index)
 
 int	envp_search_node(t_list *list, char *key)
 {
-	int		index;
-	t_node	*current;
-	size_t	key_len;
+	int			index;
+	t_node		*current;
+	size_t		key_len;
+	t_env_data	*temp_data;
 
 	if (!list->count)
 		return (-1);
 	key_len = ft_strlen(key);
 	current = list->head;
+	temp_data = (t_env_data *)(current->data);
 	index = 0;
 	while (index < list->count)
 	{
-		if (ft_strncmp(key, current->((t_env_data *)data)->key, key_len + 1))
+		if (ft_strncmp(key, temp_data->key, key_len + 1))
 			return (index);
 		current = current->next;
 		++index;

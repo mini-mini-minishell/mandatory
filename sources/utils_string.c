@@ -56,9 +56,40 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 
-void	exit_with_message(char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	ft_putstr_fd(s, 2);
-	ft_putstr_fd("\n", 2);
-	exit(EXIT_FAILURE);
+	char			*substr;
+	unsigned int	slen;
+
+	slen = ft_strlen(s);
+	if (start >= slen)
+		len = 0;
+	substr = malloc(sizeof(char) * (len + 1));
+	if (substr == NULL)
+		return (0);
+	if (start >= slen)
+	{
+		ft_strlcpy(substr, "", 1);
+		return (substr);
+	}
+	ft_strlcpy(substr, s + start, len + 1);
+	return (substr);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(src);
+	if (dst == src || detsize == 0)
+		return (len);
+	while (i + 1 < detsize && src[i] != 0)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (len);
 }
