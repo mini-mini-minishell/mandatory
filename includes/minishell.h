@@ -52,13 +52,14 @@ void	list_init(t_list *list);
 /* parsing.c */
 void	check_arguments(int	argc, char **argv);
 
-/* utils_print.c */
-void	ft_putstr_fd(char *s, int fd);
+/* readline.c */
+void    prompt_loop(t_all_lists *all_lists);
 
 /* utils_split.c */
 char	**ft_split(char const *s, char *set);
 
 /* utils_string.c */
+void	ft_putstr_fd(char *s, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);

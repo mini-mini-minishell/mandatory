@@ -6,7 +6,7 @@ int	main(int argc, char **argv, char **envp)
 
 	check_arguments(argc, argv);  //예외처리 하는곳
 	init_all(&all_lists, envp);
-	// envp 저장 (list)
+	prompt_loop(&all_lists);
 	// while (1)
 		// readline
 		// lexer
