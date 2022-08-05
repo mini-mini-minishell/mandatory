@@ -9,15 +9,9 @@
 
 void handler(int signum)
 {
-    if (signum != SIGINT)
-	{
-		rl_on_new_line();
-		rl_redisplay();
-		return ;
-	}
 	write(1, "\n", 1);
     rl_on_new_line();
-    rl_replace_line("", 1);
+    rl_replace_line("", 0);
     rl_redisplay();
 }
 
@@ -26,7 +20,7 @@ void    prompt_loop(t_all_lists *all_lists)
     char *line;
 
     signal(SIGINT, handler);
-	signal(SIGQUIT, handler);
+	signal(SIGQUIT, SIG_IGN);
     while (1)
     {
         line = readline("minishell > ");
