@@ -1,5 +1,5 @@
 #include "../includes/minishell.h"
-#include <fcntl.h>
+#include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 #include <signal.h>
@@ -10,7 +10,11 @@
 void handler(int signum)
 {
     if (signum != SIGINT)
-        return;
+	{
+		rl_on_new_line();
+		rl_redisplay();
+		return ;
+	}
 	write(1, "\n", 1);
     rl_on_new_line();
     rl_replace_line("", 1);
@@ -22,6 +26,7 @@ void    prompt_loop(t_all_lists *all_lists)
     char *line;
 
     signal(SIGINT, handler);
+	signal(SIGQUIT, handler);
     while (1)
     {
         line = readline("minishell > ");
@@ -29,6 +34,7 @@ void    prompt_loop(t_all_lists *all_lists)
         {
 			ft_putstr_fd("output> ", 1);
         	ft_putstr_fd(line, 1);
+        	ft_putstr_fd("\n", 1);
             add_history(line);
             free(line);
             line = NULL;
