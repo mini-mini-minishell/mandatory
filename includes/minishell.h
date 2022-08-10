@@ -6,6 +6,11 @@ typedef unsigned long	size_t;
 typedef int				(*t_lexer_fp)(t_lexer *);
 typedef int				(*t_reducer_fp)();
 
+typedef enum e_return_value
+{
+	RV_ERROR = -1,
+	RV_SUCCESS = 0
+} t_return_value;
 
 typedef enum e_lexer_state
 {
@@ -39,6 +44,8 @@ typedef struct s_env_data
 
 typedef	struct s_lexer
 {
+	char			*input;
+	size_t			index;
 	t_lexer_state	current_state;
 	t_lexer_fp		func[5][5];
 }	t_lexer;
@@ -55,6 +62,9 @@ void	exit_with_message(char *s);
 
 /* init_all.c */
 void	init_all(t_all_data *all_data, char **envp);
+
+/* lexer_table.c */
+int	ft_get_next_char(t_lexer *lexer);
 
 /* list_envp.c */
 void	print_envp(t_all_data *all_data);
