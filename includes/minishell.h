@@ -7,10 +7,10 @@ typedef unsigned long size_t;
 typedef enum e_lexer_state
 {
 	LS_ORDINARY,
+	LS_UNIQUE,
 	LS_SPACE,
 	LS_SQUOT,
 	LS_DQUOT,
-	LS_UNIQUE,
 	LS_NULL
 }	t_lexer_state;
 
