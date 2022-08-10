@@ -54,7 +54,7 @@ static void	get_envp_list(t_list *envp_list, char **envp)
 	char		**current_envp;
 
 	index = 0;
-	while(envp[index])
+	while (envp[index])
 	{
 		current_envp = ft_split(envp[index], "=");
 		new_node = list_new_node(create_envp_data(current_envp[0], current_envp[1]));

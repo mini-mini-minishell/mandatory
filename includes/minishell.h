@@ -10,7 +10,7 @@ typedef enum e_return_value
 {
 	RV_ERROR = -1,
 	RV_SUCCESS = 0
-} t_return_value;
+}	t_return_value;
 
 typedef enum e_lexer_state
 {
@@ -38,18 +38,18 @@ typedef struct s_list
 
 typedef enum e_item_type
 {
-	META_SPACE,
-	META_TAB,
-	META_NL,
-	META_PIPE,
-	META_AND,
-	META_SEMICOL,
-	META_LPAREN,
-	META_RPAREN,
-	META_LESS,
-	META_GREATER,
-	META_NON
-}	t_metachar;
+	ITEM_SPACE,
+	ITEM_TAB,
+	ITEM_NL,
+	ITEM_PIPE,
+	ITEM_AND,
+	ITEM_SEMICOL,
+	ITEM_LPAREN,
+	ITEM_RPAREN,
+	ITEM_LESS,
+	ITEM_GREATER,
+	NOT_ITEM
+}	t_item_type;
 
 typedef enum e_token_type
 {
@@ -88,7 +88,7 @@ typedef struct s_token_data
 	char			*content;
 }	t_token_data;
 
-typedef	struct s_lexer
+typedef struct s_lexer
 {
 	char			*input;
 	size_t			index;
@@ -110,7 +110,8 @@ void	exit_with_message(char *s);
 void	init_all(t_all_data *all_data, char **envp);
 
 /* lexer_table.c */
-int	get_next_char(t_lexer *lexer);
+t_return_value	get_next_char(t_all_data *all_data);
+t_return_value	others_meet_space(t_all_data *all_data);
 
 /* list_envp.c */
 void	print_envp(t_all_data *all_data);
