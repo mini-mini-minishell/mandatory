@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+void	*ft_malloc(size_t bytes)
+{
+	void	*return_value;
+
+	return_value = malloc(bytes);
+	if (!return_value)
+		exit_with_message("Memory Error");
+	return (return_value);
+}
+
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -37,9 +47,7 @@ char	*ft_strdup(const char *s)
 
 	i = 0;
 	size = ft_strlen(s);
-	copy = (char *)malloc(sizeof(char) * size + 1);
-	if (!copy)
-		return (0);
+	copy = ft_malloc(sizeof(char) * size + 1);
 	while (i < size)
 	{
 		copy[i] = s[i];
@@ -64,9 +72,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	slen = ft_strlen(s);
 	if (start >= slen)
 		len = 0;
-	substr = malloc(sizeof(char) * (len + 1));
-	if (substr == NULL)
-		return (0);
+	substr = ft_malloc(sizeof(char) * (len + 1));
 	if (start >= slen)
 	{
 		ft_strlcpy(substr, "", 1);

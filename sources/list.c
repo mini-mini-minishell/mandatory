@@ -48,9 +48,7 @@ t_node	*list_new_node(void *data)
 {
 	t_node	*new;
 
-	new = malloc(sizeof(t_node));
-	if (!new)
-		exit_with_message("Memory Error");
+	new = ft_malloc(sizeof(t_node));
 	new->data = data;
 	new->next = NULL;
 	return (new);

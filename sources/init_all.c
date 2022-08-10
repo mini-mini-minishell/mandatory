@@ -2,6 +2,11 @@
 #include "../includes/minishell.h"
 #include <signal.h>
 
+void	init_lexing(t_all_data *all_data)
+{
+
+}
+
 void	init_all(t_all_data *all_data, char **envp)
 {
 	init_lexing();

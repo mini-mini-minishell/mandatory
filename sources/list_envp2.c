@@ -5,9 +5,7 @@ t_env_data	*create_envp_data(char *key, char *value)
 {
 	t_env_data	*new;
 	
-	new = malloc(sizeof(t_env_data));
-	if (!new)
-		exit_with_message("Memory Error");
+	new = ft_malloc(sizeof(t_env_data));
 	new->key = key;
 	new->value = value;
 	return (new);

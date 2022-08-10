@@ -4,6 +4,8 @@
 
 typedef unsigned long	size_t;
 typedef int				(*t_lexer_fp)(t_lexer *);
+typedef int				(*t_reducer_fp)();
+
 
 typedef enum e_lexer_state
 {
@@ -38,12 +40,13 @@ typedef struct s_env_data
 typedef	struct s_lexer
 {
 	t_lexer_state	current_state;
-	t_lexer_fp	func[5][5];
+	t_lexer_fp		func[5][5];
 }	t_lexer;
 
 typedef struct s_all_data
 {
 	t_list	envp_list;
+	t_list	token_list;
 	t_lexer	lexer;
 }	t_all_data;
 
@@ -79,6 +82,7 @@ void 	handler(int signum);
 char	**ft_split(char const *s, char *set);
 
 /* utils_string.c */
+void	*ft_malloc(size_t bytes);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);

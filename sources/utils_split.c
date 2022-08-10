@@ -84,9 +84,7 @@ char	**ft_split(char const *s, char *set)
 	char	**result;
 
 	count = ft_word_count(s, set);
-	result = malloc(sizeof(char *) * (count + 1));
-	if (result == NULL)
-		return (0);
+	result = ft_malloc(sizeof(char *) * (count + 1));
 	result[count] = NULL;
 	make_str(result, s, set, count);
 	return (result);
