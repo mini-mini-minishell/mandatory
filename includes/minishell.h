@@ -2,7 +2,8 @@
 # define MINISHELL_H
 // 전역변수 exit_status로 사용하자구
 
-typedef unsigned long size_t;
+typedef unsigned long	size_t;
+typedef int				(*t_lexer_fp)(t_lexer *);
 
 typedef enum e_lexer_state
 {
@@ -36,12 +37,14 @@ typedef struct s_env_data
 
 typedef	struct s_lexer
 {
-	t_lexer_state current_state;
+	t_lexer_state	current_state;
+	t_lexer_fp	func[5][5];
 }	t_lexer;
 
 typedef struct s_all_data
 {
 	t_list	envp_list;
+	t_lexer	lexer;
 }	t_all_data;
 
 /* exit.c */
