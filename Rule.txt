@@ -16,3 +16,14 @@ Ground Rule
 2.Pipe
 3.Redirection
 4.Word
+
+
+오늘의 목표 (8.10)
+lexer 구현
+ 1. lexer 테이블 구축
+  1-1 lexer table (되는경우를 다 모아놓은 것 -> 5*5 형태로 그 경우의 수를 다 정의)
+	1-1-1 lexer 구조체 -> st_normal 같은 친구 정의하기
+	1-1-2 lexer 함수 만들기 
+  1-2 reduce table 
+	1-2-2 reduce 함수 만들기
+2. run lexing까지 해봐!

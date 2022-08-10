@@ -1,14 +1,14 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
 
-void	print_envp(t_all_lists *all_lists)
+void	print_envp(t_all_data *all_data)
 {
 	t_list		env;
 	t_node		*current_node;
 	t_env_data	*current_env;
 	int			index;
 
-	env = all_lists->envp_list;
+	env = all_data->envp_list;
 	current_node = env.head;
 	index = 0;
 	while (index < env.count)
@@ -64,11 +64,11 @@ static void	get_envp_list(t_list *envp_list, char **envp)
 	}
 }
 
-void	get_envp(t_all_lists *all_lists, char **envp)
+void	get_envp(t_all_data *all_data, char **envp)
 {
 	t_list	*envp_list;
 
-	envp_list = &all_lists->envp_list;
+	envp_list = &all_data->envp_list;
 	list_init(envp_list);
 	get_envp_list(envp_list, envp);
 }

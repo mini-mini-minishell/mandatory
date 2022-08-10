@@ -4,6 +4,17 @@
 
 typedef unsigned long size_t;
 
+typedef enum e_lexer_state
+{
+	LS_ORDINARY,
+	LS_SPACE,
+	LS_SQUOT,
+	LS_DQUOT,
+	LS_UNIQUE,
+	LS_NULL
+}	t_lexer_state;
+
+
 typedef struct s_node
 {
 	void			*data;
@@ -23,22 +34,27 @@ typedef struct s_env_data
 	char	*value;
 }	t_env_data;
 
-typedef struct s_all_lists
+typedef	struct s_lexer
+{
+	t_lexer_state current_state;
+}	t_lexer;
+
+typedef struct s_all_data
 {
 	t_list	envp_list;
-}	t_all_lists;
+}	t_all_data;
 
 /* exit.c */
 void	exit_with_message(char *s);
 
 /* init_all.c */
-void	init_all(t_all_lists *all_lists, char **envp);
+void	init_all(t_all_data *all_data, char **envp);
 
 /* list_envp.c */
-void	print_envp(t_all_lists *all_lists);
+void	print_envp(t_all_data *all_data);
 int		envp_search_node(t_list *list, char *key);
 void	envp_delete_node(t_list *list, int index);
-void	get_envp(t_all_lists *all_lists, char **envp);
+void	get_envp(t_all_data *all_data, char **envp);
 t_env_data	*create_envp_data(char *key, char *value);
 void	envp_delete_node(t_list *list, int index);
 
@@ -53,7 +69,8 @@ void	list_init(t_list *list);
 void	check_arguments(int	argc, char **argv);
 
 /* readline.c */
-void    prompt_loop(t_all_lists *all_lists);
+void    prompt_loop(t_all_data *all_data);
+void 	handler(int signum);
 
 /* utils_split.c */
 char	**ft_split(char const *s, char *set);

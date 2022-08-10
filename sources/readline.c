@@ -2,10 +2,8 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
-
 
 void handler(int signum)
 {
@@ -15,12 +13,10 @@ void handler(int signum)
     rl_redisplay();
 }
 
-void    prompt_loop(t_all_lists *all_lists)
+void    prompt_loop(t_all_data *all_data)
 {
     char *line;
 
-    signal(SIGINT, handler);
-	signal(SIGQUIT, SIG_IGN);
     while (1)
     {
         line = readline("minishell > ");

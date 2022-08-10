@@ -2,11 +2,11 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_all_lists	all_lists;
+	t_all_data	all_data;
 
 	check_arguments(argc, argv);  //예외처리 하는곳
-	init_all(&all_lists, envp);
-	prompt_loop(&all_lists);
+	init_all(&all_data, envp);
+	prompt_loop(&all_data);
 	// while (1)
 		// readline
 		// lexer
