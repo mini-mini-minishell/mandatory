@@ -3,7 +3,7 @@
 // 전역변수 exit_status로 사용하자구
 
 typedef unsigned long	size_t;
-typedef int				(*t_lexer_fp)(t_lexer *);
+typedef int				(*t_lexer_fp)(t_all_data *);
 typedef int				(*t_reducer_fp)();
 
 typedef enum e_return_value
@@ -64,7 +64,7 @@ void	exit_with_message(char *s);
 void	init_all(t_all_data *all_data, char **envp);
 
 /* lexer_table.c */
-int	ft_get_next_char(t_lexer *lexer);
+int	get_next_char(t_lexer *lexer);
 
 /* list_envp.c */
 void	print_envp(t_all_data *all_data);
