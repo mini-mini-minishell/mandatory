@@ -14,8 +14,8 @@ typedef enum e_return_value
 
 typedef enum e_lexer_state
 {
-	LS_ORDINARY,
-	LS_UNIQUE,
+	LS_OTHERS,
+	LS_ITEM,
 	LS_SPACE,
 	LS_SQUOT,
 	LS_DQUOT,
@@ -36,11 +36,57 @@ typedef struct s_list
 	size_t	count;
 }	t_list;
 
+typedef enum e_item_type
+{
+	META_SPACE,
+	META_TAB,
+	META_NL,
+	META_PIPE,
+	META_AND,
+	META_SEMICOL,
+	META_LPAREN,
+	META_RPAREN,
+	META_LESS,
+	META_GREATER,
+	META_NON
+}	t_metachar;
+
+typedef enum e_token_type
+{
+	TT_ERR = 0,
+	TT_WORD = 1,
+	TT_PAREN_LEFT = 1 << 1,
+	TT_PAREN_RIGHT = 1 << 2,
+	TT_PIPE = 1 << 3,
+	TT_OR = 1 << 4,
+	TT_AND = 1 << 5,
+	TT_REDIR_IN = 1 << 6,
+	TT_REDIR_OUT = 1 << 7,
+	TT_REDIR_HEREDOC = 1 << 8,
+	TT_REDIR_APPEND = 1 << 9,
+	TT_EOF = 1 << 10,
+	TT_START = 1 << 11,
+	TT_LIST = 1 << 12,
+	TT_PIPELINE = 1 << 13,
+	TT_CMD = 1 << 14,
+	TT_SIMPLE = 1 << 15,
+	TT_SUBSHELL = 1 << 16,
+	TT_REDIR_LIST = 1 << 17,
+	TT_ELEMENT = 1 << 18,
+	TT_REDIR = 1 << 19
+}	t_token_type;
+
 typedef struct s_env_data
 {
 	char	*key;
 	char	*value;
 }	t_env_data;
+
+typedef struct s_token_data
+{
+	t_token_type	token_type;
+	char			*content;
+}	t_token_data;
 
 typedef	struct s_lexer
 {
@@ -73,6 +119,8 @@ void	envp_delete_node(t_list *list, int index);
 void	get_envp(t_all_data *all_data, char **envp);
 t_env_data	*create_envp_data(char *key, char *value);
 void	envp_delete_node(t_list *list, int index);
+
+/* list_token.c */
 
 
 /* list.c */ //node_number start from zero

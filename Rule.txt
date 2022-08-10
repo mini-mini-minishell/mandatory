@@ -27,3 +27,12 @@ lexer 구현
   1-2 reduce table 
 	1-2-2 reduce 함수 만들기
 2. run lexing까지 해봐!
+
+
+
+SYMBOL_ -> TT_
+meta -> item
+NORMAL -> others
+metachar -> unique_type
+_to_ -> _meet_ 
+to_norm -> turn_others
