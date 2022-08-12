@@ -4,7 +4,7 @@
 
 typedef unsigned long	size_t;
 typedef int				(*t_lexer_fp)(t_all_data *);
-typedef int				(*t_reducer_fp)();
+typedef int				(*t_reducer_fp)(t_all_data *);
 
 typedef enum e_return_value
 {
@@ -94,14 +94,20 @@ typedef struct s_lexer
 	char			last_item;
 	size_t			index;
 	t_lexer_state	current_state;
-	t_lexer_fp		func[5][5];
+	t_lexer_fp		lex_func[5][5];
 }	t_lexer;
+
+typedef struct s_parser
+{
+	t_reducer_fp	rdc_func[22];
+}	t_parser;
 
 typedef struct s_all_data
 {
-	t_list	envp_list;
-	t_list	token_list;
-	t_lexer	lexer;
+	t_list		envp_list;
+	t_list		token_list;
+	t_lexer		lexer;
+	t_parser	parser;
 }	t_all_data;
 
 /* exit.c */
