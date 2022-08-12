@@ -121,6 +121,7 @@ t_return_value	space_meet_space(t_all_data *all_data);
 t_return_value	space_meet_squot(t_all_data *all_data);
 t_return_value	space_meet_dquot(t_all_data *all_data);
 t_return_value	space_meet_item(t_all_data *all_data);
+t_return_value	turn_others(t_all_data *all_data);
 
 /* list_envp.c */
 void	print_envp(t_all_data *all_data);
