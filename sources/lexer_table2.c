@@ -46,6 +46,7 @@ t_return_value	space_meet_dquot(t_all_data *all_data)
 t_return_value	space_meet_item(t_all_data *all_data)
 {
 	t_lexer	*lexer;
+	t_token_data	*token_data;
 
 	lexer = &(all_data->lexer);
 	lexer->last_item = (lexer->input)[lexer->index];
