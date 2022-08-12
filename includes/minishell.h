@@ -91,6 +91,7 @@ typedef struct s_token_data
 typedef struct s_lexer
 {
 	char			*input;
+	char			last_item;
 	size_t			index;
 	t_lexer_state	current_state;
 	t_lexer_fp		func[5][5];
@@ -112,6 +113,9 @@ void	init_all(t_all_data *all_data, char **envp);
 /* lexer_table.c */
 t_return_value	get_next_char(t_all_data *all_data);
 t_return_value	others_meet_space(t_all_data *all_data);
+t_return_value	others_meet_squot(t_all_data *all_data);
+t_return_value	others_meet_dquot(t_all_data *all_data);
+t_return_value	others_meet_item(t_all_data *all_data);
 
 /* list_envp.c */
 void	print_envp(t_all_data *all_data);

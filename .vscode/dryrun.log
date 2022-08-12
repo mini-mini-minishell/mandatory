@@ -1,9 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/solpang/minishell'
-cc -g -Wall -Werror -Wextra -c -o sources/main.o sources/main.c
- 
-cc -g -Wall -Werror -Wextra -c -o sources/parsing.o sources/parsing.c
-cc -g -Wall -Werror -Wextra -c -o sources/utils_print.o sources/utils_print.c
-cc  -o minishell sources/main.o sources/parsing.o sources/utils_print.o
-make: Leaving directory `/Users/solpang/minishell'
- 
