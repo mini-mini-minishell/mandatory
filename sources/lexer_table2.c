@@ -2,32 +2,32 @@
 
 t_return_value	space_meet_others(t_all_data *all_data)
 {
-    t_lexer	*lexer;
+	t_lexer	*lexer;
 
 	lexer = &(all_data->lexer);
-    lexer->current_state = LS_OTHERS;
+	lexer->current_state = LS_OTHERS;
 	++(lexer->index);
 	return (RV_SUCCESS);
 }
 
 t_return_value	space_meet_space(t_all_data *all_data)
 {
-    t_lexer	*lexer;
+	t_lexer	*lexer;
 
 	lexer = &(all_data->lexer);
-    ++(lexer->input);
+	++(lexer->input);
 	return (RV_SUCCESS);
 }
 
 t_return_value	space_meet_squot(t_all_data *all_data)
 {
-    t_lexer	*lexer;
+	t_lexer	*lexer;
 
 	lexer = &(all_data->lexer);
-    lexer->current_state = LS_SQUOT;
+	lexer->current_state = LS_SQUOT;
 	// ++(lexer->input); 이것도 됨
 	lexer->input += lexer->index;
-    lexer->index = 1;
+	lexer->index = 1;
 	return (RV_SUCCESS);
 }
 
@@ -36,10 +36,10 @@ t_return_value	space_meet_dquot(t_all_data *all_data)
 	t_lexer	*lexer;
 
 	lexer = &(all_data->lexer);
-    lexer->current_state = LS_DQUOT;
+	lexer->current_state = LS_DQUOT;
 	// ++(lexer->input); 이것도 됨
 	lexer->input += lexer->index;
-    lexer->index = 1;
+	lexer->index = 1;
 	return (RV_SUCCESS);
 }
 
@@ -50,7 +50,7 @@ t_return_value	space_meet_item(t_all_data *all_data)
 
 	lexer = &(all_data->lexer);
 	lexer->last_item = (lexer->input)[lexer->index];
-    lexer->current_state = LS_ITEM;
+	lexer->current_state = LS_ITEM;
 	add_new_token(all_data);
 	lexer->input += lexer->index;
 	lexer->index = 1;
