@@ -99,7 +99,7 @@ typedef struct s_lexer
 
 typedef struct s_parser
 {
-	t_reducer_fp	rdc_func[22];
+	t_reducer_fp	reduce_func[22];
 }	t_parser;
 
 typedef struct s_all_data

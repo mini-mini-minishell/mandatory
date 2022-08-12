@@ -2,8 +2,31 @@
 #include "../includes/minishell.h"
 #include <signal.h>
 
-void	set_reducer_table(t_all_data *all_data)
-{}
+void	set_reducer_table(t_all_data *all_data, t_parser *parser)
+{
+	parser->reduce_func[0] = NULL;
+	parser->reduce_func[1] = reduce_rule_0;
+	parser->reduce_func[2] = reduce_rule_2;
+	parser->reduce_func[3] = reduce_rule_4;
+	parser->reduce_func[4] = reduce_rule_5;
+	parser->reduce_func[5] = reduce_rule_6;
+	parser->reduce_func[6] = reduce_rule_9;
+	parser->reduce_func[7] = NULL;
+	parser->reduce_func[8] = reduce_rule_13;
+	parser->reduce_func[9] = reduce_rule_14;
+	parser->reduce_func[10] = NULL;
+	parser->reduce_func[11] = NULL;
+	parser->reduce_func[12] = NULL;
+	parser->reduce_func[13] = reduce_rule_8;
+	parser->reduce_func[14] = reduce_rule_7;
+	parser->reduce_func[15] = reduce_rule_12;
+	parser->reduce_func[16] = NULL;
+	parser->reduce_func[17] = reduce_rule_15;
+	parser->reduce_func[18] = reduce_rule_1;
+	parser->reduce_func[19] = reduce_rule_3;
+	parser->reduce_func[20] = reduce_rule_11;
+	parser->reduce_func[21] = reduce_rule_10;
+}
 
 void	set_lexer_table(t_all_data *all_data, t_lexer *lexer)
 {
