@@ -69,6 +69,7 @@ t_token_data	*create_token_data(t_all_data *all_data)
 	lexer = &all_data->lexer;
 	new = ft_malloc(sizeof(t_token_data));
 	new->content = ft_substr(lexer->index, 0, lexer->index);
+	// ft_substr의 처음 인자는 lexer->input 이여야한다? -hogkim
 	new->token_type = get_token_type(new->content);
 	return (new);
 }
