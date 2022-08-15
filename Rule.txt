@@ -31,6 +31,8 @@ lexer 구현
 
 
 SYMBOL_ -> TT_
+symbol_type ==token_type
+
 meta -> item
 NORMAL -> others
 metachar -> unique_type

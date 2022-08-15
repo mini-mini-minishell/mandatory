@@ -57,13 +57,19 @@ void	set_lexer_table(t_all_data *all_data, t_lexer *lexer)
 	(lexer->lex_func)[LS_ITEM][LS_ITEM] = item_meet_item;
 }
 
+void	init_parser(t_parser *parser)
+{
+	list_init(&parser->parser_stack);
+	list_init(&parser->tree_stack);
+}
+
 void	init_all(t_all_data *all_data, char **envp)
 {
 	set_lexer_table(all_data, &all_data->lexer);
-	set_reducer_table(all_data);
-	//init_parsing();
+	set_reducer_table(all_data, &all_data->lexer);
 	get_envp(all_data, envp);
 	list_init(&all_data->token_list);
+	// init_parser(&all_data->parser); //loop 안에서 readline 할때마다 init
 	// print_envp(all_data);
 	signal(SIGINT, handler);
 	signal(SIGQUIT, SIG_IGN);

@@ -2,9 +2,11 @@
 # define MINISHELL_H
 // 전역변수 exit_status로 사용하자구
 
-typedef unsigned long	size_t;
-typedef int				(*t_lexer_fp)(t_all_data *);
-typedef int				(*t_reducer_fp)(t_all_data *);
+typedef unsigned long		size_t;
+typedef int					(*t_lexer_fp)(t_all_data *);
+typedef int					(*t_reducer_fp)(t_all_data *);
+typedef struct s_cmd		t_cmd;
+typedef struct s_element	t_element;
 
 typedef enum e_return_value
 {
@@ -36,6 +38,7 @@ typedef struct s_list
 	size_t	count;
 }	t_list;
 
+/*                   types                   */
 typedef enum e_item_type
 {
 	ITEM_SPACE,
@@ -76,6 +79,47 @@ typedef enum e_token_type
 	TT_REDIR = 1 << 19
 }	t_token_type;
 
+typedef enum e_tree_type
+{
+	TREE_TOKEN,
+	TREE_WORD,
+	TREE_REDIR_LIST,
+	TREE_ELEMENT,
+	TREE_CMD
+}	t_tree_type;
+
+/*                                           */
+
+typedef enum e_parser_state
+{
+	STATE_NON = 0,
+	PARSER_STATE = 1 << 20,
+	STATE_0 = PARSER_STATE | 0,
+	STATE_1 = PARSER_STATE | 1,
+	STATE_2 = PARSER_STATE | 2,
+	STATE_3 = PARSER_STATE | 3,
+	STATE_4 = PARSER_STATE | 4,
+	STATE_5 = PARSER_STATE | 5,
+	STATE_6 = PARSER_STATE | 6,
+	STATE_7 = PARSER_STATE | 7,
+	STATE_8 = PARSER_STATE | 8,
+	STATE_9 = PARSER_STATE | 9,
+	STATE_10 = PARSER_STATE | 10,
+	STATE_11 = PARSER_STATE | 11,
+	STATE_12 = PARSER_STATE | 12,
+	STATE_13 = PARSER_STATE | 13,
+	STATE_14 = PARSER_STATE | 14,
+	STATE_15 = PARSER_STATE | 15,
+	STATE_16 = PARSER_STATE | 16,
+	STATE_17 = PARSER_STATE | 17,
+	STATE_18 = PARSER_STATE | 18,
+	STATE_19 = PARSER_STATE | 19,
+	STATE_20 = PARSER_STATE | 20,
+	STATE_21 = PARSER_STATE | 21
+}	t_parser_state;
+
+/*                   data                   */
+
 typedef struct s_env_data
 {
 	char	*key;
@@ -87,6 +131,44 @@ typedef struct s_token_data
 	t_token_type	token_type;
 	char			*content;
 }	t_token_data;
+
+typedef struct s_parser_data
+{
+	int				type;
+	t_token_type	token;
+	t_parser_state	state;
+}	t_parser_data;
+
+typedef struct s_tree_data
+{
+	int				type;
+	t_tree_type		tree_type;
+	t_parser_state	state;
+	t_token_type	token;
+	char			*word;
+	t_list			redir_list;
+	t_cmd			*cmd;
+	t_element		*element;
+}	t_tree_data;
+
+/*                                           */
+
+struct s_cmd
+{
+	t_cmd_flag		flag;
+	t_cmd_type		type;
+	t_redir_list	*redir_list;
+	t_cmd_content	content;
+	t_env_list		*env;
+	pid_t			pid_last_child;
+	int				exit_status;
+};
+
+struct s_element
+{
+	char			*word;
+	t_redir_list	*redir_list;
+};
 
 typedef struct s_lexer
 {
@@ -100,6 +182,8 @@ typedef struct s_lexer
 typedef struct s_parser
 {
 	t_reducer_fp	reduce_func[22];
+	t_list			parser_stack;
+	t_list			tree_stack; //이름 괜찮은가?
 }	t_parser;
 
 typedef struct s_all_data
