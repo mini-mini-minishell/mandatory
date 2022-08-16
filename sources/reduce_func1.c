@@ -13,7 +13,7 @@ t_return_value	reduce_rule_0(t_all_data *all_data)
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_START);
 	parser->flag |= PARSER_FINISH;
-	parser->final_cmd = tree_data->cmd;
+	parser->final_cmd = tree_data->content.cmd;
 	return (RV_SUCCESS);
 }
 
@@ -33,10 +33,75 @@ t_return_value	reduce_rule_1(t_all_data *all_data)
 	tail = parser->tree_stack.tail;
 	content.cmd = make_connect(tail->prev->prev->data, tail->data, tail->prev->data);
 	stack_pop_back(&parser->tree_stack, 3);
-	push_value_stack(parser, content);
+	tree_push_back(parser, content);
 	data = parser->tree_stack.head->data;
 	data->type = TREE_CMD;
-	return (0);
+	return (RV_SUCCESS);
 }
 
-//list_push_back(&parser->parser_stack, list_new_node(create_parser_data()));
+// L -> P;
+t_return_value	reduce_rule_2(t_all_data *all_data)
+{
+	int				count;
+	t_parser		*parser;
+	t_tree_content	content;
+	t_tree_data		*p;
+	t_tree_data		*data;
+
+	parser = &all_data->parser;
+	count = 2 * 1;
+	stack_pop_back(&parser->parser_stack, count);
+	parser_push_stack(&parser->parser_stack, TT_LIST);
+	p = parser->tree_stack.head->data;
+	content.cmd = p->content.cmd;
+	stack_pop_back(&parser->tree_stack, 1);
+	tree_push_back(parser, content);
+	data = parser->tree_stack.head->data;
+	data->type = TREE_CMD;
+	return (gather_heredoc(parser)); //아직 안만듬!!!!!!!__________________
+}
+
+
+// P -> P | C;
+t_return_value	reduce_rule_3(t_all_data *all_data)
+{
+	int				count;
+	t_parser		*parser;
+	t_tree_content	content;
+	t_tree_data		*data;
+	t_node			*tail;
+
+	parser = &all_data->parser;
+	count = 2 * 3;
+	stack_pop_back(&parser->parser_stack, count);
+	parser_push_stack(&parser->parser_stack, TT_PIPELINE);
+	tail = parser->tree_stack.tail;
+	content.cmd = make_connect(tail->prev->prev->data, tail->data, tail->prev->data);
+	stack_pop_back(&parser->tree_stack, 3);
+	tree_push_back(parser, content);
+	data = parser->tree_stack.head->data;
+	data->type = TREE_CMD;
+	return (RV_SUCCESS);
+}
+
+// P -> C;
+t_return_value	reduce_rule_4(t_all_data *all_data)
+{
+	int				count;
+	t_parser		*parser;
+	t_tree_content	content;
+	t_tree_data		*p;
+	t_tree_data		*data;
+
+	parser = &all_data->parser;
+	count = 2 * 1;
+	stack_pop_back(&parser->parser_stack, count);
+	parser_push_stack(&parser->parser_stack, TT_PIPELINE);
+	p = parser->tree_stack.head->data;
+	content.cmd = p->content.cmd;
+	stack_pop_back(&parser->tree_stack, 1);
+	tree_push_back(parser, content);
+	data = parser->tree_stack.head->data;
+	data->type = TREE_CMD;
+	return (RV_SUCCESS);
+}
