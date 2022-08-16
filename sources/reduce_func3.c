@@ -1,7 +1,7 @@
 #include "../includes/minishell.h"
 
 // SUB -> paren_left L paren_right // make subshell 안만듬!!!!
-int	reduce_rule_10(t_all_data *all_data)
+t_return_value	reduce_rule_10(t_all_data *all_data)
 {
 	int				count;
 	t_tree_content	content;
@@ -19,7 +19,7 @@ int	reduce_rule_10(t_all_data *all_data)
 }
 
 // RL -> RL R;
-int	reduce_rule_11(t_all_data *all_data)
+t_return_value	reduce_rule_11(t_all_data *all_data)
 {
 	int				count;
 	t_tree_content	content;
@@ -42,7 +42,7 @@ int	reduce_rule_11(t_all_data *all_data)
 }
 
 // RL -> R;
-int	reduce_rule_12(t_all_data *all_data)
+t_return_value	reduce_rule_12(t_all_data *all_data)
 {
 	int				count;
 	t_parser		*parser;
@@ -65,7 +65,7 @@ int	reduce_rule_12(t_all_data *all_data)
 }
 
 // ELEM -> id;
-int	reduce_rule_13(t_all_data *all_data)
+t_return_value	reduce_rule_13(t_all_data *all_data)
 {
 	int				count;
 	t_parser		*parser;
@@ -90,7 +90,7 @@ int	reduce_rule_13(t_all_data *all_data)
 }
 
 // ELEM -> R;
-int	reduce_rule_14(t_all_data *all_data)
+t_return_value	reduce_rule_14(t_all_data *all_data)
 {
 	int				count;
 	t_parser		*parser;

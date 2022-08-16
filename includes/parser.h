@@ -191,4 +191,14 @@ typedef struct s_parser
 	char			flag;
 }	t_parser;
 
+typedef struct s_word_data
+{
+	int			flag;
+	int			key_len;
+	int			field;
+	char		*word;
+	// t_word_data	*variables; // node 일지 ?
+}	t_word_data;
+
+
 #endif

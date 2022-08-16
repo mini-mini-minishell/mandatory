@@ -13,17 +13,17 @@ t_return_value	reduce_rule_5(t_all_data *all_data)
 	count = 2 * 1;
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_stack(&parser->parser_stack, TT_CMD);
-	sc = parser->tree_stack.head->data;
+	sc = parser->tree_stack.tail->data;
 	content.cmd = sc->content.cmd;
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(parser, content);
-	data = parser->tree_stack.head->data;
+	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
 // C -> SUB;
-int	reduce_rule_6(t_all_data *all_data)
+t_return_value	reduce_rule_6(t_all_data *all_data)
 {
 	int				count;
 	t_parser		*parser;
@@ -35,17 +35,17 @@ int	reduce_rule_6(t_all_data *all_data)
 	count = 2 * 1;
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_stack(&parser->parser_stack, TT_CMD);
-	sub = parser->tree_stack.head->data;
+	sub = parser->tree_stack.tail->data;
 	content.cmd = sub->content.cmd;
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(parser, content);
-	data = parser->tree_stack.head->data;
+	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
 // C -> SUB RL;
-int	reduce_rule_7(t_all_data *all_data)
+t_return_value	reduce_rule_7(t_all_data *all_data)
 {
 	int				count;
 	t_parser		*parser;
@@ -57,39 +57,41 @@ int	reduce_rule_7(t_all_data *all_data)
 	count = 2 * 2;
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_stack(&parser->parser_stack, TT_CMD);
-	sub = parser->tree_stack.head->data;
+	sub = parser->tree_stack.tail->data;
 	content.cmd = sub->content.cmd;
-	data = parser->tree_stack.head->data;
+	data = parser->tree_stack.tail->data;
 	content.cmd->redir_list = data->content.redir_list;
 	stack_pop_back(&parser->tree_stack, 2);
 	tree_push_back(parser, content);
-	data = parser->tree_stack.head->data;
+	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
 // SC -> SC ELEM; //make simple 아직 안만든!!!!!!!!!!!!!!!!-----
-int	reduce_rule_8(t_all_data *all_data)
+t_return_value	reduce_rule_8(t_all_data *all_data)
 {
 	int				count;
-	t_value_content	content;
-	t_value_content	elem;
-	t_value_content	simple;
+	t_parser		*parser;
+	t_list			*tree;
+	t_tree_data		*data;
+	t_tree_content	content;
 
+	parser = &all_data->parser;
 	count = 2 * 2;
-	pop_parser_stack(parser, count);
-	push_parser_stack(parser, SYMBOL_SIMPLE);
-	elem = parser->value_stack->content;
-	simple = parser->value_stack->next->content;
-	content.cmd = make_simple(simple.cmd, elem.element);
-	pop_value_stack(parser, 2);
-	push_value_stack(parser, content);
-	parser->value_stack->type = VALUE_CMD;
-	return (0);
+	stack_pop_back(&parser->parser_stack, count);
+	parser_push_stack(&parser->parser_stack, TT_SIMPLE);
+	tree = &parser->tree_stack;
+	content.cmd = make_simple(tree->tail->prev->data, tree->tail->data);
+	stack_pop_back(&parser->tree_stack, 2);
+	tree_push_back(parser, content);
+	data = parser->tree_stack.tail->data;
+	data->type = TREE_CMD;
+	return (RV_SUCCESS);
 }
 
 // SC -> ELEM;
-int	reduce_rule_9(t_parser *parser)
+t_return_value	reduce_rule_9(t_parser *parser)
 {
 	int				count;
 	t_value_content	content;

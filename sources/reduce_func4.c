@@ -1,7 +1,7 @@
 #include "../includes/minishell.h"
 
 // R -> redir_op id;
-int	reduce_rule_15(t_parser *parser)
+t_return_value	reduce_rule_15(t_parser *parser)
 {
 	int				count;
 	t_value_content	content;
