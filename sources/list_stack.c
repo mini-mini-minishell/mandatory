@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include "../includes/parser.h"
 
 void	stack_pop_back(t_list *list, int count)
 {
@@ -23,8 +24,13 @@ void	parser_push_back(t_list *list, int type)
 	list_push_back(list, data);
 }
 
-void	tree_push_back(t_list *list,)
-{}
+void	tree_push_back(t_list *list, t_tree_content content)
+{
+	void	*data;
+
+	data = create_tree_data(content);
+	list_push_back(list, data);
+}
 
 t_parser_data	*create_parser_data(int type)
 {
@@ -44,3 +50,11 @@ t_parser_data	*create_parser_data(int type)
 	return (new_data);
 }
 
+t_tree_data	*create_tree_data(t_tree_content content)
+{
+	t_tree_data	*new_data;
+
+	new_data = ft_malloc(sizeof(t_tree_data));
+	new_data->content = content;
+	return (new_data);
+}

@@ -160,7 +160,7 @@ struct s_element
 
 typedef union u_tree_content
 {
-	t_symbol_type	token;
+	t_token_type	token;
 	char			*word;
 	t_list			*redir_list;
 	t_cmd			*cmd;
