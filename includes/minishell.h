@@ -118,6 +118,10 @@ void	get_envp(t_all_data *all_data, char **envp);
 t_env_data	*create_envp_data(char *key, char *value);
 void	envp_delete_node(t_list *list, int index);
 
+/* list_stack.c */
+void	stack_pop_back(t_list *list, int count);
+t_parser_data	*create_parser_data(int type);
+
 /* list_token.c */
 
 
