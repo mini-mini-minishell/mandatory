@@ -5,7 +5,7 @@
 t_word_data	*create_word_data(char *word)
 {
 	t_word_data	*new_data;
-	
+
 	new_data = ft_malloc(sizeof(t_word_data));
 	new_data->flag = 0;
 	new_data->field = 0;
@@ -29,7 +29,7 @@ void	append_word_list(t_cmd *new_simple, t_element *element)
 // t_redir_data	*create_redir_data(char *word)
 // {
 // 	t_redir_data	*new_data;
-	
+
 // 	new_data = ft_malloc(sizeof(t_word_data));
 // 	new_data->flag = 0;
 // 	new_data->field = 0;
@@ -91,7 +91,7 @@ t_cmd	*make_connect(void *left, void *right, void *connector)
 	t_tree_data	*l;
 	t_tree_data	*r;
 	t_tree_data	*c;
-	
+
 	l = left;
 	r = right;
 	c = connector;
@@ -105,4 +105,18 @@ t_cmd	*make_connect(void *left, void *right, void *connector)
 	new_cmd->envp_list = NULL;
 	new_cmd->pid_last_child = -1;
 	return (new_cmd);
+}
+
+t_cmd	*make_subshell(t_cmd *subshell)
+{
+	t_cmd	*new_subshell;
+
+	new_subshell = ft_malloc(sizeof(t_cmd));
+	new_subshell->type = CMD_SUBSHELL;
+	new_subshell->flag = CMD_FLAG_DEFAULT;
+	new_subshell->content.subshell.cmd = subshell;
+	new_subshell->redir_list = NULL;
+	new_subshell->envp_list = NULL;
+	new_subshell->pid_last_child = -1;
+	return (new_subshell);
 }

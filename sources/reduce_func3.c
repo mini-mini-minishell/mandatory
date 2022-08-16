@@ -6,17 +6,22 @@ t_return_value	reduce_rule_10(t_all_data *all_data)
 {
 	int				count;
 	t_tree_content	content;
+	t_parser		*parser;
 	t_tree_content	l;
+	t_tree_data		*data;
 
+	parser = &all_data->parser;
 	count = 2 * 3;
-	pop_parser_stack(parser, count);
-	push_parser_stack(parser, SYMBOL_SUBSHELL);
-	l = parser->value_stack->next->content;
+	stack_pop_back(&parser->parser_stack, count);
+	parser_push_stack(&parser->parser_stack, TT_SUBSHELL);
+	data = parser->tree_stack.tail->prev->data;
+	l = data->content;
 	content.cmd = make_subshell(l.cmd);
-	pop_value_stack(parser, 3);
-	push_value_stack(parser, content);
-	parser->value_stack->type = VALUE_CMD;
-	return (0);
+	stack_pop_back(&parser->tree_stack, 3);
+	tree_push_back(parser, content);
+	data = parser->tree_stack.tail->data;
+	data->type = TREE_CMD;
+	return (RV_SUCCESS);
 }
 
 // RL -> RL R;
@@ -24,22 +29,23 @@ t_return_value	reduce_rule_11(t_all_data *all_data)
 {
 	int				count;
 	t_tree_content	content;
-	t_tree_content	redir_list;
-	t_redir_list	*redir;
+	t_parser		*parser;
+	t_list			*redir;
+	t_tree_data		*data;
 
+	parser = &all_data->parser;
 	count = 2 * 2;
-	pop_parser_stack(parser, count);
-	push_parser_stack(parser, SYMBOL_REDIR_LIST);
-	redir_list = parser->value_stack->next->content;
-	content.redir_list = redir_list.redir_list;
-	redir = redir_list.redir_list;
-	while (redir && redir->next)
-		redir = redir->next;
-	redir->next = parser->value_stack->content.redir_list;
-	pop_value_stack(parser, 2);
-	push_value_stack(parser, content);
-	parser->value_stack->type = VALUE_REDIR_LIST;
-	return (0);
+	data = parser->tree_stack.tail->prev->data;
+	redir = &(data->content.redir_list);
+	data = parser->tree_stack.tail->data;
+	data->content.redir_list->head->prev = redir->tail;
+	redir->tail->next = data->content.redir_list->head;
+	redir->tail = data->content.redir_list->tail;
+	stack_pop_back(&parser->tree_stack, 2);
+	tree_push_back(parser, content);
+	data = parser->tree_stack.tail->data;
+	data->type = TREE_REDIR_LIST;
+	return (RV_SUCCESS);
 }
 
 // RL -> R;
