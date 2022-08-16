@@ -91,7 +91,7 @@ t_return_value	reduce_rule_8(t_all_data *all_data)
 }
 
 // SC -> ELEM;
-t_return_value	reduce_rule_9(t_parser *parser)
+t_return_value	reduce_rule_9(t_all_data *all_data)
 {
 	int				count;
 	t_parser		*parser;

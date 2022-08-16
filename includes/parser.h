@@ -90,7 +90,7 @@ typedef enum e_cmd_type
 	CMD_SUBSHELL
 }	t_cmd_type;
 
-struct s_redir_data
+typedef struct s_redir_data
 {
 	t_redir_type	redir_type;
 	int				flag;
@@ -98,7 +98,7 @@ struct s_redir_data
 	int				fd_new;
 	char			*filename;
 	char			*heredoc_eof;
-}   t_redir_data;
+}	t_redir_data;
 
 typedef enum e_redir_type
 {

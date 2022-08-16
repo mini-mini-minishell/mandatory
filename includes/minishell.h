@@ -122,7 +122,9 @@ void	envp_delete_node(t_list *list, int index);
 /* list_stack.c */
 void	stack_pop_back(t_list *list, int count);
 void	parser_push_back(t_list *list, int type);
+void	tree_push_back(t_list *list, t_tree_content content);
 t_parser_data	*create_parser_data(int type);
+t_tree_data	*create_tree_data(t_tree_content content);
 
 /* list_token.c */
 
@@ -133,12 +135,45 @@ void	list_push_back(t_list *list, t_node *new);
 t_node	*list_new_node(void *data);
 void	list_init(t_list *list);
 
+/* make_redir.c */
+t_list	*make_redir(char *word, t_token_type token);
+
 /* parsing.c */
 void	check_arguments(int	argc, char **argv);
 
+/* heredoc.c */
+void gather_heredoc(t_parser *parser);
+
 /* readline.c */
-void    prompt_loop(t_all_data *all_data);
-void 	handler(int signum);
+void	prompt_loop(t_all_data *all_data);
+void	handler(int signum);
+
+/* reduce_func.c */
+t_return_value	reduce_rule_0(t_all_data *all_data);
+t_return_value	reduce_rule_1(t_all_data *all_data);
+t_return_value	reduce_rule_2(t_all_data *all_data);
+t_return_value	reduce_rule_3(t_all_data *all_data);
+t_return_value	reduce_rule_4(t_all_data *all_data);
+t_return_value	reduce_rule_5(t_all_data *all_data);
+t_return_value	reduce_rule_6(t_all_data *all_data);
+t_return_value	reduce_rule_7(t_all_data *all_data);
+t_return_value	reduce_rule_8(t_all_data *all_data);
+t_return_value	reduce_rule_9(t_all_data *all_data);
+t_return_value	reduce_rule_10(t_all_data *all_data);
+t_return_value	reduce_rule_11(t_all_data *all_data);
+t_return_value	reduce_rule_12(t_all_data *all_data);
+t_return_value	reduce_rule_13(t_all_data *all_data);
+t_return_value	reduce_rule_14(t_all_data *all_data);
+t_return_value	reduce_rule_15(t_all_data *all_data);
+
+/* utils_reduce.c */
+t_word_data	*create_word_data(char *word);
+void	append_word_list(t_cmd *new_simple, t_element *element);
+void	append_redir_list(t_cmd *new_simple, t_element *element);
+t_cmd	*make_simple(void *simple_data, void *element_data);
+t_cmd	*make_connect(void *left, void *right, void *connector);
+t_cmd	*make_subshell(t_cmd *subshell);
+
 
 /* utils_split.c */
 char	**ft_split(char const *s, char *set);

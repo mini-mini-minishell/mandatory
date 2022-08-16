@@ -56,7 +56,6 @@ void	append_redir_list(t_cmd *new_simple, t_element *element)
 	}
 }
 
-
 t_cmd	*make_simple(void *simple_data, void *element_data)
 {
 	t_cmd			*new_simple;
