@@ -26,7 +26,6 @@ void	prompt_loop(t_all_data *all_data)
 			ft_putstr_fd("output> ", 1);
 			ft_putstr_fd(line, 1);
 			ft_putstr_fd("\n", 1);
-			add_history(line);
 			free(line);
 			line = NULL;
 		}
