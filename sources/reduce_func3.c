@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include <stdlib.h>
 
 // SUB -> paren_left L paren_right // make subshell 안만듬!!!!
 t_return_value	reduce_rule_10(t_all_data *all_data)

@@ -68,7 +68,7 @@ t_return_value	reduce_rule_7(t_all_data *all_data)
 	return (RV_SUCCESS);
 }
 
-// SC -> SC ELEM; //make simple 아직 안만든!!!!!!!!!!!!!!!!-----
+// SC -> SC ELEM; 
 t_return_value	reduce_rule_8(t_all_data *all_data)
 {
 	int				count;
@@ -94,18 +94,20 @@ t_return_value	reduce_rule_8(t_all_data *all_data)
 t_return_value	reduce_rule_9(t_parser *parser)
 {
 	int				count;
-	t_value_content	content;
-	t_value_content	elem;
+	t_parser		*parser;
+	t_list			*tree;
+	t_tree_data		*data;
+	t_tree_content	content;
 
+	parser = &all_data->parser;
 	count = 2 * 1;
-	pop_parser_stack(parser, count);
-	push_parser_stack(parser, SYMBOL_SIMPLE);
-	elem = parser->value_stack->content;
-	content.cmd = make_simple(NULL, elem.element);
-	pop_value_stack(parser, 1);
-	push_value_stack(parser, content);
-	parser->value_stack->type = VALUE_CMD;
-	return (0);
+	stack_pop_back(&parser->parser_stack, count);
+	parser_push_stack(&parser->parser_stack, TT_SIMPLE);
+	tree = &parser->tree_stack;
+	content.cmd = make_simple(NULL, tree->tail->data);
+	stack_pop_back(&parser->tree_stack, 1);
+	tree_push_back(parser, content);
+	data = parser->tree_stack.tail->data;
+	data->type = TREE_CMD;
+	return (RV_SUCCESS);
 }
-
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
