@@ -30,6 +30,7 @@ typedef enum e_lexer_state
 typedef struct s_node
 {
 	void			*data;
+	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
 
@@ -120,6 +121,7 @@ void	envp_delete_node(t_list *list, int index);
 
 /* list_stack.c */
 void	stack_pop_back(t_list *list, int count);
+void	parser_push_back(t_list *list, int type);
 t_parser_data	*create_parser_data(int type);
 
 /* list_token.c */

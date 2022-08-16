@@ -17,16 +17,11 @@ t_node	*list_pop_back(t_list *list)
 	}
 	else
 	{
-		node = list->head;
-		i = 0;
-		while (i < list->count - 1)
-		{
-			node = node->next;
-			++i;
-		}
+		node = list->tail->prev;
 		list->tail = node;
 	}
 	--(list->count);
+	temp->prev = NULL;
 	return (temp);
 }
 
@@ -39,6 +34,7 @@ void	list_push_back(t_list *list, t_node *new)
 		++(list->count);
 		return ;
 	}
+	new->prev = list->tail;
 	list->tail->next = new;
 	list->tail = new;
 	++(list->count);
@@ -50,6 +46,7 @@ t_node	*list_new_node(void *data)
 
 	new = ft_malloc(sizeof(t_node));
 	new->data = data;
+	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }

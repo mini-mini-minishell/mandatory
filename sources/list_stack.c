@@ -15,13 +15,17 @@ void	stack_pop_back(t_list *list, int count)
 	}
 }
 
-//list_push_back(&parser->parser_stack, list_new_node(create_parser_data()));
-void	stack_push_back(t_list *list, int type)
+void	parser_push_back(t_list *list, int type)
 {
-	return (list_push_back(list, list_new_node(create_parser_data(type))));
+	void	*data;
+
+	data = create_parser_data(type);
+	list_push_back(list, data);
 }
 
-// t_node	*create_parser_node()
+void	tree_push_back(t_list *list,)
+{}
+
 t_parser_data	*create_parser_data(int type)
 {
 	t_parser_data	*new_data;

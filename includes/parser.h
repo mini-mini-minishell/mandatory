@@ -7,6 +7,12 @@
 typedef struct s_cmd			t_cmd;
 typedef int						t_pid;
 
+typedef enum e_parser_flag
+{
+	PARSER_INIT = 1 << 0,
+	PARSER_FINISH = 1 << 1
+}	t_parser_flag;
+
 typedef enum e_token_type
 {
 	TT_ERR = 0,
@@ -127,24 +133,13 @@ typedef struct s_cmd_content
 	t_simple	simple;
 	t_connect	connect;
 	t_subshell	subshell;
-}   t_cmd_content;
+}	t_cmd_content;
 
-struct s_env_data
+typedef struct s_env_data
 {
 	char		*key;
 	char		*value;
-}   t_env_data;
-
-typedef struct s_cmd
-{
-	t_cmd_flag		flag;
-	t_cmd_type		type;
-	t_list			*redir_list;
-	t_cmd_content	content;
-	t_list			*envp_list;
-	t_pid			pid_last_child;
-	int				exit_status;
-}   t_cmd;
+}	t_env_data;
 
 struct s_cmd
 {
@@ -163,6 +158,15 @@ struct s_element
 	t_list			*redir_list;
 };
 
+typedef union u_tree_content
+{
+	t_symbol_type	token;
+	char			*word;
+	t_list			*redir_list;
+	t_cmd			*cmd;
+	t_element		*element;
+}	t_tree_content;
+
 typedef struct s_parser_data
 {
 	int				type;
@@ -175,18 +179,16 @@ typedef struct s_tree_data
 	int				type;
 	t_tree_type		tree_type;
 	t_parser_state	state;
-	t_token_type	token;
-	char			*word;
-	t_list			redir_list;
-	t_cmd			*cmd;
-	t_element		*element;
+	t_tree_content	content;
 }	t_tree_data;
 
 typedef struct s_parser
 {
 	t_reducer_fp	reduce_func[22];
 	t_list			parser_stack;
-	t_list			tree_stack; //이름 괜찮은가?
+	t_list			tree_stack;
+	t_cmd			*final_cmd;
+	char			flag;
 }	t_parser;
 
 #endif
