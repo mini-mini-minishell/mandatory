@@ -1,17 +1,18 @@
 #include "../includes/minishell.h"
+#include <stdlib.h>
 
-t_word_list	*new_word_list(char *word)
+
+t_word_data	*create_word_data(char *word)
 {
-	t_word_list	*new_list;
-
-	new_list = ft_xmalloc(sizeof(t_word_list));
-	new_list->flag = 0;
-	new_list->field = 0;
-	new_list->key_len = 0;
-	new_list->next = NULL;
-	new_list->variables = NULL;
-	new_list->word = word;
-	return (new_list);
+	t_word_data	*new_data;
+	
+	new_data = ft_malloc(sizeof(t_word_data));
+	new_data->flag = 0;
+	new_data->field = 0;
+	new_data->key_len = 0;
+	//new_data->variables = NULL;
+	new_data->word = word;
+	return (new_data);
 }
 
 void	append_word_list(t_cmd *new_simple, t_element *element)
@@ -19,35 +20,41 @@ void	append_word_list(t_cmd *new_simple, t_element *element)
 	t_list			*word_list;
 
 	word_list = new_simple->content.simple.words;
-	if (word_list->count)
+	if (!word_list)
+		list_init(word_list);
+	list_push_back(word_list, list_new_node(create_word_data(element->word)));
+}
+
+
+// t_redir_data	*create_redir_data(char *word)
+// {
+// 	t_redir_data	*new_data;
+	
+// 	new_data = ft_malloc(sizeof(t_word_data));
+// 	new_data->flag = 0;
+// 	new_data->field = 0;
+// 	new_data->key_len = 0;
+// 	//new_data->variables = NULL;
+// 	new_data->word = word;
+// 	return (new_data);
+// }
+
+void	append_redir_list(t_cmd *new_simple, t_element *element)
+{
+	t_list			*redir_list;
+
+	redir_list = new_simple->redir_list;
+	if (redir_list)
 	{
-		list_push_back(word_list, list_new_node());
-		word_list->tail->next = new_word_list(element->word);
+		element->redir_list->head->prev = redir_list->tail;
+		redir_list->tail->next = element->redir_list->head;
+		redir_list->tail = element->redir_list->tail;
 	}
 	else
 	{
-		new_simple->content.simple.words = new_word_list(element->word);
+		redir_list = element->redir_list;
 	}
 }
-
-// void	append_redir_list(t_cmd *new_simple, t_element *element)
-// {
-// 	t_redir_list	*redir_list;
-
-// 	redir_list = new_simple->redir_list;
-// 	if (redir_list)
-// 	{
-// 		while (redir_list->next)
-// 		{
-// 			redir_list = redir_list->next;
-// 		}
-// 		redir_list->next = element->redir_list;
-// 	}
-// 	else
-// 	{
-// 		new_simple->redir_list = element->redir_list;
-// 	}
-// }
 
 
 t_cmd	*make_simple(void *simple_data, void *element_data)
