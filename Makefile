@@ -9,9 +9,7 @@ CFLAGS		=	-g -Wall -Werror -Wextra
 RM			=	rm -f
 SRC_DIR 	= 	./sources/
 
-FILES 		=	main.c \
-				parsing.c \
-				utils_print.c
+FILES 		=	*.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(FILES))
 OBJS		=	$(SRCS:.c=.o)
@@ -32,6 +30,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: 
+re:
 	make fclean
 	make all

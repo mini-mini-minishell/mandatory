@@ -6,6 +6,7 @@
 
 typedef struct s_cmd			t_cmd;
 typedef int						t_pid;
+typedef struct s_list			t_list;
 
 typedef enum e_parser_flag
 {
@@ -90,6 +91,15 @@ typedef enum e_cmd_type
 	CMD_SUBSHELL
 }	t_cmd_type;
 
+typedef enum e_redir_type
+{
+	REDIR_NON,
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_HEREDOC,
+	REDIR_APPEND
+}	t_redir_type;
+
 typedef struct s_redir_data
 {
 	t_redir_type	redir_type;
@@ -99,15 +109,6 @@ typedef struct s_redir_data
 	char			*filename;
 	char			*heredoc_eof;
 }	t_redir_data;
-
-typedef enum e_redir_type
-{
-	REDIR_NON,
-	REDIR_IN,
-	REDIR_OUT,
-	REDIR_HEREDOC,
-	REDIR_APPEND
-}	t_redir_type;
 
 typedef struct s_simple
 {
