@@ -9,7 +9,32 @@ CFLAGS		=	-g -Wall -Werror -Wextra
 RM			=	rm -f
 SRC_DIR 	= 	./sources/
 
-FILES 		=	*.c
+FILES 		=	exit.c \
+				heredoc.c \
+				init_all.c \
+				lex_func1.c \
+				lex_func2.c \
+				lex_func3.c \
+				lex_func4.c \
+				list_envp.c \
+				list_envp2.c \
+				list_stack.c \
+				list_token.c \
+				list.c \
+				main.c \
+				make_redir.c \
+				parsing.c \
+				process_line.c \
+				readline.c \
+				reduce_func1.c \
+				reduce_func2.c \
+				reduce_func3.c \
+				reduce_func4.c \
+				run_lexer.c \
+				test.c \
+				utils_reduce.c \
+				utils_split.c \
+				utils_string.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(FILES))
 OBJS		=	$(SRCS:.c=.o)

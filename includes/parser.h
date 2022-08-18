@@ -147,11 +147,11 @@ struct s_cmd
 	int				exit_status;
 };
 
-struct s_element
+typedef struct s_element
 {
 	char			*word;
 	t_list			*redir_list;
-};
+}	t_element;
 
 typedef union u_tree_content
 {
