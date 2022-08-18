@@ -1,12 +1,36 @@
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef TYPEDEF_H
+# define TYPEDEF_H
 
-# include "minishell.h"
-//추후 다시 헤더파일 합칠 때 정리..!
+typedef enum e_return_value
+{
+	RV_ERROR = -1,
+	RV_SUCCESS = 0
+}	t_return_value;
 
-typedef struct s_cmd			t_cmd;
-typedef int						t_pid;
-typedef struct s_list			t_list;
+typedef enum e_lexer_state
+{
+	LS_OTHERS,
+	LS_ITEM,
+	LS_SPACE,
+	LS_SQUOT,
+	LS_DQUOT,
+	LS_NULL
+}	t_lexer_state;
+
+typedef enum e_item_type
+{
+	ITEM_SPACE,
+	ITEM_TAB,
+	ITEM_NL,
+	ITEM_PIPE,
+	ITEM_AND,
+	ITEM_SEMICOL,
+	ITEM_LPAREN,
+	ITEM_RPAREN,
+	ITEM_LESS,
+	ITEM_GREATER,
+	NOT_ITEM
+}	t_item_type;
 
 typedef enum e_parser_flag
 {
@@ -100,7 +124,74 @@ typedef enum e_redir_type
 	REDIR_APPEND
 }	t_redir_type;
 
-typedef struct s_redir_data
+typedef unsigned long			size_t;
+typedef int						(*t_lexer_fp)(t_all_data *);
+typedef int						(*t_reducer_fp)(t_all_data *);
+typedef struct s_cmd			t_cmd;
+typedef struct s_element		t_element;
+typedef int						t_pid;
+typedef struct s_all_data		t_all_data;
+typedef struct s_env_data		t_env_data;
+typedef struct s_token_data		t_token_data;
+typedef struct s_node			t_node;
+typedef struct s_list			t_list;
+typedef struct s_lexer			t_lexer;
+typedef struct s_all_data		t_all_data;
+typedef struct s_redir_data		t_redir_data;
+typedef struct s_simple			t_simple;
+typedef struct s_connect		t_connect;
+typedef struct s_subshell		t_subshell;
+typedef struct s_cmd_content	t_cmd_content;
+typedef union u_tree_content	t_tree_content;
+typedef struct s_parser_data	t_parser_data;
+typedef struct s_tree_data		t_tree_data;
+typedef struct s_parser			t_parser;
+typedef struct s_word_data		t_word_data;
+
+struct s_env_data
+{
+	char	*key;
+	char	*value;
+};
+
+struct s_token_data
+{
+	t_token_type	token_type;
+	char			*content;
+};
+
+struct s_node
+{
+	void			*data;
+	struct s_node	*prev;
+	struct s_node	*next;
+};
+
+struct s_list
+{
+	t_node	*head;
+	t_node	*tail;
+	size_t	count;
+};
+
+struct s_lexer
+{
+	char			*input;
+	char			last_item;
+	size_t			index;
+	t_lexer_state	current_state;
+	t_lexer_fp		lex_func[5][5];
+};
+
+struct s_all_data
+{
+	t_list		envp_list;
+	t_list		token_list;
+	t_lexer		lexer;
+	t_parser	parser;
+};
+
+struct s_redir_data
 {
 	t_redir_type	redir_type;
 	int				flag;
@@ -108,33 +199,33 @@ typedef struct s_redir_data
 	int				fd_new;
 	char			*filename;
 	char			*heredoc_eof;
-}	t_redir_data;
+};
 
-typedef struct s_simple
+struct s_simple
 {
 	int				flag;
 	t_list			*words;
-}	t_simple;
+};
 
-typedef struct s_connect
+struct s_connect
 {
 	t_token_type	token;
 	t_cmd			*left;
 	t_cmd			*right;
-}	t_connect;
+};
 
-typedef struct s_subshell
+struct s_subshell
 {
 	int		flag;
 	t_cmd	*cmd;
-}	t_subshell;
+};
 
-typedef struct s_cmd_content
+struct s_cmd_content
 {
 	t_simple	simple;
 	t_connect	connect;
 	t_subshell	subshell;
-}	t_cmd_content;
+};
 
 struct s_cmd
 {
@@ -147,53 +238,52 @@ struct s_cmd
 	int				exit_status;
 };
 
-typedef struct s_element
+struct s_element
 {
 	char			*word;
 	t_list			*redir_list;
-}	t_element;
+};
 
-typedef union u_tree_content
+union u_tree_content
 {
 	t_token_type	token;
 	char			*word;
 	t_list			*redir_list;
 	t_cmd			*cmd;
 	t_element		*element;
-}	t_tree_content;
+};
 
-typedef struct s_parser_data
+struct s_parser_data
 {
 	int				type;
 	t_token_type	token;
 	t_parser_state	state;
-}	t_parser_data;
+};
 
-typedef struct s_tree_data
+struct s_tree_data
 {
 	int				type;
 	t_tree_type		tree_type;
 	t_parser_state	state;
 	t_tree_content	content;
-}	t_tree_data;
+};
 
-typedef struct s_parser
+struct s_parser
 {
 	t_reducer_fp	reduce_func[22];
 	t_list			parser_stack;
 	t_list			tree_stack;
 	t_cmd			*final_cmd;
 	char			flag;
-}	t_parser;
+};
 
-typedef struct s_word_data
+struct s_word_data
 {
 	int			flag;
 	int			key_len;
 	int			field;
 	char		*word;
 	// t_word_data	*variables; // node 일지 ?
-}	t_word_data;
-
+};
 
 #endif
