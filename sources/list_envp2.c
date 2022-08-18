@@ -22,9 +22,9 @@ static void	envp_free_node(t_node **node)
 	free(*node);
 }
 
-void	envp_delete_node(t_list *list, int index)
+void	envp_delete_node(t_list *list, size_t index)
 {
-	int		i;
+	size_t	i;
 	t_node	*temp;
 	t_node	*current;
 

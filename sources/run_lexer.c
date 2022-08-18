@@ -1,5 +1,26 @@
 #include "../includes/minishell.h"
-#include "../includes/parser.h"
+
+t_lexer_state	ft_lexer_state(char c)
+{
+	t_item_type	type;
+
+	type = get_item_type(c);
+	if (type != ITEM_LESS)
+	{
+		if (type == ITEM_SPACE || type == ITEM_TAB)
+			return (LS_SPACE);
+		else
+			return (LS_ITEM);
+	}
+	if (c == '\'')
+		return (LS_SQUOT);
+	if (c == '\"')
+		return (LS_DQUOT);
+	else if (c == '\0')
+		return (LS_NULL);
+	else
+		return (LS_OTHERS);
+}
 
 int	run_lexer(t_all_data *all_data)
 {

@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include <readline/readline.h>
 
 /* void	parse_and_execute(t_all_data *all_data)
 {

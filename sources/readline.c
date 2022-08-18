@@ -5,12 +5,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void handler(void)
+void handler(int signum)
 {
-	write(1, "\n", 1);
+	if (signum != SIGINT)
+		return;
+	printf("\n");
 	rl_on_new_line();
-	rl_replace_line("", 0);
-	rl_redisplay();
+	rl_replace_line("", 1);
+	// rl_redisplay();
 }
 
 void	prompt_loop(t_all_data *all_data)

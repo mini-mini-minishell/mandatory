@@ -6,7 +6,7 @@ void	print_envp(t_all_data *all_data)
 	t_list		env;
 	t_node		*current_node;
 	t_env_data	*current_env;
-	int			index;
+	size_t		index;
 
 	env = all_data->envp_list;
 	current_node = env.head;
@@ -26,7 +26,7 @@ void	print_envp(t_all_data *all_data)
 
 int	envp_search_node(t_list *list, char *key)
 {
-	int			index;
+	size_t		index;
 	t_node		*current;
 	size_t		key_len;
 	t_env_data	*temp_data;

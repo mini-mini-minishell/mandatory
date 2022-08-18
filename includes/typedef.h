@@ -125,18 +125,17 @@ typedef enum e_redir_type
 }	t_redir_type;
 
 typedef unsigned long			size_t;
+typedef struct s_all_data		t_all_data;
 typedef int						(*t_lexer_fp)(t_all_data *);
 typedef int						(*t_reducer_fp)(t_all_data *);
 typedef struct s_cmd			t_cmd;
 typedef struct s_element		t_element;
 typedef int						t_pid;
-typedef struct s_all_data		t_all_data;
 typedef struct s_env_data		t_env_data;
 typedef struct s_token_data		t_token_data;
 typedef struct s_node			t_node;
 typedef struct s_list			t_list;
 typedef struct s_lexer			t_lexer;
-typedef struct s_all_data		t_all_data;
 typedef struct s_redir_data		t_redir_data;
 typedef struct s_simple			t_simple;
 typedef struct s_connect		t_connect;
@@ -181,6 +180,15 @@ struct s_lexer
 	size_t			index;
 	t_lexer_state	current_state;
 	t_lexer_fp		lex_func[5][5];
+};
+
+struct s_parser
+{
+	t_reducer_fp	reduce_func[22];
+	t_list			parser_stack;
+	t_list			tree_stack;
+	t_cmd			*final_cmd;
+	char			flag;
 };
 
 struct s_all_data
@@ -266,15 +274,6 @@ struct s_tree_data
 	t_tree_type		tree_type;
 	t_parser_state	state;
 	t_tree_content	content;
-};
-
-struct s_parser
-{
-	t_reducer_fp	reduce_func[22];
-	t_list			parser_stack;
-	t_list			tree_stack;
-	t_cmd			*final_cmd;
-	char			flag;
 };
 
 struct s_word_data

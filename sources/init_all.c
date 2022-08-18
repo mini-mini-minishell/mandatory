@@ -1,8 +1,9 @@
 
 #include "../includes/minishell.h"
 #include <signal.h>
+#include <stdlib.h>
 
-void	set_reducer_table(t_all_data *all_data, t_parser *parser)
+static void	set_reducer_table(t_parser *parser)
 {
 	parser->reduce_func[0] = NULL;
 	parser->reduce_func[1] = reduce_rule_0;
@@ -28,7 +29,7 @@ void	set_reducer_table(t_all_data *all_data, t_parser *parser)
 	parser->reduce_func[21] = reduce_rule_10;
 }
 
-void	set_lexer_table(t_all_data *all_data, t_lexer *lexer)
+static void	set_lexer_table(t_lexer *lexer)
 {
 	(lexer->lex_func)[LS_OTHERS][LS_OTHERS] = get_next_char;
 	(lexer->lex_func)[LS_OTHERS][LS_SPACE] = others_meet_space;
@@ -65,8 +66,8 @@ void	init_parser(t_parser *parser)
 
 void	init_all(t_all_data *all_data, char **envp)
 {
-	set_lexer_table(all_data, &all_data->lexer);
-	set_reducer_table(all_data, &all_data->lexer);
+	set_lexer_table(&all_data->lexer);
+	set_reducer_table(&all_data->parser);
 	get_envp(all_data, envp);
 	list_init(&all_data->token_list);
 	// init_parser(&all_data->parser); //loop 안에서 readline 할때마다 init

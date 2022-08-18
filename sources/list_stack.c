@@ -1,5 +1,5 @@
 #include "../includes/minishell.h"
-#include "../includes/parser.h"
+#include <stdlib.h>
 
 void	stack_pop_back(t_list *list, int count)
 {

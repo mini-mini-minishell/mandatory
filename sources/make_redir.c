@@ -1,5 +1,4 @@
 #include "../includes/minishell.h"
-#include "../includes/parser.h"
 #include <unistd.h>
 #include <fcntl.h>
 
@@ -49,6 +48,7 @@ t_list	*make_redir(char *word, t_token_type token)
 	t_list			*redir_list;
 	t_redir_data	*data;
 
+	redir_list = ft_malloc(sizeof(t_list));
 	list_init(redir_list);
 	data = redir_list->tail->data;
 	if (token == TT_REDIR_IN)

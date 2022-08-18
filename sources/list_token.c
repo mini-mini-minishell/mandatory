@@ -11,25 +11,25 @@ t_node	*list_new_node(void *data)
 	return (new);
 }
 
-t_item_type	get_item_type(char *content)
+t_item_type	get_item_type(char c)
 {
-	if (content == ' ')
+	if (c == ' ')
 		return (ITEM_SPACE);
-	if (content == '\t')
+	if (c == '\t')
 		return (ITEM_TAB);
-	if (content == '\n')
+	if (c == '\n')
 		return (ITEM_NL);
-	if (content == '|')
+	if (c == '|')
 		return (ITEM_PIPE);
-	if (content == '&')
+	if (c == '&')
 		return (ITEM_AND);
-	if (content == '(')
+	if (c == '(')
 		return (ITEM_LPAREN);
-	if (content == ')')
+	if (c == ')')
 		return (ITEM_RPAREN);
-	if (content == '<')
+	if (c == '<')
 		return (ITEM_LESS);
-	if (content == '>')
+	if (c == '>')
 		return (ITEM_GREATER);
 	return (NOT_ITEM);
 }
@@ -40,23 +40,23 @@ static t_token_type	get_token_type(char *content)
 		return (TT_EOF);
 	if (get_item_type(*content) == NOT_ITEM)
 		return (TT_WORD);
-	if (!ft_strcmp(content, "("))
+	if (!ft_strncmp(content, "(", 1))
 		return (TT_PAREN_LEFT);
-	if (!ft_strcmp(content, ")"))
+	if (!ft_strncmp(content, ")", 1))
 		return (TT_PAREN_RIGHT);
-	if (!ft_strcmp(content, "|"))
+	if (!ft_strncmp(content, "|", 1))
 		return (TT_PIPE);
-	if (!ft_strcmp(content, "||"))
+	if (!ft_strncmp(content, "||", 2))
 		return (TT_OR);
-	if (!ft_strcmp(content, "&&"))
+	if (!ft_strncmp(content, "&&", 2))
 		return (TT_AND);
-	if (!ft_strcmp(content, "<"))
+	if (!ft_strncmp(content, "<", 1))
 		return (TT_REDIR_IN);
-	if (!ft_strcmp(content, ">"))
+	if (!ft_strncmp(content, ">", 1))
 		return (TT_REDIR_OUT);
-	if (!ft_strcmp(content, "<<"))
+	if (!ft_strncmp(content, "<<", 2))
 		return (TT_REDIR_HEREDOC);
-	if (!ft_strcmp(content, ">>"))
+	if (!ft_strncmp(content, ">>", 2))
 		return (TT_REDIR_APPEND);
 	return (TT_ERR);
 }
@@ -73,7 +73,7 @@ t_token_data	*create_token_data(t_all_data *all_data)
 	return (new);
 }
 
-t_list	*add_new_token(t_all_data *all_data)
+void	add_new_token(t_all_data *all_data)
 {
 	t_list	*token_list;
 	t_node	*new;

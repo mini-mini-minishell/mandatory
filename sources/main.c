@@ -21,4 +21,3 @@ int	main(int argc, char **argv, char **envp)
 	// 환경변수 저장 -> pasing or execute
 	return (0);
 }
-

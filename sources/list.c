@@ -5,7 +5,6 @@ t_node	*list_pop_back(t_list *list)
 {
 	t_node	*temp;
 	t_node	*node;
-	int		i;
 
 	if (!list->count)
 		return (NULL);

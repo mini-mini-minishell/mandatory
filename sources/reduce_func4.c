@@ -1,5 +1,4 @@
 #include "../includes/minishell.h"
-#include "../includes/parser.h"
 
 // R -> redir_op id;
 t_return_value	reduce_rule_15(t_all_data *all_data)

@@ -3,6 +3,7 @@
 	"files.associations": {
 		"minishell.h": "c",
 		"stdio.h": "c",
-		"typedef.h": "c"
+		"typedef.h": "c",
+		"readline.h": "c"
 	}
 }
