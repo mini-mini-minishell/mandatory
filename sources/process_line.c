@@ -28,6 +28,18 @@
 	return (return_value);
 } */
 
+static t_lexer	*init_lexer(t_lexer *lexer, char *input)
+{
+	lexer->input = input;
+	lexer->current_state = ft_lexer_state(*input);
+	if (lexer->current_state == LS_ITEM)
+		lexer->last_item = *input;
+	else
+		lexer->last_item = '\0';
+	lexer->index = 1;
+	return (lexer);
+}
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++
 int	process_line(t_all_data *all_data, char *input)
 {
@@ -37,7 +49,8 @@ int	process_line(t_all_data *all_data, char *input)
 		return (0);
 	add_history(input);
 	init_lexer(&all_data->lexer, input);
-	if (run_lexer(all_data->lexer) < 0)
+	list_init(&all_data->token_list);
+	if (run_lexer(all_data) < 0)
 	{
 		ft_putstr_fd("Syntax Error\n", 2);
 		//' or " 하나만 썼을 경우 등 에러 케이스 나누기?

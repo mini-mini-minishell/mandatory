@@ -127,6 +127,10 @@ t_parser_data	*create_parser_data(int type);
 t_tree_data	*create_tree_data(t_tree_content content);
 
 /* list_token.c */
+t_list	*add_new_token(t_all_data *all_data);
+t_node	*list_new_node(void *data);
+t_item_type	get_item_type(char *content);
+t_token_data	*create_token_data(t_all_data *all_data);
 
 
 /* list.c */ //node_number start from zero
