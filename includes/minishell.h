@@ -145,12 +145,15 @@ t_list	*make_redir(char *word, t_token_type token);
 /* parsing.c */
 void	check_arguments(int	argc, char **argv);
 
+/* process_line.c */
+int	process_line(t_all_data *all_data, char *input);
+
 /* heredoc.c */
 void gather_heredoc(t_parser *parser);
 
 /* readline.c */
 void	prompt_loop(t_all_data *all_data);
-void	handler(int signum);
+void	handler(void);
 
 /* reduce_func.c */
 t_return_value	reduce_rule_0(t_all_data *all_data);

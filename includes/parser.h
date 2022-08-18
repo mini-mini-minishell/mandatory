@@ -136,12 +136,6 @@ typedef struct s_cmd_content
 	t_subshell	subshell;
 }	t_cmd_content;
 
-typedef struct s_env_data
-{
-	char		*key;
-	char		*value;
-}	t_env_data;
-
 struct s_cmd
 {
 	t_cmd_flag		flag;

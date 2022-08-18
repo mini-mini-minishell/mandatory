@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void handler(int signum)
+void handler(void)
 {
 	write(1, "\n", 1);
 	rl_on_new_line();
