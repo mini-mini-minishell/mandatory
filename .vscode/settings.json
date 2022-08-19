@@ -4,6 +4,8 @@
 		"minishell.h": "c",
 		"stdio.h": "c",
 		"typedef.h": "c",
-		"readline.h": "c"
+		"readline.h": "c",
+		"chrono": "c",
+		"variant": "c"
 	}
 }

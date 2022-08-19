@@ -1,11 +1,12 @@
 #include "../includes/minishell.h"
+#include <stdio.h>
 
 t_lexer_state	ft_lexer_state(char c)
 {
 	t_item_type	type;
 
 	type = get_item_type(c);
-	if (type != ITEM_LESS)
+	if (type != NOT_ITEM)
 	{
 		if (type == ITEM_SPACE || type == ITEM_TAB)
 			return (LS_SPACE);
@@ -17,10 +18,15 @@ t_lexer_state	ft_lexer_state(char c)
 	if (c == '\"')
 		return (LS_DQUOT);
 	else if (c == '\0')
+	{
+		printf("여기 들어오니?\n");
 		return (LS_NULL);
+	}
 	else
 		return (LS_OTHERS);
 }
+#include <stdlib.h>
+#include <stdio.h>
 
 int	run_lexer(t_all_data *all_data)
 {
@@ -34,7 +40,9 @@ int	run_lexer(t_all_data *all_data)
 	while (1)
 	{
 		next_char = (lexer->input)[lexer->index];
+		printf("next_char : %c %d\n", next_char, next_char);
 		next_state = ft_lexer_state(next_char);
+		printf("next_state : %d\n", next_state);
 		if (next_state == LS_NULL)
 			break ;
 		func = lexer->lex_func[lexer->current_state][next_state];
@@ -48,7 +56,10 @@ int	run_lexer(t_all_data *all_data)
 		add_new_token(all_data);
 		token_data = all_data->token_list.tail->data;
 		if (token_data->token_type == TT_ERR)
+		{
+			printf("add new token");
 			return (-1);
+		}
 	}
 	return (0);
 }

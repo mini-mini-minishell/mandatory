@@ -6,15 +6,21 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Tue Aug 16 10:27:59 2022
+# Make data base, printed on Fri Aug 19 12:52:29 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
+ 
+# makefile (from `Makefile', line 9)
+RL_INCLUDE = -I/opt/homebrew/opt/readline/include
 # automatic
 ?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -22,13 +28,15 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/solpang/minishell
+CURDIR := /Users/surinlee/Desktop/42/3circle/minishell/00
+# makefile (from `Makefile', line 8)
+RL_LINK = -L/opt/homebrew/opt/readline/lib -lreadline
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 9)
+# makefile (from `Makefile', line 11)
 RM = rm -f
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_translationsConfigFile":"/Users/solpang/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/tcf.json","_cacheRoot":"/Users/solpang/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_resolvedLanguagePackCoreLocation":"/Users/solpang/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/Users/solpang/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_translationsConfigFile":"/Users/surinlee/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/tcf.json","_cacheRoot":"/Users/surinlee/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_resolvedLanguagePackCoreLocation":"/Users/surinlee/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/Users/surinlee/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 4)
@@ -40,25 +48,23 @@ __CFBundleIdentifier = com.microsoft.VSCode
 # environment
 INFOPATH = /opt/homebrew/share/info:
 # environment
-VSCODE_CWD = /Users/solpang/minishell
+VSCODE_CWD = /Users/surinlee/Desktop/42/3circle/minishell/00
 # environment
-PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-SPACESHIP_VERSION = 3.16.1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.TgKFFcL8X8/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.NJrLl9NleW/Listeners
 # automatic
 %F = $(notdir $%)
-# makefile (from `Makefile', line 17)
+# makefile (from `Makefile', line 42)
 OBJS = $(SRCS:.c=.o)
 # environment
-PWD = /Users/solpang/minishell
+PWD = /Users/surinlee/Desktop/42/3circle/minishell/00
 # environment
 HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
@@ -68,17 +74,19 @@ MANPATH = /opt/homebrew/share/man::
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-HOME = /Users/solpang
+HOME = /Users/surinlee
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/solpang/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CLI = 1
 # environment
-LOGNAME = solpang
+VSCODE_CODE_CACHE_PATH = /Users/surinlee/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+# environment
+LOGNAME = surinlee
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
-ZSH = /Users/solpang/.oh-my-zsh
+ZSH = /Users/surinlee/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -91,22 +99,22 @@ COLORTERM = truecolor
 MAKE = $(MAKE_COMMAND)
 # environment
 LC_TERMINAL = iTerm2
-# makefile (from `Makefile', line 16)
+# makefile (from `Makefile', line 41)
 SRCS = $(addprefix $(SRC_DIR), $(FILES))
 # environment
-SHLVL = 2
+SHLVL = 3
 # makefile (from `Makefile', line 3)
 CC = cc
 # default
 MAKE_VERSION := 3.81
 # environment
-USER = jkwak
+USER = surinlee
 # makefile
 .DEFAULT_GOAL := all
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:6E356B84-9382-445B-8B17-B239E9A815D5
+TERM_SESSION_ID = w0t0p0:FB8FD00A-1323-422B-8EE0-04B22F7EAD2A
 # makefile (from `Makefile', line 1)
 NAME = minishell
 # environment
@@ -120,27 +128,26 @@ TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/87/t6g9lc990pxbhxmybry4mbbw0000gn/T/
+TMPDIR = /var/folders/b2/_pwd8k4x28d804q48y9p8k5h0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/solpang/Library/Application Support/Code/1.69.2-main.sock
+VSCODE_IPC_HOOK = /Users/surinlee/Library/Application Support/Code/1.69.2-main.sock
 # environment
 MallocNanoZone = 0
 # makefile
 MAKEFLAGS = Rrqp
 # environment
+ 
 MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-TERM_PROGRAM_VERSION = 3.4.16
+TERM_PROGRAM_VERSION = 3.4.15
 # environment
-MAIL = jkwak@student.42seoul.kr
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.7270622.7270628.50BA989E-E1DA-4657-9AD6-F20EE636E3C8
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.6014454.6014460.25179730-2931-4186-A9E8-86C279754613
-# environment
-LC_TERMINAL_VERSION = 3.4.16
+LC_TERMINAL_VERSION = 3.4.15
 # environment
 HOMEBREW_PREFIX = /opt/homebrew
 # automatic
@@ -148,18 +155,18 @@ HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:6E356B84-9382-445B-8B17-B239E9A815D5
+ITERM_SESSION_ID = w0t0p0:FB8FD00A-1323-422B-8EE0-04B22F7EAD2A
 # environment
 HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
-COLORFGBG = 15;0
+COLORFGBG = 7;0
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
 # environment
 COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
-# makefile (from `Makefile', line 10)
+# makefile (from `Makefile', line 12)
 SRC_DIR = ./sources/
 # automatic
 <F = $(notdir $<)
@@ -169,12 +176,12 @@ ITERM_PROFILE = Default
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SPACESHIP_ROOT = /Users/solpang/.oh-my-zsh/custom/themes/spaceship-prompt
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
 # environment
 MAKELEVEL := 0
 # environment
@@ -182,11 +189,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 1205
-# makefile (from `Makefile', line 12)
-FILES = main.c parsing.c utils_print.c
+VSCODE_PID = 59582
+# makefile (from `Makefile', line 14)
+FILES = exit.c heredoc.c init_all.c lex_func1.c lex_func2.c lex_func3.c lex_func4.c list_envp.c list_envp2.c list_stack.c list_token.c list.c main.c make_redir.c parsing.c process_line.c readline.c reduce_func1.c reduce_func2.c reduce_func3.c reduce_func4.c run_lexer.c test.c utils_reduce.c utils_split.c utils_string.c
 # variable set hash-table stats:
-# Load=87/1024=8%, Rehash=0, Collisions=8/120=7%
+# Load=89/1024=9%, Rehash=0, Collisions=8/122=7%
 
 # Pattern-specific Variable Values
 
@@ -194,21 +201,60 @@ FILES = main.c parsing.c utils_print.c
 
 # Directories
 
-# . (device 16777232, inode 6311332): 11 files, no impossibilities.
-# sources (device 16777232, inode 6311414): 12 files, no impossibilities so far.
+# . (device 16777232, inode 7041189): 10 files, no impossibilities.
+# sources (device 16777232, inode 7041266): No files, no impossibilities so far.
 
-# 23 files, no impossibilities in 2 directories.
+# 10 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  commands to execute (from `Makefile', line 24):
-	$(CC) $(CFLAGS) -c -o $@ $<
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
 	
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
+
+sources/reduce_func3.o: sources/reduce_func3.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/reduce_func3'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/utils_string.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-12 12:23:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/readline.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/test.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: minishell
 #  Phony target (prerequisite of .PHONY).
@@ -216,20 +262,102 @@ all: minishell
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+sources/init_all.o: sources/init_all.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/init_all'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
 # Not a target:
-sources/utils_print.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+sources/reduce_func4.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/lex_func2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 08:46:07
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/exit.o: sources/exit.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/exit'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/list_envp2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/lex_func3.o: sources/lex_func3.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/lex_func3'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/heredoc.o: sources/heredoc.c
+ 
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/heredoc'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/list_token.o: sources/list_token.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/list_token'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
 
 # Not a target:
 .SUFFIXES:
@@ -240,21 +368,141 @@ sources/utils_print.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-05 10:53:26
+#  Last modified 2022-08-19 12:51:59
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-minishell: sources/main.o sources/parsing.o sources/utils_print.o
-#  Implicit rule search has not been done.
-#  File does not exist.
+sources/make_redir.o: sources/make_redir.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/make_redir'
+#  Last modified 2022-08-19 12:50:17
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
-#  commands to execute (from `Makefile', line 27):
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/list_stack.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+debug: sources/exit.c sources/heredoc.c sources/init_all.c sources/lex_func1.c sources/lex_func2.c sources/lex_func3.c sources/lex_func4.c sources/list_envp.c sources/list_envp2.c sources/list_stack.c sources/list_token.c sources/list.c sources/main.c sources/make_redir.c sources/parsing.c sources/process_line.c sources/readline.c sources/reduce_func1.c sources/reduce_func2.c sources/reduce_func3.c sources/reduce_func4.c sources/run_lexer.c sources/test.c sources/utils_reduce.c sources/utils_split.c sources/utils_string.c
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 55):
+	gcc -g3 -fsanitize=address ${SRCS} -o main
+	
+
+# Not a target:
+sources/lex_func4.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 08:46:07
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/run_lexer.o: sources/run_lexer.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/run_lexer'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/reduce_func3.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/process_line.o: sources/process_line.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/process_line'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/list_envp.o: sources/list_envp.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/list_envp'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/list.o: sources/list.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/list'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+minishell: sources/exit.o sources/heredoc.o sources/init_all.o sources/lex_func1.o sources/lex_func2.o sources/lex_func3.o sources/lex_func4.o sources/list_envp.o sources/list_envp2.o sources/list_stack.o sources/list_token.o sources/list.o sources/main.o sources/make_redir.o sources/parsing.o sources/process_line.o sources/readline.o sources/reduce_func1.o sources/reduce_func2.o sources/reduce_func3.o sources/reduce_func4.o sources/run_lexer.o sources/test.o sources/utils_reduce.o sources/utils_split.o sources/utils_string.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 52):
 	$(CC) $(RL_LINK) -o $@ $^
+	
+
+sources/reduce_func1.o: sources/reduce_func1.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/reduce_func1'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/utils_split.o: sources/utils_split.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/utils_split'
+ 
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
 	
 
 fclean: clean
@@ -262,81 +510,347 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 33):
+#  commands to execute (from `Makefile', line 61):
 	$(RM) $(NAME)
 	
+
+# Not a target:
+sources/init_all.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/exit.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-04 13:32:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 sources/main.o: sources/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `sources/main'
-#  File does not exist.
+#  Last modified 2022-08-19 12:50:17
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := sources/main.o
-# automatic
-# % := 
-# automatic
-# * := sources/main
-# automatic
-# + := sources/main.c
-# automatic
-# | := 
-# automatic
-# < := sources/main.c
-# automatic
-# ^ := sources/main.c
-# automatic
-# ? := sources/main.c
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
-#  commands to execute (from `Makefile', line 24):
-	$(CC) $(CFLAGS) -c -o $@ $<
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
 	
 
 # Not a target:
-sources/parsing.o:
+sources/lex_func3.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/heredoc.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/parsing.o: sources/parsing.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/parsing'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/utils_reduce.o: sources/utils_reduce.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/utils_reduce'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+.DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-.DEFAULT:
- 
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+sources/list_token.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/lex_func1.o: sources/lex_func1.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/lex_func1'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/make_redir.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/reduce_func2.o: sources/reduce_func2.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/reduce_func2'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
 
 re:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 36):
+#  commands to execute (from `Makefile', line 64):
 	make fclean
 	make all
 	
+
+# Not a target:
+sources/run_lexer.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 30):
+#  commands to execute (from `Makefile', line 58):
 	$(RM) $(OBJS)
+	
+
+sources/utils_string.o: sources/utils_string.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/utils_string'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+ 
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/readline.o: sources/readline.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/readline'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/process_line.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/list_envp.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/test.o: sources/test.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/test'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/list.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/reduce_func1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/utils_split.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-12 12:23:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/reduce_func4.o: sources/reduce_func4.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/reduce_func4'
+#  Last modified 2022-08-19 12:52:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/lex_func2.o: sources/lex_func2.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/lex_func2'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+sources/list_envp2.o: sources/list_envp2.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/list_envp2'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
 	
 
 # Not a target:
 sources/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-12 13:41:07
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/parsing.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-04 13:32:43
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+sources/utils_reduce.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/list_stack.o: sources/list_stack.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/list_stack'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/lex_func1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 08:46:07
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+sources/lex_func4.o: sources/lex_func4.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `sources/lex_func4'
+#  Last modified 2022-08-19 12:50:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 49):
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	
+
+# Not a target:
+sources/reduce_func2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 12:48:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/38=0%
+# Load=62/1024=6%, Rehash=0, Collisions=0/211=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -348,6 +862,6 @@ sources/main.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Aug 16 10:27:59 2022
+# Finished Make data base on Fri Aug 19 12:52:29 2022
 
  
