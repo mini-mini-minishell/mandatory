@@ -1,16 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
 
-t_node	*list_new_node(void *data)
-{
-	t_node	*new;
-
-	new = ft_malloc(sizeof(t_node));
-	new->data = data;
-	new->next = NULL;
-	return (new);
-}
-
 t_item_type	get_item_type(char c)
 {
 	if (c == ' ')

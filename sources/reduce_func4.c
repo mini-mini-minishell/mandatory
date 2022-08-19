@@ -13,7 +13,7 @@ t_return_value	reduce_rule_15(t_all_data *all_data)
 	count = 2 * 2;
 	parser = &all_data->parser;
 	stack_pop_back(&parser->parser_stack, count);
-	parser_push_stack(&parser->parser_stack, TT_REDIR);
+	parser_push_back(&parser->parser_stack, TT_REDIR);
 	data = parser->tree_stack.tail->data;
 	word = data->content;
 	data = parser->tree_stack.tail->prev->data;

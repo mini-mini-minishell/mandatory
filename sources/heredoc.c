@@ -1,8 +1,9 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
 
-void gather_heredoc(t_parser *parser)
+int gather_heredoc(t_parser *parser)
 {
 	(void)parser;
 	printf("heredoc\n");
+	return (1);
 }

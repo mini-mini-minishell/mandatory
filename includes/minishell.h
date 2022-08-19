@@ -45,7 +45,6 @@ t_tree_data		*create_tree_data(t_tree_content content);
 
 /* list_token.c */
 void			add_new_token(t_all_data *all_data);
-t_node			*list_new_node(void *data);
 t_item_type		get_item_type(char c);
 t_token_data	*create_token_data(t_all_data *all_data);
 
@@ -66,7 +65,7 @@ void			check_arguments(int	argc, char **argv);
 int				process_line(t_all_data *all_data, char *input);
 
 /* heredoc.c */
-void 			gather_heredoc(t_parser *parser);
+int				gather_heredoc(t_parser *parser);
 
 /* readline.c */
 void			prompt_loop(t_all_data *all_data);

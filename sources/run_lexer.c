@@ -38,7 +38,7 @@ int	run_lexer(t_all_data *all_data)
 		if (next_state == LS_NULL)
 			break ;
 		func = lexer->lex_func[lexer->current_state][next_state];
-		if (func(lexer) < 0)
+		if (func(all_data) < 0) // syntax error
 			return (-1);
 	}
 	if (lexer->current_state == LS_SQUOT || lexer->current_state == LS_DQUOT)

@@ -76,7 +76,7 @@ t_cmd	*make_simple(void *simple_data, void *element_data)
 		new_simple->pid_last_child = -1;
 	}
 	else
-		new_simple = simple;
+		new_simple = simple->content.cmd;
 	if (element->content.cmd)
 		append_word_list(new_simple, element->content.element);
 	else if (element->content.element->redir_list)

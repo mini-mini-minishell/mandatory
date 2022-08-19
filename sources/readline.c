@@ -1,7 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
 #include <readline/readline.h>
-#include <readline/history.h>
 #include <stdlib.h>
 #include <unistd.h>
 

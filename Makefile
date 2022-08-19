@@ -51,6 +51,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(RL_LINK) -o $@ $^
 
+debug: ${SRCS}
+	gcc -g3 -fsanitize=address ${SRCS} -o main
+
 clean:
 	$(RM) $(OBJS)
 
