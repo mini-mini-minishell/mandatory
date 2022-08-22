@@ -12,7 +12,7 @@ t_return_value	reduce_rule_0(t_all_data *all_data)
 	count = 2 * 1;
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_START);
-	parser->flag |= PARSER_FINISH;
+	parser->flag = PARSER_FINISH;
 	parser->final_cmd = tree_data->content.cmd;
 	return (RV_SUCCESS);
 }

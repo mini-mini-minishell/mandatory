@@ -34,8 +34,8 @@ typedef enum e_item_type
 
 typedef enum e_parser_flag
 {
-	PARSER_INIT = 1 << 0,
-	PARSER_FINISH = 1 << 1
+	PARSER_ING,
+	PARSER_FINISH
 }	t_parser_flag;
 
 typedef enum e_token_type
@@ -190,6 +190,18 @@ struct s_parser
 	t_cmd			*final_cmd;
 	char			flag;
 };
+
+/*
+struct s_parser
+{
+	t_token			*input;
+	t_parser_stack	*parser_stack;
+	t_value_stack	*value_stack;
+	t_heredoc_list	*heredoc_list;
+	t_parser_flag	flag;
+	t_cmd			*final_cmd;
+};
+*/
 
 struct s_all_data
 {

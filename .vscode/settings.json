@@ -6,6 +6,13 @@
 		"typedef.h": "c",
 		"readline.h": "c",
 		"chrono": "c",
-		"variant": "c"
+		"variant": "c",
+		"__config": "c",
+		"ios": "c",
+		"iosfwd": "c",
+		"locale": "c",
+		"optional": "c",
+		"string": "c",
+		"utility": "c"
 	}
 }

@@ -5,8 +5,10 @@ CFLAGS		=	-g -Wall -Werror -Wextra
 # export LDFLAGS="-L/usr/local/opt/readline/lib" 실행파일 만들때
 # export CPPFLAGS="-I/usr/local/opt/readline/include" 인클루드 목적파일 만들때
 # -lreadline -I/usr/local/Cellar/readline/8.1.2/include -L/usr/local/Cellar/readline/8.1.2/lib
-RL_LINK		=	-L/opt/homebrew/opt/readline/lib -lreadline
-RL_INCLUDE	=	-I/opt/homebrew/opt/readline/include
+RL_LINK		=	-L/usr/local/opt/readline/lib -lreadline
+RL_INCLUDE	=	-I/usr/local/opt/readline/include
+# RL_LINK		=	-L/opt/homebrew/opt/readline/lib -lreadline
+# RL_INCLUDE	=	-I/opt/homebrew/opt/readline/include
 
 RM			=	rm -f
 SRC_DIR 	= 	./sources/

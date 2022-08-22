@@ -1,5 +1,4 @@
 #include "../includes/minishell.h"
-#include <stdio.h>
 
 t_lexer_state	ft_lexer_state(char c)
 {
@@ -40,9 +39,7 @@ int	run_lexer(t_all_data *all_data)
 	while (1)
 	{
 		next_char = (lexer->input)[lexer->index];
-		printf("next_char : %c %d\n", next_char, next_char);
 		next_state = ft_lexer_state(next_char);
-		printf("next_state : %d\n", next_state);
 		if (next_state == LS_NULL)
 			break ;
 		func = lexer->lex_func[lexer->current_state][next_state];

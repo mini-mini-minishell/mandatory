@@ -58,6 +58,9 @@ void			list_init(t_list *list);
 /* make_redir.c */
 t_list			*make_redir(char *word, t_token_type token);
 
+/* parser.c */
+void			parse_and_execute(t_all_data *all_data);
+
 /* parsing.c */
 void			check_arguments(int	argc, char **argv);
 

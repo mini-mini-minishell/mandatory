@@ -35,23 +35,23 @@ static t_token_type	get_token_type(char *content)
 	printf("type : %d \n ", get_item_type(*content));
 	if (get_item_type(*content) == NOT_ITEM)
 		return (TT_WORD);
-	if (!ft_strncmp(content, "(", 1))
+	if (!ft_strncmp(content, "(", 2))
 		return (TT_PAREN_LEFT);
-	if (!ft_strncmp(content, ")", 1))
+	if (!ft_strncmp(content, ")", 2))
 		return (TT_PAREN_RIGHT);
-	if (!ft_strncmp(content, "|", 1))
+	if (!ft_strncmp(content, "|", 2))
 		return (TT_PIPE);
-	if (!ft_strncmp(content, "||", 2))
+	if (!ft_strncmp(content, "||", 3))
 		return (TT_OR);
-	if (!ft_strncmp(content, "&&", 2))
+	if (!ft_strncmp(content, "&&", 3))
 		return (TT_AND);
-	if (!ft_strncmp(content, "<", 1))
+	if (!ft_strncmp(content, "<", 2))
 		return (TT_REDIR_IN);
-	if (!ft_strncmp(content, ">", 1))
+	if (!ft_strncmp(content, ">", 2))
 		return (TT_REDIR_OUT);
-	if (!ft_strncmp(content, "<<", 2))
+	if (!ft_strncmp(content, "<<", 3))
 		return (TT_REDIR_HEREDOC);
-	if (!ft_strncmp(content, ">>", 2))
+	if (!ft_strncmp(content, ">>", 3))
 		return (TT_REDIR_APPEND);
 	return (TT_ERR);
 }
