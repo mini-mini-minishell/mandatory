@@ -1,6 +1,6 @@
 #include "../includes/minishell.h"
 
-t_reducer_fp	 get_reduce_rule(t_parser_state state, t_reducer_fp *table)
+static t_reducer_fp	 get_reduce_rule(t_parser_state state, t_reducer_fp *table)
 {
 	int	index;
 
@@ -31,7 +31,7 @@ static t_action_flag	find_action_table(t_parser_state state)
 	return (AF_NON);
 }
 
-int	should_reduce(t_parser_state curr_state, t_token_type input_type)
+static int	should_reduce(t_parser_state curr_state, t_token_type input_type)
 {
 	t_action_flag	action_flag;
 
@@ -66,13 +66,13 @@ int	run_parser(t_all_data *all_data)
 		{
 			reduce_func = get_reduce_rule(state, all_data->parser.reduce_func);
 			if (reduce_func)
-				return (reduce_func(parser));
-			else  
+				return (reduce_func(all_data));
+			else
 				return (-1);
 		}
 	}
 	else
-		token_type = parser->parser_stack->content.symbol;
+		token_type = data->token;
 	goto_state = get_goto_state(state, token_type);
-	return (goto_next_state(parser, goto_state, token_type));
+	return (goto_next_state(all_data, goto_state, token_type));
 }

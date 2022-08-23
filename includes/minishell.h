@@ -7,6 +7,25 @@
 /* exit.c */
 void			exit_with_message(char *s);
 
+/* goto_func.c */
+t_parser_state	goto_from_state_0(t_token_type type);
+t_parser_state	goto_from_state_1(t_token_type type);
+t_parser_state	goto_from_state_2(t_token_type type);
+t_parser_state	goto_from_state_4(t_token_type type);
+t_parser_state	goto_from_state_5(t_token_type type);
+t_parser_state	goto_from_state_7(t_token_type type);
+t_parser_state	goto_from_state_10(t_token_type type);
+t_parser_state	goto_from_state_11(t_token_type type);
+t_parser_state	goto_from_state_12(t_token_type type);
+t_parser_state	goto_from_state_14(t_token_type type);
+t_parser_state	goto_from_state_16(t_token_type type);
+t_parser_state	goto_from_state_18(t_token_type type);
+
+/* goto_state.c */
+t_parser_state	get_goto_state(t_parser_state state, t_token_type type);
+int				goto_next_state(t_all_data *all_data, \
+								t_parser_state goto_state, t_token_type type);
+
 /* init_all.c */
 void			init_all(t_all_data *all_data, char **envp);
 
@@ -102,6 +121,9 @@ t_return_value	reduce_rule_15(t_all_data *all_data);
 t_lexer_state	ft_lexer_state(char c);
 int				run_lexer(t_all_data *all_data);
 
+/* run_parser.c */
+int	run_parser(t_all_data *all_data);
+
 /* utils_reduce.c */
 t_word_data		*create_word_data(char *word);
 void			append_word_list(t_cmd *new_simple, t_element *element);
@@ -124,4 +146,5 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t detsize);
 
 /* test.c */
 void			print_token_data(t_all_data *all_data);
+
 #endif
