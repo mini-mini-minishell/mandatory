@@ -43,6 +43,11 @@ void			tree_push_back(t_list *list, t_tree_content content);
 t_parser_data	*create_parser_data(int type);
 t_tree_data		*create_tree_data(t_tree_content content);
 
+
+/* list_stack2.c */
+
+t_parser_state	parser_peek_state(t_list parser_stack);
+
 /* list_token.c */
 void			add_new_token(t_all_data *all_data);
 t_item_type		get_item_type(char c);
@@ -50,6 +55,7 @@ t_token_data	*create_token_data(t_all_data *all_data);
 
 
 /* list.c */ //node_number start from zero
+void			list_remove_head_token(t_list *list);
 t_node			*list_pop_back(t_list *list);
 void			list_push_back(t_list *list, t_node *new);
 t_node			*list_new_node(void *data);

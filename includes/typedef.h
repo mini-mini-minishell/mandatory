@@ -108,6 +108,27 @@ typedef enum e_cmd_flag
 	CMD_FLAG_NEED_PIPE = 1 << 2
 }	t_cmd_flag;
 
+typedef enum e_tt_group
+{
+	TT_CONNECT_GROUP = TT_OR | TT_AND | TT_PIPE,
+	TT_REDIR_GROUP = TT_REDIR_IN | TT_REDIR_OUT | \
+				TT_REDIR_HEREDOC | TT_REDIR_APPEND
+}	t_tt_group;
+
+typedef enum e_action_flag
+{
+	AF_NON = 0,
+	AF_START = TT_EOF,
+	AF_LIST = AF_START | TT_AND | TT_OR | TT_PAREN_RIGHT,
+	AF_PIPELINE = AF_LIST | TT_PIPE,
+	AF_CMD = AF_PIPELINE,
+	AF_SIMPLE = AF_CMD | TT_WORD | TT_REDIR_GROUP,
+	AF_SUBSHELL = AF_CMD | TT_REDIR_GROUP,
+	AF_REDIR_LIST = AF_SUBSHELL,
+	AF_ELEMENT = AF_SIMPLE,
+	AF_REDIR = AF_SIMPLE
+}	t_action_flag;
+
 typedef enum e_cmd_type
 {
 	CMD_SIMPLE,
