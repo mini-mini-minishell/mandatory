@@ -49,13 +49,13 @@ void	parse_and_execute(t_all_data *all_data)
 	while (parser.flag == PARSER_ING)
 	{
 		return_value = run_parser(all_data);
-		if (should_stop_parsing(&return_value))//여기서부터
+		if (should_stop_parsing(&return_value))
 			break ;
 	}
 	if (parser.flag == PARSER_FINISH)
 	{
 		set_final_cmd(parser.final_cmd, fd_info, lexer);
-		return_value = gather_heredoc(&parser);
+		return_value = gather_heredoc(&parser);    //여기서부터 시작 8.23일
 		if (return_value == 0)
 		{
 			return_value = execute_command(parser.final_cmd, fd_info);
