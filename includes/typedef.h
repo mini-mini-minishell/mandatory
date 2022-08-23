@@ -38,6 +38,14 @@ typedef enum e_parser_flag
 	PARSER_FINISH
 }	t_parser_flag;
 
+typedef enum e_pipe_fildes
+{
+	NO_PIPE = -1,
+	READ_END = 0,
+	WRITE_END = 1,
+	CLOSE_END = 2
+}	t_pipe_fildes;
+
 typedef enum e_token_type
 {
 	TT_ERR = 0,
@@ -145,6 +153,15 @@ typedef enum e_redir_type
 	REDIR_APPEND
 }	t_redir_type;
 
+typedef enum e_ex_state
+{
+	EXECUTION_SUCCESS = 0,
+	EXECUTION_FAILURE = 1,
+	EX_NOEXEC = 126,
+	EX_NOTFOUND = 127,
+	EX_USAGE = 258
+}	t_ex_state;
+
 typedef unsigned long			size_t;
 typedef struct s_all_data		t_all_data;
 typedef struct s_lexer			t_lexer;
@@ -210,7 +227,7 @@ struct s_parser
 	t_list			tree_stack;
 	t_cmd			*final_cmd;
 	char			flag;
-};
+}; 
 
 /*
 struct s_parser

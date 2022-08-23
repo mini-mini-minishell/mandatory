@@ -72,7 +72,6 @@ void			add_new_token(t_all_data *all_data);
 t_item_type		get_item_type(char c);
 t_token_data	*create_token_data(t_all_data *all_data);
 
-
 /* list.c */ //node_number start from zero
 void			list_remove_head_token(t_list *list);
 t_node			*list_pop_back(t_list *list);
@@ -84,7 +83,10 @@ void			list_init(t_list *list);
 t_list			*make_redir(char *word, t_token_type token);
 
 /* parser.c */
+static void		init_parser(t_all_data *all_data);
+static int		should_stop_parsing(int *value);
 void			parse_and_execute(t_all_data *all_data);
+
 
 /* parsing.c */
 void			check_arguments(int	argc, char **argv);
