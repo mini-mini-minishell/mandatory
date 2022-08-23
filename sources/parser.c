@@ -55,7 +55,7 @@ void	parse_and_execute(t_all_data *all_data)
 	if (parser.flag == PARSER_FINISH)
 	{
 		set_final_cmd(parser.final_cmd, fd_info, lexer);
-		return_value = gather_heredoc(&parser);    //여기서부터 시작 8.23일
+		return_value = gather_heredoc(&parser);    //8.24일에 여기서 부터 시작
 		if (return_value == 0)
 		{
 			return_value = execute_command(parser.final_cmd, fd_info);
