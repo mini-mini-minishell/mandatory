@@ -72,6 +72,7 @@ t_tree_content	get_input_value(t_list *input)
 		content.token = data->token_type;
 	return (content);
 }
+#include <stdio.h>
 
 int	goto_next_state(t_all_data *all_data, \
 					t_parser_state goto_state, t_token_type type)
@@ -86,11 +87,13 @@ int	goto_next_state(t_all_data *all_data, \
 		{
 			parser_push_back(&all_data->parser.parser_stack, type);
 			content = get_input_value(&all_data->token_list);
-			tree_push_back(&all_data->parser.parser_stack, content);
+			tree_push_back(&all_data->parser.tree_stack, content);
 			token_data = all_data->token_list.head->data;
 			tree_data = all_data->parser.tree_stack.tail->data;
 			if (token_data->token_type == TT_WORD)
+			{
 				tree_data->tree_type = TREE_WORD;
+			}
 			else
 				tree_data->tree_type = TREE_TOKEN;
 			list_remove_head_token(&all_data->token_list);

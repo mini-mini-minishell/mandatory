@@ -28,6 +28,10 @@
 		"algorithm": "c",
 		"functional": "c",
 		"iterator": "c",
-		"memory": "c"
+		"memory": "c",
+		"history.h": "c",
+		"stdlib.h": "c",
+		"string_view": "c",
+		"vector": "c"
 	}
 }

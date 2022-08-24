@@ -4,15 +4,6 @@
 
 extern int	g_exit_status;
 
-// struct s_parser
-// {
-// 	t_reducer_fp	reduce_func[22];
-// 	t_list			parser_stack;
-// 	t_list			tree_stack;
-// 	t_cmd			*final_cmd;
-// 	t_parser_flag	flag;
-// }; 
-
 static void	init_parser(t_all_data *all_data)
 {
 	t_parser		*parser;
@@ -26,15 +17,24 @@ static void	init_parser(t_all_data *all_data)
 	parser_push_back(&parser->parser_stack, STATE_0);
 }
 
+#include <stdio.h>
+
 static int	should_stop_parsing(int *value)
 {
+	printf("start! value : %d\n", *value);
 	if (*value == 0)
+	{
+		printf("1-2 if\n");
 		return (0);
+	}	
+	printf("2 if\n");
 	if (*value < 0)
 	{
 		*value = EX_USAGE;
+		printf("3\n");
 		ft_putstr_fd("syntax error\n", 2);
 	}
+	printf("4 if\n");
 	return (1);
 }
 
@@ -52,6 +52,7 @@ void	parse_and_execute(t_all_data *all_data)
 	t_parser		*parser;
 	int				fd_info[3];
 	int				return_value;
+	t_parser_data	*data;
 
 	lexer = &all_data->lexer;
 	parser = &all_data->parser;
@@ -59,8 +60,8 @@ void	parse_and_execute(t_all_data *all_data)
 	return_value = 0;
 	while (parser->flag == PARSER_ING)
 	{
+		data = all_data->parser.parser_stack.tail->data;
 		return_value = run_parser(all_data);
-		printf("_____________________!!!!\n");//여기까지 나오고 before peek 이후에 나오는 애가 문제가 되서 세그폴트가 난다는것 아놔 
 		if (should_stop_parsing(&return_value))
 			break ;
 	}

@@ -38,3 +38,9 @@ NORMAL -> others
 metachar -> unique_type
 _to_ -> _meet_ 
 to_norm -> turn_others
+
+8.24 simple 까지 완료 before print까지 잘 나옴 내일 25일에는
+simple print_tree_stack에서 lldb 찍어서 봐야한다
+(t_list 말록?) 
+내일 은 무쩌권 heredoc 완료하고 집갈 수 있도록 한다
+%@9시 반에는 시작하고 small talk 을 끊을 수 있는 결단력을 가지기.

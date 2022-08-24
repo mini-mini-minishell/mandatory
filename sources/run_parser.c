@@ -59,9 +59,8 @@ int	run_parser(t_all_data *all_data)
 	t_parser_state	goto_state;
 	t_parser_data	*data;
 
-	printf("before peek\n");
+	data = all_data->parser.parser_stack.tail->data;
 	state = parser_peek_state(all_data->parser.parser_stack);
-	printf("after peek\n");
 	data = all_data->parser.parser_stack.tail->data;
 	if (data->type & PARSER_STATE)
 	{
@@ -70,7 +69,9 @@ int	run_parser(t_all_data *all_data)
 		{
 			reduce_func = get_reduce_rule(state, all_data->parser.reduce_func);
 			if (reduce_func)
+			{
 				return (reduce_func(all_data));
+			}
 			else
 				return (-1);
 		}

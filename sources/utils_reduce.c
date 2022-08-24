@@ -1,7 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
 
-
 t_word_data	*create_word_data(char *word)
 {
 	t_word_data	*new_data;
@@ -21,23 +20,12 @@ void	append_word_list(t_cmd *new_simple, t_element *element)
 
 	word_list = new_simple->content.simple.words;
 	if (!word_list)
+	{
+		word_list = ft_malloc(sizeof(t_list));
 		list_init(word_list);
+	}
 	list_push_back(word_list, list_new_node(create_word_data(element->word)));
 }
-
-
-// t_redir_data	*create_redir_data(char *word)
-// {
-// 	t_redir_data	*new_data;
-
-// 	new_data = ft_malloc(sizeof(t_word_data));
-// 	new_data->flag = 0;
-// 	new_data->field = 0;
-// 	new_data->key_len = 0;
-// 	//new_data->variables = NULL;
-// 	new_data->word = word;
-// 	return (new_data);
-// }
 
 void	append_redir_list(t_cmd *new_simple, t_element *element)
 {
@@ -64,7 +52,7 @@ t_cmd	*make_simple(void *simple_data, void *element_data)
 
 	simple = simple_data;
 	element = element_data;
-	if (!simple->content.cmd)
+	if (!simple)
 	{
 		new_simple = ft_malloc(sizeof(t_cmd));
 		new_simple->type = CMD_SIMPLE;
