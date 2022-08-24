@@ -25,14 +25,10 @@ t_item_type	get_item_type(char c)
 	return (NOT_ITEM);
 }
 
-#include <stdio.h>
-
 static t_token_type	get_token_type(char *content)
 {
-	printf("contents : %s \n", content);
 	if (*content == '\0')
 		return (TT_EOF);
-	printf("type : %d \n ", get_item_type(*content));
 	if (get_item_type(*content) == NOT_ITEM)
 		return (TT_WORD);
 	if (!ft_strncmp(content, "(", 2))

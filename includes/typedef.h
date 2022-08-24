@@ -226,7 +226,7 @@ struct s_parser
 	t_list			parser_stack;
 	t_list			tree_stack;
 	t_cmd			*final_cmd;
-	char			flag;
+	t_parser_flag	flag;
 }; 
 
 /*

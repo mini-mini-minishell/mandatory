@@ -29,35 +29,35 @@ t_parser_state	get_goto_state(t_parser_state state, t_token_type type)
 	return (STATE_NON);
 }
 
-struct s_tree_data
-{
-	int				type;
-	t_tree_type		tree_type;
-	t_parser_state	state;
-	t_tree_content	content;
-};
+// struct s_tree_data
+// {
+// 	int				type;
+// 	t_tree_type		tree_type;
+// 	t_parser_state	state;ㅇ
+// 	t_tree_content	content;
+// };
 
-struct s_parser_data
-{
-	int				type;
-	t_token_type	token;
-	t_parser_state	state;
-};
+// struct s_parser_data
+// {
+// 	int				type;
+// 	t_token_type	token;
+// 	t_parser_state	state;
+// };
 
-union u_tree_content
-{
-	t_token_type	token;
-	char			*word;
-	t_list			*redir_list;
-	t_cmd			*cmd;
-	t_element		*element;
-};
+// union u_tree_content
+// {
+// 	t_token_type	token;
+// 	char			*word;
+// 	t_list			*redir_list;
+// 	t_cmd			*cmd;
+// 	t_element		*element;
+// };
 
-struct s_token_data
-{
-	t_token_type	token_type;
-	char			*content;
-};
+// struct s_token_data
+// {
+// 	t_token_type	token_type;
+// 	char			*content;
+// };
 
 
 t_tree_content	get_input_value(t_list *input)

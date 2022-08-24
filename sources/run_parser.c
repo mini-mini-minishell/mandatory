@@ -49,6 +49,8 @@ static t_token_type	get_input_token_type(t_list token_list)
 	return (data->token_type);
 }
 
+#include <stdio.h>
+
 int	run_parser(t_all_data *all_data)
 {
 	t_parser_state	state;
@@ -56,8 +58,10 @@ int	run_parser(t_all_data *all_data)
 	t_token_type	token_type;//type
 	t_parser_state	goto_state;
 	t_parser_data	*data;
-	
+
+	printf("before peek\n");
 	state = parser_peek_state(all_data->parser.parser_stack);
+	printf("after peek\n");
 	data = all_data->parser.parser_stack.tail->data;
 	if (data->type & PARSER_STATE)
 	{

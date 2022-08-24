@@ -83,8 +83,6 @@ void			list_init(t_list *list);
 t_list			*make_redir(char *word, t_token_type token);
 
 /* parser.c */
-static void		init_parser(t_all_data *all_data);
-static int		should_stop_parsing(int *value);
 void			parse_and_execute(t_all_data *all_data);
 
 
@@ -148,5 +146,6 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t detsize);
 
 /* test.c */
 void			print_token_data(t_all_data *all_data);
+void			print_tree_stack(t_list tree_stack);
 
 #endif

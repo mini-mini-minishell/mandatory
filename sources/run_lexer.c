@@ -18,14 +18,12 @@ t_lexer_state	ft_lexer_state(char c)
 		return (LS_DQUOT);
 	else if (c == '\0')
 	{
-		printf("여기 들어오니?\n");
 		return (LS_NULL);
 	}
 	else
 		return (LS_OTHERS);
 }
 #include <stdlib.h>
-#include <stdio.h>
 
 int	run_lexer(t_all_data *all_data)
 {
@@ -53,10 +51,7 @@ int	run_lexer(t_all_data *all_data)
 		add_new_token(all_data);
 		token_data = all_data->token_list.tail->data;
 		if (token_data->token_type == TT_ERR)
-		{
-			printf("add new token");
 			return (-1);
-		}
 	}
 	return (0);
 }

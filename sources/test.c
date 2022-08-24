@@ -21,3 +21,45 @@ void	print_token_data(t_all_data *all_data)
 	}
 	exit(0); // ---------
 }
+
+#include <stdio.h> //----------------------------
+
+void	print_tree_stack(t_list tree_stack)
+{
+	t_tree_data	*tree_data;
+	t_node		*temp;
+	t_word_data	*word_data;
+
+	tree_data = tree_stack.head->data;
+	if (tree_data->content.cmd->type == CMD_SIMPLE)
+	{
+		printf("-----SIMPLE-----\n");
+		temp = tree_data->content.cmd->content.simple.words->head;
+		while (temp)
+		{
+			word_data = temp->data;
+			printf("word : ");
+			printf("%s ", word_data->word);
+			temp = temp->next;
+		}
+		printf("\n\n");
+	}
+	else if (tree_data->content.cmd->type == CMD_CONNECT)
+	{
+		printf("-----CONNECT----\n");
+		// temp = tree_data->content.cmd->content.connect.;
+		// while (temp)
+		// {
+		// 	word_data = temp->data;
+		// 	printf("connect : ");
+		// 	printf("%s ",);
+		// 	temp = temp->next;
+		// }
+		// printf("\n\n");
+	}
+	else if (tree_data->content.cmd->type == CMD_SUBSHELL)
+	{
+		printf("----SUBSHELL----\n");
+	}
+	exit(0);
+}
