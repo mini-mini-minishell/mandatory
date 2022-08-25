@@ -23,6 +23,7 @@ void	append_word_list(t_cmd *new_simple, t_element *element)
 	{
 		word_list = ft_malloc(sizeof(t_list));
 		list_init(word_list);
+		new_simple->content.simple.words = word_list;
 	}
 	list_push_back(word_list, list_new_node(create_word_data(element->word)));
 }
@@ -43,6 +44,8 @@ void	append_redir_list(t_cmd *new_simple, t_element *element)
 		redir_list = element->redir_list;
 	}
 }
+
+#include <stdio.h>
 
 t_cmd	*make_simple(void *simple_data, void *element_data)
 {

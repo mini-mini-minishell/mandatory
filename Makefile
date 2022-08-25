@@ -53,6 +53,7 @@ OBJS		=	$(SRCS:.c=.o)
 .PHONY: all clean fclean re
 
 all: $(NAME)
+	make clean
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<

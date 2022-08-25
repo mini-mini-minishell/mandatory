@@ -17,24 +17,15 @@ static void	init_parser(t_all_data *all_data)
 	parser_push_back(&parser->parser_stack, STATE_0);
 }
 
-#include <stdio.h>
-
 static int	should_stop_parsing(int *value)
 {
-	printf("start! value : %d\n", *value);
 	if (*value == 0)
-	{
-		printf("1-2 if\n");
 		return (0);
-	}	
-	printf("2 if\n");
 	if (*value < 0)
 	{
 		*value = EX_USAGE;
-		printf("3\n");
 		ft_putstr_fd("syntax error\n", 2);
 	}
-	printf("4 if\n");
 	return (1);
 }
 
@@ -63,7 +54,9 @@ void	parse_and_execute(t_all_data *all_data)
 		data = all_data->parser.parser_stack.tail->data;
 		return_value = run_parser(all_data);
 		if (should_stop_parsing(&return_value))
+		{
 			break ;
+		}
 	}
 	print_tree_stack(all_data->parser.tree_stack);
 	// if (parser.flag == PARSER_FINISH)

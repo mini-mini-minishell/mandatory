@@ -61,7 +61,6 @@ t_return_value	reduce_rule_2(t_all_data *all_data)
 	return (gather_heredoc(parser)); //아직 안만듬!!!!!!!__________________
 }
 
-
 // P -> P | C;
 t_return_value	reduce_rule_3(t_all_data *all_data)
 {
