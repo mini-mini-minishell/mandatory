@@ -1,9 +1,9 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
+
 t_parser_state	get_goto_state(t_parser_state state, t_token_type type)
 {
-	printf("%d \n", state - PARSER_STATE);
-	printf("%d \n", type);
+	printf("%d %d \n", state - PARSER_STATE, type);
 	if (state == STATE_0)
 		return (goto_from_state_0(type));
 	if (state == STATE_1)

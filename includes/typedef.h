@@ -225,6 +225,7 @@ struct s_parser
 	t_reducer_fp	reduce_func[22];
 	t_list			parser_stack;
 	t_list			tree_stack;
+	t_list			heredoc_list;
 	t_cmd			*final_cmd;
 	t_parser_flag	flag;
 }; 

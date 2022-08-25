@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include <stdio.h>
 
 t_parser_state	goto_from_state_0(t_token_type type)
 {

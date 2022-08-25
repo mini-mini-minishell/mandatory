@@ -6,6 +6,7 @@ static t_reducer_fp	 get_reduce_rule(t_parser_state state, t_reducer_fp *table)
 	int	index;
 
 	index = (int)(state ^ PARSER_STATE);
+	printf("reducefunc : %d\n", index);
 	return (table[index]);
 }
 
@@ -80,6 +81,8 @@ int	run_parser(t_all_data *all_data)
 	}
 	else
 		token_type = data->token;
+	printf("state : %d\n", state);
 	goto_state = get_goto_state(state, token_type);
+	printf("goto_state : %d\n", goto_state);
 	return (goto_next_state(all_data, goto_state, token_type));
 }

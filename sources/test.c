@@ -29,9 +29,9 @@ void	print_tree_stack(t_list tree_stack)
 	t_word_data	*word_data;
 
 	tree_data = tree_stack.head->data;
-	printf("000000!!!!!!\n");
-	printf("cmd %p \n", tree_data->content.cmd);
-	printf("type %d \n", tree_data->content.cmd->type);
+	// printf("000000!!!!!!\n");
+	// printf("cmd %p \n", tree_data->content.cmd);
+	// printf("type %d \n", tree_data->content.cmd->type);
 	if (tree_data->content.cmd->type == CMD_SIMPLE)
 	{
 		temp = tree_data->content.cmd->content.simple.words->head;
