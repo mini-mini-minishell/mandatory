@@ -3,7 +3,7 @@
 #include <stdio.h>
 t_parser_state	goto_from_state_16(t_token_type type)
 {
-	printf("들어오니\n");
+	//printf("들어오니\n");
 	if (type & TT_CONNECT_GROUP)
 		return (STATE_11);
 	if (type & TT_PAREN_RIGHT)

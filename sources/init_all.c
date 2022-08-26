@@ -66,6 +66,6 @@ void	init_all(t_all_data *all_data, char **envp)
 	list_init(&all_data->token_list);
 	// init_parser(&all_data->parser); //loop 안에서 readline 할때마다 init
 	// print_envp(all_data);
-	signal(SIGINT, handler);
+	signal(SIGINT, set_prompt_handler);
 	signal(SIGQUIT, SIG_IGN);
 }

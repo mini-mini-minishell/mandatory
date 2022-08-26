@@ -15,7 +15,7 @@ t_return_value	item_meet_others(t_all_data *all_data)
 	token_data = (t_token_data *)(all_data->token_list.tail->data);
 	if (token_data->token_type == TT_ERR)
 	{
-		printf("item meet others\n");
+		//printf("item meet others\n");
 		return (RV_ERROR);
 	}
 	return (RV_SUCCESS);
@@ -35,7 +35,7 @@ t_return_value	item_meet_space(t_all_data *all_data)
 	token_data = (t_token_data *)(all_data->token_list.tail->data);
 	if (token_data->token_type == TT_ERR)
 	{
-		printf("item_meet_space\n");
+		//printf("item_meet_space\n");
 		return (RV_ERROR);
 	}
 	return (RV_SUCCESS);
@@ -55,7 +55,7 @@ t_return_value	item_meet_squot(t_all_data *all_data)
 	token_data = (t_token_data *)(all_data->token_list.tail->data);
 	if (token_data->token_type == TT_ERR)
 	{
-		printf("item_meet_squot\n");
+		//printf("item_meet_squot\n");
 		return (RV_ERROR);
 	}
 	return (RV_SUCCESS);
@@ -75,7 +75,7 @@ t_return_value	item_meet_dquot(t_all_data *all_data)
 	token_data = (t_token_data *)(all_data->token_list.tail->data);
 	if (token_data->token_type == TT_ERR)
 	{
-		printf("item_meet_dquot\n");
+		//printf("item_meet_dquot\n");
 		return (RV_ERROR);
 	}
 	return (RV_SUCCESS);
@@ -101,7 +101,7 @@ t_return_value	item_meet_item(t_all_data *all_data)
 		token_data = (t_token_data *)(all_data->token_list.tail->data);
 		if (token_data->token_type == TT_ERR)
 		{
-			printf("item_meet_item\n");
+			//printf("item_meet_item\n");
 			exit(0);
 			return (RV_ERROR);
 		}

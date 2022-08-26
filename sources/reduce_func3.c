@@ -11,19 +11,19 @@ t_return_value	reduce_rule_10(t_all_data *all_data)
 	t_tree_content	l;
 	t_tree_data		*data;
 
-	printf("0 여기니 \n");
+	//printf("0 여기니 \n");
 	parser = &all_data->parser;
 	count = 2 * 3;
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_SUBSHELL);
 	data = parser->tree_stack.tail->prev->data;
 	l = data->content;
-	printf("1 여기니 \n");
+	//printf("1 여기니 \n");
 	content.cmd = make_subshell(l.cmd);
-	printf("2 여기니 \n");
+	//printf("2 여기니 \n");
 	stack_pop_back(&parser->tree_stack, 3);
 	tree_push_back(&parser->tree_stack, content);
-	printf(" 3 \n");
+	//printf(" 3 \n");
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	return (RV_SUCCESS);

@@ -21,7 +21,7 @@ void	list_remove_head_redir(t_list *list)
 		list->head->prev = NULL;
 	}
 	--(list->count);
-	free(temp_redir->filename);
+	free(temp_redir->file_content);
 	free(temp_redir->heredoc_eof);
 	free(temp_redir);
 	free(temp);

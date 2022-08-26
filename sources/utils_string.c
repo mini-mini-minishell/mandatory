@@ -100,6 +100,27 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)
 	return (len);
 }
 
+size_t	ft_strlcat(char *dst, const char *src, size_t resultsize)
+{
+	size_t	dlen;
+	size_t	slen;
+	size_t	i;
+	size_t	result;
+
+	dlen = ft_strlen(dst);
+	slen = ft_strlen(src);
+	i = 0;
+	result = dlen + slen;
+	if (resultsize <= dlen)
+		return (resultsize + slen);
+	while (dlen + 1 < resultsize && src[i] != 0)
+	{
+		dst[dlen++] = src[i++];
+	}
+	dst[dlen] = '\0';
+	return (result);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	rlen;

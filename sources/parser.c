@@ -52,9 +52,9 @@ void	parse_and_execute(t_all_data *all_data)
 	while (parser->flag == PARSER_ING)
 	{
 		data = all_data->parser.parser_stack.tail->data;
-		// printf("=------------------=\n");
+		// //printf("=------------------=\n");
 		// print_token_data(all_data);
-		// printf("=------------------=\n");
+		// //printf("=------------------=\n");
 		return_value = run_parser(all_data);
 		if (should_stop_parsing(&return_value))
 		{
@@ -62,7 +62,7 @@ void	parse_and_execute(t_all_data *all_data)
 		}
 	}
 	print_token_data(all_data);
-	exit(0);
+	printf("----------------------print_tree_stack");
 	print_tree_stack(all_data->parser.tree_stack);
 	// if (parser.flag == PARSER_FINISH)
 	// {

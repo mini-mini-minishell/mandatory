@@ -65,10 +65,11 @@ void			tree_push_back(t_list *list, t_tree_content content);
 t_parser_data	*create_parser_data(int type);
 t_tree_data		*create_tree_data(t_tree_content content);
 
-
 /* list_stack2.c */
-
+t_redir_data	*create_redir_data(void);
 t_parser_state	parser_peek_state(t_list parser_stack);
+void			redir_push_back(t_parser *parser, t_list *new_redir_list);
+
 
 /* list_token.c */
 void			add_new_token(t_all_data *all_data);
@@ -84,11 +85,10 @@ void			list_init(t_list *list);
 void			list_remove_head_redir(t_list *list);
 
 /* make_redir.c */
-t_list			*make_redir(char *word, t_token_type token);
+t_node			*make_redir_node(char *word, t_token_type token);
 
 /* parser.c */
 void			parse_and_execute(t_all_data *all_data);
-
 
 /* parsing.c */
 void			check_arguments(int	argc, char **argv);
@@ -101,8 +101,6 @@ int				gather_heredoc(t_parser *parser);
 
 /* readline.c */
 void			prompt_loop(t_all_data *all_data);
-// void			set_prompt_handler(void);
-void			handler(int signum);
 
 /* reduce_func.c */
 t_return_value	reduce_rule_0(t_all_data *all_data);
@@ -138,11 +136,10 @@ int				run_lexer(t_all_data *all_data);
 int				run_parser(t_all_data *all_data);
 
 /* signal_handler.c */
-static void		set_handler_reset_minishline(int sig);
-void			set_handler_for_heredoc(void);
+void			set_prompt_handler(int sig);
+void			set_handler_for_heredoc(int sig);
 void			set_handler_for_default(void);
 void			set_handler_to_ignore(void);
-
 
 /* utils_fd.c */
 t_pid			ft_fork(void);
@@ -161,6 +158,7 @@ char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 size_t			ft_strlcpy(char *dst, const char *src, size_t detsize);
 char			*ft_strjoin(char const *s1, char const *s2);
+size_t			ft_strlcat(char *dst, const char *src, size_t resultsize);
 
 /* test.c */
 void			print_token_data(t_all_data *all_data);

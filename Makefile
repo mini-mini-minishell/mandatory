@@ -1,7 +1,7 @@
 NAME 		=	minishell
 
-CC 			=	cc -g3
-# CFLAGS		=	-g -Wall -Werror -Wextra
+CC 			=	cc -g -fsanitize=address
+# CFLAGS		= -g3 -fsanitize=address
 # export LDFLAGS="-L/usr/local/opt/readline/lib" 실행파일 만들때
 # export CPPFLAGS="-I/usr/local/opt/readline/include" 인클루드 목적파일 만들때
 # -lreadline -I/usr/local/Cellar/readline/8.1.2/include -L/usr/local/Cellar/readline/8.1.2/lib
@@ -14,6 +14,8 @@ RM			=	rm -f
 SRC_DIR 	= 	./sources/
 
 FILES 		=	exit.c \
+				get_next_line_utils.c \
+				get_next_line.c \
 				goto_func1.c \
 				goto_func2.c \
 				goto_func3.c \
@@ -30,6 +32,7 @@ FILES 		=	exit.c \
 				list_stack2.c \
 				list_token.c \
 				list.c \
+				list2.c \
 				main.c \
 				make_redir.c \
 				parser.c \
@@ -43,21 +46,21 @@ FILES 		=	exit.c \
 				reduce_utils.c \
 				run_lexer.c \
 				run_parser.c \
+				signal_hadler.c\
 				test.c \
 				utils_fd.c \
 				utils_split.c \
 				utils_string.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(FILES))
-OBJS		=	$(SRCS:.c=.o)
+OBJS		=	$(SRCS:%.c=%.o)
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
-	make clean
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(RL_INCLUDE) -c -o $@ $<
+	$(CC) $(CFLAGS) $(RL_INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(RL_LINK) -o $@ $^

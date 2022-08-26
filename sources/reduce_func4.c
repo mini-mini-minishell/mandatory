@@ -9,6 +9,7 @@ t_return_value	reduce_rule_15(t_all_data *all_data)
 	t_tree_content	word;
 	t_tree_content	redir_open;
 	t_tree_data		*data;
+	t_node			*node; //+++++++++++++++++
 
 	count = 2 * 2;
 	parser = &all_data->parser;
@@ -18,13 +19,14 @@ t_return_value	reduce_rule_15(t_all_data *all_data)
 	word = data->content;
 	data = parser->tree_stack.tail->prev->data;
 	redir_open = data->content;
-	content.redir_list = make_redir(word.word, redir_open.token);
+	node = make_redir_node(word.word, redir_open.token);
 	stack_pop_back(&parser->tree_stack, 2);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_REDIR_LIST;
 	if (redir_open.token == TT_REDIR_HEREDOC)
-		gather_heredoc(parser); // push_heredoc임 고치셈.
-		// push_heredoc(parser, content.redir_list);
+		list_push_back(&parser->heredoc_list, node);
+		// push_heredoc(parser, content.redir_list); // push_heredoc임 고치셈.
+	// free(content.redir_list);
 	return (RV_SUCCESS);
 }

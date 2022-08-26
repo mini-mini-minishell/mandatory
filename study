@@ -91,7 +91,7 @@ typedef struct s_redir_list
 	int				flag;			//
 	int				fd_orig;		// 바꾸기 전 fd
 	int				fd_new;			// 바꿀 fd
-	char			*filename;		// file 이름
+	char			*file_content;		// file 이름
 	char			*heredoc_eof;	// heredoc 문자열 (?)
 }	t_redir_list;
 

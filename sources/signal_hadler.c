@@ -1,13 +1,48 @@
 #include "../includes/minishell.h"
-#include <readline/readline.h>
 #include <stdio.h>
+#include <readline/readline.h>
 #include <signal.h>
 
-void	set_handler_for_heredoc(void)
+extern int	g_exit_status;
+
+static void	set_handler_reset_minishline(int sig)
 {
+	ft_putstr_fd("\n", 1);
+	if (sig != 0)
+	{
+		g_exit_status = 128 + sig;
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+	}
+}
+
+void	set_prompt_handler(int sig)
+{
+	(void) sig;
+	signal(SIGINT, set_handler_reset_minishline);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	set_handler_for_heredoc(int sig)
+{
+	(void) sig;
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_IGN);
 }
+
+/* 우리꺼
+void handler(int signum)
+{
+	if (signum != SIGINT)
+		return;
+	//printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 1);
+	// rl_redisplay();
+}
+*/
+
 
 // void	set_handler_for_default(void)
 // {

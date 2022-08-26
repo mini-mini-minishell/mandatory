@@ -263,7 +263,7 @@ struct s_redir_data
 	int				flag;
 	int				fd_orig;
 	int				fd_new;
-	char			*filename;
+	char			*file_content;
 	char			*heredoc_eof;
 };
 

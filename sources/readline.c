@@ -6,34 +6,6 @@
 
 int	g_exit_status;
 
-void handler(int signum)
-{
-	if (signum != SIGINT)
-		return;
-	printf("\n");
-	rl_on_new_line();
-	rl_replace_line("", 1);
-	// rl_redisplay();
-}
-
-// static void	set_handler_reset_minishline(int sig)
-// {
-// 	ft_putstr_fd("\n", 1);
-// 	if (sig != 0)
-// 	{
-// 		g_exit_status = 128 + sig;
-// 		rl_replace_line("", 0);
-// 		rl_on_new_line();
-// 		rl_redisplay();
-// 	}
-// }
-
-// void	set_prompt_handler(void)
-// {
-// 	signal(SIGINT, set_handler_reset_minishline);
-// 	signal(SIGQUIT, SIG_IGN);
-// }
-
 void	prompt_loop(t_all_data *all_data)
 {
 	char *line;

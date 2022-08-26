@@ -1,12 +1,23 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
 
-// struct s_parser_data
+// struct s_redir_data
 // {
-// 	int				type;
-// 	t_token_type	token;
-// 	t_parser_state	state;
+// 	t_redir_type	redir_type;
+// 	int				flag;
+// 	int				fd_orig;
+// 	int				fd_new;
+// 	char			*file_content;
+// 	char			*heredoc_eof;
 // };
+
+t_redir_data	*create_redir_data(void)
+{
+	t_redir_data	*new;
+	
+	new = ft_malloc(sizeof(t_redir_data));
+	return (new);
+}
 
 t_parser_state	parser_peek_state(t_list parser_stack)
 {
