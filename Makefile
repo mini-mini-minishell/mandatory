@@ -40,10 +40,11 @@ FILES 		=	exit.c \
 				reduce_func2.c \
 				reduce_func3.c \
 				reduce_func4.c \
+				reduce_utils.c \
 				run_lexer.c \
 				run_parser.c \
 				test.c \
-				utils_reduce.c \
+				utils_fd.c \
 				utils_split.c \
 				utils_string.c
 

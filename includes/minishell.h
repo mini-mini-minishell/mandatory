@@ -26,6 +26,9 @@ t_parser_state	get_goto_state(t_parser_state state, t_token_type type);
 int				goto_next_state(t_all_data *all_data, \
 								t_parser_state goto_state, t_token_type type);
 
+/* heredoc.c */
+int				gather_heredoc(t_parser *parser);
+
 /* init_all.c */
 void			init_all(t_all_data *all_data, char **envp);
 
@@ -78,7 +81,7 @@ t_node			*list_pop_back(t_list *list);
 void			list_push_back(t_list *list, t_node *new);
 t_node			*list_new_node(void *data);
 void			list_init(t_list *list);
-void			ist_remove_head_redir(t_list *list);
+void			list_remove_head_redir(t_list *list);
 
 /* make_redir.c */
 t_list			*make_redir(char *word, t_token_type token);
@@ -98,6 +101,7 @@ int				gather_heredoc(t_parser *parser);
 
 /* readline.c */
 void			prompt_loop(t_all_data *all_data);
+// void			set_prompt_handler(void);
 void			handler(int signum);
 
 /* reduce_func.c */
@@ -131,9 +135,19 @@ t_lexer_state	ft_lexer_state(char c);
 int				run_lexer(t_all_data *all_data);
 
 /* run_parser.c */
-int	run_parser(t_all_data *all_data);
+int				run_parser(t_all_data *all_data);
+
+/* signal_handler.c */
+static void		set_handler_reset_minishline(int sig);
+void			set_handler_for_heredoc(void);
+void			set_handler_for_default(void);
+void			set_handler_to_ignore(void);
+
 
 /* utils_fd.c */
+t_pid			ft_fork(void);
+int				ft_pipe(int heredoc_fd[2]);
+int				ft_close(int fd);
 
 /* utils_split.c */
 char			**ft_split(char const *s, char *set);
@@ -146,6 +160,7 @@ size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 size_t			ft_strlcpy(char *dst, const char *src, size_t detsize);
+char			*ft_strjoin(char const *s1, char const *s2);
 
 /* test.c */
 void			print_token_data(t_all_data *all_data);

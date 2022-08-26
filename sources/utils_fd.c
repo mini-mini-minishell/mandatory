@@ -2,20 +2,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-/* t_pid	safe_fork(void)
+t_pid	ft_fork(void)
 {
 	t_pid	pid;
 
 	pid = fork();
 	if (pid < 0)
-	{
-		ft_perror(NULL);
-		exit(1);
-	}
+		exit_with_message("Fork Error");
 	return (pid);
-} */
+}
 
-int	safe_pipe(int heredoc_fd[2])
+int	ft_pipe(int heredoc_fd[2])
 {
 	int	return_value;	
 
@@ -25,17 +22,17 @@ int	safe_pipe(int heredoc_fd[2])
 	return (RV_SUCCESS);
 }
 
-/* int	safe_close(int fd)
+int	ft_close(int fd)
 {
-	int	ret;
+	int	result;
 
 	if (fd <= 2)
 		return (0);
-	ret = close(fd);
-	if (ret < 0)
-		ft_perror(NULL);
-	return (ret);
-} */
+	result = close(fd);
+	if (result < 0)
+		exit_with_message("Close Error");
+	return (result);
+}
 
 /* int	safe_dup2(int fd1, int fd2)
 {

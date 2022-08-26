@@ -162,6 +162,13 @@ typedef enum e_ex_state
 	EX_USAGE = 258
 }	t_ex_state;
 
+typedef enum e_quot_state
+{
+	QUOT_NON = 0,
+	QUOT_SINGLE = 1 << 0,
+	QUOT_DOUBLE = 1 << 1,
+}	t_quot_state;
+
 typedef unsigned long			size_t;
 typedef struct s_all_data		t_all_data;
 typedef struct s_lexer			t_lexer;

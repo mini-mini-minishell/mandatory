@@ -99,3 +99,17 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)
 	dst[i] = '\0';
 	return (len);
 }
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	rlen;
+	char	*new_str;
+
+	rlen = ft_strlen(s1) + ft_strlen(s2);
+	new_str = malloc(sizeof(char) * (rlen + 1));
+	if (new_str == NULL)
+		return (0);
+	ft_strlcpy(new_str, s1, ft_strlen(s1) + 1);
+	ft_strlcat(new_str, s2, rlen + 1);
+	return (new_str);
+}
