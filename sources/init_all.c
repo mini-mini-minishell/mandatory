@@ -58,12 +58,6 @@ static void	set_lexer_table(t_lexer *lexer)
 	(lexer->lex_func)[LS_ITEM][LS_ITEM] = item_meet_item;
 }
 
-void	init_parser(t_parser *parser)
-{
-	list_init(&parser->parser_stack);
-	list_init(&parser->tree_stack);
-}
-
 void	init_all(t_all_data *all_data, char **envp)
 {
 	set_lexer_table(&all_data->lexer);

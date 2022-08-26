@@ -11,9 +11,9 @@ static void	init_parser(t_all_data *all_data)
 	parser = &all_data->parser;
 	list_init(&parser->parser_stack);
 	list_init(&parser->tree_stack);
+	list_init(&parser->heredoc_list);
 	parser->flag = PARSER_ING;
 	parser->final_cmd = NULL;
-	//parser->heredoc_list = NULL;
 	parser_push_back(&parser->parser_stack, STATE_0);
 }
 

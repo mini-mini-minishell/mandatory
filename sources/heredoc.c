@@ -1,60 +1,7 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
 
-/*
-#include <stdlib.h>
-#include "utils.h"
-
-pid_t	safe_fork(void)
-{
-	pid_t	pid;
-
-	pid = fork();
-	if (pid < 0)
-	{
-		ft_perror(NULL);
-		exit(1);
-	}
-	return (pid);
-}
-
-int	safe_pipe(int fildes[2])
-{
-	int	ret;
-
-	ret = pipe(fildes);
-	if (ret < 0)
-	{
-		ft_perror(NULL);
-		exit(1);
-	}
-	return (ret);
-}
-
-int	safe_close(int fd)
-{
-	int	ret;
-
-	if (fd <= 2)
-		return (0);
-	ret = close(fd);
-	if (ret < 0)
-		ft_perror(NULL);
-	return (ret);
-}
-
-int	safe_dup2(int fd1, int fd2)
-{
-	int	ret;
-
-	ret = dup2(fd1, fd2);
-	if (ret < 0)
-		ft_perror(NULL);
-	return (ret);
-}
-*/
-
-
+//---------------------chanha!
 struct s_redir_list
 {
 	t_redir_list	*next;
@@ -66,33 +13,48 @@ struct s_redir_list
 	char			*heredoc_eof;
 };
 
-struct s_heredoc_list
+// struct s_heredoc_list
+// {
+// 	t_heredoc_list	*next;
+// 	t_redir_list	*redir_list;
+// };
+//--------------------------
+
+struct s_redir_data
 {
-	t_heredoc_list	*next;
-	t_redir_list	*redir_list;
+	t_redir_type	redir_type;
+	int				flag;
+	int				fd_orig;
+	int				fd_new;
+	char			*filename;
+	char			*heredoc_eof;
 };
 
+struct s_parser
+{
+	t_reducer_fp	reduce_func[22];
+	t_list			parser_stack;
+	t_list			tree_stack;
+	t_list			heredoc_list;
+	t_cmd			*final_cmd;
+	t_parser_flag	flag;
+}; 
 
 int	gather_heredoc(t_parser *parser)
 {
-	int				fildes[2];
-	int				exit_status;
-	t_list			*heredoc_list;
+	int			heredoc_fd[2];
+	int			exit_status;
 
 	exit_status = 0;
-	while (parser->heredoc_list)
+	while (parser->heredoc_list.count)
 	{
-		safe_pipe(fildes);
-		exit_status = fork_receive_heredoc(parser, fildes);
+		safe_pipe(heredoc_fd);
+		exit_status = fork_receive_heredoc(parser, heredoc_fd); // 짜야 함
 		if (exit_status != 0)
 			break ;
 	}
-	while (parser->heredoc_list)
-	{
-		heredoc_list = parser->heredoc_list;
-		parser->heredoc_list = heredoc_list->next;
-		free(heredoc_list);
-	}
+	while (parser->heredoc_list.count)
+		list_remove_head_redir(&parser->heredoc_list);
 	return (exit_status);
 }
 

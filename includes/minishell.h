@@ -78,6 +78,7 @@ t_node			*list_pop_back(t_list *list);
 void			list_push_back(t_list *list, t_node *new);
 t_node			*list_new_node(void *data);
 void			list_init(t_list *list);
+void			ist_remove_head_redir(t_list *list);
 
 /* make_redir.c */
 t_list			*make_redir(char *word, t_token_type token);
@@ -117,6 +118,14 @@ t_return_value	reduce_rule_13(t_all_data *all_data);
 t_return_value	reduce_rule_14(t_all_data *all_data);
 t_return_value	reduce_rule_15(t_all_data *all_data);
 
+/* reduce_utils.c */
+t_word_data		*create_word_data(char *word);
+void			append_word_list(t_cmd *new_simple, t_element *element);
+void			append_redir_list(t_cmd *new_simple, t_element *element);
+t_cmd			*make_simple(void *simple_data, void *element_data);
+t_cmd			*make_connect(void *left, void *right, void *connector);
+t_cmd			*make_subshell(t_cmd *subshell);
+
 /* run_lexer.c */
 t_lexer_state	ft_lexer_state(char c);
 int				run_lexer(t_all_data *all_data);
@@ -124,13 +133,7 @@ int				run_lexer(t_all_data *all_data);
 /* run_parser.c */
 int	run_parser(t_all_data *all_data);
 
-/* utils_reduce.c */
-t_word_data		*create_word_data(char *word);
-void			append_word_list(t_cmd *new_simple, t_element *element);
-void			append_redir_list(t_cmd *new_simple, t_element *element);
-t_cmd			*make_simple(void *simple_data, void *element_data);
-t_cmd			*make_connect(void *left, void *right, void *connector);
-t_cmd			*make_subshell(t_cmd *subshell);
+/* utils_fd.c */
 
 /* utils_split.c */
 char			**ft_split(char const *s, char *set);
