@@ -5,6 +5,14 @@
 # include "typedef.h"
 # include "get_next_line.h"
 
+/* cd.c */
+int	ft_cd(t_cmd *cmd);
+
+/* cd_utils.c */
+int	check_one_word(t_cmd *cmd, const char target);
+int	bind_cwd_to(char *target, t_cmd *cmd);
+
+
 /* execute_command.c */
 // int
 void			execute_command(t_all_data *all_data, t_cmd *cmd, int fd_info[3]);
