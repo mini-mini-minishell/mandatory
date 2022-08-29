@@ -171,3 +171,31 @@ void	execute_nonbuiltin(t_cmd *cmd, t_list envp_list)
 			printf("cmd not found\n");
 	}
 }
+
+/* chanhpa
+int	execute_nonbuiltin(t_cmd *cmd)
+{
+	char	**cmd_vec;
+	char	**env_vec;
+	char	**paths;
+	int		return_value;
+
+	if (cmd->content.simple.words->word == NULL)
+		return (EXECUTION_SUCCESS);
+	cmd_vec = word_list_to_vector(cmd->content.simple.words);
+	env_vec = env_list_to_vector(cmd->env);
+	if (ft_strchr(cmd_vec[0], '/') == 0)
+	{
+		paths = parse_envp(env_vec);
+		if (paths)
+		{
+			return_value = try_execute_in_path(cmd_vec, paths, env_vec);
+			free_vec_multi(cmd_vec, env_vec, paths);
+			return (return_value);
+		}
+	}
+	return_value = try_direct_execve(cmd_vec, env_vec);
+	free_vec_multi(cmd_vec, env_vec, NULL);
+	return (return_value);
+}
+*/
