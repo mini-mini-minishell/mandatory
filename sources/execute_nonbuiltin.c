@@ -139,6 +139,21 @@ char	*check_access(char *cmd, t_list envp_list)
 	return (0);
 }
 
+// static int	try_direct_execve(char **cmd_vec, char **env_vec)
+// {
+// 	if (is_directory(cmd_vec[0]))
+// 	{
+// 		errno = EISDIR;
+// 		ft_perror(cmd_vec[0]);
+// 		return (EXECUTION_FAILURE);
+// 	}
+// 	execve(cmd_vec[0], cmd_vec, env_vec);
+// 	ft_perror(cmd_vec[0]);
+// 	if (errno == ENOENT)
+// 		return (EX_NOTFOUND);
+// 	return (EX_NO);
+// }
+
 void	execute_nonbuiltin(t_cmd *cmd, t_list envp_list)
 {
 	char	**argv;
@@ -150,5 +165,9 @@ void	execute_nonbuiltin(t_cmd *cmd, t_list envp_list)
 	envp = trans_envp_list_2_array(envp_list);
 	if (real_cmd == 0)
 		error_exit();
-	execve(real_cmd, argv, envp);
+	if (execve(real_cmd, argv, envp) == -1) //Execve는 실행되고 나서 exit. 이 반환값을 밖에서 받아서(fork 해야함) 170, 171줄 실행할 것.
+	{
+		if (execve(argv[0], argv, envp))
+			printf("cmd not found\n");
+	}
 }
