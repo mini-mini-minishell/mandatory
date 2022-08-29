@@ -49,28 +49,23 @@ void	parse_and_execute(t_all_data *all_data)
 	parser = &all_data->parser;
 	init_parser(all_data);
 	return_value = 0;
-	while (parser->flag == PARSER_ING)
+	while (parser->flag == PARSER_ING)  
 	{
 		data = all_data->parser.parser_stack.tail->data;
-		// //printf("=------------------=\n");
-		// print_token_data(all_data);
-		// //printf("=------------------=\n");
 		return_value = run_parser(all_data);
 		if (should_stop_parsing(&return_value))
-		{
 			break ;
+	}
+	if (parser->flag == PARSER_FINISH)
+	{
+		set_final_cmd(parser->final_cmd, fd_info, lexer); //파싱 결과 확인하기->final_cmd
+		return_value = gather_heredoc(&parser);    //8.24일에 여기서 부터 시작
+		if (return_value == 0)
+		{
+			return_value = execute_command(parser->final_cmd, fd_info);
+			all_data->envp_list = *parser->final_cmd->envp_list;
 		}
 	}
-	// if (parser.flag == PARSER_FINISH)
-	// {
-	// 	set_final_cmd(parser.final_cmd, fd_info, lexer); //파싱 결과 확인하기->final_cmd
-	// 	return_value = gather_heredoc(&parser);    //8.24일에 여기서 부터 시작
-	// 	if (return_value == 0)
-	// 	{
-	// 		return_value = execute_command(parser.final_cmd, fd_info);
-	// 		lexer->env_list = parser.final_cmd->env;
-	// 	}
-	// }
-	// free_parser(&parser);
-	// return (return_value);
+	//free_parser(&parser); 아직 안만들었어잉 파서 다 날려야한다.
+	return (return_value);
 }

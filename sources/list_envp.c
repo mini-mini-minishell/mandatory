@@ -24,7 +24,30 @@ void	print_envp(t_all_data *all_data)
 	// exit(0); // ---------
 }
 
-int	envp_search_node(t_list *list, char *key)
+// int	envp_search_node(t_list *list, char *key)
+// {
+// 	size_t		index;
+// 	t_node		*current;
+// 	size_t		key_len;
+// 	t_env_data	*temp_data;
+
+// 	if (!list->count)
+// 		return (-1);
+// 	key_len = ft_strlen(key);
+// 	current = list->head;
+// 	temp_data = (t_env_data *)(current->data);
+// 	index = 0;
+// 	while (index < list->count)
+// 	{
+// 		if (ft_strncmp(key, temp_data->key, key_len + 1))
+// 			return (index);
+// 		current = current->next;
+// 		++index;
+// 	}
+// 	return (-1);
+// }
+
+char	*envp_search_value(t_list *list, char *key)
 {
 	size_t		index;
 	t_node		*current;
@@ -35,17 +58,18 @@ int	envp_search_node(t_list *list, char *key)
 		return (-1);
 	key_len = ft_strlen(key);
 	current = list->head;
-	temp_data = (t_env_data *)(current->data);
 	index = 0;
 	while (index < list->count)
 	{
+		temp_data = (t_env_data *)(current->data);
 		if (ft_strncmp(key, temp_data->key, key_len + 1))
-			return (index);
+			return (temp_data->value);
 		current = current->next;
 		++index;
 	}
-	return (-1);
+	return (NULL);
 }
+
 
 static void	get_envp_list(t_list *envp_list, char **envp)
 {
