@@ -47,29 +47,29 @@ void	print_envp(t_all_data *all_data)
 // 	return (-1);
 // }
 
-char	*envp_search_value(t_list *list, char *key)
+
+char	*envp_search_value(t_list list, char *key)
 {
 	size_t		index;
 	t_node		*current;
 	size_t		key_len;
 	t_env_data	*temp_data;
 
-	if (!list->count)
-		return (-1);
+	if (!list.count)
+		return (NULL);
 	key_len = ft_strlen(key);
-	current = list->head;
+	current = list.head;
 	index = 0;
-	while (index < list->count)
+	while (index < list.count)
 	{
 		temp_data = (t_env_data *)(current->data);
-		if (ft_strncmp(key, temp_data->key, key_len + 1))
+		if (!ft_strncmp(key, temp_data->key, key_len + 1))
 			return (temp_data->value);
 		current = current->next;
 		++index;
 	}
 	return (NULL);
 }
-
 
 static void	get_envp_list(t_list *envp_list, char **envp)
 {

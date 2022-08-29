@@ -3,12 +3,15 @@
 // 전역변수 exit_status로 사용하자구
 
 # include "typedef.h"
+# include "get_next_line.h"
 
 /* execute_command.c */
-int				execute_command(t_cmd *cmd, int fd_info[3]);
+// int
+void			execute_command(t_all_data *all_data, t_cmd *cmd, int fd_info[3]);
 int				execute_command_internal(t_cmd *cmd, int fd_info[3]);
 
 /* execute_nonbuiltin.c */
+void			execute_nonbuiltin(t_cmd *cmd, t_list envp_list);
 
 /* execute_simple.c */
 
@@ -60,7 +63,7 @@ t_return_value	turn_others(t_all_data *all_data);
 
 /* list_envp.c */
 void			print_envp(t_all_data *all_data);
-int				envp_search_node(t_list *list, char *key);
+char			*envp_search_value(t_list list, char *key);
 void			envp_delete_node(t_list *list, size_t index);
 void			get_envp(t_all_data *all_data, char **envp);
 t_env_data		*create_envp_data(char *key, char *value);
@@ -78,11 +81,14 @@ t_redir_data	*create_redir_data(void);
 t_parser_state	parser_peek_state(t_list parser_stack);
 void			redir_push_back(t_parser *parser, t_list *new_redir_list);
 
-
 /* list_token.c */
 void			add_new_token(t_all_data *all_data);
 t_item_type		get_item_type(char c);
 t_token_data	*create_token_data(t_all_data *all_data);
+
+/* list_trans.c */
+char			**trans_envp_list_2_array(t_list envp_list);
+char			**trans_word_list_2_array(t_list word_list);
 
 /* list.c */ //node_number start from zero
 void			list_remove_head_token(t_list *list);

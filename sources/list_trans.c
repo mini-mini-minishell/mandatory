@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include "../includes/get_next_line.h"
 
 char	**trans_word_list_2_array(t_list word_list)
 {
@@ -9,6 +10,7 @@ char	**trans_word_list_2_array(t_list word_list)
 
 	current = word_list.head;
 	word_array = ft_malloc(sizeof(char *) * (word_list.count + 1));
+	word_array[word_list.count] = NULL;
 	i = 0;
 	while(current)
 	{
@@ -21,13 +23,6 @@ char	**trans_word_list_2_array(t_list word_list)
 	return (word_array);
 }
 
-
-// struct s_env_data
-// {
-// 	char	*key;
-// 	char	*value;
-// };
-
 char	**trans_envp_list_2_array(t_list envp_list)
 {
 	t_env_data	*data;
@@ -36,12 +31,16 @@ char	**trans_envp_list_2_array(t_list envp_list)
 	int			i;
 	
 	envp_array = ft_malloc(sizeof(char *) * (envp_list.count + 1));
+	envp_array[envp_list.count] = NULL;
 	i = 0;
+	current = envp_list.head;
 	while (current)
 	{
 		data = current->data;
-		current = envp_list.head;
-		envp_array[i] = data->value;
+		envp_array[i] = ft_strjoin(data->key, "=");
+		envp_array[i] = ft_strjoin_gnl(envp_array[i], data->value);
+		current = current->next;
 		++i;
 	}
+	return (envp_array);
 }

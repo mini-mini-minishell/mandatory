@@ -20,18 +20,19 @@
 // 	}
 // }
 
-int	execute_command(t_cmd *cmd, int fd_info[3])
+// int
+void	execute_command(t_all_data *all_data, t_cmd *cmd, int fd_info[3]) // all_data 받아와!!!
 {
 	int			return_value;
-	//int	wait_return;
-	t_all_data 	all_data;
+	//int		wait_return;
 
-	execute_nonbuiltin(cmd, all_data.envp_list);
+	execute_nonbuiltin(cmd, all_data->envp_list);
+	//return_value = execute_nonbuiltin(cmd, all_data.envp_list);
 	// return_value = execute_command_internal(cmd, fd_info);
 	// wait_return = ft_waitchild(cmd); 실행을 다 만든 다음에 진행할 예정
 	// if (wait_return >= 0)
 	// 	return_value = wait_return;
 	// if (cmd->flag & CMD_FLAG_IS_FORKED)
 	// 	exit(return_value);
-	return (return_value);
+	//return (return_value);
 }

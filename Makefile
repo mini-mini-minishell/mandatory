@@ -13,7 +13,10 @@ RL_INCLUDE	=	-I/usr/local/opt/readline/include
 RM			=	rm -f
 SRC_DIR 	= 	./sources/
 
-FILES 		=	exit.c \
+FILES 		=	execute_command.c\
+				execute_nonbuiltin.c\
+				execute_simple.c\
+				exit.c \
 				get_next_line_utils.c \
 				get_next_line.c \
 				goto_func1.c \
@@ -31,6 +34,7 @@ FILES 		=	exit.c \
 				list_stack.c \
 				list_stack2.c \
 				list_token.c \
+				list_trans.c \
 				list.c \
 				list2.c \
 				main.c \

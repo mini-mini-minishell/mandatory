@@ -58,14 +58,15 @@ void	parse_and_execute(t_all_data *all_data)
 	}
 	if (parser->flag == PARSER_FINISH)
 	{
-		set_final_cmd(parser->final_cmd, fd_info, lexer); //파싱 결과 확인하기->final_cmd
-		return_value = gather_heredoc(&parser);    //8.24일에 여기서 부터 시작
+		set_final_cmd(parser->final_cmd, fd_info, lexer);
+		return_value = gather_heredoc(parser);
 		if (return_value == 0)
 		{
-			return_value = execute_command(parser->final_cmd, fd_info);
-			all_data->envp_list = *parser->final_cmd->envp_list;
+			execute_command(all_data, parser->final_cmd, fd_info);
+			//return_value = execute_command(parser->final_cmd, fd_info);
+			// all_data->envp_list = *parser->final_cmd->envp_list;
 		}
 	}
 	//free_parser(&parser); 아직 안만들었어잉 파서 다 날려야한다.
-	return (return_value);
+	// return (return_value);
 }
