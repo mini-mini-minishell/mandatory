@@ -1,19 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdoo <hdoo@student.42seoul.kr>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 14:17:11 by hdoo              #+#    #+#             */
-/*   Updated: 2022/07/21 11:47:23 by chanhpar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
-#include "utils.h"
-#include "free_struct.h"
-#include "libft.h"
-#include "stdlib.h"
 
 //export [name[=value]]
 // Mark each name to be passed to child processes in the environment.
