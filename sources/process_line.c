@@ -41,7 +41,7 @@ int	process_line(t_all_data *all_data, char *input)
 		// return_value = parse_and_execute(all_data);
 		parse_and_execute(all_data);
 	}
-	print_token_data(all_data);
+	// print_token_data(all_data);
 	// free_token(&(all_data->token_list.head));
 	//함수 만들어야 함(우린 list를 프리해도 됨)
 	// return (return_value);

@@ -19,7 +19,7 @@ void	print_token_data(t_all_data *all_data)
 		current_node = current_node->prev;
 		++index;
 	}
-	exit(0); // ---------
+	// exit(0); // ---------
 }
 
 void	print_tree_stack(t_list tree_stack)
@@ -65,5 +65,5 @@ void	print_tree_stack(t_list tree_stack)
 		//printf("----SUBSHELL----\n");
 		//printf("Subshell Finish\n");
 	}
-	exit(0);
+	// exit(0);
 }

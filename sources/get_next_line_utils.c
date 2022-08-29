@@ -18,25 +18,24 @@ char	*ft_strdup_gnl(const char *s1)
 	return (str);
 }
 
-size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t detsize)
 {
 	size_t	i;
-	size_t	j;
+	size_t	len;
 
 	i = 0;
-	while (src[i])
-		i++;
-	if (dstsize == 0)
-		return (i);
-	j = 0;
-	while (j < dstsize - 1 && j < i)
+	len = ft_strlen_gnl(src);
+	if (dst == src || detsize == 0)
+		return (len);
+	while (i + 1 < detsize && src[i] != 0)
 	{
-		dst[j] = src[j];
-		j++;
+		dst[i] = src[i];
+		i++;
 	}
-	dst[j] = 0;
-	return (i);
+	dst[i] = '\0';
+	return (len);
 }
+
 
 int	ft_no_newline_gnl(char *s)
 {

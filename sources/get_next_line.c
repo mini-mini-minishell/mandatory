@@ -33,7 +33,7 @@ char	*ft_cut_temp_gnl(char *temp)
 	i = 0;
 	while ((temp[i] != '\n') && temp[i])
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 1));
+	line = (char *)calloc((i + 2), sizeof(char));
 	if (!line)
 		return (NULL);
 	ft_strlcpy_gnl(line, temp, i + 2);

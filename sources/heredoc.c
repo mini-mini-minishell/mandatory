@@ -61,7 +61,7 @@ static void	write_heredoc_to_pipe(t_list *redir_list, int fd)
 	if (!eof)
 		eof = ft_strdup("");
 	prompt = ft_strdup("> ");
-	while (1)
+	while (1) 
 	{
 		input_line = readline(prompt);
 		if (!input_line)
@@ -76,7 +76,6 @@ static void	write_heredoc_to_pipe(t_list *redir_list, int fd)
 	free(input_line);
 	free(prompt);
 	free(eof);
-	exit(0);
 }
 
 static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
@@ -105,6 +104,7 @@ int	get_exit_status(int status)
 		return (WEXITSTATUS(status));
 	if (WIFSIGNALED(status))
 		return (128 + WTERMSIG(status));
+	//127이 나오는 경우도 있나? -->command not found의 경우 그랬던거 같다
 	return (1);
 }
 
@@ -140,24 +140,15 @@ int	gather_heredoc(t_parser *parser)
 	int			exit_status;
 
 	exit_status = 0;
-	printf("-----------------------0\n");
-	printf("count : %d\n", parser->heredoc_list.count);
+	//printf("count : %zu\n", parser->heredoc_list.count);
 	while (parser->heredoc_list.count)
 	{
 		ft_pipe(heredoc_fd);
-	printf("-----------------------1\n");
-		exit_status = fork_receive_heredoc(parser, heredoc_fd); // 짜야 함
-	printf("-----------------------2\n");
+		exit_status = fork_receive_heredoc(parser, heredoc_fd);
 		if (exit_status != 0)
 			break ;
 	}
-	printf("-----------------------3\n");
 	while (parser->heredoc_list.count)
-	{
-	printf("-----------------------5\n");
 		list_remove_head_redir(&parser->heredoc_list);
-	printf("-----------------------6\n");
-	}
-	printf("-----------------------7\n");
 	return (exit_status);
 }

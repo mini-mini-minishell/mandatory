@@ -102,7 +102,7 @@ t_return_value	item_meet_item(t_all_data *all_data)
 		if (token_data->token_type == TT_ERR)
 		{
 			//printf("item_meet_item\n");
-			exit(0);
+			// exit(0);
 			return (RV_ERROR);
 		}
 	}

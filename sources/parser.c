@@ -61,9 +61,6 @@ void	parse_and_execute(t_all_data *all_data)
 			break ;
 		}
 	}
-	print_token_data(all_data);
-	printf("----------------------print_tree_stack");
-	print_tree_stack(all_data->parser.tree_stack);
 	// if (parser.flag == PARSER_FINISH)
 	// {
 	// 	set_final_cmd(parser.final_cmd, fd_info, lexer); //파싱 결과 확인하기->final_cmd
