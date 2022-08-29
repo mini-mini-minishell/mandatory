@@ -18,6 +18,12 @@ void			execute_nonbuiltin(t_cmd *cmd, t_list envp_list);
 /* exit.c */
 void			exit_with_message(char *s);
 
+/* ft_exit.c */
+int	ft_exit(t_cmd *cmd);
+
+/* ft_utils.c */
+int	ft_atoi(const char *str);
+
 /* goto_func.c */
 t_parser_state	goto_from_state_0(t_token_type type);
 t_parser_state	goto_from_state_1(t_token_type type);
