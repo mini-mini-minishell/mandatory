@@ -1,4 +1,4 @@
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	delete_target_env_node(t_list *envp_list, char *key)
 {
