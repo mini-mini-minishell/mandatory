@@ -106,6 +106,7 @@ t_node			*list_pop_back(t_list *list);
 void			list_push_back(t_list *list, t_node *new);
 t_node			*list_new_node(void *data);
 void			list_init(t_list *list);
+void			list_remove_head_word(t_list *list);
 void			list_remove_head_redir(t_list *list);
 
 /* make_redir.c */

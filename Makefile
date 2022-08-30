@@ -10,8 +10,9 @@ RL_INCLUDE	=	-I/usr/local/opt/readline/include
 # RL_LINK		=	-L/opt/homebrew/opt/readline/lib -lreadline
 # RL_INCLUDE	=	-I/opt/homebrew/opt/readline/include
 
-RM			=	rm -f
-SRC_DIR 	= 	./sources/
+RM					=	rm -f
+BUILTIN_FILE_DIR	=	./built_in/
+SRC_DIR 			= 	./sources/
 
 FILES 		=	execute_command.c\
 				execute_nonbuiltin.c\
@@ -56,7 +57,22 @@ FILES 		=	execute_command.c\
 				utils_split.c \
 				utils_string.c
 
-SRCS		=	$(addprefix $(SRC_DIR), $(FILES))
+BUILTIN_FILE		=	ft_cd_utils.c\
+						ft_cd_utils2.c\
+						ft_cd.c\
+						ft_echo.c \
+						ft_env.c \
+						ft_exit.c \
+						ft_export_envp.c \
+						ft_export_utils.c \
+						ft_export.c \
+						ft_unset.c \
+						ft_pwd.c \
+						ft_unset.c
+
+SRCS		=	$(addprefix $(SRC_DIR), $(FILES)) \
+				$(addprefix $(BUILTIN_FILE_DIR), $(BUILTIN_FILE))
+
 OBJS		=	$(SRCS:%.c=%.o)
 
 .PHONY: all clean fclean re

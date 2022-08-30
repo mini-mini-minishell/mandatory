@@ -1,25 +1,5 @@
 #include "../includes/minishell.h"
 
-// int	execute_command_internal(t_cmd *cmd, int fd_info[3])
-// {
-// 	if (cmd->type == CMD_SIMPLE)
-// 	{
-// 		return (execute_simple(cmd, fd_info));
-// 	}
-	// else if (cmd->type == CMD_CONNECT)
-	// {
-	// 	return (execute_connect(cmd, fd_info));
-	// }
-	// else if (cmd->type == CMD_SUBSHELL)
-	// {
-	// 	return (execute_subshell(cmd, fd_info));
-	// }
-// 	else
-// 	{
-// 		return (EXECUTION_FAILURE);
-// 	}
-// }
-// int
 static int	find_builtin_func(const char *word)
 {
 	char	*shell_builtins[7] = \
@@ -29,17 +9,19 @@ static int	find_builtin_func(const char *word)
 	int			i;
 
 	i = 0;
-	
-	while (i < 7 && ft_strncmp(word, shell_builtins[i], ) != 0)
+	while (i < 7)
 	{
-		i++;
+		if (!ft_strncmp(word, shell_builtins[i], ft_strlen(shell_builtins[i]) + 1))
+			break ;
+		++i;
 	}
 	return (i);
 }
 
 t_built_in_fp	is_builtin(char *word)
 {
-	const t_built_in_fp	builtin_func_table[7] = \ //const는 나중에 없애도 볼것 
+	//const는 나중에 없애도 볼것 
+	const t_built_in_fp	builtin_func_table[7] = \ 
 	{
 		ft_echo, ft_exit, ft_unset, ft_export, ft_cd, ft_pwd, ft_env
 	};
@@ -53,33 +35,32 @@ t_built_in_fp	is_builtin(char *word)
 	return (builtin_func_table[idx]);
 }
 
-static int	execute_simple_internal(t_builtin_funcs builtin, t_cmd *cmd)
+static int	execute_simple_internal(t_built_in_fp builtin, t_cmd *cmd)
 {
-	t_word_list		*words;
-
 	if (builtin)
 	{
-		words = cmd->content.simple.words;
-		cmd->content.simple.words = cmd->content.simple.words->next;
-		free(words->word);
-		free(words);
+		list_remove_head_word(cmd->content.simple.words);
 		return (builtin(cmd));
 	}
 	else
-		return (execute_nonbuiltin(cmd));
+		execute_nonbuiltin(cmd, *cmd->envp_list); // 얘 아직 void
+	return (0);
 }
 
 void	execute_command(t_all_data *all_data, t_cmd *cmd, int fd_info[3]) // all_data 받아와!!!
 {
-	int			return_value;
+	int				return_value;
+	t_word_data		*data;
 	t_built_in_fp	built_in_fp;
 	//int		wait_return;
 	
+	data = cmd->content.simple.words->head->data;
 	if (is_builtin)
-		built_in_fp = find(index);
+		built_in_fp = is_builtin(data->word);
 	else
 		built_in_fp = NULL;
-	execute_simple_internal(t_builtin_funcs builtin, t_cmd *cmd); //이름 바꾸는 것도 괜찮을 듯. 이름이 어려버!
+	execute_simple_internal(built_in_fp, cmd);
+	//이름 바꾸는 것도 괜찮을 듯. 이름이 어려버!
 		//built_in();
 	/* execute_nonbuiltin(cmd, all_data->envp_list);*/
 
