@@ -16,6 +16,8 @@ int	ft_unset(t_cmd *cmd)
 		else
 		{
 			target = envp_search_node_by_key(cmd->envp_list, data->word);
+			if (!target)
+				return (EXECUTION_SUCCESS);
 			temp = target->data;
 			envp_delete_node_by_target(cmd->envp_list, &target);	
 		}

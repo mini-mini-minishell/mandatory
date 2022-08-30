@@ -1,15 +1,15 @@
 #include "../includes/minishell.h"
 
 static char	*extract_key(char *target)
-{ // 말그대로 키 추출하는 함수
+{
 	char	*result;
 	int		len;
 
-	if (ft_strchr(target, '=') == NULL) // '='을 찾지 못할 때.
-		len = ft_strlen(target) + 1; // target의 길이만큼.
-	else // '='이 어디인지 찾았을 때.
-		len = ft_strchr(target, '=') - target + 1; // '='앞에 있는 길이만큼.
-	result = ft_malloc(sizeof(char) * (len));
+	if (ft_strchr(target, '=') == NULL)
+		len = ft_strlen(target);
+	else
+		len = ft_strchr(target, '=') - target;
+	result = ft_malloc(sizeof(char) * (len + 1));
 	ft_strlcpy(result, target, len + 1);
 	return (result);
 }
@@ -17,7 +17,7 @@ static char	*extract_key(char *target)
 static t_node	*find_envp_node_by_key(t_cmd *cmd, t_node *current)
 {
 	char		*key;
-	t_node		*target; // env_node
+	t_node		*target;
 	t_word_data	*data;
 
 	data = current->data;
@@ -39,7 +39,7 @@ static int	set_env(t_cmd *cmd, t_node *current)
 		if (!target) // target이없다면 새노드 생성하여 붙이기
 			list_push_back(cmd->envp_list, cut_and_make_envp_node(data->word));
 		else if (ft_strchr(data->word, '='))
-		{ // target이 있다면 타겟 바꾸기, '='이 없이 export되면 무시함.
+		{
 			envp_delete_node_by_target(cmd->envp_list, &target);
 			list_push_back(cmd->envp_list, cut_and_make_envp_node(data->word));
 		}
@@ -77,7 +77,7 @@ int	ft_export(t_cmd *cmd)
 	return_value = EXECUTION_SUCCESS;
 	if (cmd)
 	{
-		current = cmd->content.simple.words->tail;
+		current = cmd->content.simple.words->head;
 		if (current)
 			return_value = set_envs(cmd, current);
 		// else
