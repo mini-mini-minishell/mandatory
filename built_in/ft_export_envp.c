@@ -8,14 +8,14 @@ t_node	*envp_search_node_by_key(t_list *list, char *key)
 	t_env_data	*temp_data;
 
 	if (!list->count)
-		return (NULL); //-1이었음
+		return (NULL);
 	key_len = ft_strlen(key);
 	current = list->head;
 	index = 0;
 	while (index < list->count)
 	{
 		temp_data = (t_env_data *)(current->data);
-		if (ft_strncmp(key, temp_data->key, key_len + 1))
+		if (!ft_strncmp(key, temp_data->key, key_len + 1))
 			return (current);
 		current = current->next;
 		++index;

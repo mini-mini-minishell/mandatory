@@ -25,7 +25,10 @@ int	ft_atoi(const char *str)
 		index++;
 	}
 	if (result > 9223372036854775807 && plma == 1)
+	{
+		ft_putstr_fd("exit: numeric argument required\n", STDERR_FILENO);
 		return (-1);
+	}
 	else if (result > 9223372036854775808ULL && plma == -1)
 		return (0);
 	return ((int)result * plma);
@@ -40,18 +43,21 @@ static int	are_digit(char *target)
 	{
 		if (ft_isdigit(target[i]) == 0)
 		{
-			return (0);
+			return (EXECUTION_SUCCESS);
 		}
 		i++;
 	}
-	return (1);
+	return (EXECUTION_FAILURE);
 }
 
-static int	parameter_handling(t_word_data *words, int *exit_status)
+static int	parameter_handling(t_node *word_node, int *exit_status)
 {
-	if (are_digit(words->word))
+	t_word_data	*data;
+
+	data = word_node->data;
+	if (are_digit(data->word))
 	{
-		*exit_status = ft_atoi(words->word);
+		*exit_status = ft_atoi(data->word);
 		if (*exit_status > 256)
 		{
 			*exit_status %= 256;
@@ -59,38 +65,38 @@ static int	parameter_handling(t_word_data *words, int *exit_status)
 	}
 	else
 	{
-		ft_putstr_fd("exit: numeric argument required\n", 2);
-		exit(2);
+		ft_putstr_fd("exit: numeric argument required\n", STDERR_FILENO);
+		exit(255);
 	}
-	if (words->word != NULL)
+	if (word_node->next != NULL)
 	{
-		ft_putstr_fd("exit: too many arguments\n", 2);
-		return (1);
+		ft_putstr_fd("exit: too many arguments\n", STDERR_FILENO);
+		return (EXECUTION_FAILURE);
 	}
-	return (0);
+	return (EXECUTION_SUCCESS);
 }
 
 int	ft_exit(t_cmd *cmd)
 {
-	t_word_data	*words;
+	t_node		*node;
 	int exit_status;
 
 	if(cmd)
 	{
-		words = cmd->content.simple.words->head->data;
-		if (words)
+		node = cmd->content.simple.words->head;
+		if (node)
 		{
-			if (parameter_handling(words, &exit_status) == EXECUTION_SUCCESS)
+			if (parameter_handling(node, &exit_status) == EXECUTION_SUCCESS)
 			{
-				ft_putstr_fd("exit\n", 2);
+				printf("exit");
 				exit(exit_status);
 			}
 		}
 		else
 		{
-			ft_putstr_fd("exit\n", 2);
+			printf("exit");
 			exit(g_exit_status);
 		}
 	}
-	return (1);
+	return (EXECUTION_FAILURE);
 }

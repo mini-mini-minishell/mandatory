@@ -1,15 +1,14 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
 
-static void	*check_opt(t_list *list, int *display_return)
+static int	check_opt(t_list *list)
 {
 	t_word_data	*word_data;
-	t_node		*current;
 
-	current = list->head;
-	word_data = current->data;
+	word_data = list->head->data;
 	if (!ft_strncmp(word_data->word, "-n", 3))
-		*display_return = 0;
+		return (0);
+	return (1);
 }
 
 int	ft_echo(t_cmd *cmd)
@@ -18,15 +17,13 @@ int	ft_echo(t_cmd *cmd)
 	t_list		*word_list;
 	t_node		*current;
 	t_word_data	*word_data;
-	
 
-	display_return = 1;
 	word_list = cmd->content.simple.words;
-	check_opt(word_list, &display_return);
+	display_return = check_opt(word_list);
 	current = word_list->head;
 	if (!display_return)
 		current = current->next;
-	while (word_list)
+	while (current)
 	{
 		word_data = current->data;
 		if (word_data)

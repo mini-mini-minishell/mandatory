@@ -21,7 +21,7 @@ void	print_envp(t_list envp_list)
 	}
 	// exit(0); // ---------
 }
-
+ 
 // int	envp_search_node(t_list *list, char *key)
 // {
 // 	size_t		index;
