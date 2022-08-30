@@ -175,6 +175,7 @@ typedef struct s_lexer			t_lexer;
 typedef struct s_parser			t_parser;
 typedef t_return_value			(*t_lexer_fp)(t_all_data *all_data);
 typedef t_return_value			(*t_reducer_fp)(t_all_data *all_data);
+typedef int						(*t_built_in_fp)(t_cmd *);
 typedef struct s_cmd			t_cmd;
 typedef struct s_element		t_element;
 typedef int						t_pid;
