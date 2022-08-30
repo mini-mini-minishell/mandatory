@@ -9,9 +9,9 @@
 /* built_in */
 
 /* ft_cd_utils.c */
-int				which_directory_word(t_cmd *cmd, char *target);
-int				bind_variable(t_cmd *cmd, char *pwd, char *key);
-int				bind_cwd_to(char *target, t_cmd *cmd);
+int				check_one_word(t_cmd *cmd, const char target);
+int				do_replace(t_cmd *cmd, char *pwd, char *key);
+int				replace_pwd(char *target, t_cmd *cmd);
 
 /* ft_cd_utils2.c */
 t_node			*where_in_envp_list(t_list *envp_list, const char *variable);

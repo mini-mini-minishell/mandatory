@@ -37,6 +37,7 @@
 		"get_next_line.h": "c",
 		"wait.h": "c",
 		"__functional_03": "c",
-		"cstring": "c"
+		"cstring": "c",
+		"__node_handle": "c"
 	}
 }
