@@ -19,7 +19,7 @@ t_return_value	reduce_rule_10(t_all_data *all_data)
 	data = parser->tree_stack.tail->prev->data;
 	l = data->content;
 	//printf("1 여기니 \n");
-	content.cmd = make_subshell(l.cmd);
+	content.cmd = make_subshell(all_data, l.cmd);
 	//printf("2 여기니 \n");
 	stack_pop_back(&parser->tree_stack, 3);
 	tree_push_back(&parser->tree_stack, content);

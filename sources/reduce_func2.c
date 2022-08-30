@@ -83,7 +83,7 @@ t_return_value	reduce_rule_8(t_all_data *all_data)
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_SIMPLE);
 	tree = &parser->tree_stack;
-	content.cmd = make_simple(tree->tail->prev->data, tree->tail->data);
+	content.cmd = make_simple(all_data, tree->tail->prev->data, tree->tail->data);
 	stack_pop_back(&parser->tree_stack, 2);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
@@ -105,7 +105,7 @@ t_return_value	reduce_rule_9(t_all_data *all_data)
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_SIMPLE);
 	tree = &parser->tree_stack;
-	content.cmd = make_simple(NULL, tree->tail->data);
+	content.cmd = make_simple(all_data, NULL, tree->tail->data);
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;

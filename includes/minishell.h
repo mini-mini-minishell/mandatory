@@ -148,9 +148,9 @@ t_return_value	reduce_rule_15(t_all_data *all_data);
 t_word_data		*create_word_data(char *word);
 void			append_word_list(t_cmd *new_simple, t_element *element);
 void			append_redir_list(t_cmd *new_simple, t_element *element);
-t_cmd			*make_simple(void *simple_data, void *element_data);
-t_cmd			*make_connect(void *left, void *right, void *connector);
-t_cmd			*make_subshell(t_cmd *subshell);
+t_cmd			*make_simple(t_all_data *all_data, void *simple_data, void *element_data);
+t_cmd			*make_connect(t_all_data *all_data, void *left, void *right, void *connector);
+t_cmd			*make_subshell(t_all_data *all_data, t_cmd *subshell);
 
 /* run_lexer.c */
 t_lexer_state	ft_lexer_state(char c);

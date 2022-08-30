@@ -18,11 +18,10 @@ int	bind_variable(t_cmd *cmd, char *pwd, char *key)
 {
 	t_node	*envp_node;
 
-	envp_node = where_in_envp_list(cmd->envp_list, key);
+	envp_node = where_in_envp_list(cmd->envp_list, key); //호그님 만드신 함수
 	if (envp_node)
-		envp_delete_node(cmd->envp_list, ???index???);
-		//index,,,,,, [envp_search_value] 함수 응용?
-		//아니면 OLDPWD key는 그대로 두고 value 값만 바꾸기?
+		envp_delete_node(cmd->envp_list, ???index???); //호그님 만드신 함수로 치환??
+		//unset과 함께..!
 	list_push_back(cmd->envp_list, list_new_node(create_envp_data(key, pwd)));
 	envp_node = where_in_envp_list(cmd->envp_list, key);
 	if (envp_node)
@@ -47,7 +46,6 @@ static int	bind_pwd_free_pwdvar(t_cmd *cmd, char *pwd_variable, char *target)
 	}
 	else if (!pwd_variable)
 		return_value = 2;
-		//?????
 	free(pwd_variable);
 	return (return_value);
 }
@@ -65,12 +63,13 @@ static char	*get_cwd_fallback_envlist(char *buf, size_t size, t_cmd *cmd)
 	return (cwd_name);
 }
 
-//함수 이름 고민,,
+//함수 이름 고민,,쀼쀼
 int	bind_cwd_to(char *target, t_cmd *cmd)
 {
 	int		return_value;
 	char	*pwd_variable;
 
+	//export에서 존재하는 환경변수 치환과 같은 함수로 가도 좋을 듯!
 	pwd_variable = get_cwd_fallback_envlist(NULL, 0, cmd);
 	return_value = bind_pwd_free_pwdvar(cmd, pwd_variable, target);
 	return (return_value);

@@ -72,7 +72,7 @@ static int	set_envs(t_cmd *cmd, t_node *current)
 int	ft_export(t_cmd *cmd)
 {
 	t_node		*current;
-	t_ex_state	*return_value;
+	t_ex_state	return_value;
 
 	return_value = EXECUTION_SUCCESS;
 	if (cmd)
@@ -84,3 +84,4 @@ int	ft_export(t_cmd *cmd)
 			print_env_sort_by(cmd->env, 1);
 	}
 	return (return_value);
+}

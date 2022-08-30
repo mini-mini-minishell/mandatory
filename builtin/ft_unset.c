@@ -1,4 +1,4 @@
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
 void	delete_target_env_node(t_list *envp_list, char *key)
 {
@@ -8,7 +8,7 @@ void	delete_target_env_node(t_list *envp_list, char *key)
 	t_env_data	*temp_data;
 
 	if (!envp_list->count)
-		return (NULL);
+		return ;
 	key_len = ft_strlen(key);
 	current = envp_list->head;
 	index = 0;

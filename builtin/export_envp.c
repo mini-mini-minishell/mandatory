@@ -1,3 +1,5 @@
+#include "../includes/minishell.h"
+
 t_node	*envp_search_node_by_key(t_list *list, char *key)
 {
 	size_t		index;

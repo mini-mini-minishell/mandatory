@@ -47,7 +47,7 @@ void	append_redir_list(t_cmd *new_simple, t_element *element)
 
 #include <stdio.h>
 
-t_cmd	*make_simple(void *simple_data, void *element_data)
+t_cmd	*make_simple(t_all_data *all_data, void *simple_data, void *element_data)
 {
 	t_cmd			*new_simple;
 	t_tree_data		*simple;
@@ -62,7 +62,7 @@ t_cmd	*make_simple(void *simple_data, void *element_data)
 		new_simple->flag = CMD_FLAG_DEFAULT;
 		new_simple->content.simple.words = NULL;
 		new_simple->redir_list = NULL;
-		new_simple->envp_list = NULL;
+		new_simple->envp_list = &all_data->envp_list;
 		new_simple->exit_status = 0;
 		new_simple->pid_last_child = -1;
 	}
@@ -75,7 +75,7 @@ t_cmd	*make_simple(void *simple_data, void *element_data)
 	return (new_simple);
 }
 
-t_cmd	*make_connect(void *left, void *right, void *connector)
+t_cmd	*make_connect(t_all_data *all_data, void *left, void *right, void *connector)
 {
 	t_cmd		*new_cmd;
 	t_tree_data	*l;
@@ -92,12 +92,12 @@ t_cmd	*make_connect(void *left, void *right, void *connector)
 	new_cmd->content.connect.right = r->content.cmd;
 	new_cmd->content.connect.token = c->content.token;
 	new_cmd->redir_list = NULL;
-	new_cmd->envp_list = NULL;
+	new_cmd->envp_list = &all_data->envp_list;
 	new_cmd->pid_last_child = -1;
 	return (new_cmd);
 }
 
-t_cmd	*make_subshell(t_cmd *subshell)
+t_cmd	*make_subshell(t_all_data *all_data, t_cmd *subshell)
 {
 	t_cmd	*new_subshell;
 
@@ -106,7 +106,7 @@ t_cmd	*make_subshell(t_cmd *subshell)
 	new_subshell->flag = CMD_FLAG_DEFAULT;
 	new_subshell->content.subshell.cmd = subshell;
 	new_subshell->redir_list = NULL;
-	new_subshell->envp_list = NULL;
+	new_subshell->envp_list = &all_data->envp_list;
 	new_subshell->pid_last_child = -1;
 	return (new_subshell);
 }
