@@ -11,7 +11,7 @@ t_env_data	*create_envp_data(char *key, char *value)
 	return (new);
 }
 
-static void	envp_free_node(t_node **node)
+void	envp_free_node(t_node **node)
 {
 	t_env_data	*temp_data;
 

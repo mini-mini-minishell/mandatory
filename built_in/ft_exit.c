@@ -4,11 +4,6 @@
 
 extern int	g_exit_status;
 
-static int	ft_isdigit(int c)
-{
-	return (c >= 48 && c <= 57);
-}
-
 int	ft_atoi(const char *str)
 {
 	unsigned long long	result;
@@ -82,7 +77,7 @@ int	ft_exit(t_cmd *cmd)
 
 	if(cmd)
 	{
-		words = cmd->content.simple.words;
+		words = cmd->content.simple.words->head->data;
 		if (words)
 		{
 			if (parameter_handling(words, &exit_status) == EXECUTION_SUCCESS)

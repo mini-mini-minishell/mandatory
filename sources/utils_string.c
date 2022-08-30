@@ -136,3 +136,54 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(new_str, s2, rlen + 1);
 	return (new_str);
 }
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (c == 0)
+		return ((char *)&s[i]);
+	return (0);
+}
+
+static	int	ft_isupper(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
+
+static	int	ft_islower(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
+
+int	ft_isalpha(int c)
+{
+	if (ft_isupper(c) || ft_islower(c))
+		return (1);
+	return (0);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
+}

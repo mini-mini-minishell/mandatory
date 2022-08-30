@@ -14,48 +14,48 @@ RM					=	rm -f
 BUILTIN_FILE_DIR	=	./built_in/
 SRC_DIR 			= 	./sources/
 
-FILES 		=	execute_command.c\
-				execute_nonbuiltin.c\
-				execute_simple.c\
-				exit.c \
-				get_next_line_utils.c \
-				get_next_line.c \
-				goto_func1.c \
-				goto_func2.c \
-				goto_func3.c \
-				goto_state.c \
-				heredoc.c \
-				init_all.c \
-				lex_func1.c \
-				lex_func2.c \
-				lex_func3.c \
-				lex_func4.c \
-				list_envp.c \
-				list_envp2.c \
-				list_stack.c \
-				list_stack2.c \
-				list_token.c \
-				list_trans.c \
-				list.c \
-				list2.c \
-				main.c \
-				make_redir.c \
-				parser.c \
-				parsing.c \
-				process_line.c \
-				readline.c \
-				reduce_func1.c \
-				reduce_func2.c \
-				reduce_func3.c \
-				reduce_func4.c \
-				reduce_utils.c \
-				run_lexer.c \
-				run_parser.c \
-				signal_hadler.c\
-				test.c \
-				utils_fd.c \
-				utils_split.c \
-				utils_string.c
+FILES 		=			execute_command.c\
+						execute_nonbuiltin.c\
+						execute_simple.c\
+						exit.c \
+						get_next_line_utils.c \
+						get_next_line.c \
+						goto_func1.c \
+						goto_func2.c \
+						goto_func3.c \
+						goto_state.c \
+						heredoc.c \
+						init_all.c \
+						lex_func1.c \
+						lex_func2.c \
+						lex_func3.c \
+						lex_func4.c \
+						list_envp.c \
+						list_envp2.c \
+						list_stack.c \
+						list_stack2.c \
+						list_token.c \
+						list_trans.c \
+						list.c \
+						list2.c \
+						main.c \
+						make_redir.c \
+						parser.c \
+						parsing.c \
+						process_line.c \
+						readline.c \
+						reduce_func1.c \
+						reduce_func2.c \
+						reduce_func3.c \
+						reduce_func4.c \
+						reduce_utils.c \
+						run_lexer.c \
+						run_parser.c \
+						signal_hadler.c\
+						test.c \
+						utils_fd.c \
+						utils_split.c \
+						utils_string.c
 
 BUILTIN_FILE		=	ft_cd_utils.c\
 						ft_cd_utils2.c\

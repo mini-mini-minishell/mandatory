@@ -16,9 +16,9 @@ void	prompt_loop(t_all_data *all_data)
 		if (line)
 		{
 			process_line(all_data, line);
-			ft_putstr_fd("output> ", 1);
-			ft_putstr_fd(line, 1);
-			ft_putstr_fd("\n", 1);
+			// ft_putstr_fd("output> ", 1);
+			// ft_putstr_fd(line, 1);
+			// ft_putstr_fd("\n", 1);
 			free(line);
 			line = NULL;
 		}

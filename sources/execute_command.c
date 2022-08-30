@@ -21,7 +21,7 @@ static int	find_builtin_func(const char *word)
 t_built_in_fp	is_builtin(char *word)
 {
 	//const는 나중에 없애도 볼것 
-	const t_built_in_fp	builtin_func_table[7] = \ 
+	const t_built_in_fp	builtin_func_table[7] = \
 	{
 		ft_echo, ft_exit, ft_unset, ft_export, ft_cd, ft_pwd, ft_env
 	};
@@ -55,10 +55,8 @@ void	execute_command(t_all_data *all_data, t_cmd *cmd, int fd_info[3]) // all_da
 	//int		wait_return;
 	
 	data = cmd->content.simple.words->head->data;
-	if (is_builtin)
-		built_in_fp = is_builtin(data->word);
-	else
-		built_in_fp = NULL;
+	built_in_fp = NULL;
+	built_in_fp = is_builtin(data->word);
 	execute_simple_internal(built_in_fp, cmd);
 	//이름 바꾸는 것도 괜찮을 듯. 이름이 어려버!
 		//built_in();

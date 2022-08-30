@@ -18,15 +18,15 @@ int	bind_variable(t_cmd *cmd, char *pwd, char *key)
 {
 	t_node	*envp_node;
 
-	envp_node = where_in_envp_list(cmd->envp_list, key); //호그님 만드신 함수
+	// envp_node = where_in_envp_list(cmd->envp_list, key); //호그님 만드신 함수
 	if (envp_node)
-		envp_delete_node(cmd->envp_list, ???index???); //호그님 만드신 함수로 치환??
+		// envp_delete_node(cmd->envp_list, ???index???); //호그님 만드신 함수로 치환??
 		//unset과 함께..!
 	list_push_back(cmd->envp_list, list_new_node(create_envp_data(key, pwd)));
-	envp_node = where_in_envp_list(cmd->envp_list, key);
+	// envp_node = where_in_envp_list(cmd->envp_list, key);
 	if (envp_node)
 	{
-		ft_perror("cd: set variable failed");
+		// ft_perror("cd: set variable failed");
 		//error 처리?
 		return (0);
 	}

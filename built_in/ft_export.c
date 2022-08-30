@@ -48,7 +48,7 @@ static int	set_env(t_cmd *cmd, t_node *current)
 	else
 	{
 		ft_putstr_fd("export: `", STDERR_FILENO);
-		ft_putstr_fd(current->word, STDERR_FILENO);
+		ft_putstr_fd(current->data, STDERR_FILENO);
 		ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 		return (EXECUTION_FAILURE);
 	}
@@ -80,8 +80,8 @@ int	ft_export(t_cmd *cmd)
 		current = cmd->content.simple.words->tail;
 		if (current)
 			return_value = set_envs(cmd, current);
-		else
-			print_env_sort_by(cmd->env, 1);
+		// else
+			// print_env_sort_by(cmd->env, 1);
 	}
 	return (return_value);
 }

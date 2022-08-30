@@ -1,7 +1,7 @@
 #include "../includes/minishell.h"
 
-int ft_env(t_all_data *all_data)
+int ft_env(t_cmd *cmd)
 {
-	print_envp(all_data);
+	print_envp(*cmd->envp_list);
 	return (EXECUTION_SUCCESS);
 }

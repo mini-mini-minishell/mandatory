@@ -5,20 +5,56 @@
 # include "typedef.h"
 # include "get_next_line.h"
 
-/* cd_utils.c */
-int	check_one_word(t_cmd *cmd, const char target);
-int	bind_cwd_to(char *target, t_cmd *cmd);
+/*---------------------------------*/
+/* built_in */
 
-/* cd.c */
-int	ft_cd(t_cmd *cmd);
+/* ft_cd_utils.c */
+int				which_directory_word(t_cmd *cmd, char *target);
+int				bind_variable(t_cmd *cmd, char *pwd, char *key);
+int				bind_cwd_to(char *target, t_cmd *cmd);
+
+/* ft_cd_utils2.c */
+t_node			*where_in_envp_list(t_list *envp_list, const char *variable);
+char			*find_envp_value(t_list *envp_list, const char *variable);
+
+/* ft_cd.c */
+int				ft_cd(t_cmd *cmd);
+
+/* ft_echo.c */
+int				ft_echo(t_cmd *cmd);
+
+/* ft_env */
+int 			ft_env(t_cmd *cmd);
+
+/*ft_export_envp.c*/
+t_node			*envp_search_node_by_key(t_list *list, char *key);
+void			envp_delete_node_by_target(t_list *list, t_node **target);
+t_node			*cut_and_make_envp_node(char *str);
+
+/*ft_export_utils.c*/
+int				isname(char *target);
+size_t			isname_get_length(char *target);
 
 /* ft_exit.c */
-int	ft_exit(t_cmd *cmd);
+int				ft_exit(t_cmd *cmd);
+
+/* ft_export.c */
+int				ft_export(t_cmd *cmd);
+
+/* ft_pwd.c */
+int				ft_pwd(t_cmd *cmd);
+
+/* ft_unset.c */
+int				ft_unset(t_cmd *cmd);
+// void			delete_target_env_node(t_list *envp_list, char *key); 날림
+
+/*---------------------------------*/
 
 /* execute_command.c */
-// int
 void			execute_command(t_all_data *all_data, t_cmd *cmd, int fd_info[3]);
 int				execute_command_internal(t_cmd *cmd, int fd_info[3]);
+t_built_in_fp	is_builtin(char *word);
+
 
 /* execute_nonbuiltin.c */
 void			execute_nonbuiltin(t_cmd *cmd, t_list envp_list);
@@ -72,12 +108,12 @@ t_return_value	item_meet_item(t_all_data *all_data);
 t_return_value	turn_others(t_all_data *all_data);
 
 /* list_envp.c */
-void			print_envp(t_all_data *all_data);
+void			print_envp(t_list envp_list);
 char			*envp_search_value(t_list list, char *key);
 void			envp_delete_node(t_list *list, size_t index);
 void			get_envp(t_all_data *all_data, char **envp);
 t_env_data		*create_envp_data(char *key, char *value);
-void			envp_delete_node(t_list *list, size_t index);
+void			envp_free_node(t_node **node);
 
 /* list_stack.c */
 void			stack_pop_back(t_list *list, int count);
@@ -184,6 +220,11 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 size_t			ft_strlcpy(char *dst, const char *src, size_t detsize);
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlcat(char *dst, const char *src, size_t resultsize);
+char			*ft_strchr(const char *s, int c);
+int				ft_isalnum(int c);
+int				ft_isalpha(int c);
+int				ft_isdigit(int c);
+
 
 /* test.c */
 void			print_token_data(t_all_data *all_data);

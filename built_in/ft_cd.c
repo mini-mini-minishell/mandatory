@@ -59,7 +59,7 @@ static int	change_directory(t_cmd *cmd, char *directory_name)
 		else if (return_value == -1)
 		{
 			ft_putstr_fd("cd: ", STDERR_FILENO);
-			ft_perror(directory_name);
+			//ft_perror(directory_name);
 			//error 처리?
 		}
 	}
@@ -69,7 +69,7 @@ static int	change_directory(t_cmd *cmd, char *directory_name)
 		return (EXECUTION_FAILURE);
 }
 
-int	builtin_cd(t_cmd *cmd)
+int	ft_cd(t_cmd *cmd)
 {
 	char	*directory_name;
 	int		return_value;

@@ -1,17 +1,15 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
 
-void	print_envp(t_all_data *all_data)
+void	print_envp(t_list envp_list)
 {
-	t_list		env;
 	t_node		*current_node;
 	t_env_data	*current_env;
 	size_t		index;
 
-	env = all_data->envp_list;
-	current_node = env.head;
+	current_node = envp_list.head;
 	index = 0;
-	while (index < env.count)
+	while (index < envp_list.count)
 	{
 		current_env = (t_env_data *)current_node->data;
 		ft_putstr_fd(current_env->key, 1);

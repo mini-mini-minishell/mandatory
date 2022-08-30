@@ -9,11 +9,7 @@ static void	*check_opt(t_list *list, int *display_return)
 	current = list->head;
 	word_data = current->data;
 	if (!ft_strncmp(word_data->word, "-n", 3))
-	{
 		*display_return = 0;
-		return ;
-	}
-	return ;
 }
 
 int	ft_echo(t_cmd *cmd)
