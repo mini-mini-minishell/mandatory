@@ -55,6 +55,12 @@ int				execute_command(t_cmd *cmd, int fd_info[3]);
 int				execute_command_internal(t_cmd *cmd, int fd_info[3]);
 t_built_in_fp	is_builtin(t_list *word_list);
 
+/* execute_do_redirection.c */
+int	do_redirections(int fd_info[3], t_list *redir_list, t_list *env);
+
+/* execute_get_redir_fd.c */
+int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list);
+
 /* execute_nonbuiltin.c */
 void			execute_nonbuiltin(t_cmd *cmd, t_list envp_list);
 
@@ -144,6 +150,7 @@ t_node			*list_new_node(void *data);
 void			list_init(t_list *list);
 void			list_remove_head_word(t_list *list);
 void			list_remove_head_redir(t_list *list);
+void			word_list_remove_all(t_list *list);
 
 /* make_redir.c */
 t_node			*make_redir_node(char *word, t_token_type token);

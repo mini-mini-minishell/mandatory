@@ -4,8 +4,8 @@
 #include <fcntl.h>
 #include <errno.h>
 
-#ifndef F_GETPIPE_SZ
-# define F_GETPIPE_SZ 65536
+#ifndef MAXIMUM_BYTE
+# define MAXIMUM_BYTE 65536
 #endif
 
 static int	heredoc_write(int fd, char *document, size_t document_len)
@@ -14,9 +14,7 @@ static int	heredoc_write(int fd, char *document, size_t document_len)
 
 	write_return = write(fd, document, document_len);
 	if (write_return < 0 || (size_t)write_return != document_len)
-	{
 		return (-1);
-	}
 	return (0);
 }
 
@@ -29,11 +27,11 @@ static int	open_heredoc_pipe(char *document)
 		document = "";
 	ft_pipe(fildes);
 	document_len = ft_strlen(document);
-	if (document_len > F_GETPIPE_SZ)
+	if (document_len > MAXIMUM_BYTE)
 	{
 		ft_close(fildes[WRITE_END]);
 		ft_close(fildes[READ_END]);
-		errno = ENOSPC;
+		errno = ENOSPC;//28
 		return (-1);
 	}
 	if (heredoc_write(fildes[WRITE_END], document, document_len) < 0)
@@ -46,11 +44,13 @@ static int	open_heredoc_pipe(char *document)
 	return (fildes[READ_END]);
 }
 
-static int	heredoc_redir(t_node *word_node)
+static int	heredoc_redir(t_list *word_list)
 {
-	int	fd;
+	t_word_data *data;
+	int			fd;
 
-	fd = open_heredoc_pipe(word_list->word);
+	data = word_list->head->data;
+	fd = open_heredoc_pipe(data->word);
 	free_word_list(word_list);
 	if (fd < 0)
 	{
@@ -60,27 +60,28 @@ static int	heredoc_redir(t_node *word_node)
 	return (fd);
 }
 
-static int	normal_redir(t_redir_data *redir_data, t_node *word_node)
+static int	normal_redir(t_redir_data *redir_data, t_list *word_list)
 {
-	int			fd;
 	t_word_data	*word_data;
+	int			fd;
 
-	word_data = word_node->data;
-	if (*(word_data->word) ==  || word_node->next != NULL)
+	word_data = word_list->head->data;
+	if (word_list->count < 2)
 	{
 		ft_putstr_fd(redir_data->file_content, STDERR_FILENO);
 		ft_putstr_fd(": ambiguous redirect\n", STDERR_FILENO);
-		free_word_list(word_node);
+		word_list_remove_all(word_list);
 		return (-1);
 	}
 	fd = open(word_data->word, redir_data->flag, 0644);
 	if (fd < 0)
 	{
-		ft_perror(word_data->word);
-		free_word_list(word_list);
+		ft_putstr_fd(": file open error\n", 2);
+		word_list_remove_all(word_list);
 		return (-1);
 	}
-	free_word_list(word_node);
+	word_list_remove_all(word_list);
+	free_word_list(word_list);
 	return (fd);
 }
 

@@ -41,6 +41,7 @@
 		"__node_handle": "c",
 		"__bit_reference": "c",
 		"bitset": "c",
-		"study": "c"
+		"study": "c",
+		"fcntl.h": "c"
 	}
 }

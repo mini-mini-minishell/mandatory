@@ -51,3 +51,10 @@ void	list_remove_head_word(t_list *list)
 	free(data);
 	free(temp);
 }
+
+void	word_list_remove_all(t_list *list)
+{
+	while (list->count)
+		list_remove_head_word(list);
+	free(list);
+}
