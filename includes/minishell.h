@@ -56,16 +56,22 @@ int				execute_command_internal(t_cmd *cmd, int fd_info[3]);
 t_built_in_fp	is_builtin(t_list *word_list);
 
 /* execute_do_redirection.c */
-int	do_redirections(int fd_info[3], t_list *redir_list, t_list *env);
+int				do_redirections(int fd_info[3], t_list *redir_list, t_list *env);
 
 /* execute_get_redir_fd.c */
-int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list);
+int				get_redir_fd(t_redir_data *redir_data, t_list *envp_list);
 
 /* execute_nonbuiltin.c */
-void			execute_nonbuiltin(t_cmd *cmd, t_list envp_list);
+void			execute_nonbuiltin(t_cmd *cmd);
 
 /* execute_simple.c */
 int				execute_simple(t_cmd *cmd, int fd_info[3]);
+
+/* execute_utils.c */
+int				save_fd_status(int fd_buff[2]);
+int				restore_fd_status(int fd_buff[2], int exit_status);
+int				ft_waitchild(t_cmd *cmd);
+int				get_exit_status(int status);
 
 /* exit.c */
 void			exit_with_message(char *s);

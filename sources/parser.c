@@ -62,7 +62,7 @@ void	parse_and_execute(t_all_data *all_data)
 		return_value = gather_heredoc(parser);
 		if (return_value == 0)
 		{
-			execute_command(all_data, parser->final_cmd, fd_info);
+			execute_command(parser->final_cmd, fd_info);
 			//return_value = execute_command(parser->final_cmd, fd_info);
 			// all_data->envp_list = *parser->final_cmd->envp_list;
 		}

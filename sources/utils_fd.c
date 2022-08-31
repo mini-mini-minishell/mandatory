@@ -40,6 +40,6 @@ int	ft_dup2(int fd1, int fd2)
 
 	result = dup2(fd1, fd2);
 	if (result < 0)
-		ft_perror(NULL);
+		ft_putstr_fd(": dup error\n", 2);
 	return (result);
 }

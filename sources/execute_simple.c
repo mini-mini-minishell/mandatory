@@ -2,18 +2,14 @@
 
 static int	execute_simple_internal(t_built_in_fp builtin, t_cmd *cmd)
 {
-	t_list		*words;
-
 	if (builtin)
 	{
-		words = cmd->content.simple.words;
-		cmd->content.simple.words = cmd->content.simple.words->next;
-		free(words->word);
-		free(words);
+		list_remove_head_word(cmd->content.simple.words);
 		return (builtin(cmd));
 	}
 	else
-		return (execute_nonbuiltin(cmd));
+		execute_nonbuiltin(cmd); // 얘 아직 void
+	return (0);
 }
 
 static int	execute_with_fork(int is_nullcmd, t_built_in_fp builtin, \
@@ -35,7 +31,7 @@ static int	execute_with_fork(int is_nullcmd, t_built_in_fp builtin, \
 	return (0);
 }
 
-static int	execute_without_fork(int is_nullcmd, t_built_in_fp builtin, \
+static int	execute_without_fork(int is_empty_words, t_built_in_fp builtin, \
 		t_cmd *cmd, int fd_info[3])
 {
 	int	fd_buff[3];
@@ -45,7 +41,7 @@ static int	execute_without_fork(int is_nullcmd, t_built_in_fp builtin, \
 	{
 		if (do_redirections(fd_info, cmd->redir_list, cmd->envp_list) < 0)
 			return (EXECUTION_FAILURE);
-		if (is_nullcmd)
+		if (is_empty_words)
 			return (EXECUTION_SUCCESS);
 		return (execute_simple_internal(builtin, cmd));
 	}
@@ -54,23 +50,13 @@ static int	execute_without_fork(int is_nullcmd, t_built_in_fp builtin, \
 		save_fd_status(fd_buff);
 		if (do_redirections(fd_info, cmd->redir_list, cmd->envp_list) < 0)
 			return (restore_fd_status(fd_buff, EXECUTION_FAILURE));
-		if (is_nullcmd)
+		if (is_empty_words)
 			return_value = EXECUTION_SUCCESS;
 		else
 			return_value = execute_simple_internal(builtin, cmd);
 		return (restore_fd_status(fd_buff, return_value));
 	}
 }
-
-/*
-typedef enum e_cmd_flag
-{
-	CMD_FLAG_DEFAULT = 0,
-	CMD_FLAG_NEED_FORK = 1 << 0,
-	CMD_FLAG_IS_FORKED = 1 << 1,
-	CMD_FLAG_NEED_PIPE = 1 << 2
-}	t_cmd_flag;
-*/
 
 int	execute_simple(t_cmd *cmd, int fd_info[3])
 {

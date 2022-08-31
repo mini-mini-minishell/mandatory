@@ -51,10 +51,10 @@ static int	heredoc_redir(t_list *word_list)
 
 	data = word_list->head->data;
 	fd = open_heredoc_pipe(data->word);
-	free_word_list(word_list);
+	word_list_remove_all(word_list);
 	if (fd < 0)
 	{
-		ft_perror("heredoc");
+		ft_putstr_fd(": fd error\n", STDERR_FILENO);
 		return (-1);
 	}
 	return (fd);
@@ -81,7 +81,6 @@ static int	normal_redir(t_redir_data *redir_data, t_list *word_list)
 		return (-1);
 	}
 	word_list_remove_all(word_list);
-	free_word_list(word_list);
 	return (fd);
 }
 
@@ -91,7 +90,7 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 
 	// word_list = NULL;
 	list_init(word_list);
-	list_push_back(word_list, create_word_data(ft_strdup(redir_data->file_content)));
+	list_push_back(word_list, list_new_node(create_word_data(ft_strdup(redir_data->file_content))));
 	if (redir_data->redir_type != REDIR_HEREDOC)
 	{
 		//word_list = expansion_all(word_list, envp_list);
@@ -103,7 +102,10 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 		// 	word_list = expansion_heredoc_content(word_list, envp_list);
 		if (word_list)
 			return (heredoc_redir(word_list));
-		else
-			return (heredoc_redir(new_word_list(ft_strdup(""))));
+		// else
+		// {
+		// 	list_init(word_list);
+		// 	return (heredoc_redir(new_word_list(ft_strdup(""))));
+		// } //문제가 생기면 바로 다시 만들기
 	}
 }

@@ -98,16 +98,6 @@ static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
 	data->file_content = doc;
 }
 
-int	get_exit_status(int status)
-{
-	if (WIFEXITED(status))
-		return (WEXITSTATUS(status));
-	if (WIFSIGNALED(status))
-		return (128 + WTERMSIG(status));
-	//127이 나오는 경우도 있나? -->command not found의 경우 그랬던거 같다
-	return (1);
-}
-
 static int	fork_receive_heredoc(t_parser *parser, int heredoc_fd[2])
 {
 	t_list			*heredoc_list;

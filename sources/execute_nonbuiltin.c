@@ -71,31 +71,6 @@
 // 	return (EX_NOEXEC);
 // }
 
-// int	execute_nonbuiltin(t_cmd *cmd)
-// {
-// 	char	**cmd_vec;
-// 	char	**env_vec;
-// 	char	**paths;
-// 	int		return_value;
-
-// 	if (cmd->content.simple.words->word == NULL)
-// 		return (EXECUTION_SUCCESS);
-// 	cmd_vec = word_list_to_vector(cmd->content.simple.words);
-// 	env_vec = env_list_to_vector(cmd->env);
-// 	if (ft_strchr(cmd_vec[0], '/') == 0)
-// 	{
-// 		paths = parse_envp(env_vec);
-// 		if (paths)
-// 		{
-// 			return_value = try_execute_in_path(cmd_vec, paths, env_vec);
-// 			free_vec_multi(cmd_vec, env_vec, paths);
-// 			return (return_value);
-// 		}
-// 	}
-// 	return_value = try_direct_execve(cmd_vec, env_vec);
-// 	free_vec_multi(cmd_vec, env_vec, NULL);
-// 	return (return_value);
-// }
 
 //------jaehwanKim-------------
 void	error_exit(void)
@@ -154,15 +129,15 @@ char	*check_access(char *cmd, t_list envp_list)
 // 	return (EX_NO);
 // }
 
-void	execute_nonbuiltin(t_cmd *cmd, t_list envp_list)
+void	execute_nonbuiltin(t_cmd *cmd)
 {
 	char	**argv;
 	char	**envp;
 	char	*real_cmd;
 
 	argv = trans_word_list_2_array(*(cmd->content.simple.words));
-	real_cmd = check_access(argv[0], envp_list);
-	envp = trans_envp_list_2_array(envp_list);
+	real_cmd = check_access(argv[0], *cmd->envp_list);
+	envp = trans_envp_list_2_array(*cmd->envp_list);
 	if (real_cmd == 0)
 		error_exit();
 	if (execve(real_cmd, argv, envp) == -1) //Execve는 실행되고 나서 exit. 이 반환값을 밖에서 받아서(fork 해야함) 170, 171줄 실행할 것.

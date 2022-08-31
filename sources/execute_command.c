@@ -1,35 +1,20 @@
 #include "../includes/minishell.h"
 
-static int	execute_simple_internal(t_built_in_fp builtin, t_cmd *cmd)
-{
-	if (builtin)
-	{
-		list_remove_head_word(cmd->content.simple.words);
-		return (builtin(cmd));
-	}
-	else
-		execute_nonbuiltin(cmd, *cmd->envp_list); // 얘 아직 void
-	return (0);
-}
-
-/* ------------------- */
-
-
 int	execute_command_internal(t_cmd *cmd, int fd_info[3])
 {
 	if (cmd->type == CMD_SIMPLE)
 	{
 		return (execute_simple(cmd, fd_info));
 	}
-	else if (cmd->type == CMD_CONNECT)
-	{
-		return (execute_connect(cmd, fd_info));
-	}
-	else if (cmd->type == CMD_SUBSHELL)
-	{
-		return (execute_subshell(cmd, fd_info));
-	}
-	else
+	// else if (cmd->type == CMD_CONNECT)
+	// {
+	// 	return (execute_connect(cmd, fd_info));
+	// }
+	// else if (cmd->type == CMD_SUBSHELL)
+	// {
+	// 	return (execute_subshell(cmd, fd_info));
+	// }
+	// else
 	{
 		return (EXECUTION_FAILURE);
 	}

@@ -14,9 +14,13 @@ RM					=	rm -f
 BUILTIN_FILE_DIR	=	./built_in/
 SRC_DIR 			= 	./sources/
 
-FILES 		=			execute_command.c\
-						execute_nonbuiltin.c\
-						execute_simple.c\
+FILES 		=			execute_builtin.c \
+						execute_command.c \
+						execute_do_redirection.c \
+						execute_get_redir_fd.c \
+						execute_nonbuiltin.c \
+						execute_simple.c \
+						execute_utils.c \
 						exit.c \
 						get_next_line_utils.c \
 						get_next_line.c \
