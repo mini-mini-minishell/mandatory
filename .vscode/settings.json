@@ -38,6 +38,9 @@
 		"wait.h": "c",
 		"__functional_03": "c",
 		"cstring": "c",
-		"__node_handle": "c"
+		"__node_handle": "c",
+		"__bit_reference": "c",
+		"bitset": "c",
+		"study": "c"
 	}
 }
