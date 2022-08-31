@@ -51,15 +51,15 @@ int				ft_unset(t_cmd *cmd);
 /*---------------------------------*/
 
 /* execute_command.c */
-void			execute_command(t_all_data *all_data, t_cmd *cmd, int fd_info[3]);
+int				execute_command(t_cmd *cmd, int fd_info[3]);
 int				execute_command_internal(t_cmd *cmd, int fd_info[3]);
-t_built_in_fp	is_builtin(char *word);
-
+t_built_in_fp	is_builtin(t_list *word_list);
 
 /* execute_nonbuiltin.c */
 void			execute_nonbuiltin(t_cmd *cmd, t_list envp_list);
 
 /* execute_simple.c */
+int				execute_simple(t_cmd *cmd, int fd_info[3]);
 
 /* exit.c */
 void			exit_with_message(char *s);
@@ -200,12 +200,13 @@ int				run_parser(t_all_data *all_data);
 void			set_prompt_handler(int sig);
 void			set_handler_for_heredoc(int sig);
 void			set_handler_for_default(void);
-void			set_handler_to_ignore(void);
-
+void			set_handler_for_ignore(void);
+ 
 /* utils_fd.c */
 t_pid			ft_fork(void);
 int				ft_pipe(int heredoc_fd[2]);
 int				ft_close(int fd);
+int				ft_dup2(int fd1, int fd2);
 
 /* utils_split.c */
 char			**ft_split(char const *s, char *set);

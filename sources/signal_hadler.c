@@ -31,27 +31,14 @@ void	set_handler_for_heredoc(int sig)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-/* 우리꺼
-void handler(int signum)
+void	set_handler_for_default(void)
 {
-	if (signum != SIGINT)
-		return;
-	//printf("\n");
-	rl_on_new_line();
-	rl_replace_line("", 1);
-	// rl_redisplay();
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 }
-*/
 
-
-// void	set_handler_for_default(void)
-// {
-// 	signal(SIGINT, SIG_DFL);
-// 	signal(SIGQUIT, SIG_DFL);
-// }
-
-// void	set_handler_to_ignore(void)
-// {
-// 	signal(SIGINT, SIG_IGN);
-// 	signal(SIGQUIT, SIG_IGN);
-// }
+void	set_handler_for_ignore(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}

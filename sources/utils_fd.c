@@ -34,12 +34,12 @@ int	ft_close(int fd)
 	return (result);
 }
 
-/* int	safe_dup2(int fd1, int fd2)
+int	ft_dup2(int fd1, int fd2)
 {
-	int	ret;
+	int	result;
 
-	ret = dup2(fd1, fd2);
-	if (ret < 0)
+	result = dup2(fd1, fd2);
+	if (result < 0)
 		ft_perror(NULL);
-	return (ret);
-} */
+	return (result);
+}

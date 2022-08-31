@@ -45,3 +45,5 @@ simple print_tree_stack에서 lldb 찍어서 봐야한다
 내일 은 무쩌권 heredoc 완료하고 집갈 수 있도록 한다
 
 %@ 9시 반에는 시작하고 small talk 을 끊을 수 있는 결단력을 가지기. %@
+
+expr $? + $? 안된다 히잉...
