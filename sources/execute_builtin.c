@@ -1,5 +1,5 @@
 #include "../includes/minishell.h"
-
+#include <stdio.h>
 static int	find_builtin_func(const char *word)
 {
 	char	*shell_builtins[7] = \
@@ -11,6 +11,7 @@ static int	find_builtin_func(const char *word)
 	i = 0;
 	while (i < 7)
 	{
+		printf("%s %s\n", word, shell_builtins[i]);
 		if (!ft_strncmp(word, shell_builtins[i], \
 			ft_strlen(shell_builtins[i]) + 1))
 			break ;

@@ -227,3 +227,5 @@ typedef struct s_parser
 13	ELEM -> id			// word
 14	ELEM -> R 			// redir_list
 15	R -> > id			// redir_list or heredoc
+
+s
