@@ -6,15 +6,15 @@ int	execute_command_internal(t_cmd *cmd, int fd_info[3])
 	{
 		return (execute_simple(cmd, fd_info));
 	}
-	// else if (cmd->type == CMD_CONNECT)
-	// {
-	// 	return (execute_connect(cmd, fd_info));
-	// }
-	// else if (cmd->type == CMD_SUBSHELL)
-	// {
-	// 	return (execute_subshell(cmd, fd_info));
-	// }
-	// else
+	else if (cmd->type == CMD_CONNECT)
+	{
+		return (execute_connect(cmd, fd_info));
+	}
+	else if (cmd->type == CMD_SUBSHELL)
+	{
+		return (execute_subshell(cmd, fd_info));
+	}
+	else
 	{
 		return (EXECUTION_FAILURE);
 	}

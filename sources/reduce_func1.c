@@ -1,5 +1,5 @@
 #include "../includes/minishell.h"
-
+#include <stdio.h>
 // S -> L;
 t_return_value	reduce_rule_0(t_all_data *all_data)
 {
@@ -14,6 +14,7 @@ t_return_value	reduce_rule_0(t_all_data *all_data)
 	parser_push_back(&parser->parser_stack, TT_START);
 	parser->flag = PARSER_FINISH;
 	parser->final_cmd = tree_data->content.cmd;
+	printf("rule 0\n");
 	return (RV_SUCCESS);
 }
 
@@ -36,6 +37,7 @@ t_return_value	reduce_rule_1(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
+	printf("rule 1\n");
 	return (RV_SUCCESS);
 }
 
@@ -58,6 +60,7 @@ t_return_value	reduce_rule_2(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
+	printf("rule 2\n");
 	return (gather_heredoc(parser));
 
 }
@@ -81,6 +84,7 @@ t_return_value	reduce_rule_3(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
+	printf("rule 3\n");
 	return (RV_SUCCESS);
 }
 
@@ -103,5 +107,6 @@ t_return_value	reduce_rule_4(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
+	printf("rule 4\n");
 	return (RV_SUCCESS);
 }

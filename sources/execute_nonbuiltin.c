@@ -2,75 +2,77 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 
-// static int	print_err_msg_return_status(char *cmd, int err)
+// #define S_ISDIR(mode) (((mode) & S_IFMT) == S_IFDIR)
+
+// static int	file_status(char *name)
 // {
-// 	char	*err_msg;
+// 	struct stat	finfo;
 
-// 	if (err != 0)
-// 	{
-// 		errno = err;
-// 		ft_perror(cmd);
-// 		return (EX_NOEXEC);
-// 	}
-// 	else
-// 	{
-// 		err_msg = ft_strjoin(cmd, ": commmand not found\n");
-// 		ft_putstr_fd(err_msg, STDERR_FILENO);
-// 		free(err_msg);
-// 		return (EX_NOTFOUND);
-// 	}
+// 	if (stat(name, &finfo) < 0)
+// 		return (0);
+// 	if (S_ISDIR(finfo.st_mode))
+// 		return (IS_FILE | IS_DIRECTORY);
+// 	return (IS_FILE);
 // }
 
-// static char	*get_full_path(char *path, char *cmd_name)
-// {
-// 	char	*tmp;
-// 	char	*full_path;
+static char	*get_full_path(char *path, char *cmd_name)
+{
+	char	*temp;
+	char	*full_path;
 
-// 	tmp = ft_strjoin(path, "/");
-// 	full_path = ft_strjoin(tmp, cmd_name);
-// 	free(tmp);
-// 	return (full_path);
+	temp = ft_strjoin(path, "/");
+	full_path = ft_strjoin(temp, cmd_name);
+	free(temp);
+	return (full_path);
+	//릭나면 strjoin_gnl로 바꿔
+}
+
+// int	is_directory(char *file)
+// {
+// 	return (file_status(file) & IS_DIRECTORY);
 // }
 
-// static int	try_execute_in_path(char **cmd_vec, char **paths, char **env_vec)
-// {
-// 	size_t	idx;
-// 	char	*full_path;
-// 	int		err;
+static int	print_err_msg_return_status(int err)
+{
+	if (err != 0)
+	{
+		errno = err;
+		ft_putstr_fd(": command not found\n", 2); 
+		//errno를 좀더 공부하고 에러 메세지 바꾸기!
+		return (EX_NOEXEC);
+	}
+	else
+	{
+		ft_putstr_fd(": command not found\n", 2);
+		//errno를 좀더 공부하고 에러 메세지 바꾸기!
+		return (EX_NOTFOUND);
+	}
+}
 
-// 	idx = 0;
-// 	err = 0;
-// 	while (paths[idx])
-// 	{
-// 		full_path = get_full_path(paths[idx], cmd_vec[0]);
-// 		if (!is_directory(full_path))
-// 		{
-// 			execve(full_path, cmd_vec, env_vec);
-// 			if (errno != ENOENT)
-// 				err = errno;
-// 		}
-// 		free(full_path);
-// 		idx++;
-// 	}
-// 	return (print_err_msg_return_status(cmd_vec[0], err));
-// }
+static int	try_execute_in_path(char **cmd_array, char **paths, char **env_array)
+{
+	size_t	index;
+	char	*full_path;
+	int		err;
 
-// static int	try_direct_execve(char **cmd_vec, char **env_vec)
-// {
-// 	if (is_directory(cmd_vec[0]))
-// 	{
-// 		errno = EISDIR;
-// 		ft_perror(cmd_vec[0]);
-// 		return (EXECUTION_FAILURE);
-// 	}
-// 	execve(cmd_vec[0], cmd_vec, env_vec);
-// 	ft_perror(cmd_vec[0]);
-// 	if (errno == ENOENT)
-// 		return (EX_NOTFOUND);
-// 	return (EX_NOEXEC);
-// }
-
+	index = 0;
+	err = 0;
+	while (paths[index])
+	{
+		full_path = get_full_path(paths[index], cmd_array[0]);
+		// if (!is_directory(full_path))
+		// {
+			execve(full_path, cmd_array, env_array);
+			if (errno != ENOENT)
+				err = errno;
+		// }
+		free(full_path);
+		++index;
+	}
+	return (print_err_msg_return_status(err));
+}
 
 //------jaehwanKim-------------
 void	error_exit(void)
@@ -114,63 +116,100 @@ char	*check_access(char *cmd, t_list envp_list)
 	return (0);
 }
 
-// static int	try_direct_execve(char **cmd_vec, char **env_vec)
-// {
-// 	if (is_directory(cmd_vec[0]))
-// 	{
-// 		errno = EISDIR;
-// 		ft_perror(cmd_vec[0]);
-// 		return (EXECUTION_FAILURE);
-// 	}
-// 	execve(cmd_vec[0], cmd_vec, env_vec);
-// 	ft_perror(cmd_vec[0]);
-// 	if (errno == ENOENT)
-// 		return (EX_NOTFOUND);
-// 	return (EX_NO);
-// }
+static int	try_direct_execve(char **cmd_array, char **env_array)
+{
+	// if (is_directory(cmd_array[0]))
+	// {
+	// 	errno = EISDIR;
+	// 	ft_putstr_fd(": directory not found\n", 2);
+	// 	return (EXECUTION_FAILURE);
+	// }
+	execve(cmd_array[0], cmd_array, env_array);
+	ft_putstr_fd(": directory not found\n", 2);
+	if (errno == ENOENT)
+		return (EX_NOTFOUND);
+	return (EX_NOEXEC); 
+}
 
-void	execute_nonbuiltin(t_cmd *cmd)
+char	**parse_envp(char **env)
+{
+	size_t	index;
+	char	**result;
+
+	index = 0;
+	while (env[index] && ft_strncmp(env[index], "PATH=", 5))
+		index++;
+	if (!env[index])
+		return (NULL);
+	result = ft_split(env[index] + 5, ":");
+	return (result);
+}
+
+static void	free_double(char **array)
+{
+	size_t	i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i])
+	{
+		free(array[i]);
+		++i;
+	}
+	free(array);
+}
+
+static void	free_3_doubles(char **array1, char **array2, char **array3)
+{
+	free_double(array1);
+	free_double(array2);
+	free_double(array3);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	char_c;
+
+	char_c = (char)c;
+	while (*s != '\0')
+	{
+		if (*s == char_c)
+			return ((char *)s);
+		s++;
+	}
+	if (char_c == '\0')
+		return ((char *)s);
+	else
+		return (NULL);
+}
+
+int	execute_nonbuiltin(t_cmd *cmd)
 {
 	char	**argv;
 	char	**envp;
 	char	*real_cmd;
+	char	**paths;
+	int		return_value;
 
 	argv = trans_word_list_2_array(*(cmd->content.simple.words));
 	real_cmd = check_access(argv[0], *cmd->envp_list);
 	envp = trans_envp_list_2_array(*cmd->envp_list);
-	if (real_cmd == 0)
-		error_exit();
-	if (execve(real_cmd, argv, envp) == -1) //Execve는 실행되고 나서 exit. 이 반환값을 밖에서 받아서(fork 해야함) 170, 171줄 실행할 것.
-	{
-		if (execve(argv[0], argv, envp))
-			printf("cmd not found\n");
-	}
-}
-
-/* chanhpa
-int	execute_nonbuiltin(t_cmd *cmd)
-{
-	char	**cmd_vec;
-	char	**env_vec;
-	char	**paths;
-	int		return_value;
-
-	if (cmd->content.simple.words->word == NULL)
+	if (!real_cmd)
 		return (EXECUTION_SUCCESS);
-	cmd_vec = word_list_to_vector(cmd->content.simple.words);
-	env_vec = env_list_to_vector(cmd->env);
-	if (ft_strchr(cmd_vec[0], '/') == 0)
+	printf("%c \n", *(ft_strchr(real_cmd, '/')));
+	if (ft_strchr(argv[0], '/') == 0) //의심!!!!!!!! == 0 뭔가 이상하다
 	{
-		paths = parse_envp(env_vec);
-		if (paths)
-		{
-			return_value = try_execute_in_path(cmd_vec, paths, env_vec);
-			free_vec_multi(cmd_vec, env_vec, paths);
-			return (return_value);
-		}
+		paths = parse_envp(envp);
+		printf("path : %p \n", paths);
+			if (paths)
+			{
+				return_value = try_execute_in_path(argv, paths, envp);
+				free_3_doubles(argv, envp, paths);
+				return (return_value);
+			}
 	}
-	return_value = try_direct_execve(cmd_vec, env_vec);
-	free_vec_multi(cmd_vec, env_vec, NULL);
+	return_value = try_direct_execve(argv, envp);
+	free_3_doubles(argv, envp, NULL);
 	return (return_value);
 }
-*/

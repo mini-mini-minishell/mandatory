@@ -1,6 +1,12 @@
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
+typedef enum e_file_status
+{
+	IS_FILE = 1 << 0,
+	IS_DIRECTORY = 1 << 1,
+}	t_file_status;
+
 typedef enum e_return_value
 {
 	RV_ERROR = -1,

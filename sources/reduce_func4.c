@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include <stdio.h>
 
 static void make_new_tree_content(t_parser *parser, t_tree_content *content)
 {
@@ -38,5 +39,6 @@ t_return_value	reduce_rule_15(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_REDIR_LIST;
+	printf("rule 15\n");
 	return (RV_SUCCESS);
 }

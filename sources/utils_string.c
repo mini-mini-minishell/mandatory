@@ -136,7 +136,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(new_str, s2, rlen + 1);
 	return (new_str);
 }
-
+/* 
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
@@ -149,9 +149,9 @@ char	*ft_strchr(const char *s, int c)
 		i++;
 	}
 	if (c == 0)
-		return ((char *)&s[i]);
+		return (NULL);
 	return (0);
-}
+} */
 
 static	int	ft_isupper(int c)
 {

@@ -8,8 +8,7 @@ static int	execute_simple_internal(t_built_in_fp builtin, t_cmd *cmd)
 		return (builtin(cmd));
 	}
 	else
-		execute_nonbuiltin(cmd); // 얘 아직 void
-	return (0);
+		return(execute_nonbuiltin(cmd));
 }
 
 static int	execute_with_fork(int is_nullcmd, t_built_in_fp builtin, \

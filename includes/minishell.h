@@ -62,7 +62,9 @@ int				do_redirections(int fd_info[3], t_list *redir_list, t_list *env);
 int				get_redir_fd(t_redir_data *redir_data, t_list *envp_list);
 
 /* execute_nonbuiltin.c */
-void			execute_nonbuiltin(t_cmd *cmd);
+int				execute_nonbuiltin(t_cmd *cmd);
+//int				is_directory(char *file);
+
 
 /* execute_simple.c */
 int				execute_simple(t_cmd *cmd, int fd_info[3]);
@@ -247,6 +249,7 @@ int				ft_isdigit(int c);
 void			print_token_data(t_all_data *all_data);
 void			print_tree_stack(t_list tree_stack);
 
+//_______________________________
 /* 1.execute_connect */
 int				execute_connect(t_cmd *cmd, int fd_info[3]);
 
