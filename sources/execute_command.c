@@ -19,7 +19,7 @@ int	execute_command_internal(t_cmd *cmd, int fd_info[3])
 		return (EXECUTION_FAILURE);
 	}
 }
-#i
+
 int	execute_command(t_cmd *cmd, int fd_info[3])
 {
 	int	return_value;
