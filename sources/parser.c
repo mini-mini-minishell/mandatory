@@ -45,6 +45,7 @@ void	parse_and_execute(t_all_data *all_data)
 	int				return_value;
 	t_parser_data	*data;
 
+
 	lexer = &all_data->lexer;
 	parser = &all_data->parser;
 	init_parser(all_data);

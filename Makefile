@@ -52,6 +52,7 @@ FILES 		=			execute_builtin.c \
 						reduce_func2.c \
 						reduce_func3.c \
 						reduce_func4.c \
+						reduce_make.c \
 						reduce_utils.c \
 						run_lexer.c \
 						run_parser.c \

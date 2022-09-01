@@ -59,6 +59,7 @@ t_return_value	reduce_rule_2(t_all_data *all_data)
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	return (gather_heredoc(parser));
+	
 }
 
 // P -> P | C;
