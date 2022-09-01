@@ -14,7 +14,10 @@ RM					=	rm -f
 BUILTIN_FILE_DIR	=	./built_in/
 SRC_DIR 			= 	./sources/
 
-FILES 		=			execute_builtin.c \
+FILES 		=			1.execute_connect.c\
+						1.execute_pipe.c\
+						1.execute_subshell.c\
+						execute_builtin.c \
 						execute_command.c \
 						execute_do_redirection.c \
 						execute_get_redir_fd.c \

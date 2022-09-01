@@ -58,7 +58,7 @@ t_return_value	reduce_rule_7(t_all_data *all_data)
 	count = 2 * 2;
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_CMD);
-	sub = parser->tree_stack.tail->data;
+	sub = parser->tree_stack.tail->prev->data;
 	content.cmd = sub->content.cmd;
 	data = parser->tree_stack.tail->data;
 	content.cmd->redir_list = data->content.redir_list;

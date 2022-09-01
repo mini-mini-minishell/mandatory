@@ -247,4 +247,14 @@ int				ft_isdigit(int c);
 void			print_token_data(t_all_data *all_data);
 void			print_tree_stack(t_list tree_stack);
 
+/* 1.execute_connect */
+int				execute_connect(t_cmd *cmd, int fd_info[3]);
+
+/* 1.execute_pipe.c */
+int				execute_single_pipe(t_cmd *cmd, int fd_info[3]);
+int				execute_pipe(t_cmd *cmd, int fd_info[3]);
+
+/* 1.execute_subshell.c */
+int				execute_subshell(t_cmd *cmd, int fd_info[3]);
+
 #endif

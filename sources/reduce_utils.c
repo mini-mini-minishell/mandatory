@@ -59,3 +59,4 @@ t_cmd	*make_new_simple(t_all_data *all_data)
 	new_simple->pid_last_child = -1;
 	return (new_simple);
 }
+

@@ -22,10 +22,7 @@ t_return_value	others_meet_space(t_all_data *all_data)
 	lexer->index = 1;
 	token_data = (t_token_data *)(all_data->token_list.tail->data);
 	if (token_data->token_type == TT_ERR)
-	{
-		//printf("others_meet_space\n");
 		return (RV_ERROR);
-	}
 	return (RV_SUCCESS);
 }
 

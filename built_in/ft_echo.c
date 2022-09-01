@@ -26,14 +26,6 @@ int	ft_echo(t_cmd *cmd)
 	while (current)
 	{
 		word_data = current->data;
-		if (word_data)
-		{
-			printf("%s", word_data->word);
-		}
-		if (word_data->word && current->next)
-		{
-			printf(" ");
-		}
 		current = current->next;
 	}
 	if (display_return)

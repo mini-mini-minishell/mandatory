@@ -31,6 +31,7 @@ void	tree_push_back(t_list *list, t_tree_content content)
 	void	*data;
 	t_node	*new_node;
 
+
 	data = create_tree_data(content);
 	new_node = list_new_node(data);
 	list_push_back(list, new_node);

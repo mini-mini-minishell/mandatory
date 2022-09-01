@@ -6,7 +6,7 @@ static t_reducer_fp	 get_reduce_rule(t_parser_state state, t_reducer_fp *table)
 	int	index;
 
 	index = (int)(state ^ PARSER_STATE);
-	//printf("reducefunc : %d\n", index);
+	printf("reducefunc : %d\n", index);
 	return (table[index]);
 }
 

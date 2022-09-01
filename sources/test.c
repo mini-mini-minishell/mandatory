@@ -39,11 +39,8 @@ void	print_tree_stack(t_list tree_stack)
 		while (temp)
 		{
 			word_data = temp->data;
-			//printf("word : ");
-			//printf("%s \n", word_data->word);
 			temp = temp->next;
 		}
-		//printf("Simple finish\n");
 	}
 	else if (tree_data->content.cmd->type == CMD_CONNECT)
 	{

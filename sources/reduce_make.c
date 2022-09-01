@@ -12,7 +12,7 @@ t_cmd	*make_simple(t_all_data *all_data, void *simple_data, void *element_data)
 	if (simple_data)
 		simple = data->content.cmd;
 	data = element_data;
-	element = data->content.cmd;
+	element = data->content.element;
 	if (!simple)
 		new_simple = make_new_simple(all_data);
 	else
