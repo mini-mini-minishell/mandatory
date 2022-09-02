@@ -25,36 +25,6 @@ t_cmd	*make_simple(t_all_data *all_data, void *simple_data, void *element_data)
 	return (new_simple);
 }
 
-// //chanha
-// t_cmd	*make_simple(t_cmd *simple, t_element *element)
-// {
-// 	t_cmd			*new_simple;
-
-// 	if (!simple)
-// 	{
-// 		new_simple = ft_xmalloc(sizeof(t_cmd));
-// 		new_simple->type = CMD_SIMPLE;
-// 		new_simple->flag = CMD_FLAG_DEFAULT;
-// 		new_simple->content.simple.words = NULL;
-// 		new_simple->redir_list = NULL;
-// 		new_simple->env = NULL;
-// 		new_simple->exit_status = 0;
-// 		new_simple->pid_last_child = -1;
-// 	}
-// 	else
-// 		new_simple = simple;
-// 	if (element->word)
-// 	{
-// 		append_word_list(new_simple, element);
-// 	}
-// 	else if (element->redir_list)
-// 	{
-// 		append_redir_list(new_simple, element);
-// 	}
-// 	return (new_simple);
-// }
-// //-------------------------
-
 t_cmd	*make_connect(t_all_data *all_data, void *left, void *right, void *connector)
 {
 	t_tree_data		*data;
@@ -71,6 +41,7 @@ t_cmd	*make_connect(t_all_data *all_data, void *left, void *right, void *connect
 	c = data->content.token;
 	new_cmd = ft_malloc(sizeof(t_cmd));
 	new_cmd->type = CMD_CONNECT;
+	new_cmd->flag = CMD_FLAG_DEFAULT;
 	new_cmd->content.connect.left = l;
 	new_cmd->content.connect.right = r;
 	new_cmd->content.connect.token = c;

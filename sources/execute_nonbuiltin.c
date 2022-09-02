@@ -171,7 +171,6 @@ int	execute_nonbuiltin(t_cmd *cmd)
 	if (ft_strchr(argv[0], '/') == 0)
 	{
 		paths = parse_envp(envp);
-		printf("path : %p \n", paths);
 			if (paths)
 			{
 				return_value = try_execute_in_path(argv, paths, envp);

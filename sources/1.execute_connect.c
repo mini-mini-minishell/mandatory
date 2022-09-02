@@ -41,16 +41,9 @@ int	execute_connect(t_cmd *cmd, int fd_info[3])
 			cmd->content.connect.left->flag |= CMD_FLAG_NEED_FORK;
 		}
 		if (cmd->content.connect.left->type != CMD_CONNECT)
-		{
-			printf("execute_single_pipe 실행! \n");
 			return (execute_single_pipe(cmd, fd_info));
-		}
-		printf("execute_pipe 실행! \n");
 		return (execute_pipe(cmd, fd_info));
 	}
 	else
-	{
-		printf("execute_list 실행! \n");
 		return (execute_list(cmd, fd_info));
-	}
 }

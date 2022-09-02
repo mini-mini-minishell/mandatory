@@ -17,7 +17,6 @@ static int	execute_with_fork(int is_nullcmd, t_built_in_fp builtin, \
 {
 	pid_t	pid;
 
-	printf("with_fork_man\n");
 	pid = ft_fork();
 	if (pid == 0)
 	{
@@ -38,18 +37,17 @@ static int	execute_without_fork(int is_empty_words, t_built_in_fp builtin, \
 {
 	int	fd_buff[3];
 	int	return_value;
-	printf("나 without fork 이올씨다 \n");
 
-	printf("without_fork : cmd->redir_list %p\n", cmd->redir_list);
-	printf("without_fork : cmd->flag %d\n", cmd->flag);
-	printf("이것은 %d\n", cmd->flag & CMD_FLAG_IS_FORKED);
 	if (cmd->flag & CMD_FLAG_IS_FORKED)
 	{
-		printf("파이프 뒤 실행");
 		if (do_redirections(fd_info, cmd->redir_list, cmd->envp_list) < 0)
+		{
 			return (EXECUTION_FAILURE);
+		}
 		if (is_empty_words)
+		{
 			return (EXECUTION_SUCCESS);
+		}
 		return (execute_simple_internal(builtin, cmd));
 	}
 	else
@@ -77,10 +75,8 @@ int	execute_simple(t_cmd *cmd, int fd_info[3])
 	builtin = NULL;
 	if (!is_empty_words)
 		builtin = is_builtin(cmd->content.simple.words);
-	//printf("cmd -> flag  : %d\n", cmd->flag);
 	if (!is_empty_words && !builtin && !(cmd->flag & CMD_FLAG_IS_FORKED))
 		cmd->flag |= CMD_FLAG_NEED_FORK;
-	printf("before without_fork : cmd->flag %d\n", cmd->flag);
 	if (cmd->flag & CMD_FLAG_NEED_FORK)
 		return (execute_with_fork(is_empty_words, builtin, cmd, fd_info));
 	else
