@@ -15,8 +15,6 @@ t_return_value	reduce_rule_0(t_all_data *all_data)
 	parser->flag = PARSER_FINISH;
 	parser->final_cmd = tree_data->content.cmd;
 	printf("rule 0\n");
-	printf("final_cmd : %d\n", tree_data->content.cmd->redir_list);
-	printf("final_cmd : %d\n", parser->final_cmd->redir_list);
 	return (RV_SUCCESS);
 }
 
@@ -63,10 +61,7 @@ t_return_value	reduce_rule_2(t_all_data *all_data)
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	printf("rule 2\n");
-	printf("final_cmd : %p\n", content.cmd->redir_list);
-	printf("final_cmd : %p\n", data->content.cmd->redir_list);
 	return (gather_heredoc(parser));
-
 }
 
 // P -> P | C;
@@ -112,6 +107,5 @@ t_return_value	reduce_rule_4(t_all_data *all_data)
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	printf("rule 4\n");
-	printf("final_cmd : %d\n", content.cmd->redir_list);
 	return (RV_SUCCESS);
 }

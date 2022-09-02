@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include <stdio.h>
 
 t_cmd	*make_simple(t_all_data *all_data, void *simple_data, void *element_data)
 {
@@ -23,6 +24,36 @@ t_cmd	*make_simple(t_all_data *all_data, void *simple_data, void *element_data)
 		append_redir_list(new_simple, element);
 	return (new_simple);
 }
+
+// //chanha
+// t_cmd	*make_simple(t_cmd *simple, t_element *element)
+// {
+// 	t_cmd			*new_simple;
+
+// 	if (!simple)
+// 	{
+// 		new_simple = ft_xmalloc(sizeof(t_cmd));
+// 		new_simple->type = CMD_SIMPLE;
+// 		new_simple->flag = CMD_FLAG_DEFAULT;
+// 		new_simple->content.simple.words = NULL;
+// 		new_simple->redir_list = NULL;
+// 		new_simple->env = NULL;
+// 		new_simple->exit_status = 0;
+// 		new_simple->pid_last_child = -1;
+// 	}
+// 	else
+// 		new_simple = simple;
+// 	if (element->word)
+// 	{
+// 		append_word_list(new_simple, element);
+// 	}
+// 	else if (element->redir_list)
+// 	{
+// 		append_redir_list(new_simple, element);
+// 	}
+// 	return (new_simple);
+// }
+// //-------------------------
 
 t_cmd	*make_connect(t_all_data *all_data, void *left, void *right, void *connector)
 {

@@ -1,7 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
 
-
 static void	set_fd(int fd_info[3], int fd_read, int fd_write, int fd_close)
 {
 	fd_info[READ_END] = fd_read;

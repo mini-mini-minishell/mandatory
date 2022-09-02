@@ -118,8 +118,6 @@ t_return_value	reduce_rule_13(t_all_data *all_data)
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_ELEMENT;
 	printf("rule 13\n");
-	printf("final_cmd : %p\n", content.cmd->redir_list);
-	printf("final_cmd : %p\n", data->content.cmd->redir_list);
 	return (RV_SUCCESS);
 }
 

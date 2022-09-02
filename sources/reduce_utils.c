@@ -30,13 +30,15 @@ void	append_word_list(t_cmd *new_simple, t_element *element)
 }
 
 void	append_redir_list(t_cmd *new_simple, t_element *element)
+// 이거 printf 해서 들어오는지 확인해보기
 {
 	t_list			*redir_list;
 	//	t_redir_data	
 	redir_list = new_simple->redir_list;
-	// printf("")
-	if (redir_list)
+	// printf("어펜드 리다이렉션 리스트 : \n");
+	if (redir_list->count)
 	{
+		// printf("new_simple redir\n");
 		element->redir_list->head->prev = redir_list->tail;
 		redir_list->tail->next = element->redir_list->head;
 		redir_list->tail = element->redir_list->tail;
@@ -44,7 +46,9 @@ void	append_redir_list(t_cmd *new_simple, t_element *element)
 	else
 	{
 		redir_list = element->redir_list;
+		free(redir_list);
 	}
+	// printf("111111redir_list : %p \n", redir_list);
 }
 
 t_cmd	*make_new_simple(t_all_data *all_data)
@@ -55,7 +59,8 @@ t_cmd	*make_new_simple(t_all_data *all_data)
 	new_simple->type = CMD_SIMPLE;
 	new_simple->flag = CMD_FLAG_DEFAULT;
 	new_simple->content.simple.words = NULL;
-	new_simple->redir_list = NULL;
+	new_simple->redir_list = ft_malloc(sizeof(t_list));
+	list_init(new_simple->redir_list);
 	new_simple->envp_list = &all_data->envp_list;
 	new_simple->exit_status = 0;
 	new_simple->pid_last_child = -1;
