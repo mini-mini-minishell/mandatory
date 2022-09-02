@@ -1,5 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 t_word_data	*create_word_data(char *word)
 {
@@ -31,8 +32,9 @@ void	append_word_list(t_cmd *new_simple, t_element *element)
 void	append_redir_list(t_cmd *new_simple, t_element *element)
 {
 	t_list			*redir_list;
-
+	//	t_redir_data	
 	redir_list = new_simple->redir_list;
+	// printf("")
 	if (redir_list)
 	{
 		element->redir_list->head->prev = redir_list->tail;

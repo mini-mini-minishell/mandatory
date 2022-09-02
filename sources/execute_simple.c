@@ -30,12 +30,15 @@ static int	execute_with_fork(int is_nullcmd, t_built_in_fp builtin, \
 	return (0);
 }
 
+#include <stdio.h>
+
 static int	execute_without_fork(int is_empty_words, t_built_in_fp builtin, \
 		t_cmd *cmd, int fd_info[3])
 {
 	int	fd_buff[3];
 	int	return_value;
 
+	printf("cmd->redir_list %p", cmd->redir_list);
 	if (cmd->flag & CMD_FLAG_IS_FORKED)
 	{
 		if (do_redirections(fd_info, cmd->redir_list, cmd->envp_list) < 0)
@@ -57,6 +60,7 @@ static int	execute_without_fork(int is_empty_words, t_built_in_fp builtin, \
 	}
 }
 
+#include <stdio.h>
 int	execute_simple(t_cmd *cmd, int fd_info[3])
 {
 	int				is_empty_words;
@@ -68,6 +72,7 @@ int	execute_simple(t_cmd *cmd, int fd_info[3])
 	builtin = NULL;
 	if (!is_empty_words)
 		builtin = is_builtin(cmd->content.simple.words);
+	//printf("cmd -> flag  : %d\n", cmd->flag);
 	if (!is_empty_words && !builtin && !(cmd->flag & CMD_FLAG_IS_FORKED))
 		cmd->flag |= CMD_FLAG_NEED_FORK;
 	if (cmd->flag & CMD_FLAG_NEED_FORK)

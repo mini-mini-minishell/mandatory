@@ -30,7 +30,10 @@ static int	dup2_redir_list(t_list *redir_list, t_list *envp_list)
 	t_node			*current;
 	
 	if (!redir_list)
+	{
+		printf("이 리다이렉션 리스트는 비어있습니다\n");
 		return (0);
+	}
 	current = redir_list->head;
 	while (current)
 	{

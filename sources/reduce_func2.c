@@ -21,6 +21,8 @@ t_return_value	reduce_rule_5(t_all_data *all_data)
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	printf("rule 5\n");
+	printf("final_cmd : %p\n", content.cmd->redir_list);
+	printf("final_cmd : %p\n", data->content.cmd->redir_list);
 	return (RV_SUCCESS);
 }
 
@@ -109,11 +111,14 @@ t_return_value	reduce_rule_9(t_all_data *all_data)
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_SIMPLE);
 	tree = &parser->tree_stack;
+	data = tree->tail->data;
+	printf("final_cmd : %p\n", data->content.cmd->redir_list);
 	content.cmd = make_simple(all_data, NULL, tree->tail->data);
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
 	printf("rule 9\n");
+	printf("final_cmd : %p\n", content.cmd->redir_list);
 	return (RV_SUCCESS);
 }

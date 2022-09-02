@@ -108,4 +108,5 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 		// 	return (heredoc_redir(new_word_list(ft_strdup(""))));
 		// } //문제가 생기면 바로 다시 만들기
 	}
+	return (0); // 워닝 방지, 나중에 지워도됨
 }
