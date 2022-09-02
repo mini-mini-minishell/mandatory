@@ -76,6 +76,7 @@ static void	write_heredoc_to_pipe(t_list *redir_list, int fd)
 	free(input_line);
 	free(prompt);
 	free(eof);
+	exit(0);
 }
 
 static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
@@ -108,12 +109,12 @@ static int	fork_receive_heredoc(t_parser *parser, int heredoc_fd[2])
 	pid = ft_fork();
 	if (pid == 0)
 	{
-		set_handler_for_heredoc(1); //+++++++++++++++++++++++++++++++++
+		set_handler_for_heredoc(1);
 		ft_close(heredoc_fd[READ_END]);
 		write_heredoc_to_pipe(&parser->heredoc_list, heredoc_fd[WRITE_END]);
 	}
 	ft_close(heredoc_fd[WRITE_END]);
-	set_prompt_handler(1); //++++++++++++++++++++++++++++++++++++
+	set_prompt_handler(1);
 	receive_heredoc_from_pipe(&parser->heredoc_list, heredoc_fd[READ_END]);
 	ft_close(heredoc_fd[READ_END]);
 	if (waitpid(pid, &status, 0) < 0)

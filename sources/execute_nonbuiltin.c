@@ -91,31 +91,6 @@ void	free_paths(char **paths)
 	free(paths);
 }
 
-char	*check_access(char *cmd, t_list envp_list)
-{
-	int		i;
-	char	*real_cmd;
-	char	*slash_path;
-	char	**paths;
-
-	paths = ft_split(envp_search_value(envp_list, "PATH"), ":");
-	i = 0;
-	while (paths[i] != 0)
-	{
-		slash_path = ft_strjoin(paths[i], "/");
-		real_cmd = ft_strjoin(slash_path, cmd);
-		if (access(real_cmd, X_OK) == 0)
-		{
-			free_paths(paths);
-			return (real_cmd);
-		}
-		free(slash_path);
-		free(real_cmd);
-		i++;
-	}
-	return (0);
-}
-
 static int	try_direct_execve(char **cmd_array, char **env_array)
 {
 	// if (is_directory(cmd_array[0]))
@@ -175,7 +150,7 @@ char	*ft_strchr(const char *s, int c)
 	while (*s != '\0')
 	{
 		if (*s == char_c)
-			return ((char *)s);
+ 			return ((char *)s);
 		s++;
 	}
 	if (char_c == '\0')
@@ -188,17 +163,12 @@ int	execute_nonbuiltin(t_cmd *cmd)
 {
 	char	**argv;
 	char	**envp;
-	char	*real_cmd;
 	char	**paths;
 	int		return_value;
 
 	argv = trans_word_list_2_array(*(cmd->content.simple.words));
-	real_cmd = check_access(argv[0], *cmd->envp_list);
 	envp = trans_envp_list_2_array(*cmd->envp_list);
-	if (!real_cmd)
-		return (EXECUTION_SUCCESS);
-	printf("%c \n", *(ft_strchr(real_cmd, '/')));
-	if (ft_strchr(argv[0], '/') == 0) //의심!!!!!!!! == 0 뭔가 이상하다
+	if (ft_strchr(argv[0], '/') == 0)
 	{
 		paths = parse_envp(envp);
 		printf("path : %p \n", paths);
@@ -213,3 +183,9 @@ int	execute_nonbuiltin(t_cmd *cmd)
 	free_3_doubles(argv, envp, NULL);
 	return (return_value);
 }
+/*
+1.리다이렉션을 못알아먹음 + herdoc 시 Close Error 가 나옴
+2.pipe를 못알아먹음
+3.|| && 를 실행시 minishell 이 종료된다.
+expansion 해야하는데 
+*/
