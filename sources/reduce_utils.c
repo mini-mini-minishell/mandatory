@@ -30,25 +30,20 @@ void	append_word_list(t_cmd *new_simple, t_element *element)
 }
 
 void	append_redir_list(t_cmd *new_simple, t_element *element)
-// 이거 printf 해서 들어오는지 확인해보기
 {
 	t_list			*redir_list;
-	//	t_redir_data	
+
 	redir_list = new_simple->redir_list;
-	// printf("어펜드 리다이렉션 리스트 : \n");
 	if (redir_list->count)
 	{
-		// printf("new_simple redir\n");
 		element->redir_list->head->prev = redir_list->tail;
 		redir_list->tail->next = element->redir_list->head;
 		redir_list->tail = element->redir_list->tail;
+		new_simple->redir_list = redir_list;
+		free(element->redir_list);
 	}
 	else
-	{
-		redir_list = element->redir_list;
-		free(redir_list);
-	}
-	// printf("111111redir_list : %p \n", redir_list);
+		new_simple->redir_list = element->redir_list;
 }
 
 t_cmd	*make_new_simple(t_all_data *all_data)

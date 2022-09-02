@@ -25,24 +25,6 @@ t_return_value	reduce_rule_10(t_all_data *all_data)
 	return (RV_SUCCESS);
 }
 
-
-// void	append_redir_list(t_cmd *new_simple, t_element *element)
-// {
-// 	t_list			*redir_list;
-
-// 	redir_list = new_simple->redir_list;
-// 	if (redir_list)
-// 	{
-// 		element->redir_list->head->prev = redir_list->tail;
-// 		redir_list->tail->next = element->redir_list->head;
-// 		redir_list->tail = element->redir_list->tail;
-// 	}
-// 	else
-// 	{
-// 		redir_list = element->redir_list;
-// 	}
-// }
-
 // RL -> RL R;
 t_return_value	reduce_rule_11(t_all_data *all_data)
 {
@@ -117,7 +99,7 @@ t_return_value	reduce_rule_13(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_ELEMENT;
-	printf("rule 13\n");
+	printf("rule13\n"); 
 	return (RV_SUCCESS);
 }
 

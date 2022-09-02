@@ -1,4 +1,5 @@
 #include "../includes/minishell.h"
+#include <stdio.h>
 
 int	execute_command_internal(t_cmd *cmd, int fd_info[3])
 {
@@ -15,12 +16,11 @@ int	execute_command_internal(t_cmd *cmd, int fd_info[3])
 		return (execute_subshell(cmd, fd_info));
 	}
 	else
-	{
+	{	
 		return (EXECUTION_FAILURE);
 	}
 }
 
-#include <stdio.h>
 int	execute_command(t_cmd *cmd, int fd_info[3])
 {
 	int	return_value;

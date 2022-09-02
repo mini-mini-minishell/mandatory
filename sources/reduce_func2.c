@@ -85,7 +85,7 @@ t_return_value	reduce_rule_8(t_all_data *all_data)
 	count = 2 * 2;
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_SIMPLE);
-	tree = &parser->tree_stack;
+	tree = &parser->tree_stack; 
 	content.cmd = make_simple(all_data, tree->tail->prev->data, tree->tail->data);
 	stack_pop_back(&parser->tree_stack, 2);
 	tree_push_back(&parser->tree_stack, content);

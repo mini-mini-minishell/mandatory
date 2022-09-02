@@ -11,7 +11,9 @@ t_cmd	*make_simple(t_all_data *all_data, void *simple_data, void *element_data)
 	simple = NULL;
 	data = simple_data;
 	if (simple_data)
+	{
 		simple = data->content.cmd;
+	}
 	data = element_data;
 	element = data->content.element;
 	if (!simple)

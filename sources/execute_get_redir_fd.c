@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <stdio.h>
 
 #ifndef MAXIMUM_BYTE
 # define MAXIMUM_BYTE 65536
@@ -66,7 +67,7 @@ static int	normal_redir(t_redir_data *redir_data, t_list *word_list)
 	int			fd;
 
 	word_data = word_list->head->data;
-	if (word_list->count < 2)
+	if (word_list->head == NULL || word_list->head->next != NULL)
 	{
 		ft_putstr_fd(redir_data->file_content, STDERR_FILENO);
 		ft_putstr_fd(": ambiguous redirect\n", STDERR_FILENO);
@@ -88,8 +89,9 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 {
 	t_list	*word_list;
 
-	// word_list = NULL;
+	word_list = ft_malloc(sizeof(t_list));
 	list_init(word_list);
+	// printf("!!!!!!!! : %p\n",redir_data->file_content);
 	list_push_back(word_list, list_new_node(create_word_data(ft_strdup(redir_data->file_content))));
 	if (redir_data->redir_type != REDIR_HEREDOC)
 	{
