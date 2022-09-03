@@ -129,6 +129,13 @@ void			get_envp(t_all_data *all_data, char **envp);
 t_env_data		*create_envp_data(char *key, char *value);
 void			envp_free_node(t_node **node);
 
+/* list_heredoc.c */
+void			heredoc_list_remove_head_node(t_heredoc_list *list);
+t_heredoc_node	*heredoc_list_pop_back(t_heredoc_list *list);
+void			heredoc_list_push_back(t_heredoc_list *list, t_heredoc_node *new);
+t_heredoc_node	*heredoc_list_new_node(t_list *data);
+void			heredoc_list_init(t_heredoc_list *list);
+
 /* list_stack.c */
 void			stack_pop_back(t_list *list, int count);
 void			parser_push_back(t_list *list, int type);

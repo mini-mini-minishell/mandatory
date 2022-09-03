@@ -187,7 +187,9 @@ typedef struct s_element		t_element;
 typedef int						t_pid;
 typedef struct s_env_data		t_env_data;
 typedef struct s_token_data		t_token_data;
+typedef struct s_heredoc_node	t_heredoc_node;
 typedef struct s_node			t_node;
+typedef struct s_heredoc_list	t_heredoc_list;
 typedef struct s_list			t_list;
 typedef struct s_redir_data		t_redir_data;
 typedef struct s_simple			t_simple;
@@ -211,11 +213,25 @@ struct s_token_data
 	char			*content;
 };
 
+struct s_heredoc_node
+{
+	t_list					*data;
+	struct s_heredoc_node	*prev;
+	struct s_heredoc_node	*next;
+};
+
 struct s_node
 {
 	void			*data;
 	struct s_node	*prev;
 	struct s_node	*next;
+};
+
+struct s_heredoc_list
+{
+	t_heredoc_node	*head;
+	t_heredoc_node	*tail;
+	size_t			count;
 };
 
 struct s_list
@@ -239,7 +255,7 @@ struct s_parser
 	t_reducer_fp	reduce_func[22];
 	t_list			parser_stack;
 	t_list			tree_stack;
-	t_list			heredoc_list;
+	t_heredoc_list	heredoc_list;
 	t_cmd			*final_cmd;
 	t_parser_flag	flag;
 }; 

@@ -23,7 +23,6 @@ t_lexer_state	ft_lexer_state(char c)
 	else
 		return (LS_OTHERS);
 }
-#include <stdlib.h>
 
 int	run_lexer(t_all_data *all_data)
 {
