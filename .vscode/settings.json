@@ -1,7 +1,5 @@
 {
     "files.associations": {
-        "study": "c",
-        "list_heredoc": "c",
-        "minishell.h": "c"
+        "study": "c"
     }
 }

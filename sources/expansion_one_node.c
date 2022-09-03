@@ -7,11 +7,11 @@ static t_trim_flag	update_trim_flag(t_trim_flag flag)
 	return (TRIM_NON);
 }
 
-static t_list	*remove_null_node(t_word_list *lst)
+static t_list	*remove_null_node(t_list *lst)
 {
-	t_word_list	*head;
-	t_word_list	*curr;
-	t_word_list	*temp;
+	t_list	*head;
+	t_list	*curr;
+	t_list	*temp;
 
 	head = NULL;
 	while (lst)
@@ -33,21 +33,34 @@ static t_list	*remove_null_node(t_word_list *lst)
 	return (head);
 }
 
+
+void	init_info(t_expansion_info *info)
+{
+	// t_buffer		curr_word; //주서끄
+	info->curr_word = NULL;
+	info->new_list = ft_malloc(sizeof(t_list));
+	info->quote_flag = 0;
+}
+
 //variable_expansion, word splitting in here.
 //expand current node (possibly seperate into serveral node),
 //add it to of new_list's lastnode. 
-t_list	*expand_one_node(char *word, t_list *env, t_expansion_flag flag)
+t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 {
 	t_expansion_info	info;
+	t_word_data			*data;
+	char				*word;
 
-	ft_memset(&info, 0, sizeof(t_expansion_info));
+	init_info(&info);
+	data = word_node->data;
+	word = data->word;
 	while (*word != '\0')
 	{
 		info.quote_flag = check_quote(*word, info.quote_flag);
-		info.trim_flag = update_trim_flag(info.trim_flag);
+		// info.trim_flag = update_trim_flag(info.trim_flag); //워드스플릿 안함
 		if ((flag & EXP_VARIABLE) && info.quote_flag != QUOT_SINGLE && \
 				*word == '$')
-			expand_variable(&word, env, flag, &info);
+			expand_variable(&word, env, flag, &info); // 여기까지 토욜 끝
 		else
 			no_variable_expansion(word++, flag, &info);
 	}

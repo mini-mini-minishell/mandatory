@@ -210,6 +210,7 @@ typedef union u_tree_content	t_tree_content;
 typedef struct s_parser_data	t_parser_data;
 typedef struct s_tree_data		t_tree_data;
 typedef struct s_word_data		t_word_data;
+typedef struct s_expansion_info	t_expansion_info;
 
 struct s_env_data
 {
@@ -374,6 +375,21 @@ struct s_word_data
 	int			field;
 	char		*word;
 	// t_word_data	*variables; // node 일지 ?
+};
+
+// typedef struct s_buffer
+// {
+// 	char	*word;
+// 	size_t	size;
+// 	size_t	len;
+// }	t_buffer; 주서끄
+
+struct s_expansion_info
+{
+	// t_buffer		curr_word; //주서끄
+	char			*curr_word;
+	t_list			*new_list;
+	t_quot_state	quote_flag;
 };
 
 #endif

@@ -78,14 +78,25 @@ int				get_exit_status(int status);
 /* exit.c */
 void			exit_with_message(char *s);
 
+/* ------------------------------- */
+
+/* expand_nosplit.c */
+int				expand_variable_nosplit(char *value, char *curr_word, t_list **new_list);
+
+/* expand_string.c */
+char			*get_expanded_string(t_list *env, char **word, char **name);
+
+/* expand_variable.c */
+void			expand_variable(char **word, t_list *env, t_expansion_flag flag, t_expansion_info *info);
+
 /* expansion_one_node.c */
-t_list	*expand_one_node(char *word, t_list *env, t_expansion_flag flag);
+t_list			*expand_one_node(t_node *word, t_list *env, t_expansion_flag flag);
 
 /* expansion_word_list.c */
-t_list	*expand_word_list(t_list *words, t_list *env, t_expansion_flag flag);
+t_list			*expand_word_list(t_list *words, t_list *env, t_expansion_flag flag);
 
 /* expansion.c */
-t_list	*expansion_all(t_list *words, t_list *env);
+t_list			*expansion_all(t_list *words, t_list *env);
 
 /* goto_func.c */
 t_parser_state	goto_from_state_0(t_token_type type);
@@ -108,6 +119,7 @@ int				goto_next_state(t_all_data *all_data, \
 
 /* heredoc.c */
 int				gather_heredoc(t_parser *parser);
+t_quot_state	check_quote(char word, int quote_flag);
 
 /* init_all.c */
 void			init_all(t_all_data *all_data, char **envp);
@@ -241,6 +253,9 @@ t_pid			ft_fork(void);
 int				ft_pipe(int heredoc_fd[2]);
 int				ft_close(int fd);
 int				ft_dup2(int fd1, int fd2);
+
+/*utils_itoa.c*/
+char			*ft_itoa(int n);
 
 /* utils_split.c */
 char			**ft_split(char const *s, char *set);

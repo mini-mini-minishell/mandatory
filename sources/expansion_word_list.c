@@ -1,9 +1,9 @@
 #include "../includes/minishell.h"
 
 static void	replace_curr_with_new_list(t_list *new_list, \
-		t_word_list **prev)
+		t_list **prev)
 {
-	t_word_list	*last_node;
+	t_list	*last_node;
 
 	if (*prev)
 	{

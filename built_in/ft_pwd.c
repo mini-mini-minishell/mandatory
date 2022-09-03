@@ -19,7 +19,6 @@ int	ft_pwd(t_cmd *cmd)
 	pwd = getcwd(NULL,0);
 	if (!pwd)
 	{
-		//unset -> pwd 잘 되는지
 		pwd = ft_strdup(envp_search_value(*cmd->envp_list, "PWD"));
 		if (!pwd)
 			return (print_error());
