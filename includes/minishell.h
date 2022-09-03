@@ -78,6 +78,15 @@ int				get_exit_status(int status);
 /* exit.c */
 void			exit_with_message(char *s);
 
+/* expansion_one_node.c */
+t_list	*expand_one_node(char *word, t_list *env, t_expansion_flag flag);
+
+/* expansion_word_list.c */
+t_list	*expand_word_list(t_list *words, t_list *env, t_expansion_flag flag);
+
+/* expansion.c */
+t_list	*expansion_all(t_list *words, t_list *env);
+
 /* goto_func.c */
 t_parser_state	goto_from_state_0(t_token_type type);
 t_parser_state	goto_from_state_1(t_token_type type);
