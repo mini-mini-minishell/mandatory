@@ -118,23 +118,3 @@ t_return_value	reduce_rule_9(t_all_data *all_data)
 	printf("rule 9\n");
 	return (RV_SUCCESS);
 }
-
-// //chanha
-// int	reduce_rule_9(t_parser *parser)
-// {
-// 	int				count;
-// 	t_value_content	content;
-// 	t_value_content	elem;
-
-// 	count = 2 * 1;
-// 	printf("rule : 9\n");
-
-// 	pop_parser_stack(parser, count);
-// 	push_parser_stack(parser, SYMBOL_SIMPLE);
-// 	elem = parser->value_stack->content;
-// 	content.cmd = make_simple(NULL, elem.element);
-// 	pop_value_stack(parser, 1);
-// 	push_value_stack(parser, content);
-// 	parser->value_stack->type = VALUE_CMD;
-// 	return (0);
-// }

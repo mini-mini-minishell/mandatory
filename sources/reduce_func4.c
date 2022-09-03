@@ -19,7 +19,7 @@ static void make_new_tree_content(t_parser *parser, t_tree_content *content)
 	list_push_back(redir_list, node);
 	content->redir_list = redir_list;
 	if (redir_open.token == TT_REDIR_HEREDOC)
-		list_push_back(&parser->heredoc_list, node);
+		heredoc_list_push_back(&parser->heredoc_list, heredoc_list_new_node(redir_list));
 }
 
 // R -> redir_op id;

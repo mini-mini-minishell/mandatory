@@ -101,7 +101,7 @@ static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
 
 static int	fork_receive_heredoc(t_parser *parser, int heredoc_fd[2])
 {
-	t_list			*heredoc_list;
+	t_heredoc_list	*heredoc_list;
 	t_pid			pid;
 	int				status;
 
@@ -111,38 +111,34 @@ static int	fork_receive_heredoc(t_parser *parser, int heredoc_fd[2])
 	{
 		set_handler_for_heredoc(1);
 		ft_close(heredoc_fd[READ_END]);
-		write_heredoc_to_pipe(&parser->heredoc_list, heredoc_fd[WRITE_END]); 
+		write_heredoc_to_pipe(heredoc_list->head->data, heredoc_fd[WRITE_END]); 
 	}
 	ft_close(heredoc_fd[WRITE_END]);
 	set_prompt_handler(1);
-	receive_heredoc_from_pipe(&parser->heredoc_list, heredoc_fd[READ_END]);
+	receive_heredoc_from_pipe(heredoc_list->head->data, heredoc_fd[READ_END]);
 	ft_close(heredoc_fd[READ_END]);
 	if (waitpid(pid, &status, 0) < 0)
 		return (1);
-	heredoc_list->head = heredoc_list->head->next;
-	// list_remove_head_redir(heredoc_list);
-	// printf("6. %p \n", parser->heredoc_list.head);
-	// parser->heredoc_list = heredoc_list->next;
-	// free(heredoc_list);
+	heredoc_list_remove_head_node(heredoc_list);
 	return (get_exit_status(status));
 }
 
 int	gather_heredoc(t_parser *parser)
 {
-	int			heredoc_fd[2];
-	int			exit_status;
-	t_node		*current;
+	t_heredoc_list	*heredoc_list;
+	int				heredoc_fd[2];
+	int				exit_status;
 
+	heredoc_list = &parser->heredoc_list;
 	exit_status = 0;
-	while (current)
+	while (heredoc_list->count)
 	{
 		ft_pipe(heredoc_fd);
 		exit_status = fork_receive_heredoc(parser, heredoc_fd);
 		if (exit_status != 0)
 			break ;
-		current = parser->heredoc_list.head;
 	}
-	// while (parser->heredoc_list.count)
-	// 	list_remove_head_redir(&parser->heredoc_list);
+	while (heredoc_list->count)
+		heredoc_list_remove_head_node(heredoc_list);
 	return (exit_status);
 }

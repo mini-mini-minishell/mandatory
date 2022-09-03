@@ -39,6 +39,7 @@ FILES 		=			execute_builtin.c \
 						lex_func4.c \
 						list_envp.c \
 						list_envp2.c \
+						list_heredoc.c \
 						list_stack.c \
 						list_stack2.c \
 						list_token.c \
