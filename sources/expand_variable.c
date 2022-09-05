@@ -19,7 +19,7 @@ static void	do_variable_expansion(char *value, t_expansion_flag flag, \
 			t_expansion_info *info)
 {	if (info->quote_flag == QUOT_NON)
 		substitute_asterisk(value);
-	expand_variable_nosplit(value,&(info->curr_word), &(info->new_list));
+	expand_variable_nosplit(value, info->curr_word, &(info->new_list));
 	free(value);
 }
 
@@ -43,13 +43,31 @@ void	expand_variable(char **word, t_list *env, t_expansion_flag flag, \
 		free(name);
 		if (info->quote_flag != QUOT_NON)
 		{
-			temp = ft_strjoin(&(info->curr_word), ft_strdup(""));
-			list_push_back(info->new_list, list_new_node(create_word_data(temp)));
+			temp = ft_strjoin(info->curr_word, ft_strdup(""));
+			update_last_node_word(info->new_list, info->curr_word);
 		}
 	}
 	else
 	{
-		temp = ft_strjoin(ft_strdup("$"), &(info->curr_word));
-		list_push_back(info->new_list, list_new_node(create_word_data(temp)));
+		temp = ft_strjoin(ft_strdup("$"), info->curr_word);
+		update_last_node_word(info->new_list, info->curr_word);
+	}
+}
+
+void	update_last_node_word(t_list *new_list, char *curr_word)
+{
+	t_word_data	*last_word_data;
+	char		*temp;
+
+	if (new_list->count)
+	{
+		last_word_data = new_list->tail->data;
+		temp = last_word_data->word;
+		// if (last_word_data)
+		// {
+		last_word_data->word = curr_word;
+		// last_node->word = curr_word.word;
+		if (temp)
+			free(temp);
 	}
 }

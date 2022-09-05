@@ -1,4 +1,4 @@
-#include "../includes/minishell"
+#include "../includes/minishell.h"
 
 static int	ft_count_dec(int n)
 {

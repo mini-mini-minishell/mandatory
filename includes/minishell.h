@@ -80,14 +80,28 @@ void			exit_with_message(char *s);
 
 /* ------------------------------- */
 
+/* expand_no_variable.c */
+void			no_variable_expansion(char *word, t_expansion_flag flag, \
+				t_expansion_info *info);
+
 /* expand_nosplit.c */
 int				expand_variable_nosplit(char *value, char *curr_word, t_list **new_list);
 
 /* expand_string.c */
 char			*get_expanded_string(t_list *env, char **word, char **name);
 
+/* expand_substitute.c */
+void			substitute_filename(t_list **words);
+
 /* expand_variable.c */
 void			expand_variable(char **word, t_list *env, t_expansion_flag flag, t_expansion_info *info);
+void			update_last_node_word(t_list *new_list, char *curr_word);
+
+/* expansion_filename.c */
+int				filename_expansion(t_list **words);
+
+/* expansion_match.c */
+int				match(char *pattern, char *name);
 
 /* expansion_one_node.c */
 t_list			*expand_one_node(t_node *word, t_list *env, t_expansion_flag flag);
@@ -180,6 +194,7 @@ char			**trans_word_list_2_array(t_list word_list);
 
 /* list.c */ //node_number start from zero
 void			list_remove_head_token(t_list *list);
+t_node			*list_pop_head(t_list *list);
 t_node			*list_pop_back(t_list *list);
 void			list_push_back(t_list *list, t_node *new);
 t_node			*list_new_node(void *data);

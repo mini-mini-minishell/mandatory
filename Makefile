@@ -25,6 +25,16 @@ FILES 		=			execute_builtin.c \
 						execute_subshell.c\
 						execute_utils.c \
 						exit.c \
+						expand_no_variable.c \
+						expand_nosplit.c \
+						expand_string.c \
+						expand_substitute.c \
+						expand_variable.c \
+						expansion_filename.c \
+						expansion_match.c \
+						expansion_one_node.c \
+						expansion_word_list.c \
+						expansion.c \
 						get_next_line_utils.c \
 						get_next_line.c \
 						goto_func1.c \
@@ -63,6 +73,7 @@ FILES 		=			execute_builtin.c \
 						signal_hadler.c\
 						test.c \
 						utils_fd.c \
+						utils_itoa.c \
 						utils_split.c \
 						utils_string.c
 

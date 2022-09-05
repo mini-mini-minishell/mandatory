@@ -211,6 +211,7 @@ typedef struct s_parser_data	t_parser_data;
 typedef struct s_tree_data		t_tree_data;
 typedef struct s_word_data		t_word_data;
 typedef struct s_expansion_info	t_expansion_info;
+typedef struct s_glob_index		t_glob_index;
 
 struct s_env_data
 {
@@ -374,7 +375,7 @@ struct s_word_data
 	int			key_len;
 	int			field;
 	char		*word;
-	// t_word_data	*variables; // node 일지 ?
+	t_list		*variables; // node 일지 ?
 };
 
 // typedef struct s_buffer
@@ -384,12 +385,20 @@ struct s_word_data
 // 	size_t	len;
 // }	t_buffer; 주서끄
 
-struct s_expansion_info
+struct s_expansion_info	
 {
 	// t_buffer		curr_word; //주서끄
 	char			*curr_word;
 	t_list			*new_list;
 	t_quot_state	quote_flag;
+};
+
+struct s_glob_index
+{
+	size_t	name_idx;
+	size_t	pattern_idx;
+	size_t	name_fallback;
+	size_t	pattern_fallback;
 };
 
 #endif

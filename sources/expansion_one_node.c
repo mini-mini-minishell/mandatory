@@ -1,44 +1,39 @@
 #include "../includes/minishell.h"
 
-static t_trim_flag	update_trim_flag(t_trim_flag flag)
+static void	remove_null_node(t_list *list)
 {
-	if (flag & TRIM_BACK)
-		return (TRIM_PREV_NODE);
-	return (TRIM_NON);
-}
+	t_node		*current;
+	t_node		*temp;
+	t_word_data	*word_data;
 
-static t_list	*remove_null_node(t_list *lst)
-{
-	t_list	*head;
-	t_list	*curr;
-	t_list	*temp;
-
-	head = NULL;
-	while (lst)
+	current = list->head;
+	while (current)
 	{
-		if (lst->word == NULL)
+		word_data = current->data;
+		// if (*word_data->word == '\0')
+		if (word_data->word == NULL)
 		{
-			temp = lst;
-			lst = lst->next;
-			free_word_one_node(temp);
+			temp = current;
+			current = current->next;
+			word_data = temp->data;
+			// free(word_data->word);
+			free(word_data->variables); // free word list
+			free(word_data);
+			free(temp);
 			continue ;
 		}
-		if (head == NULL)
-			head = lst;
-		else
-			curr->next = lst;
-		curr = lst;
-		lst = lst->next;
+		current = current->next;
 	}
-	return (head);
 }
 
-
-void	init_info(t_expansion_info *info)
+static void	init_info(t_expansion_info *info)
 {
 	// t_buffer		curr_word; //주서끄
 	info->curr_word = NULL;
 	info->new_list = ft_malloc(sizeof(t_list));
+	list_init(info->new_list);
+	// info->variables = ft_malloc(sizeof(t_list));
+	// init_list(info->variables);
 	info->quote_flag = 0;
 }
 
@@ -64,14 +59,12 @@ t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 		else
 			no_variable_expansion(word++, flag, &info);
 	}
-	if (info.new_list == NULL)
-	{
-		addback_word_list(new_word_list(info.curr_word.word), &(info.new_list));
-	}
+	if (info.new_list->count)
+		list_push_back(info.new_list, list_new_node(create_word_data(info.curr_word)));
 	if (flag & EXP_ASTERISK)
 	{
 		filename_expansion(&(info.new_list));
 	}
-	info.new_list = remove_null_node(info.new_list);
+	remove_null_node(info.new_list);
 	return (info.new_list);
 }
