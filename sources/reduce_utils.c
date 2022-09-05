@@ -10,8 +10,9 @@ t_word_data	*create_word_data(char *word)
 	new_data->flag = 0;
 	new_data->field = 0;
 	new_data->key_len = 0;
-	new_data->variables = NULL;
 	new_data->word = word;
+	new_data->variables = ft_malloc(sizeof(t_list));
+	list_init(new_data->variables);
 	return (new_data);
 }
 

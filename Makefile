@@ -22,7 +22,7 @@ FILES 		=			execute_builtin.c \
 						execute_nonbuiltin.c \
 						execute_pipe.c\
 						execute_simple.c \
-						execute_subshell.c\
+						execute_subshell.c \
 						execute_utils.c \
 						exit.c \
 						expand_no_variable.c \

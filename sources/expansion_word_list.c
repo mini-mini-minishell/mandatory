@@ -12,21 +12,21 @@
 // 	last_node = get_last_node(new_list);
 // 	*prev = last_node;
 // }
-
+#include <stdio.h>
 t_list	*expand_word_list(t_list *words, t_list *env, \
 		t_expansion_flag flag)
 {
-	t_node		*curr;
+	t_node		*current;
 	t_node		*next;
 	t_list		*new_list;
 	t_list		*temp;
 
-	curr = words->head;
+	current = words->head;
 	new_list = NULL;
-	while (curr != NULL)
+	while (current != NULL)
 	{
-		next = curr->next;
-		temp = expand_one_node(curr->data, env, flag);
+		next = current->next;
+		temp = expand_one_node(current, env, flag);
 		if (new_list)
 		{
 			temp->head->prev = new_list->tail;
@@ -37,9 +37,9 @@ t_list	*expand_word_list(t_list *words, t_list *env, \
 		}
 		else
 			new_list = temp;
-		free(curr->data);
-		free(curr);
-		curr = next;
+		free(current->data);
+		free(current);
+		current = next;
 	}
 	free(words);
 	return (new_list);

@@ -36,11 +36,15 @@ void	no_variable_expansion(char *word, t_expansion_flag flag, \
 {
 	char		char_to_append;
 	char		*str;
+	char		*temp;
 
 	char_to_append = get_char_to_append(*word, flag, info->quote_flag);
 	str = ft_malloc(2);
 	str[0] = char_to_append;
 	str[1] = '\0';
-	ft_strjoin(str, info->curr_word);
+	temp = info->curr_word;
+	info->curr_word = ft_strjoin(info->curr_word, str);
+	free(str);
+	free(temp);
 	update_last_node_word(info->new_list, info->curr_word);
 }

@@ -4,20 +4,17 @@ extern int	g_exit_status;
 
 static char	*extract_name(char *target)
 {
-	char **split;
+	size_t	i;
+	char	*name;
 
-	split = ft_split(target, "=");
-	free(split[0]);
-	return (split[1]);
-
-	// i = isname_get_length(target);
-	// name = NULL;
-	// if (i > 0)
-	// {
-	// 	name = ft_malloc(sizeof(char) * (i + 1));
-	// 	ft_strlcpy(name, target, i + 1);
-	// }
-	// return (name);
+	i = isname_get_length(target);
+	name = NULL;
+	if (i > 0)
+	{
+		name = ft_malloc(sizeof(char) * (i + 1));
+		ft_strlcpy(name, target, i + 1);
+	}
+	return (name);
 }
 
 char	*get_expanded_string(t_list *env, char **word, char **name)

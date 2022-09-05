@@ -294,6 +294,7 @@ int				ft_isdigit(int c);
 /* test.c */
 void			print_token_data(t_all_data *all_data);
 void			print_tree_stack(t_list tree_stack);
+void			print_word_data(t_list *word_list);
 
 //_______________________________
 /* 1.execute_connect */

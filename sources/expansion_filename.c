@@ -22,7 +22,7 @@ static int	add_matched_filenames(t_list *words, DIR *dirp)
 
 	word_data = words->head->data;
 	pattern = word_data->word;
-	variables = NULL;
+	// variables = NULL;
 	while (1)
 	{
 		dp = readdir(dirp);
