@@ -68,11 +68,8 @@ int	execute_simple(t_cmd *cmd, int fd_info[3])
 	int				is_empty_words;
 	t_built_in_fp	builtin;
 
-	// if(ft_strchr(cmd->content.simple.words, '*') || ft_strchr(cmd->content.simple.words, '?'))
-	{
-		cmd->content.simple.words = expansion_all(cmd->content.simple.words, \
-			cmd->envp_list);
-	}
+	// cmd->content.simple.words = expansion_all(cmd->content.simple.words, \
+	// 							cmd->envp_list);
 	is_empty_words = (cmd->content.simple.words == NULL);
 	builtin = NULL;
 	if (!is_empty_words)

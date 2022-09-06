@@ -1,6 +1,6 @@
 #include "../includes/minishell.h"
 #include <dirent.h>
-
+#include <stdio.h>
 static void	pattern_matching(struct dirent *dp, char *pattern, \
 		t_list *variables)
 {
@@ -13,15 +13,16 @@ static void	pattern_matching(struct dirent *dp, char *pattern, \
 	}
 }
 
-static int	add_matched_filenames(t_list *words, DIR *dirp)
+static int	add_matched_filenames(t_list *info_new_list, DIR *dirp)
 {
 	t_word_data		*word_data;
 	char			*pattern;
 	struct dirent	*dp;
 	t_list			*variables;
 
-	word_data = words->head->data;
+	word_data = info_new_list->head->data;
 	pattern = word_data->word;
+	printf("pattern : %s\n", pattern);
 	variables = ft_malloc(sizeof(t_list));
 	list_init(variables);
 	while (1)
@@ -40,7 +41,7 @@ static int	add_matched_filenames(t_list *words, DIR *dirp)
 	return (0);
 }
 
-static int	add_filenames_to_variable(t_list *words)
+static int	add_filenames_to_variable(t_list *info_new_list)
 {
 	DIR		*dirp;
 	int		return_value;
@@ -50,10 +51,11 @@ static int	add_filenames_to_variable(t_list *words)
 	dirp = opendir(".");
 	if (dirp)
 	{
-		current = words->head;
+		current = info_new_list->head;
 		while (current != NULL)
 		{
-			return_value += add_matched_filenames(words, dirp);
+			// printf("add_filenames info_new_list : %p\n", info_new_list->head);
+			return_value += add_matched_filenames(info_new_list, dirp);
 			current = current->next;
 		}
 		closedir(dirp);
@@ -61,15 +63,15 @@ static int	add_filenames_to_variable(t_list *words)
 	return (return_value);
 }
 
-static void	restore_asterisk(t_list *words)
+static void	restore_asterisk(t_list *info_new_list)
 {
 	t_word_data	*word_data;
 	size_t		i;
 
 	i = 0;
-	if (words && words->count)
+	if (info_new_list && info_new_list->count)
 	{
-		word_data = words->head->data; 
+		word_data = info_new_list->head->data; 
 		while (word_data->word[i])
 		{
 			if (word_data->word[i] == '\001')
@@ -79,24 +81,45 @@ static void	restore_asterisk(t_list *words)
 	}
 }
 
-int	filename_expansion(t_list **words)
+int	filename_expansion(t_list **info_new_list)
 {
 	t_word_data	*word_data;
 	int			expanded;
 
 	expanded = 0;
-	if ((*words)->tail)
+	word_data = (*info_new_list)->head->data;
+	if ((*info_new_list)->count && word_data->word)
 	{
-		word_data = (*words)->tail->data;
-		expanded = add_filenames_to_variable(*words);
+		expanded = add_filenames_to_variable(*info_new_list);
 		if (expanded)
 		{
-			substitute_filename(words);
+			substitute_filename(info_new_list);
 		}
 		else
 		{
-			restore_asterisk(*words);
+			restore_asterisk(*info_new_list);
 		}
 	}
 	return (expanded);
 }
+
+// /* chan */
+// int	filename_expansion(t_word_list **words)
+// {
+// 	int	expanded;
+
+// 	expanded = 0;
+// 	if (*words != NULL && (*words)->word)
+// 	{
+// 		expanded = add_filenames_to_variable(*words);
+// 		if (expanded)
+// 		{
+// 			substitute_filename(words);
+// 		}
+// 		else
+// 		{
+// 			restore_asterisk(*words);
+// 		}
+// 	}
+// 	return (expanded);
+// }

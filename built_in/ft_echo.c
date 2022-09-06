@@ -5,6 +5,8 @@ static int	check_opt(t_list *list)
 {
 	t_word_data	*word_data;
 
+	if (!list->head)
+		return (1);
 	word_data = list->head->data;
 	if (!ft_strncmp(word_data->word, "-n", 3))
 		return (0);
@@ -19,6 +21,8 @@ int	ft_echo(t_cmd *cmd)
 	t_word_data	*word_data;
 
 	word_list = cmd->content.simple.words;
+	
+	word_data = word_list->head->data;
 	display_return = check_opt(word_list);
 	current = word_list->head;
 	if (!display_return)
@@ -26,6 +30,7 @@ int	ft_echo(t_cmd *cmd)
 	while (current)
 	{
 		word_data = current->data;
+		printf("%s", word_data->word);
 		current = current->next;
 	}
 	if (display_return)

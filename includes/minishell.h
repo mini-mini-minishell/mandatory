@@ -91,14 +91,14 @@ int				expand_variable_nosplit(char *value, char *curr_word, t_list **new_list);
 char			*get_expanded_string(t_list *env, char **word, char **name);
 
 /* expand_substitute.c */
-void			substitute_filename(t_list **words);
+void			substitute_filename(t_list **info_new_addr);
 
 /* expand_variable.c */
 void			expand_variable(char **word, t_list *env, t_expansion_flag flag, t_expansion_info *info);
 void			update_last_node_word(t_list *new_list, char *curr_word);
 
 /* expansion_filename.c */
-int				filename_expansion(t_list **words);
+int				filename_expansion(t_list **info_new_list);
 
 /* expansion_match.c */
 int				match(char *pattern, char *name);
