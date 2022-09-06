@@ -32,14 +32,9 @@ static void	init_info(t_expansion_info *info)
 	info->curr_word = NULL;
 	info->new_list = ft_malloc(sizeof(t_list));
 	list_init(info->new_list);
-	// info->variables = ft_malloc(sizeof(t_list));
-	// init_list(info->variables);
 	info->quote_flag = 0;
 }
 
-//variable_expansion, word splitting in here.
-//expand current node (possibly seperate into serveral node),
-//add it to of new_list's lastnode. 
 #include <stdio.h>
 t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 {
@@ -65,12 +60,18 @@ t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 		// printf("들어옴\n");
 		list_push_back(info.new_list, list_new_node(create_word_data(info.curr_word)));
 	}
-	// printf("count : %d\n", info.new_list->count);
-	if (flag & EXP_ASTERISK)
+	printf("count : %d\n", info.new_list->count);
+	printf("head : %p\n", info.new_list->head);
+	// if (flag & EXP_ASTERISK)
+	if (ft_strchr(word, '*'))
 	{
+		printf("%d %d\n ", flag, flag & EXP_ASTERISK);
+		printf("????? 왜왔니\n");
 		filename_expansion(&(info.new_list));
 	}
+	printf("before nn count : %d\n", info.new_list->count);
 	remove_null_node(info.new_list);
+	printf("remove after head : %p\n", info.new_list->head);
 	return (info.new_list);
 }
 

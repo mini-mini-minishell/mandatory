@@ -65,7 +65,6 @@ int	run_parser(t_all_data *all_data)
 	data = all_data->parser.parser_stack.tail->data;
 	if (data->type & PARSER_STATE)
 	{
-		// //printf("state : %d \n", state - PARSER_STATE);
 		token_type = get_input_token_type(all_data->token_list);
 		if (should_reduce(state, token_type))
 		{

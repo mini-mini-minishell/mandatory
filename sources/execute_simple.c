@@ -40,7 +40,6 @@ static int	execute_without_fork(int is_empty_words, t_built_in_fp builtin, \
 
 	if (cmd->flag & CMD_FLAG_IS_FORKED)
 	{
-		// printf("%p")
 		if (do_redirections(fd_info, cmd->redir_list, cmd->envp_list) < 0)
 		{ 
 			return (EXECUTION_FAILURE);

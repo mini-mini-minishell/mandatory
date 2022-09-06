@@ -39,6 +39,5 @@ t_return_value	reduce_rule_15(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_REDIR_LIST;
-	printf("rule 15\n");
 	return (RV_SUCCESS);
 }

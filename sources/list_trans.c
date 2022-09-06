@@ -10,9 +10,8 @@ char	**trans_word_list_2_array(t_list word_list)
 
 	current = word_list.head;
 	word_array = ft_malloc(sizeof(char *) * (word_list.count + 1));
-	word_array[word_list.count] = NULL;
 	i = 0;
-	while(current)
+	while (current)
 	{
 		data = current->data;
 		word_array[i] = ft_malloc(sizeof(char) * (ft_strlen(data->word) + 1));
@@ -20,6 +19,7 @@ char	**trans_word_list_2_array(t_list word_list)
 		current = current->next;
 		++i;
 	}
+	word_array[word_list.count] = NULL;
 	return (word_array);
 }
 
@@ -31,7 +31,6 @@ char	**trans_envp_list_2_array(t_list envp_list)
 	int			i;
 	
 	envp_array = ft_malloc(sizeof(char *) * (envp_list.count + 1));
-	envp_array[envp_list.count] = NULL;
 	i = 0;
 	current = envp_list.head;
 	while (current)
@@ -42,5 +41,6 @@ char	**trans_envp_list_2_array(t_list envp_list)
 		current = current->next;
 		++i;
 	}
+	envp_array[envp_list.count] = NULL;
 	return (envp_array);
 }

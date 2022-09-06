@@ -20,7 +20,6 @@ t_return_value	reduce_rule_5(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
-	printf("rule 5\n");
 	return (RV_SUCCESS);
 }
 
@@ -43,7 +42,6 @@ t_return_value	reduce_rule_6(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
-	printf("rule 6\n");
 	return (RV_SUCCESS);
 }
 
@@ -68,7 +66,6 @@ t_return_value	reduce_rule_7(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
-	printf("rule 7\n");
 	return (RV_SUCCESS);
 }
 
@@ -91,7 +88,6 @@ t_return_value	reduce_rule_8(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
-	printf("rule 8\n");
 	return (RV_SUCCESS);
 }
 
@@ -115,6 +111,5 @@ t_return_value	reduce_rule_9(t_all_data *all_data)
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
 	data->type = TREE_CMD;
-	printf("rule 9\n");
 	return (RV_SUCCESS);
 }
