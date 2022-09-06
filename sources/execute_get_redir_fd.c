@@ -110,7 +110,6 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 	}
 	else
 	{
-		// word_list = expansion_all(word_list, envp_list);
 		if (!is_quoted(redir_data->heredoc_eof))
 		{
 			word_list = expansion_heredoc_content(word_list, envp_list);
