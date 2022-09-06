@@ -74,6 +74,8 @@ static int	normal_redir(t_redir_data *redir_data, t_list *word_list)
 		word_list_remove_all(word_list);
 		return (-1);
 	}
+	// printf("redir : %s\n", redir_data. );
+	// printf("word : %s flag : %d\n", word_data->word, redir_data->flag);
 	fd = open(word_data->word, redir_data->flag, 0644);
 	if (fd < 0)
 	{

@@ -28,8 +28,8 @@ static void	make_redir_append(t_redir_data *data, char *word)
 	data->flag = O_CREAT | O_WRONLY | O_APPEND;
 	data->fd_orig = STDOUT_FILENO;
 	data->fd_new = -1;
-	data->file_content = NULL;
-	data->heredoc_eof = word;
+	data->file_content = word;
+	data->heredoc_eof = NULL;
 }
 
 // quote removal for eof needed
