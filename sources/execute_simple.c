@@ -67,9 +67,12 @@ int	execute_simple(t_cmd *cmd, int fd_info[3])
 {
 	int				is_empty_words;
 	t_built_in_fp	builtin;
+	t_word_data		*data;
 
+	data = cmd->content.simple.words->head->data;
 	cmd->content.simple.words = expansion_all(cmd->content.simple.words, \
 								cmd->envp_list);
+	// printf("cmd : %s count : %d\n", data->word, count);
 	is_empty_words = (cmd->content.simple.words == NULL);
 	builtin = NULL;
 	if (!is_empty_words)

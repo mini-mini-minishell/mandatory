@@ -31,7 +31,8 @@ void	update_last_node_word(t_list *new_list, char *curr_word)
 	if (new_list->count)
 	{
 		last_word_data = new_list->tail->data;
-		// last_word_data->word = ft_strjoin(last_word_data->word,curr_word);
+		// last_word_data->word = ft_strjoin
+		//					(last_word_data->word,curr_word);
 		last_word_data->word = curr_word;
 	}
 	else

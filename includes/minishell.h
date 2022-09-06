@@ -111,6 +111,7 @@ t_list			*expand_word_list(t_list *words, t_list *env, t_expansion_flag flag);
 
 /* expansion.c */
 t_list			*expansion_all(t_list *words, t_list *env);
+t_list			*expansion_heredoc_content(t_list *words, t_list *env);
 
 /* goto_func.c */
 t_parser_state	goto_from_state_0(t_token_type type);

@@ -25,7 +25,7 @@ t_list	*expansion_all(t_list *words, t_list *env)
 	return (expand_word_list(words, env, EXP_ALL));
 }
 
-// t_word_list	*expansion_heredoc_content(t_word_list *words, t_env_list *env)
-// {
-// 	return (expand_word_list(words, env, EXP_VARIABLE));
-// }
+t_list	*expansion_heredoc_content(t_list *words, t_list *env)
+{
+	return (expand_word_list(words, env, EXP_VARIABLE));
+}

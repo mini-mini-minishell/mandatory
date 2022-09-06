@@ -60,16 +60,11 @@ t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 		// printf("들어옴\n");
 		list_push_back(info.new_list, list_new_node(create_word_data(info.curr_word)));
 	}
-	//printf("count : %d\n", info.new_list->count);
-	//printf("head : %p\n", info.new_list->head);
 	if (flag & EXP_ASTERISK)
 	{
-	//	printf("%d %d\n ", flag, flag & EXP_ASTERISK);
 		filename_expansion(&info.new_list);
 	}
-	//printf("before nn count : %d\n", info.new_list->count);
 	// remove_null_node(info.new_list);
-	//printf("remove after head : %p\n", info.new_list->head);
 	return (info.new_list);
 }
 

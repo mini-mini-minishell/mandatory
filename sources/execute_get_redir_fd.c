@@ -85,6 +85,17 @@ static int	normal_redir(t_redir_data *redir_data, t_list *word_list)
 	return (fd);
 }
 
+int	is_quoted(char *word)
+{
+	while (*word)
+	{
+		if (*word == '\'' || *word == '"')
+			return (1);
+		word++;
+	}
+	return (0);
+}
+
 int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 {
 	t_list	*word_list;
@@ -94,19 +105,49 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 	list_push_back(word_list, list_new_node(create_word_data(ft_strdup(redir_data->file_content))));
 	if (redir_data->redir_type != REDIR_HEREDOC)
 	{
+		word_list = expansion_all(word_list, envp_list);
 		return (normal_redir(redir_data, word_list));
 	}
 	else
 	{
-		// if (!is_quoted(redir_data->heredoc_eof))
-		// 	word_list = expansion_heredoc_content(word_list, envp_list);
+		// word_list = expansion_all(word_list, envp_list);
+		if (!is_quoted(redir_data->heredoc_eof))
+		{
+			word_list = expansion_heredoc_content(word_list, envp_list);
+		}
 		if (word_list)
 			return (heredoc_redir(word_list));
 		// else
 		// {
-		// 	list_init(word_list);
-		// 	return (heredoc_redir(new_word_list(ft_strdup(""))));
+		// 	return (heredoc_redir(list_new_node(create_word_data(ft_strdup("")))));
 		// } //문제가 생기면 바로 다시 만들기
 	}
 	return (0); // 워닝 방지, 나중에 지워도됨
 }
+
+/* chan */
+/* int	get_redir_fd(t_redir_list *redir_list, t_env_list *env)
+{
+	t_word_list	*word_list;
+
+	word_list = new_word_list(ft_strdup(redir_list->filename));
+	if (redir_list->redir_type != REDIR_HEREDOC)
+	{
+		word_list = expansion_all(word_list, env);
+		return (normal_redir(redir_list, word_list));
+	}
+	else
+	{
+		if (!is_quoted(redir_list->heredoc_eof))
+		{
+			word_list = expansion_heredoc_content(word_list, env);
+		}
+		if (word_list)
+		{
+			return (heredoc_redir(word_list));
+		}		else
+		{
+			return (heredoc_redir(new_word_list(ft_strdup(""))));
+		}
+	}
+} */

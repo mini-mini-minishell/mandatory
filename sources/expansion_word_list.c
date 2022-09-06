@@ -26,7 +26,7 @@ t_list	*expand_word_list(t_list *words, t_list *env, \
 		else
 			new_list = temp;
 		free(current->data);
-		free(current); //remove_head로 바꿔야 함?
+		free(current);
 		current = next;
 	}
 	free(words);
