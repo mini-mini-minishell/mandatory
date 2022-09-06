@@ -17,11 +17,6 @@ t_list	*expand_word_list(t_list *words, t_list *env, \
 		temp = expand_one_node(current, env, flag);
 		if (new_list)
 		{
-			if (!new_list->count)
-				{
-					printf("!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-					printf("head : %p  tail : %p\n", new_list->head, new_list->tail);
-				}
 			new_list->tail->next = temp->head;
 			temp->head->prev = new_list->tail;
 			new_list->tail = temp->tail;

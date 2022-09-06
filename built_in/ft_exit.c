@@ -79,7 +79,7 @@ static int	parameter_handling(t_node *word_node, int *exit_status)
 int	ft_exit(t_cmd *cmd)
 {
 	t_node		*node;
-	int exit_status;
+	int 		exit_status;
 
 	if(cmd)
 	{

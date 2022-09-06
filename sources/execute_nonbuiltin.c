@@ -90,6 +90,21 @@ void	free_paths(char **paths)
 		free(paths[i++]);
 	free(paths);
 }
+/*chan*/
+// static int	try_direct_execve(char **cmd_vec, char **env_vec)
+// {
+// 	if (is_directory(cmd_vec[0]))
+// 	{
+// 		errno = EISDIR;
+// 		ft_perror(cmd_vec[0]);
+// 		return (EXECUTION_FAILURE);
+// 	}
+// 	execve(cmd_vec[0], cmd_vec, env_vec);
+// 	ft_perror(cmd_vec[0]);
+// 	if (errno == ENOENT)
+// 		return (EX_NOTFOUND);
+// 	return (EX_NOEXEC);
+// }
 
 static int	try_direct_execve(char **cmd_array, char **env_array)
 {
@@ -100,10 +115,12 @@ static int	try_direct_execve(char **cmd_array, char **env_array)
 	// 	return (EXECUTION_FAILURE);
 	// }
 	execve(cmd_array[0], cmd_array, env_array);
-	ft_putstr_fd(": directory not found\n", 2);
 	if (errno == ENOENT)
+	{
+		ft_putstr_fd(": directory not found\n", 2);
 		return (EX_NOTFOUND);
-	return (EX_NOEXEC); 
+	}
+	return (EX_NOEXEC);
 }
 
 char	**parse_envp(char **env)
@@ -179,6 +196,7 @@ int	execute_nonbuiltin(t_cmd *cmd)
 			}
 	}
 	return_value = try_direct_execve(argv, envp);
+	printf("return_value : %d\n", return_value);
 	free_3_doubles(argv, envp, NULL);
 	return (return_value);
 }

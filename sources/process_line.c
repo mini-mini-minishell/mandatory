@@ -30,7 +30,7 @@ int	process_line(t_all_data *all_data, char *input)
 		ft_putstr_fd("Syntax Error\n", 2);
 		//' or " 하나만 썼을 경우 등 에러 케이스 나누기?
 		// return_value = EX_USAGE; 아직 안만듦
-		return_value = 0;
+		return_value = EX_USAGE;
 	}
 	else if (!(all_data->token_list.head))
 	{
@@ -38,13 +38,12 @@ int	process_line(t_all_data *all_data, char *input)
 	}
 	else
 	{
-		// return_value = parse_and_execute(all_data);
-		parse_and_execute(all_data);
+		return_value = parse_and_execute(all_data);
 	}
 	// print_token_data(all_data);
 	// free_token(&(all_data->token_list.head));
 	//함수 만들어야 함(우린 list를 프리해도 됨)
 	// return (return_value);
-	return (0);
+	return (return_value);
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++

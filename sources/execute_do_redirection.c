@@ -31,7 +31,6 @@ static int	dup2_redir_list(t_list *redir_list, t_list *envp_list)
 	t_node			*current;
 	
 	current = redir_list->head;
-	// printf("redir head, count %p %zu-----------\n", current, redir_list->count);
 	while (current)
 	{
 		redir_data = current->data;

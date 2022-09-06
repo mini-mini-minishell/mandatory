@@ -17,7 +17,6 @@ int	main(int argc, char **argv, char **envp)
 		// parser : 트리에 저장하고 트리를 만듦, 테이블 구현
 	// 프롬프트 띄우기
 	// 실행부(bulit-in, executable)
-
 	// 환경변수 저장 -> pasing or execute
 	return (0);
 }

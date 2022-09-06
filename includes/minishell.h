@@ -85,7 +85,7 @@ void			no_variable_expansion(char *word, t_expansion_flag flag, \
 				t_expansion_info *info);
 
 /* expand_nosplit.c */
-int				expand_variable_nosplit(char *value, char *curr_word, t_list **new_list);
+int				expand_variable_nosplit(char *value, char *curr_word, t_list **info_new_addr);
 
 /* expand_string.c */
 char			*get_expanded_string(t_list *env, char **word, char **name);
@@ -207,7 +207,7 @@ void			word_list_remove_all(t_list *list);
 t_node			*make_redir_node(char *word, t_token_type token);
 
 /* parser.c */
-void			parse_and_execute(t_all_data *all_data);
+int				parse_and_execute(t_all_data *all_data);
 
 /* parsing.c */
 void			check_arguments(int	argc, char **argv);

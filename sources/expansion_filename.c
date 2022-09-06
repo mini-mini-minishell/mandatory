@@ -22,7 +22,7 @@ static int	add_matched_filenames(t_list *info_new_list, DIR *dirp)
 
 	word_data = info_new_list->head->data;
 	pattern = word_data->word;
-	printf("pattern : %s\n", pattern);
+	// printf("pattern : %s\n", pattern);
 	variables = ft_malloc(sizeof(t_list));
 	list_init(variables);
 	while (1)

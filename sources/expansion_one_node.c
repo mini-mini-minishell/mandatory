@@ -51,7 +51,7 @@ t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 		// info.trim_flag = update_trim_flag(info.trim_flag); //워드스플릿 안함
 		if ((flag & EXP_VARIABLE) && info.quote_flag != QUOT_SINGLE && \
 				*word == '$')
-			expand_variable(&word, env, flag, &info); // 여기까지 토욜 끝
+			expand_variable(&word, env, flag, &info);
 		else
 			no_variable_expansion(word++, flag, &info);
 	}
@@ -68,7 +68,7 @@ t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 		filename_expansion(&info.new_list);
 	}
 	//printf("before nn count : %d\n", info.new_list->count);
-	remove_null_node(info.new_list);
+	// remove_null_node(info.new_list);
 	//printf("remove after head : %p\n", info.new_list->head);
 	return (info.new_list);
 }

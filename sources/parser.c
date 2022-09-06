@@ -37,7 +37,7 @@ static void	set_final_cmd(t_cmd *cmd, int fd_info[3], t_lexer *lexer)
 	fd_info[CLOSE_END] = NO_PIPE;
 }
 
-void	parse_and_execute(t_all_data *all_data)
+int	parse_and_execute(t_all_data *all_data)
 {
 	t_lexer			*lexer;
 	t_parser		*parser;
@@ -63,11 +63,10 @@ void	parse_and_execute(t_all_data *all_data)
 		return_value = gather_heredoc(parser);
 		if (return_value == 0)
 		{
-			execute_command(parser->final_cmd, fd_info);
-			//return_value = execute_command(parser->final_cmd, fd_info);
+			return_value = execute_command(parser->final_cmd, fd_info);
 			// all_data->envp_list = *parser->final_cmd->envp_list;
 		}
 	}
 	//free_parser(&parser); 아직 안만들었어잉 파서 다 날려야한다.
-	// return (return_value);
+	return (return_value);
 }

@@ -91,11 +91,9 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 
 	word_list = ft_malloc(sizeof(t_list));
 	list_init(word_list);
-	// printf("!!!!!!!! : %p\n",redir_data->file_content);
 	list_push_back(word_list, list_new_node(create_word_data(ft_strdup(redir_data->file_content))));
 	if (redir_data->redir_type != REDIR_HEREDOC)
 	{
-		//word_list = expansion_all(word_list, envp_list);
 		return (normal_redir(redir_data, word_list));
 	}
 	else
