@@ -20,8 +20,7 @@ static void	do_variable_expansion(char *value, t_expansion_flag flag, \
 {	
 	if (info->quote_flag == QUOT_NON)
 		substitute_asterisk(value);
-	expand_variable_nosplit(value, info->curr_word, &(info->new_list));
-	// free(value);
+	expand_variable_nosplit(value, &info->curr_word, &(info->new_list));
 }
 
 void	update_last_node_word(t_list *new_list, char *curr_word)
@@ -31,8 +30,6 @@ void	update_last_node_word(t_list *new_list, char *curr_word)
 	if (new_list->count)
 	{
 		last_word_data = new_list->tail->data;
-		// last_word_data->word = ft_strjoin
-		//					(last_word_data->word,curr_word);
 		last_word_data->word = curr_word;
 	}
 	else

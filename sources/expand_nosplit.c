@@ -1,7 +1,6 @@
 #include "../includes/minishell.h"
-#include <stdio.h>
 
-int	expand_variable_nosplit(char *value, char *curr_word, t_list **info_new_addr)
+int	expand_variable_nosplit(char *value, char **curr_word, t_list **info_new_addr)
 {
 	t_word_data	*data;
 	char		*prev_word;
@@ -14,11 +13,10 @@ int	expand_variable_nosplit(char *value, char *curr_word, t_list **info_new_addr
 	}
 	else
 	{
-		// curr_word = ft_strjoin(curr_word, value);
-		list_push_back(*info_new_addr, list_new_node(create_word_data(ft_strjoin(curr_word, value))));
+		list_push_back(*info_new_addr, list_new_node(create_word_data(ft_strjoin(*curr_word, value))));
 	}
-	if (curr_word)
-		free(curr_word);
+	data =  (*info_new_addr)->tail->data;
+	*curr_word = data->word;
 	if (value)
 		free(value);
 	return (0);
