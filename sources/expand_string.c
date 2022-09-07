@@ -31,12 +31,11 @@ char	*get_expanded_string(t_list *env, char **word, char **name)
 	}
 	else
 	{
-		*name = extract_name(*word); // "PWD"
+		*name = extract_name(*word);
 		if (*name)
 		{
 			*word += ft_strlen(*name);
 			value = ft_strdup(envp_search_value(*env, *name));
-			//value 는 경로.
 		}
 	}
 	return (value);

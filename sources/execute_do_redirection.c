@@ -30,6 +30,8 @@ static int	dup2_redir_list(t_list *redir_list, t_list *envp_list)
 	t_redir_data	*redir_data;
 	t_node			*current;
 	
+	if (!redir_list)
+		return (0);
 	current = redir_list->head;
 	while (current)
 	{

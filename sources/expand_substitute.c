@@ -14,17 +14,7 @@ static int	is_pattern(char *target)
 	}
 	return (target[i] == '\001' && quote_flag == QUOT_NON);
 }
-/*  */
-// struct s_expansion_info	
-// {
-// 	// t_buffer		curr_word; //주서끄
-// 	char			*curr_word;
-// 	t_list			*new_list;
-// 	t_quot_state	quote_flag;
-// };
-// /*  */
 
-#include <stdio.h>
 void	substitute_filename(t_list **info_new_addr)
 {
 	t_word_data	*word_data;
@@ -56,45 +46,3 @@ void	substitute_filename(t_list **info_new_addr)
 			free(temp_list);
 	}
 }
-
-/* chan */
-
-// static void	free_word_list_except_variables(t_word_list **words)
-// {
-// 	t_word_list	*curr;
-
-// 	curr = *words;
-// 	while (curr)
-// 	{
-// 		*words = curr;
-// 		curr = curr->next;
-// 		free((*words)->word);
-// 		free(*words);
-// 	}
-// }
-
-// void	substitute_filename(t_word_list **words)
-// {
-// 	t_word_list	*curr;
-// 	t_word_list	*new_list;
-
-// 	curr = *words;
-// 	if (curr)
-// 	{
-// 		new_list = NULL;
-// 		while (curr)
-// 		{
-// 			if (is_pattern(curr->word) && curr->variables)
-// 			{
-// 				addback_word_list(curr->variables, &new_list);
-// 			}
-// 			curr = curr->next;
-// 		}
-// 		if (new_list)
-// 		{
-// 			curr = *words;
-// 			free_word_list_except_variables(&curr);
-// 			*words = new_list;
-// 		}
-// 	}
-// }

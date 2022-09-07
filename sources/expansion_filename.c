@@ -101,24 +101,3 @@ int	filename_expansion(t_list **info_new_list)
 	}
 	return (expanded);
 }
-
-// /* chan */
-// int	filename_expansion(t_word_list **words)
-// {
-// 	int	expanded;
-
-// 	expanded = 0;
-// 	if (*words != NULL && (*words)->word)
-// 	{
-// 		expanded = add_filenames_to_variable(*words);
-// 		if (expanded)
-// 		{
-// 			substitute_filename(words);
-// 		}
-// 		else
-// 		{
-// 			restore_asterisk(*words);
-// 		}
-// 	}
-// 	return (expanded);
-// }

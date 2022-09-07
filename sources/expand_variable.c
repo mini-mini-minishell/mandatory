@@ -48,7 +48,6 @@ void	expand_variable(char **word, t_list *env, t_expansion_flag flag, \
 	++(*word);
 	name = NULL;
 	value = get_expanded_string(env, word, &name);
-	// $단어 셋트를 밸류로 바까주기만함.
 	if (value)
 	{
 		do_variable_expansion(value, flag, info);

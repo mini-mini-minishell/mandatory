@@ -123,30 +123,3 @@ int	get_redir_fd(t_redir_data *redir_data, t_list *envp_list)
 	}
 	return (0); // 워닝 방지, 나중에 지워도됨
 }
-
-/* chan */
-/* int	get_redir_fd(t_redir_list *redir_list, t_env_list *env)
-{
-	t_word_list	*word_list;
-
-	word_list = new_word_list(ft_strdup(redir_list->filename));
-	if (redir_list->redir_type != REDIR_HEREDOC)
-	{
-		word_list = expansion_all(word_list, env);
-		return (normal_redir(redir_list, word_list));
-	}
-	else
-	{
-		if (!is_quoted(redir_list->heredoc_eof))
-		{
-			word_list = expansion_heredoc_content(word_list, env);
-		}
-		if (word_list)
-		{
-			return (heredoc_redir(word_list));
-		}		else
-		{
-			return (heredoc_redir(new_word_list(ft_strdup(""))));
-		}
-	}
-} */
