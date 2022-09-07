@@ -43,8 +43,6 @@ static void	make_redir_heredoc(t_redir_data *data, char *word)
 	data->heredoc_eof = word;
 }
 
-#include <stdio.h>
-
 t_node	*make_redir_node(char *word, t_token_type token)
 {
 	t_node			*new_node;
