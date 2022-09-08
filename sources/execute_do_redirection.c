@@ -24,7 +24,6 @@ static int	dup2_pipe(int fd_info[3])
 	return (0);
 }
 
-
 static int	dup2_redir_list(t_list *redir_list, t_list *envp_list)
 {
 	t_redir_data	*redir_data;

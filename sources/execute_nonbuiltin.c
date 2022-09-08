@@ -196,7 +196,6 @@ int	execute_nonbuiltin(t_cmd *cmd)
 			}
 	}
 	return_value = try_direct_execve(argv, envp);
-	printf("return_value : %d\n", return_value);
 	free_3_doubles(argv, envp, NULL);
 	return (return_value);
 }

@@ -48,7 +48,7 @@ static int	set_env(t_cmd *cmd, t_node *current)
 	else
 	{
 		ft_putstr_fd("export: `", STDERR_FILENO);
-		ft_putstr_fd(current->data, STDERR_FILENO);
+		ft_putstr_fd(data->word, STDERR_FILENO);
 		ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 		return (EXECUTION_FAILURE);
 	}

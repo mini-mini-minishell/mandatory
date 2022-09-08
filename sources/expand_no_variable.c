@@ -1,14 +1,14 @@
 #include "../includes/minishell.h"
 
-static char	*ft_char_to_str(char c)
-{
-	char	*str;
+// static char	*ft_char_to_str(char c)
+// {
+// 	char	*str;
 
-	str = ft_malloc(sizeof(char) * 2);
-	str[0] = c;
-	str[1] = '\0';
-	return (str);
-}
+// 	str = ft_malloc(sizeof(char) * 2);
+// 	str[0] = c;
+// 	str[1] = '\0';
+// 	return (str);
+// }
 
 static char	get_char_to_append(char curr_char, t_expansion_flag flag, \
 		t_quot_state quote_flag)
@@ -37,7 +37,7 @@ void	no_variable_expansion(char *word, t_expansion_flag flag, \
 	char		char_to_append;
 	char		*str;
 	char		*temp;
-	t_word_data	*data;
+	// t_word_data	*data;
 
 	char_to_append = get_char_to_append(*word, flag, info->quote_flag);
 	if (char_to_append)
@@ -51,9 +51,9 @@ void	no_variable_expansion(char *word, t_expansion_flag flag, \
 		free(str);
 		free(temp);
 		update_last_node_word(info->new_list, info->curr_word);
-		if (info->new_list->head)
-		{
-			data = info->new_list->head->data;
-		}
+		// if (info->new_list->head)
+		// {
+		// 	data = info->new_list->head->data;
+		// }
 	}
 }

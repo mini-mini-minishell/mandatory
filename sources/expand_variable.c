@@ -15,8 +15,7 @@ static void	substitute_asterisk(char *value)
 	}
 }
 
-static void	do_variable_expansion(char *value, t_expansion_flag flag, \
-			t_expansion_info *info)
+static void	do_variable_expansion(char *value, t_expansion_info *info)
 {	
 	if (info->quote_flag == QUOT_NON)
 		substitute_asterisk(value);
@@ -38,8 +37,7 @@ void	update_last_node_word(t_list *new_list, char *curr_word)
 	}
 }
 
-void	expand_variable(char **word, t_list *env, t_expansion_flag flag, \
-		t_expansion_info *info)
+void	expand_variable(char **word, t_list *env, t_expansion_info *info)
 {
 	char	*name;
 	char	*value;
@@ -50,7 +48,7 @@ void	expand_variable(char **word, t_list *env, t_expansion_flag flag, \
 	value = get_expanded_string(env, word, &name);
 	if (value)
 	{
-		do_variable_expansion(value, flag, info);
+		do_variable_expansion(value, info);
 		free(name);
 	}
 	else if (name)

@@ -29,7 +29,6 @@ void	list_remove_head_token(t_list *list)
 t_node	*list_pop_head(t_list *list)
 {
 	t_node	*temp;
-	t_node	*node;
 
 	if (!list->count)
 		return (NULL);

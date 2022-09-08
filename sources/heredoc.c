@@ -33,6 +33,7 @@ char	*check_heredoc_eof(char *str)
 
 	if (!str)
 		return (NULL);
+	quote_flag = QUOT_NON;
 	new_str = ft_strdup("");
 	while (*str)
 	{

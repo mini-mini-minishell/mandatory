@@ -1,3 +1,6 @@
+!!!!!!!!!!!!!평가 전 꼭!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+지워!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 #include "../includes/minishell.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -15,32 +18,10 @@ void	print_token_data(t_all_data *all_data)
 	while (index < token_list.count)
 	{
 		token_data = (t_token_data *)current_node->data;
-		printf("%d[%s]\n", token_data->token_type, token_data->content);
 		current_node = current_node->prev;
 		++index;
 	}
-	// exit(0); // ---------
 }
-
-// void	print_word_data(t_list *word_list)
-// {
-// 	t_list			word_list;
-// 	t_node			*current_node;
-// 	t_word_data		*word_data;
-// 	size_t			index;
-
-// 	current_node = word_list->tail;
-// 	index = 0;
-// 	while (index < word_list->count)
-// 	{
-// 		word_data = current_node->data;
-// 		printf("%d[%s]\n", word_data->word, index);
-// 		current_node = current_node->prev;
-// 		++index;
-// 	}
-// 	// exit(0); // ---------
-// }
-
 
 void	print_tree_stack(t_list tree_stack)
 {

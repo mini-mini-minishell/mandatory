@@ -1,7 +1,7 @@
 NAME 		=	minishell
 
 CC 			=	cc -g -fsanitize=address
-# CFLAGS		= -g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror
 # export LDFLAGS="-L/usr/local/opt/readline/lib" 실행파일 만들때
 # export CPPFLAGS="-I/usr/local/opt/readline/include" 인클루드 목적파일 만들때
 # -lreadline -I/usr/local/Cellar/readline/8.1.2/include -L/usr/local/Cellar/readline/8.1.2/lib
@@ -71,14 +71,12 @@ FILES 		=			execute_builtin.c \
 						run_lexer.c \
 						run_parser.c \
 						signal_hadler.c\
-						test.c \
 						utils_fd.c \
 						utils_itoa.c \
 						utils_split.c \
 						utils_string.c
 
 BUILTIN_FILE		=	ft_cd_utils.c\
-						ft_cd_utils2.c\
 						ft_cd.c\
 						ft_echo.c \
 						ft_env.c \

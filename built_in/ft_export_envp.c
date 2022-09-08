@@ -22,8 +22,6 @@ t_node	*envp_search_node_by_key(t_list *list, char *key)
 
 void	envp_delete_node_by_target(t_list *list, t_node **target)
 {
-	t_node		*temp;
-
 	if (list->count == 1)
 	{
 		list->head = NULL;

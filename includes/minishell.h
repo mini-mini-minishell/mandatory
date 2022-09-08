@@ -13,10 +13,6 @@ int				check_one_word(t_cmd *cmd, const char target);
 int				do_replace(t_cmd *cmd, char *pwd, char *key);
 int				replace_pwd(char *target, t_cmd *cmd);
 
-/* ft_cd_utils2.c */
-t_node			*where_in_envp_list(t_list *envp_list, const char *variable);
-char			*find_envp_value(t_list *envp_list, const char *variable);
-
 /* ft_cd.c */
 int				ft_cd(t_cmd *cmd);
 
@@ -94,7 +90,7 @@ char			*get_expanded_string(t_list *env, char **word, char **name);
 void			substitute_filename(t_list **info_new_addr);
 
 /* expand_variable.c */
-void			expand_variable(char **word, t_list *env, t_expansion_flag flag, t_expansion_info *info);
+void			expand_variable(char **word, t_list *env, t_expansion_info *info);
 void			update_last_node_word(t_list *new_list, char *curr_word);
 
 /* expansion_filename.c */

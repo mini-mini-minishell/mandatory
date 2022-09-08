@@ -29,7 +29,7 @@ static int	should_stop_parsing(int *value)
 	return (1);
 }
 
-static void	set_final_cmd(t_cmd *cmd, int fd_info[3], t_lexer *lexer)
+static void	set_final_cmd(t_cmd *cmd, int fd_info[3])
 {
 	cmd->exit_status = g_exit_status;
 	fd_info[READ_END] = NO_PIPE;
@@ -39,33 +39,25 @@ static void	set_final_cmd(t_cmd *cmd, int fd_info[3], t_lexer *lexer)
 
 int	parse_and_execute(t_all_data *all_data)
 {
-	t_lexer			*lexer;
 	t_parser		*parser;
 	int				fd_info[3];
 	int				return_value;
-	t_parser_data	*data;
 
-
-	lexer = &all_data->lexer;
 	parser = &all_data->parser;
 	init_parser(all_data);
 	return_value = 0;
 	while (parser->flag == PARSER_ING)  
 	{
-		data = all_data->parser.parser_stack.tail->data;
 		return_value = run_parser(all_data);
 		if (should_stop_parsing(&return_value))
 			break ;
 	}
 	if (parser->flag == PARSER_FINISH)
 	{
-		set_final_cmd(parser->final_cmd, fd_info, lexer);
+		set_final_cmd(parser->final_cmd, fd_info);
 		return_value = gather_heredoc(parser);
 		if (return_value == 0)
-		{
 			return_value = execute_command(parser->final_cmd, fd_info);
-			// all_data->envp_list = *parser->final_cmd->envp_list;
-		}
 	}
 	//free_parser(&parser); 아직 안만들었어잉 파서 다 날려야한다.
 	return (return_value);

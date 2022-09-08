@@ -31,7 +31,7 @@ static int	add_matched_filenames(t_list *info_new_list, DIR *dirp)
 			break ;
 		pattern_matching(dp, pattern, variables);
 	}
-	if (variables)
+	if (variables->head)
 	{
 		word_list_remove_all(word_data->variables);
 		word_data->variables = variables;
@@ -53,7 +53,6 @@ static int	add_filenames_to_variable(t_list *info_new_list)
 		current = info_new_list->head;
 		while (current != NULL)
 		{
-			// printf("add_filenames info_new_list : %p\n", info_new_list->head);
 			return_value += add_matched_filenames(info_new_list, dirp);
 			current = current->next;
 		}
