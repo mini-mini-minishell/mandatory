@@ -2,7 +2,7 @@
 
 static int	find_builtin_func(const char *word)
 {
-	char	*shell_builtins[7] = \
+	const char	*shell_builtins[7] = \
 	{
 		"echo", "exit", "unset", "export", "cd", "pwd", "env"
 	};
@@ -21,7 +21,6 @@ static int	find_builtin_func(const char *word)
 
 t_built_in_fp	is_builtin(t_list *word_list)
 {
-	//const는 나중에 없애도 볼것 
 	t_word_data			*data;
 	char				*word;
 	int					index;
@@ -29,7 +28,7 @@ t_built_in_fp	is_builtin(t_list *word_list)
 	{
 		ft_echo, ft_exit, ft_unset, ft_export, ft_cd, ft_pwd, ft_env
 	};
-	
+
 	data = word_list->head->data;
 	word = data->word;
 	index = find_builtin_func(word);

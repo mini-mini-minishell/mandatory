@@ -21,10 +21,10 @@ int	ft_echo(t_cmd *cmd)
 	t_word_data	*word_data;
 
 	word_list = cmd->content.simple.words;
-	if(!word_list->head)
+	if (!word_list->head)
 	{
 		printf("\n");
-		return(EXECUTION_SUCCESS);
+		return (EXECUTION_SUCCESS);
 	}
 	word_data = word_list->head->data;
 	display_return = check_opt(word_list);

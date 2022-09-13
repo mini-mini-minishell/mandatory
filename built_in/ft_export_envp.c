@@ -10,7 +10,7 @@ t_node	*envp_search_node_by_key(t_list *list, char *key)
 		return (NULL);
 	key_len = ft_strlen(key);
 	current = list->head;
-	while(current)
+	while (current)
 	{
 		temp_data = current->data;
 		if (!ft_strncmp(key, temp_data->key, key_len + 1))
@@ -46,7 +46,7 @@ void	envp_delete_node_by_target(t_list *list, t_node **target)
 	envp_free_node(target);
 }
 
-t_node		*cut_and_make_envp_node(char *str)
+t_node	*cut_and_make_envp_node(char *str)
 {
 	t_env_data	*data;
 	char		**key_and_value;

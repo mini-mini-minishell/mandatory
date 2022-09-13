@@ -27,12 +27,9 @@ t_list	*expand_one_node(t_node *word_node, t_list *env, t_expansion_flag flag)
 			no_variable_expansion(word++, flag, &info);
 	}
 	if (!info.new_list->count)
-	{
-		list_push_back(info.new_list, list_new_node(create_word_data(info.curr_word)));
-	}
+		list_push_back(info.new_list, \
+						list_new_node(create_word_data(info.curr_word)));
 	if (flag & EXP_ASTERISK)
-	{
 		filename_expansion(&info.new_list);
-	}
 	return (info.new_list);
 }

@@ -9,7 +9,7 @@ static int	execute_simple_internal(t_built_in_fp builtin, t_cmd *cmd)
 		return (builtin(cmd));
 	}
 	else
-		return(execute_nonbuiltin(cmd));
+		return (execute_nonbuiltin(cmd));
 }
 
 static int	execute_with_fork(int is_nullcmd, t_built_in_fp builtin, \
@@ -40,13 +40,9 @@ static int	execute_without_fork(int is_empty_words, t_built_in_fp builtin, \
 	if (cmd->flag & CMD_FLAG_IS_FORKED)
 	{
 		if (do_redirections(fd_info, cmd->redir_list, cmd->envp_list) < 0)
-		{ 
 			return (EXECUTION_FAILURE);
-		}
 		if (is_empty_words)
-		{
 			return (EXECUTION_SUCCESS);
-		}
 		return (execute_simple_internal(builtin, cmd));
 	}
 	else

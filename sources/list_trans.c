@@ -29,7 +29,7 @@ char	**trans_envp_list_2_array(t_list envp_list)
 	t_node		*current;
 	char		**envp_array;
 	int			i;
-	
+
 	envp_array = ft_malloc(sizeof(char *) * (envp_list.count + 1));
 	i = 0;
 	current = envp_list.head;

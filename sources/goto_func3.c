@@ -1,6 +1,5 @@
 #include "../includes/minishell.h"
 
-#include <stdio.h>
 t_parser_state	goto_from_state_16(t_token_type type)
 {
 	if (type & TT_CONNECT_GROUP)

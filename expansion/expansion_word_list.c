@@ -1,5 +1,12 @@
 #include "../includes/minishell.h"
-#include <stdio.h>
+
+static void	join_new_list(t_list *new_list, t_list *temp)
+{
+	new_list->tail->next = temp->head;
+	temp->head->prev = new_list->tail;
+	new_list->tail = temp->tail;
+	new_list->count += temp->count;
+}
 
 t_list	*expand_word_list(t_list *words, t_list *env, \
 		t_expansion_flag flag)
@@ -17,14 +24,11 @@ t_list	*expand_word_list(t_list *words, t_list *env, \
 		temp = expand_one_node(current, env, flag);
 		if (new_list)
 		{
-			new_list->tail->next = temp->head;
-			temp->head->prev = new_list->tail;
-			new_list->tail = temp->tail;
-			new_list->count += temp->count;
+			join_new_list(new_list, temp);
 			free(temp);
 		}
 		else
-			new_list = temp;
+		new_list = temp;
 		free(current->data);
 		free(current);
 		current = next;

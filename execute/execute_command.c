@@ -26,12 +26,6 @@ int	execute_command(t_cmd *cmd, int fd_info[3])
 	int	return_value;
 	int	wait_return;
 
-	// 우리가 돌게 한거!
-	// data = cmd->content.simple.words->head->data;
-	// built_in_fp = NULL;
-	// built_in_fp = is_builtin(data->word);
-	// execute_simple_internal(built_in_fp, cmd);
-
 	return_value = execute_command_internal(cmd, fd_info);
 	wait_return = ft_waitchild(cmd);
 	if (wait_return >= 0)

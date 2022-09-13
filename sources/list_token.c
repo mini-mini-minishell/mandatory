@@ -3,7 +3,6 @@
 
 t_item_type	get_item_type(char c)
 {
-	
 	if (c == ' ')
 		return (ITEM_SPACE);
 	if (c == '\t')

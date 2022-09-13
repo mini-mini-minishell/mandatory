@@ -10,15 +10,7 @@ int	ft_atoi(const char *str)
 	int					plma;
 	int					index;
 
-	index = 0;
-	while (str[index] == ' ' || (str[index] >= 9 && str[index] <= 13))
-		index++;
-	plma = 1;
-	if (str[index] == '-')
-		plma = -1;
-	if (str[index] == '-' || str[index] == '+')
-		index++;
-	result = 0;
+	init_atoi(str, &index, &plma, &result);
 	while (str[index] >= '0' && str[index] <= '9')
 	{
 		result = result * 10 + str[index] - '0';
@@ -79,9 +71,9 @@ static int	parameter_handling(t_node *word_node, int *exit_status)
 int	ft_exit(t_cmd *cmd)
 {
 	t_node		*node;
-	int 		exit_status;
+	int			exit_status;
 
-	if(cmd)
+	if (cmd)
 	{
 		node = cmd->content.simple.words->head;
 		if (node)

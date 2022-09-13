@@ -58,3 +58,10 @@ void	word_list_remove_all(t_list *list)
 		list_remove_head_word(list);
 	free(list);
 }
+
+void	list_init(t_list *list)
+{
+	list->head = NULL;
+	list->tail = NULL;
+	list->count = 0;
+}

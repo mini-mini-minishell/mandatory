@@ -24,23 +24,29 @@ t_lexer_state	ft_lexer_state(char c)
 		return (LS_OTHERS);
 }
 
+void	get_next_char_and_state(t_lexer_state *next_state, t_lexer *lexer)
+{
+	char	next_char;
+
+	next_char = (lexer->input)[lexer->index];
+	*next_state = ft_lexer_state(next_char);
+}
+
 int	run_lexer(t_all_data *all_data)
 {
 	t_lexer			*lexer;
 	t_lexer_fp		func;
 	t_lexer_state	next_state;
 	t_token_data	*token_data;
-	char			next_char;
 
 	lexer = &all_data->lexer;
 	while (1)
 	{
-		next_char = (lexer->input)[lexer->index];
-		next_state = ft_lexer_state(next_char);
+		get_next_char_and_state(&next_state, lexer);
 		if (next_state == LS_NULL)
 			break ;
 		func = lexer->lex_func[lexer->current_state][next_state];
-		if (func(all_data) < 0) // syntax error
+		if (func(all_data) < 0)
 			return (-1);
 	}
 	if (lexer->current_state == LS_SQUOT || lexer->current_state == LS_DQUOT)

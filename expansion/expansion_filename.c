@@ -1,6 +1,7 @@
 #include "../includes/minishell.h"
 #include <dirent.h>
 #include <stdio.h>
+
 static void	pattern_matching(struct dirent *dp, char *pattern, \
 		t_list *variables)
 {
@@ -69,7 +70,7 @@ static void	restore_asterisk(t_list *info_new_list)
 	i = 0;
 	if (info_new_list && info_new_list->count)
 	{
-		word_data = info_new_list->head->data; 
+		word_data = info_new_list->head->data;
 		while (word_data->word[i])
 		{
 			if (word_data->word[i] == '\001')

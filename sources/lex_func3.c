@@ -77,14 +77,11 @@ t_return_value	item_meet_dquot(t_all_data *all_data)
 	return (RV_SUCCESS);
 }
 
-#include <stdlib.h>
-
 t_return_value	item_meet_item(t_all_data *all_data)
 {
 	char			next_char;
 	t_lexer			*lexer;
 	t_token_data	*token_data;
-
 
 	lexer = &(all_data->lexer);
 	next_char = (lexer->input)[lexer->index];
@@ -96,10 +93,7 @@ t_return_value	item_meet_item(t_all_data *all_data)
 		lexer->index = 1;
 		token_data = (t_token_data *)(all_data->token_list.tail->data);
 		if (token_data->token_type == TT_ERR)
-		{
-			// exit(0);
 			return (RV_ERROR);
-		}
 	}
 	else
 		lexer->index += 1;

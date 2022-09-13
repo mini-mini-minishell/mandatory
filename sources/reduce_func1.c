@@ -1,5 +1,6 @@
 #include "../includes/minishell.h"
 #include <stdio.h>
+
 // S -> L;
 t_return_value	reduce_rule_0(t_all_data *all_data)
 {
@@ -31,7 +32,8 @@ t_return_value	reduce_rule_1(t_all_data *all_data)
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_LIST);
 	tail = parser->tree_stack.tail;
-	content.cmd = make_connect(all_data, tail->prev->prev->data, tail->data, tail->prev->data);
+	content.cmd = make_connect(all_data, tail->prev->prev->data, \
+								tail->data, tail->prev->data);
 	stack_pop_back(&parser->tree_stack, 3);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
@@ -75,7 +77,8 @@ t_return_value	reduce_rule_3(t_all_data *all_data)
 	stack_pop_back(&parser->parser_stack, count);
 	parser_push_back(&parser->parser_stack, TT_PIPELINE);
 	tail = parser->tree_stack.tail;
-	content.cmd = make_connect(all_data, tail->prev->prev->data, tail->data, tail->prev->data);
+	content.cmd = make_connect(all_data, tail->prev->prev->data, \
+								tail->data, tail->prev->data);
 	stack_pop_back(&parser->tree_stack, 3);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;

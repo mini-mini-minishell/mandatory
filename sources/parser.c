@@ -46,7 +46,7 @@ int	parse_and_execute(t_all_data *all_data)
 	parser = &all_data->parser;
 	init_parser(all_data);
 	return_value = 0;
-	while (parser->flag == PARSER_ING)  
+	while (parser->flag == PARSER_ING)
 	{
 		return_value = run_parser(all_data);
 		if (should_stop_parsing(&return_value))
@@ -59,6 +59,5 @@ int	parse_and_execute(t_all_data *all_data)
 		if (return_value == 0)
 			return_value = execute_command(parser->final_cmd, fd_info);
 	}
-	//free_parser(&parser); 아직 안만들었어잉 파서 다 날려야한다.
 	return (return_value);
 }

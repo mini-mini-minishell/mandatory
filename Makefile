@@ -12,29 +12,11 @@ RL_INCLUDE	=	-I/usr/local/opt/readline/include
 
 RM					=	rm -f
 BUILTIN_FILE_DIR	=	./built_in/
+EXECUTE_FILE_DIR	=	./execute/
+EXPANSION_FILE_DIR	=	./expansion/
 SRC_DIR 			= 	./sources/
 
-FILES 		=			execute_builtin.c \
-						execute_command.c \
-						execute_connect.c\
-						execute_do_redirection.c \
-						execute_get_redir_fd.c \
-						execute_nonbuiltin.c \
-						execute_pipe.c\
-						execute_simple.c \
-						execute_subshell.c \
-						execute_utils.c \
-						exit.c \
-						expand_no_variable.c \
-						expand_nosplit.c \
-						expand_string.c \
-						expand_substitute.c \
-						expand_variable.c \
-						expansion_filename.c \
-						expansion_match.c \
-						expansion_one_node.c \
-						expansion_word_list.c \
-						expansion.c \
+FILES 		=			exit.c \
 						get_next_line_utils.c \
 						get_next_line.c \
 						goto_func1.c \
@@ -42,6 +24,7 @@ FILES 		=			execute_builtin.c \
 						goto_func3.c \
 						goto_state.c \
 						heredoc.c \
+						heredoc_utils.c \
 						init_all.c \
 						lex_func1.c \
 						lex_func2.c \
@@ -74,12 +57,15 @@ FILES 		=			execute_builtin.c \
 						utils_fd.c \
 						utils_itoa.c \
 						utils_split.c \
-						utils_string.c
+						utils_string.c \
+						utils_string2.c \
+						utils_string3.c
 
 BUILTIN_FILE		=	ft_cd_utils.c\
 						ft_cd.c\
 						ft_echo.c \
 						ft_env.c \
+						ft_exit_utils.c \
 						ft_exit.c \
 						ft_export_envp.c \
 						ft_export_utils.c \
@@ -88,8 +74,33 @@ BUILTIN_FILE		=	ft_cd_utils.c\
 						ft_pwd.c \
 						ft_unset.c
 
+EXCUTE_FILE			=	execute_builtin.c \
+						execute_command.c \
+						execute_connect.c\
+						execute_do_redirection.c \
+						execute_get_redir_fd.c \
+						execute_nonbuiltin_utils1.c \
+						execute_nonbuiltin.c \
+						execute_pipe.c\
+						execute_simple.c \
+						execute_subshell.c \
+						execute_utils.c \
+
+EXPANSION_FILE		=	expand_no_variable.c \
+						expand_nosplit.c \
+						expand_string.c \
+						expand_substitute.c \
+						expand_variable.c \
+						expansion_filename.c \
+						expansion_match.c \
+						expansion_one_node.c \
+						expansion_word_list.c \
+						expansion.c \
+
 SRCS		=	$(addprefix $(SRC_DIR), $(FILES)) \
-				$(addprefix $(BUILTIN_FILE_DIR), $(BUILTIN_FILE))
+				$(addprefix $(BUILTIN_FILE_DIR), $(BUILTIN_FILE)) \
+				$(addprefix $(EXECUTE_FILE_DIR), $(EXCUTE_FILE)) \
+				$(addprefix $(EXPANSION_FILE_DIR), $(EXPANSION_FILE))
 
 OBJS		=	$(SRCS:%.c=%.o)
 
@@ -102,9 +113,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(RL_LINK) -o $@ $^
-
-debug: ${SRCS}
-	gcc -g3 -fsanitize=address ${SRCS} -o main
 
 clean:
 	$(RM) $(OBJS)

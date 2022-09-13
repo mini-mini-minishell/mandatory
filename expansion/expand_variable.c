@@ -47,13 +47,9 @@ void	expand_variable(char **word, t_list *env, t_expansion_info *info)
 	name = NULL;
 	value = get_expanded_string(env, word, &name);
 	if (value)
-	{
 		do_variable_expansion(value, info);
-		free(name);
-	}
 	else if (name)
 	{
-		free(name);
 		if (info->quote_flag != QUOT_NON)
 		{
 			temp = ft_strjoin(info->curr_word, ft_strdup(""));
@@ -65,4 +61,6 @@ void	expand_variable(char **word, t_list *env, t_expansion_info *info)
 		temp = ft_strjoin(ft_strdup("$"), info->curr_word);
 		update_last_node_word(info->new_list, temp);
 	}
+	if (name)
+		free(name);
 }

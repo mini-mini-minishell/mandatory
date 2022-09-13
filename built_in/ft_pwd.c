@@ -16,7 +16,7 @@ int	ft_pwd(t_cmd *cmd)
 {
 	char	*pwd;
 
-	pwd = getcwd(NULL,0);
+	pwd = getcwd(NULL, 0);
 	if (!pwd)
 	{
 		pwd = ft_strdup(envp_search_value(*cmd->envp_list, "PWD"));
@@ -24,7 +24,7 @@ int	ft_pwd(t_cmd *cmd)
 			return (print_error());
 	}
 	ft_putstr_fd(pwd, 1);
-	ft_putstr_fd("\n", 1); 
+	ft_putstr_fd("\n", 1);
 	free(pwd);
 	return (0);
 }

@@ -31,6 +31,9 @@ t_node			*cut_and_make_envp_node(char *str);
 int				isname(char *target);
 size_t			isname_get_length(char *target);
 
+/* ft_exit_utils.c*/
+void	init_atoi(const char *str, \
+		int *index, int *plma, unsigned long long *result);
 /* ft_exit.c */
 int				ft_exit(t_cmd *cmd);
 
@@ -44,7 +47,7 @@ int				ft_pwd(t_cmd *cmd);
 int				ft_unset(t_cmd *cmd);
 // void			delete_target_env_node(t_list *envp_list, char *key); 날림
 
-/*---------------------------------*/
+/*-------------------------------------------------*/
 
 /* execute_command.c */
 int				execute_command(t_cmd *cmd, int fd_info[3]);
@@ -57,10 +60,15 @@ int				do_redirections(int fd_info[3], t_list *redir_list, t_list *env);
 /* execute_get_redir_fd.c */
 int				get_redir_fd(t_redir_data *redir_data, t_list *envp_list);
 
+/* execute_nonbuiltin_utils1.c */
+char			*ft_strchr(const char *s, int c);
+char			**parse_envp(char **env);
+void			free_paths(char **paths);
+void			free_double(char **array);
+char			*get_full_path(char *path, char *cmd_name);
+
 /* execute_nonbuiltin.c */
 int				execute_nonbuiltin(t_cmd *cmd);
-//int				is_directory(char *file);
-
 
 /* execute_simple.c */
 int				execute_simple(t_cmd *cmd, int fd_info[3]);
@@ -68,13 +76,14 @@ int				execute_simple(t_cmd *cmd, int fd_info[3]);
 /* execute_utils.c */
 int				save_fd_status(int fd_buff[2]);
 int				restore_fd_status(int fd_buff[2], int exit_status);
-int				ft_waitchild(t_cmd *cmd);
 int				get_exit_status(int status);
+int				ft_waitchild(t_cmd *cmd);
+int				is_quoted(char *word);
 
 /* exit.c */
 void			exit_with_message(char *s);
 
-/* ------------------------------- */
+/* ---------------expansion---------------- */
 
 /* expand_no_variable.c */
 void			no_variable_expansion(char *word, t_expansion_flag flag, \
@@ -108,6 +117,8 @@ t_list			*expand_word_list(t_list *words, t_list *env, t_expansion_flag flag);
 /* expansion.c */
 t_list			*expansion_all(t_list *words, t_list *env);
 t_list			*expansion_heredoc_content(t_list *words, t_list *env);
+
+/* ---------------------------------------------------- */
 
 /* goto_func.c */
 t_parser_state	goto_from_state_0(t_token_type type);
@@ -195,10 +206,12 @@ t_node			*list_pop_head(t_list *list);
 t_node			*list_pop_back(t_list *list);
 void			list_push_back(t_list *list, t_node *new);
 t_node			*list_new_node(void *data);
-void			list_init(t_list *list);
-void			list_remove_head_word(t_list *list);
+
+/*list2.c */
 void			list_remove_head_redir(t_list *list);
+void			list_remove_head_word(t_list *list);
 void			word_list_remove_all(t_list *list);
+void			list_init(t_list *list);
 
 /* make_redir.c */
 t_node			*make_redir_node(char *word, t_token_type token);
@@ -214,6 +227,10 @@ int				process_line(t_all_data *all_data, char *input);
 
 /* heredoc.c */
 int				gather_heredoc(t_parser *parser);
+
+/* heredoc_utils.c */
+t_quot_state	check_quote(char word, int quote_flag);
+char			*check_heredoc_eof(char *str);
 
 /* readline.c */
 void			prompt_loop(t_all_data *all_data);
@@ -273,19 +290,19 @@ char			*ft_itoa(int n);
 char			**ft_split(char const *s, char *set);
 
 /* utils_string.c */
-void			*ft_malloc(size_t bytes);
-void			ft_putstr_fd(char *s, int fd);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t			ft_strlen(const char *s);
-char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 size_t			ft_strlcpy(char *dst, const char *src, size_t detsize);
-char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlcat(char *dst, const char *src, size_t resultsize);
-char			*ft_strchr(const char *s, int c);
-int				ft_isalnum(int c);
+char			*ft_strjoin(char const *s1, char const *s2);
+void			*ft_malloc(size_t bytes);
+size_t			ft_strlen(const char *s);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
+int				ft_isalnum(int c);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+char			*ft_strdup(const char *s);
+void			ft_putstr_fd(char *s, int fd);
+char			*ft_strchr(const char *s, int c);
 
 
 /* test.c */

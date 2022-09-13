@@ -8,7 +8,7 @@ static int	execute_list(t_cmd *cmd, int fd_info[3])
 	if (cmd->content.connect.token & TT_AND)
 	{
 		return_value = execute_command(cmd->content.connect.left, \
-				fd_info);// int return 으로 execute_command 를 변경시 return이 int이므로 괜찮다
+				fd_info);
 		if (return_value == EXECUTION_SUCCESS)
 			return (execute_command(cmd->content.connect.right, \
 						fd_info));
@@ -27,7 +27,6 @@ static int	execute_list(t_cmd *cmd, int fd_info[3])
 	}
 }
 
-#include <stdio.h>
 int	execute_connect(t_cmd *cmd, int fd_info[3])
 {
 	cmd->content.connect.left->envp_list = cmd->envp_list;

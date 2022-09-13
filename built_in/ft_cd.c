@@ -2,31 +2,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static int	check_directory_failure(char *str)
+{
+	ft_putstr_fd(str, STDERR_FILENO);
+	return (EXECUTION_FAILURE);
+}
+
 static int	check_directory_name_input(t_cmd *cmd, char **directory_name)
 {
 	if (!cmd->content.simple.words->count || check_one_word(cmd, '~'))
 	{
 		*directory_name = ft_strdup(envp_search_value(*cmd->envp_list, "HOME"));
 		if (!*directory_name)
-		{
-			ft_putstr_fd("cd: HOME not set\n", STDERR_FILENO);
-			return (EXECUTION_FAILURE);
-		}
+			return (check_directory_failure("cd: HOME not set\n"));
 	}
 	else if (cmd->content.simple.words->count != 1)
-	{
-		ft_putstr_fd("cd: Too many arguments\n", STDERR_FILENO);
-		return (EXECUTION_FAILURE);
-	}
+		return (check_directory_failure("cd: Too many arguments\n"));
 	else if (check_one_word(cmd, '-'))
 	{
 		envp_search_value(*cmd->envp_list, "OLDPWD");
-		*directory_name = ft_strdup(envp_search_value(*cmd->envp_list, "OLDPWD"));
+		*directory_name = \
+			ft_strdup(envp_search_value(*cmd->envp_list, "OLDPWD"));
 		if (!*directory_name)
-		{
-			ft_putstr_fd("cd: OLDPWD not set\n", STDERR_FILENO);
-			return (EXECUTION_FAILURE);
-		}
+			return (check_directory_failure("cd: OLDPWD not set\n"));
 	}
 	return (EXECUTION_SUCCESS);
 }

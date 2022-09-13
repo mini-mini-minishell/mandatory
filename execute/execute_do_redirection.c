@@ -1,8 +1,4 @@
 #include "../includes/minishell.h"
-// #include <unistd.h>
-// #include <stdlib.h>
-// #include <fcntl.h>
-#include <stdio.h>
 
 static int	dup2_pipe(int fd_info[3])
 {
@@ -14,7 +10,6 @@ static int	dup2_pipe(int fd_info[3])
 			return (-1);
 		ft_close(fd_info[READ_END]);
 	}
-
 	if (fd_info[WRITE_END] > 0)
 	{
 		if (ft_dup2(fd_info[WRITE_END], STDOUT_FILENO) < 0)
@@ -28,7 +23,7 @@ static int	dup2_redir_list(t_list *redir_list, t_list *envp_list)
 {
 	t_redir_data	*redir_data;
 	t_node			*current;
-	
+
 	if (!redir_list)
 		return (0);
 	current = redir_list->head;

@@ -70,17 +70,3 @@ int	execute_pipe(t_cmd *cmd, int fd_info[3])
 	set_fd(fd_info, fildes[READ_END], NO_PIPE, NO_PIPE);
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,3 @@
-
 #include "../includes/minishell.h"
 #include <signal.h>
 #include <stdlib.h>
@@ -63,8 +62,6 @@ void	init_all(t_all_data *all_data, char **envp)
 	set_lexer_table(&all_data->lexer);
 	set_reducer_table(&all_data->parser);
 	get_envp(all_data, envp);
-	list_init(&all_data->token_list);
-	// init_parser(&all_data->parser); //loop 안에서 readline 할때마다 init
 	signal(SIGINT, set_prompt_handler);
 	signal(SIGQUIT, SIG_IGN);
 }

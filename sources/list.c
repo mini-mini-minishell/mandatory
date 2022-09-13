@@ -47,7 +47,7 @@ t_node	*list_pop_head(t_list *list)
 	--(list->count);
 	return (temp);
 }
- 
+
 t_node	*list_pop_back(t_list *list)
 {
 	t_node	*temp;
@@ -95,11 +95,4 @@ t_node	*list_new_node(void *data)
 	new->prev = NULL;
 	new->next = NULL;
 	return (new);
-}
-
-void	list_init(t_list *list)
-{
-	list->head = NULL;
-	list->tail = NULL;
-	list->count = 0;
 }

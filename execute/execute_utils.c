@@ -42,3 +42,14 @@ int	ft_waitchild(t_cmd *cmd)
 	}
 	return (return_value);
 }
+
+int	is_quoted(char *word)
+{
+	while (*word)
+	{
+		if (*word == '\'' || *word == '"')
+			return (1);
+		word++;
+	}
+	return (0);
+}

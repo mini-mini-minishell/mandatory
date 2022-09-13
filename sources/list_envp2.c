@@ -4,7 +4,7 @@
 t_env_data	*create_envp_data(char *key, char *value)
 {
 	t_env_data	*new;
-	
+
 	new = ft_malloc(sizeof(t_env_data));
 	new->key = key;
 	new->value = value;
@@ -40,11 +40,8 @@ void	envp_delete_node(t_list *list, size_t index)
 	{
 		current = list->head;
 		i = 0;
-		while (i < index - 1)
-		{
+		while (i++ < index - 1)
 			current = current->next;
-			++i;
-		}
 		temp = current->next;
 		current->next = temp->next;
 		--(list->count);

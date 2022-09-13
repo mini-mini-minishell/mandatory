@@ -36,7 +36,6 @@ size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t detsize)
 	return (len);
 }
 
-
 int	ft_no_newline_gnl(char *s)
 {
 	size_t	i;
@@ -71,7 +70,8 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		s1 = ft_strdup_gnl("");
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	str = (char *)malloc(sizeof(char) \
+						*(ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!str)
 		return (NULL);
 	ft_strlcpy_gnl(str, s1, ft_strlen_gnl(s1) + 1);

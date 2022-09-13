@@ -2,52 +2,13 @@
 #include "../includes/get_next_line.h"
 #include <stdio.h>
 #include <readline/readline.h>
-#include <stdio.h>
 #include <sys/wait.h>
-#include <stdio.h>
 
-t_quot_state	check_quote(char word, int quote_flag)
+static void	write_free(char *input_line, char *prompt, char *eof)
 {
-	if (word == '\'')
-	{
-		if (!(quote_flag & QUOT_DOUBLE))
-		{
-			quote_flag ^= QUOT_SINGLE;
-		}
-	}
-	else if (word == '"')
-	{
-		if (!(quote_flag & QUOT_SINGLE))
-		{
-			quote_flag ^= QUOT_DOUBLE;
-		}
-	}
-	return (quote_flag);
-}
-
-char	*check_heredoc_eof(char *str)
-{
-	t_quot_state	quote_flag;
-	char			*new_str;
-	char			*temp;
-
-	if (!str)
-		return (NULL);
-	quote_flag = QUOT_NON;
-	new_str = ft_strdup("");
-	while (*str)
-	{
-		if (quote_flag == check_quote(*str, quote_flag))
-		{
-			temp = ft_malloc(sizeof(char) * 2);
-			ft_strlcpy(temp, str, 2);
-			ft_strjoin(new_str, temp);
-			free(temp);
-			temp = NULL;
-		}
-		str++;
-	}
-	return (new_str);
+	free(input_line);
+	free(prompt);
+	free(eof);
 }
 
 static void	write_heredoc_to_pipe(t_list *redir_list, int fd)
@@ -62,21 +23,20 @@ static void	write_heredoc_to_pipe(t_list *redir_list, int fd)
 	if (!eof)
 		eof = ft_strdup("");
 	prompt = ft_strdup("> ");
-	while (1) 
+	while (1)
 	{
 		input_line = readline(prompt);
 		if (!input_line)
 			break ;
-		if (ft_strncmp(input_line, data->heredoc_eof, ft_strlen(data->heredoc_eof) + 1) == 0)
+		if (ft_strncmp(input_line, data->heredoc_eof, \
+				ft_strlen(data->heredoc_eof) + 1) == 0)
 			break ;
 		write(fd, input_line, ft_strlen(input_line));
 		write(fd, "\n", 1);
 		free(input_line);
 	}
 	ft_close(fd);
-	free(input_line);
-	free(prompt);
-	free(eof);
+	write_free(input_line, prompt, eof);
 	exit(0);
 }
 
@@ -93,7 +53,6 @@ static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
 		if (!input_line)
 			break ;
 		doc = ft_strjoin(doc, input_line);
-		// doc = append_string(doc, &doc_len, &doc_size, input_line);
 		free(input_line);
 	}
 	data = redir_list->head->data;
@@ -112,7 +71,7 @@ static int	fork_receive_heredoc(t_parser *parser, int heredoc_fd[2])
 	{
 		set_handler_for_heredoc(1);
 		ft_close(heredoc_fd[READ_END]);
-		write_heredoc_to_pipe(heredoc_list->head->data, heredoc_fd[WRITE_END]); 
+		write_heredoc_to_pipe(heredoc_list->head->data, heredoc_fd[WRITE_END]);
 	}
 	ft_close(heredoc_fd[WRITE_END]);
 	set_prompt_handler(1);

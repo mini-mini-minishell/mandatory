@@ -10,7 +10,6 @@ void	stack_pop_back(t_list *list, int count)
 	while (i < count)
 	{
 		temp = list_pop_back(list);
-		//free(temp->data); -->노드 내 데이터'들'도 할당 해제
 		free(temp);
 		++i;
 	}
@@ -30,7 +29,6 @@ void	tree_push_back(t_list *list, t_tree_content content)
 {
 	void	*data;
 	t_node	*new_node;
-
 
 	data = create_tree_data(content);
 	new_node = list_new_node(data);
