@@ -179,10 +179,9 @@ typedef enum e_expansion_flag
 {
 	EXP_NON = 0,
 	EXP_VARIABLE = 1 << 1,
-	//원래 wordsplit이 2 였던것 , 모르면 교보재 볼것
 	EXP_ASTERISK = 1 << 2,
-	EXP_QUOT = 1 << 3, 
- 	EXP_ALL = EXP_VARIABLE | EXP_ASTERISK | EXP_QUOT
+	EXP_QUOT = 1 << 3,
+	EXP_ALL = EXP_VARIABLE | EXP_ASTERISK | EXP_QUOT
 }	t_expansion_flag;
 
 typedef unsigned long			size_t;
@@ -270,19 +269,7 @@ struct s_parser
 	t_heredoc_list	heredoc_list;
 	t_cmd			*final_cmd;
 	t_parser_flag	flag;
-}; 
-
-/*
-struct s_parser
-{
-	t_token			*input;
-	t_parser_stack	*parser_stack;
-	t_value_stack	*value_stack;
-	t_heredoc_list	*heredoc_list;
-	t_parser_flag	flag;
-	t_cmd			*final_cmd;
 };
-*/
 
 struct s_all_data
 {
@@ -375,19 +362,11 @@ struct s_word_data
 	int			key_len;
 	int			field;
 	char		*word;
-	t_list		*variables; // node 일지 ?
+	t_list		*variables;
 };
-
-// typedef struct s_buffer
-// {
-// 	char	*word;
-// 	size_t	size;
-// 	size_t	len;
-// }	t_buffer; 주서끄
 
 struct s_expansion_info	
 {
-	// t_buffer		curr_word; //주서끄
 	char			*curr_word;
 	t_list			*new_list;
 	t_quot_state	quote_flag;
