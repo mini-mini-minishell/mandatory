@@ -3,7 +3,7 @@
 t_node	*envp_search_node_by_key(t_list *list, char *key)
 {
 	t_node		*current;
-	size_t		key_len;
+	t_size		key_len;
 	t_env_data	*temp_data;
 
 	if (!list->count)

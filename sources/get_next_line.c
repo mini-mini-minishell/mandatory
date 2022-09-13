@@ -2,8 +2,8 @@
 
 char	*ft_restart_gnl(char *temp)
 {
-	size_t	i;
-	size_t	len;
+	t_size	i;
+	t_size	len;
 	char	*str;
 
 	len = ft_strlen_gnl(temp);
@@ -25,7 +25,7 @@ char	*ft_restart_gnl(char *temp)
 
 char	*ft_cut_temp_gnl(char *temp)
 {
-	size_t	i;
+	t_size	i;
 	char	*line;
 
 	if (!temp[0])
@@ -43,7 +43,7 @@ char	*ft_cut_temp_gnl(char *temp)
 char	*ft_read_till_line_gnl(int fd, char *temp)
 {
 	char	*buffer;
-	ssize_t	n;
+	st_size	n;
 
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)

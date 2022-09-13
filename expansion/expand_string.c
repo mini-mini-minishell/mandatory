@@ -4,7 +4,7 @@ extern int	g_exit_status;
 
 static char	*extract_name(char *target)
 {
-	size_t	i;
+	t_size	i;
 	char	*name;
 
 	i = isname_get_length(target);

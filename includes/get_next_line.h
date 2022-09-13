@@ -8,9 +8,9 @@
 # define BUFFER_SIZE 1024
 
 char	*ft_strdup_gnl(const char *s1);
-size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);
+t_size	ft_strlcpy_gnl(char *dst, const char *src, t_size dstsize);
 int		ft_no_newline_gnl(char *buffer);
-size_t	ft_strlen_gnl(const char *s);
+t_size	ft_strlen_gnl(const char *s);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 
 char	*ft_restart_gnl(char *temp);

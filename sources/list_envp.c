@@ -5,7 +5,7 @@ void	print_envp(t_list envp_list)
 {
 	t_node		*current_node;
 	t_env_data	*current_env;
-	size_t		index;
+	t_size		index;
 
 	current_node = envp_list.head;
 	index = 0;
@@ -23,9 +23,9 @@ void	print_envp(t_list envp_list)
 
 char	*envp_search_value(t_list list, char *key)
 {
-	size_t		index;
+	t_size		index;
 	t_node		*current;
-	size_t		key_len;
+	t_size		key_len;
 	t_env_data	*temp_data;
 
 	if (!list.count)

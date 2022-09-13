@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, t_size n)
 {
-	size_t			i;
+	t_size			i;
 	unsigned char	*copy1;
 	unsigned char	*copy2;
 
@@ -22,8 +22,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 char	*ft_strdup(const char *s)
 {
 	char	*copy;
-	size_t	i;
-	size_t	size;
+	t_size	i;
+	t_size	size;
 
 	i = 0;
 	size = ft_strlen(s);

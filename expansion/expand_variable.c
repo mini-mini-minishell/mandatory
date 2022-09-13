@@ -2,7 +2,7 @@
 
 static void	substitute_asterisk(char *value)
 {
-	size_t	i;
+	t_size	i;
 
 	i = 0;
 	while (value[i] != '\0')

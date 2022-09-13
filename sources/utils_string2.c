@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	*ft_malloc(size_t bytes)
+void	*ft_malloc(t_size bytes)
 {
 	void	*return_value;
 
@@ -12,9 +12,9 @@ void	*ft_malloc(size_t bytes)
 	return (return_value);
 }
 
-size_t	ft_strlen(const char *s)
+t_size	ft_strlen(const char *s)
 {
-	size_t	i;
+	t_size	i;
 
 	if (!s)
 		return (0);

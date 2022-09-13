@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 
 static int	are_digit(char *target)
 {
-	size_t	i;
+	t_size	i;
 
 	i = 0;
 	while (target[i] != '\0')

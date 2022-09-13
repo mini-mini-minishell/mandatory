@@ -21,7 +21,7 @@ static int	print_err_msg_return_status(int err)
 static int	try_execute_in_path(char **cmd_array, \
 					char **paths, char **env_array)
 {
-	size_t	index;
+	t_size	index;
 	char	*full_path;
 	int		err;
 

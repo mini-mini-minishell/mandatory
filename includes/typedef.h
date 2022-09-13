@@ -184,7 +184,7 @@ typedef enum e_expansion_flag
 	EXP_ALL = EXP_VARIABLE | EXP_ASTERISK | EXP_QUOT
 }	t_expansion_flag;
 
-typedef unsigned long			size_t;
+typedef unsigned long			t_size;
 typedef struct s_all_data		t_all_data;
 typedef struct s_lexer			t_lexer;
 typedef struct s_parser			t_parser;
@@ -242,21 +242,21 @@ struct s_heredoc_list
 {
 	t_heredoc_node	*head;
 	t_heredoc_node	*tail;
-	size_t			count;
+	t_size			count;
 };
 
 struct s_list
 {
 	t_node	*head;
 	t_node	*tail;
-	size_t	count;
+	t_size	count;
 };
 
 struct s_lexer
 {
 	char			*input;
 	char			last_item;
-	size_t			index;
+	t_size			index;
 	t_lexer_state	current_state;
 	t_lexer_fp		lex_func[5][5];
 };
@@ -374,10 +374,10 @@ struct s_expansion_info
 
 struct s_glob_index
 {
-	size_t	name_idx;
-	size_t	pattern_idx;
-	size_t	name_fallback;
-	size_t	pattern_fallback;
+	t_size	name_idx;
+	t_size	pattern_idx;
+	t_size	name_fallback;
+	t_size	pattern_fallback;
 };
 
 #endif

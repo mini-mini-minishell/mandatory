@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, t_size len)
 {
 	char			*substr;
 	unsigned int	slen;
@@ -20,10 +20,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)
+t_size	ft_strlcpy(char *dst, const char *src, t_size detsize)
 {
-	size_t	i;
-	size_t	len;
+	t_size	i;
+	t_size	len;
 
 	i = 0;
 	len = ft_strlen(src);
@@ -38,12 +38,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t detsize)
 	return (len);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t resultsize)
+t_size	ft_strlcat(char *dst, const char *src, t_size resultsize)
 {
-	size_t	dlen;
-	size_t	slen;
-	size_t	i;
-	size_t	result;
+	t_size	dlen;
+	t_size	slen;
+	t_size	i;
+	t_size	result;
 
 	dlen = ft_strlen(dst);
 	slen = ft_strlen(src);
@@ -61,7 +61,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t resultsize)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	rlen;
+	t_size	rlen;
 	char	*new_str;
 
 	rlen = ft_strlen(s1) + ft_strlen(s2);

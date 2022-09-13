@@ -2,7 +2,7 @@
 
 char	**parse_envp(char **env)
 {
-	size_t	index;
+	t_size	index;
 	char	**result;
 
 	index = 0;
@@ -26,7 +26,7 @@ void	free_paths(char **paths)
 
 void	free_double(char **array)
 {
-	size_t	i;
+	t_size	i;
 
 	i = 0;
 	if (!array)

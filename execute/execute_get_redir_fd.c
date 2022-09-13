@@ -9,12 +9,12 @@
 # define MAXIMUM_BYTE 65536
 #endif
 
-static int	heredoc_write(int fd, char *document, size_t document_len)
+static int	heredoc_write(int fd, char *document, t_size document_len)
 {
-	ssize_t	write_return;
+	st_size	write_return;
 
 	write_return = write(fd, document, document_len);
-	if (write_return < 0 || (size_t)write_return != document_len)
+	if (write_return < 0 || (t_size)write_return != document_len)
 		return (-1);
 	return (0);
 }
@@ -22,7 +22,7 @@ static int	heredoc_write(int fd, char *document, size_t document_len)
 static int	open_heredoc_pipe(char *document)
 {
 	int		fildes[2];
-	size_t	document_len;
+	t_size	document_len;
 
 	if (!document)
 		document = "";

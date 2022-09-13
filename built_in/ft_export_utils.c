@@ -3,7 +3,7 @@
 int	isname(char *target)
 {
 	int		isname;
-	size_t	i;
+	t_size	i;
 
 	isname = 0;
 	if (target)
@@ -19,10 +19,10 @@ int	isname(char *target)
 	return (isname);
 }
 
-size_t	isname_get_length(char *target)
+t_size	isname_get_length(char *target)
 {
 	int		isname;
-	size_t	i;
+	t_size	i;
 
 	isname = 0;
 	i = 0;

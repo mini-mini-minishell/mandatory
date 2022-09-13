@@ -25,7 +25,7 @@ t_node			*cut_and_make_envp_node(char *str);
 
 /*ft_export_utils.c*/
 int				isname(char *target);
-size_t			isname_get_length(char *target);
+t_size			isname_get_length(char *target);
 
 /* ft_exit_utils.c*/
 void			init_atoi(const char *str, \
@@ -161,7 +161,7 @@ t_return_value	turn_others(t_all_data *all_data);
 /* list_envp.c */
 void			print_envp(t_list envp_list);
 char			*envp_search_value(t_list list, char *key);
-void			envp_delete_node(t_list *list, size_t index);
+void			envp_delete_node(t_list *list, t_size index);
 void			get_envp(t_all_data *all_data, char **envp);
 t_env_data		*create_envp_data(char *key, char *value);
 void			envp_free_node(t_node **node);
@@ -287,16 +287,16 @@ char			*ft_itoa(int n);
 char			**ft_split(char const *s, char *set);
 
 /* utils_string.c */
-char			*ft_substr(char const *s, unsigned int start, size_t len);
-size_t			ft_strlcpy(char *dst, const char *src, size_t detsize);
-size_t			ft_strlcat(char *dst, const char *src, size_t resultsize);
+char			*ft_substr(char const *s, unsigned int start, t_size len);
+t_size			ft_strlcpy(char *dst, const char *src, t_size detsize);
+t_size			ft_strlcat(char *dst, const char *src, t_size resultsize);
 char			*ft_strjoin(char const *s1, char const *s2);
-void			*ft_malloc(size_t bytes);
-size_t			ft_strlen(const char *s);
+void			*ft_malloc(t_size bytes);
+t_size			ft_strlen(const char *s);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strncmp(const char *s1, const char *s2, t_size n);
 char			*ft_strdup(const char *s);
 void			ft_putstr_fd(char *s, int fd);
 char			*ft_strchr(const char *s, int c);

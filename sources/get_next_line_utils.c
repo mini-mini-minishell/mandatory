@@ -2,7 +2,7 @@
 
 char	*ft_strdup_gnl(const char *s1)
 {
-	size_t	i;
+	t_size	i;
 	char	*str;
 
 	str = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + 1));
@@ -18,10 +18,10 @@ char	*ft_strdup_gnl(const char *s1)
 	return (str);
 }
 
-size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t detsize)
+t_size	ft_strlcpy_gnl(char *dst, const char *src, t_size detsize)
 {
-	size_t	i;
-	size_t	len;
+	t_size	i;
+	t_size	len;
 
 	i = 0;
 	len = ft_strlen_gnl(src);
@@ -38,7 +38,7 @@ size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t detsize)
 
 int	ft_no_newline_gnl(char *s)
 {
-	size_t	i;
+	t_size	i;
 
 	if (!s)
 		return (1);
@@ -52,9 +52,9 @@ int	ft_no_newline_gnl(char *s)
 	return (1);
 }
 
-size_t	ft_strlen_gnl(const char *s)
+t_size	ft_strlen_gnl(const char *s)
 {
-	size_t	i;
+	t_size	i;
 
 	i = 0;
 	while (s[i])

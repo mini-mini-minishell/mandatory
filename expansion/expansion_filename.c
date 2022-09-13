@@ -65,7 +65,7 @@ static int	add_filenames_to_variable(t_list *info_new_list)
 static void	restore_asterisk(t_list *info_new_list)
 {
 	t_word_data	*word_data;
-	size_t		i;
+	t_size		i;
 
 	i = 0;
 	if (info_new_list && info_new_list->count)

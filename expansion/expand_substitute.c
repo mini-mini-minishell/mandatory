@@ -2,7 +2,7 @@
 
 static int	is_pattern(char *target)
 {
-	size_t	i;
+	t_size	i;
 	int		quote_flag;
 
 	i = 0;
