@@ -3,7 +3,7 @@
 void	init_atoi(const char *str, \
 		 int *index, int *plma, unsigned long long *result)
 {
-	index = 0;
+	*index = 0;
 	while (str[(*index)] == ' ' || (str[(*index)] >= 9 && str[(*index)] <= 13))
 		++(*index);
 	*plma = 1;

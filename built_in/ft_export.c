@@ -79,6 +79,8 @@ int	ft_export(t_cmd *cmd)
 		current = cmd->content.simple.words->head;
 		if (current)
 			return_value = set_envs(cmd, current);
+		else
+			print_envp(*cmd->envp_list);
 	}
 	return (return_value);
 }
