@@ -11,7 +11,7 @@
 
 static int	heredoc_write(int fd, char *document, t_size document_len)
 {
-	st_size	write_return;
+	ssize_t	write_return;
 
 	write_return = write(fd, document, document_len);
 	if (write_return < 0 || (t_size)write_return != document_len)

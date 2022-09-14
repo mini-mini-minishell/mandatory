@@ -43,7 +43,7 @@ char	*ft_cut_temp_gnl(char *temp)
 char	*ft_read_till_line_gnl(int fd, char *temp)
 {
 	char	*buffer;
-	st_size	n;
+	ssize_t	n;
 
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)

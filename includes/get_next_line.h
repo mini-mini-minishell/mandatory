@@ -7,6 +7,8 @@
 
 # define BUFFER_SIZE 1024
 
+typedef unsigned long			t_size;
+
 char	*ft_strdup_gnl(const char *s1);
 t_size	ft_strlcpy_gnl(char *dst, const char *src, t_size dstsize);
 int		ft_no_newline_gnl(char *buffer);
