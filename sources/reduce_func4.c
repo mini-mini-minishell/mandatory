@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:52 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:52 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/20 14:32:45 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ t_return_value	reduce_rule_15(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 2);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_REDIR_LIST;
+	data->tree_type = TREE_REDIR_LIST;
 	return (RV_SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reduce_func2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:47 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/19 17:15:42 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/20 14:32:15 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_return_value	reduce_rule_5(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
@@ -54,7 +54,7 @@ t_return_value	reduce_rule_6(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
@@ -78,7 +78,7 @@ t_return_value	reduce_rule_7(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 2);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
@@ -103,7 +103,7 @@ t_return_value	reduce_rule_8(t_all_data *all_data)
 	free(for_free);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
@@ -127,6 +127,6 @@ t_return_value	reduce_rule_9(t_all_data *all_data)
 	free(for_free);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }

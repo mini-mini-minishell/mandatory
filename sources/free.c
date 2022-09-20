@@ -19,7 +19,8 @@ void	free_cmd(t_cmd *cmd)
 {
 	if (!cmd)
 		return ;
-	free_redir(cmd->redir_list);
+	if (cmd->redir_list != NULL)
+		free_redir(cmd->redir_list);
 	if (cmd->type == CMD_SIMPLE)
 	{
 		word_list_remove_all(cmd->content.simple.words);

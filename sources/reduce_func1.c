@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:45 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:46 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/20 14:43:05 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_return_value	reduce_rule_1(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 3);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
@@ -71,7 +71,7 @@ t_return_value	reduce_rule_2(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (gather_heredoc(parser));
 }
 
@@ -94,7 +94,7 @@ t_return_value	reduce_rule_3(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 3);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }
 
@@ -116,6 +116,6 @@ t_return_value	reduce_rule_4(t_all_data *all_data)
 	stack_pop_back(&parser->tree_stack, 1);
 	tree_push_back(&parser->tree_stack, content);
 	data = parser->tree_stack.tail->data;
-	data->type = TREE_CMD;
+	data->tree_type = TREE_CMD;
 	return (RV_SUCCESS);
 }
