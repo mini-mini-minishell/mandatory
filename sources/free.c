@@ -66,4 +66,5 @@ void	free_parser(t_parser *parser)
 	free_tree_stack(parser);
 	while (parser->parser_stack.count)
 		stack_pop_back(&parser->parser_stack, 1);
+	free_cmd(parser->final_cmd);
 }

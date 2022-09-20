@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:32 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:33 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/20 13:58:13 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	list_remove_head_word(t_list *list)
 		list->head->prev = NULL;
 	}
 	--(list->count);
+	// word_list_remove_all(data->variables);
+	free(data->variables);
 	free(data->word);
 	free(data);
 	free(temp);
