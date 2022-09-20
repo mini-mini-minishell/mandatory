@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:51 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/19 15:48:49 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/20 10:52:23 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,13 @@ t_list			*expand_word_list(t_list *words, t_list *env, \
 /* expansion.c */
 t_list			*expansion_all(t_list *words, t_list *env);
 t_list			*expansion_heredoc_content(t_list *words, t_list *env);
+
+/* free.c */
+
+void			free_redir(t_list *redir_list);
+void			free_cmd(t_cmd *cmd);
+void			free_tree_stack(t_parser *parser);
+void			free_parser(t_parser *parser);
 
 /* goto_func.c */
 t_parser_state	goto_from_state_0(t_token_type type);

@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:37 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:38 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/20 10:53:14 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int	parse_and_execute(t_all_data *all_data)
 		if (return_value == 0)
 			return_value = execute_command(parser->final_cmd, fd_info);
 	}
+	free_parser(&all_data->parser);
 	return (return_value);
 }

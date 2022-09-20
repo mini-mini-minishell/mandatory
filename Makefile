@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+         #
+#    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 20:23:14 by hogkim            #+#    #+#              #
-#    Updated: 2022/09/19 14:32:34 by hogkim           ###   ########.fr        #
+#    Updated: 2022/09/20 10:53:09 by hogkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,10 @@ NAME 				=	minishell
 CC 					=	cc
 CFLAGS				=	-Wall -Wextra -Werror -g3
 
-RL_LINK				=	-L/Users/hogkim/.brew/opt/readline/lib -lreadline
-RL_INCLUDE			=	-I/Users/hogkim/.brew/opt/readline/include
+# RL_LINK				=	-L/Users/hogkim/.brew/opt/readline/lib -lreadline
+# RL_INCLUDE			=	-I/Users/hogkim/.brew/opt/readline/include
+RL_LINK				=	-L/opt/homebrew/opt/readline/lib -lreadline
+RL_INCLUDE			=	-I/opt/homebrew/opt/readline/include
 
 RM					=	rm -f
 BUILTIN_FILE_DIR	=	./built_in/
@@ -25,6 +27,7 @@ EXPANSION_FILE_DIR	=	./expansion/
 SRC_DIR 			= 	./sources/
 
 FILES 					=	exit.c \
+							free.c \
 							get_next_line_utils.c \
 							get_next_line.c \
 							goto_func1.c \
