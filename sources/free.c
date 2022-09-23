@@ -11,8 +11,10 @@ void	free_redir(t_list *redir_list)
 		temp_data = temp->data;
 		free(temp_data->heredoc_eof);
 		free(temp_data->file_content);
+		free(temp_data);
 		free(temp);
 	}
+	free(redir_list);
 }
 
 void	free_cmd(t_cmd *cmd)
@@ -58,14 +60,24 @@ void	free_tree_stack(t_parser *parser)
 			free_cmd(temp_data->content.cmd);
 		else if (temp_data->tree_type == TREE_REDIR_LIST)
 			free_redir(temp_data->content.redir_list);
+		free(temp_data);
 		free(temp);
 	}
 }
 
 void	free_parser(t_parser *parser)
 {
+	t_heredoc_node	*temp;
+	t_heredoc_node	*next;
+
 	free_tree_stack(parser);
 	while (parser->parser_stack.count)
 		stack_pop_back(&parser->parser_stack, 1);
-	// free_cmd(parser->final_cmd);
+	temp = parser->heredoc_list.head;
+	while (temp)
+	{
+		next = temp->next;
+		free_redir(temp->data);
+		temp = next;
+	}
 }
