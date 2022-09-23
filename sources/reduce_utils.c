@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reduce_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:56 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/23 12:49:51 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/23 15:18:08 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	append_redir_list(t_cmd *new_simple, t_element *element)
 		redir_list->tail->next = element->redir_list->head;
 		redir_list->tail = element->redir_list->tail;
 		new_simple->redir_list = redir_list;
+		redir_list->count += element->redir_list->count;
 		// free(element->redir_list);
 	}
 	else
