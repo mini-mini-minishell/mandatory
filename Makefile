@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: surlee <surlee@student.42.seoul.kr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 20:23:14 by hogkim            #+#    #+#              #
-#    Updated: 2022/09/23 10:31:14 by hogkim           ###   ########.fr        #
+#    Updated: 2022/09/23 12:06:17 by surlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -221,7 +221,7 @@ bonus : all
 	$(CC) $(CFLAGS) $(RL_INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(RL_LINK) -o $@ $^
+	$(CC) $(CFLAGS) $(RL_LINK) -o $@ $^
 
 clean:
 	$(RM) $(OBJS) $(BOBJ)
