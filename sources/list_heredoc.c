@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:23 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:23 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/23 13:51:25 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	heredoc_list_remove_head_node(t_heredoc_list *list)
 		list->head->prev = NULL;
 	}
 	--(list->count);
+	// free(temp->data);
 	free(temp);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:10 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/23 12:49:40 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/23 13:40:22 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,11 @@ int	gather_heredoc(t_parser *parser)
 	exit_status = 0;
 	while (heredoc_list->count)
 	{
+		printf("%lu\n", heredoc_list->count);
 		ft_pipe(heredoc_fd);
 		exit_status = fork_receive_heredoc(parser, heredoc_fd);
 		if (exit_status != 0)
 			break ;
 	}
-	while (heredoc_list->count)
-		heredoc_list_remove_head_node(heredoc_list);
 	return (exit_status);
 }
