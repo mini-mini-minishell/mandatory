@@ -6,13 +6,15 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:23 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/23 13:51:25 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/23 15:06:10 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include <stdlib.h>
 
+
+#include <stdio.h>
 void	heredoc_list_remove_head_node(t_heredoc_list *list)
 {
 	t_heredoc_node	*temp;
@@ -31,7 +33,11 @@ void	heredoc_list_remove_head_node(t_heredoc_list *list)
 		list->head->prev = NULL;
 	}
 	--(list->count);
-	// free(temp->data);
+	if (list->count)
+	{
+		printf("----------\n");
+		free_redir_str(temp->data->head);
+	}
 	free(temp);
 }
 

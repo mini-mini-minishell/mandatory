@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:51 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/20 10:52:23 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/23 14:59:01 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ t_list			*expansion_heredoc_content(t_list *words, t_list *env);
 
 /* free.c */
 
+void			free_redir_str(t_node *temp);
 void			free_redir(t_list *redir_list);
 void			free_cmd(t_cmd *cmd);
 void			free_tree_stack(t_parser *parser);

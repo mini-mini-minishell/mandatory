@@ -1,17 +1,30 @@
 #include "../includes/minishell.h"
+#include <stdio.h>
+void	free_redir_str(t_node *temp)
+{
+	t_redir_data	*temp_data;
+
+	temp_data = temp->data;
+	printf("%s\n", temp_data->heredoc_eof);
+	printf("%s\n", temp_data->file_content);
+	free(temp_data->heredoc_eof);
+	free(temp_data->file_content);	
+}
 
 void	free_redir(t_list *redir_list)
 {
 	t_node			*temp;
-	t_redir_data	*temp_data;
+	// t_redir_data	*temp_data;
 
 	while (redir_list->count)
 	{
 		temp = list_pop_back(redir_list);
-		temp_data = temp->data;
-		free(temp_data->heredoc_eof);
-		free(temp_data->file_content);
-		free(temp_data);
+		// temp_data = temp->data;
+		// free(temp_data->heredoc_eof);
+		// free(temp_data->file_content);
+		// free(temp_data);
+		free_redir_str(temp);
+		free(temp->data);
 		free(temp);
 	}
 	free(redir_list);
@@ -67,17 +80,17 @@ void	free_tree_stack(t_parser *parser)
 
 void	free_parser(t_parser *parser)
 {
-	t_heredoc_node	*temp;
-	t_heredoc_node	*next;
+	// t_heredoc_node	*temp;
+	// t_heredoc_node	*next;
 
 	free_tree_stack(parser);
 	while (parser->parser_stack.count)
 		stack_pop_back(&parser->parser_stack, 1);
-	temp = parser->heredoc_list.head;
-	while (temp)
-	{
-		next = temp->next;
-		free_redir(temp->data);
-		temp = next;
-	}
+	// temp = parser->heredoc_list.head;
+	// while (temp)
+	// {
+	// 	next = temp->next;
+	// 	free_redir(temp->data);
+	// 	temp = next;
+	// }
 }
