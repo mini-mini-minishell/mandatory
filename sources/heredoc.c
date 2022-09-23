@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:10 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:11 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/23 12:49:40 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
 		input_line = get_next_line(fd);
 		if (!input_line)
 			break ;
-		doc = ft_strjoin(doc, input_line);
+		doc = ft_strjoin_gnl(doc, input_line);
 		free(input_line);
 	}
 	data = redir_list->head->data;

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: surlee <surlee@student.42.seoul.kr>        +#+  +:+       +#+         #
+#    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 20:23:14 by hogkim            #+#    #+#              #
-#    Updated: 2022/09/23 12:06:17 by surlee           ###   ########.fr        #
+#    Updated: 2022/09/23 12:41:24 by hogkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 				=	minishell
 
 CC 					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS				=	-Wall -Wextra -Werror -g3
 
 # RL_LINK				=	-L/Users/hogkim/.brew/opt/readline/lib -lreadline
 # RL_INCLUDE			=	-I/Users/hogkim/.brew/opt/readline/include
