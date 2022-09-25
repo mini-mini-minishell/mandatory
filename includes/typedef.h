@@ -236,9 +236,10 @@ struct s_token_data
 	char			*content;
 };
 
+// leaks : list -> redir_data 로 변경함
 struct s_heredoc_node
 {
-	t_list					*data;
+	t_redir_data			*data;
 	struct s_heredoc_node	*prev;
 	struct s_heredoc_node	*next;
 };

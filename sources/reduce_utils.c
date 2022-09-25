@@ -52,9 +52,9 @@ void	append_redir_list(t_cmd *new_simple, t_element *element)
 		element->redir_list->head->prev = redir_list->tail;
 		redir_list->tail->next = element->redir_list->head;
 		redir_list->tail = element->redir_list->tail;
-		new_simple->redir_list = redir_list;
+		
 		redir_list->count += element->redir_list->count;
-		// free(element->redir_list);
+		free(element->redir_list);
 	}
 	else
 	{

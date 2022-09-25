@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include <stdio.h>
 
 static void	make_new_tree_content(t_parser *parser, t_tree_content *content)
 {
@@ -32,7 +31,7 @@ static void	make_new_tree_content(t_parser *parser, t_tree_content *content)
 	content->redir_list = redir_list;
 	if (redir_open.token == TT_REDIR_HEREDOC)
 		heredoc_list_push_back(&parser->heredoc_list, \
-				heredoc_list_new_node(redir_list));
+				heredoc_list_new_node(redir_list->head));
 }
 
 // R -> redir_op id;

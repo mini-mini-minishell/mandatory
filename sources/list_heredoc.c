@@ -12,6 +12,8 @@
 
 #include "../includes/minishell.h"
 #include <stdlib.h>
+#include <stdio.h>
+
 
 void	heredoc_list_remove_head_node(t_heredoc_list *list)
 {
@@ -31,7 +33,6 @@ void	heredoc_list_remove_head_node(t_heredoc_list *list)
 		list->head->prev = NULL;
 	}
 	--(list->count);
-	// free(temp->data);
 	free(temp);
 }
 
@@ -73,10 +74,13 @@ void	heredoc_list_push_back(t_heredoc_list *list, t_heredoc_node *new)
 	++(list->count);
 }
 
-t_heredoc_node	*heredoc_list_new_node(t_list *data)
+// leaks : list 대신 node 를 받아서 t_redir_data 로 저장해버리기
+t_heredoc_node	*heredoc_list_new_node(t_node *node)
 {
 	t_heredoc_node	*new;
+	t_redir_data	*data;
 
+	data = node->data;
 	new = ft_malloc(sizeof(t_heredoc_node));
 	new->data = data;
 	new->prev = NULL;

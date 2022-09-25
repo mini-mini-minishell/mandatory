@@ -23,14 +23,15 @@ static void	write_free(char *input_line, char *prompt, char *eof)
 	free(eof);
 }
 
-static void	write_heredoc_to_pipe(t_list *redir_list, int fd)
+// leaks : 첫번 째 인자를 list -> data 로 수정 (형변환 할 때 쓴 data 지우기)
+static void	write_heredoc_to_pipe(t_redir_data *data, int fd)
 {
-	t_redir_data	*data;
+	// t_redir_data	*data;
 	char			*input_line;
 	char			*eof;
 	char			*prompt;
 
-	data = redir_list->head->data;
+	// data = redir_list->head->data;
 	eof = check_heredoc_eof(data->heredoc_eof);
 	if (!eof)
 		eof = ft_strdup("");
@@ -52,9 +53,10 @@ static void	write_heredoc_to_pipe(t_list *redir_list, int fd)
 	exit(0);
 }
 
-static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
+// leaks : 첫번 째 인자를 list -> data 로 수정 (형변환 할 때 쓴 data 지우기)
+static void	receive_heredoc_from_pipe(t_redir_data *data, int fd)
 {
-	t_redir_data	*data;
+	// t_redir_data	*data;
 	char			*doc;
 	char			*input_line;
 
@@ -67,7 +69,7 @@ static void	receive_heredoc_from_pipe(t_list *redir_list, int fd)
 		doc = ft_strjoin_gnl(doc, input_line);
 		free(input_line);
 	}
-	data = redir_list->head->data;
+	// data = redir_list->head->data;
 	data->file_content = doc;
 }
 
@@ -105,7 +107,6 @@ int	gather_heredoc(t_parser *parser)
 	exit_status = 0;
 	while (heredoc_list->count)
 	{
-		printf("%lu\n", heredoc_list->count);
 		ft_pipe(heredoc_fd);
 		exit_status = fork_receive_heredoc(parser, heredoc_fd);
 		if (exit_status != 0)

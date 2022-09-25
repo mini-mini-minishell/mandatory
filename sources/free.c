@@ -1,17 +1,14 @@
 #include "../includes/minishell.h"
-#include <stdio.h>
+
 void	free_redir(t_list *redir_list)
 {
 	t_node			*temp;
 	t_redir_data	*temp_data;
-
+	
 	while (redir_list->count)
 	{
 		temp = list_pop_back(redir_list);
 		temp_data = temp->data;
-		printf("count : %lu\n", redir_list->count);
-		printf("나 eof : %s\n", temp_data->heredoc_eof);
-		printf("나 file_content : %s\n", temp_data->file_content);
 		free(temp_data->heredoc_eof);
 		free(temp_data->file_content);
 		free(temp_data);
@@ -28,7 +25,8 @@ void	free_cmd(t_cmd *cmd)
 		free_redir(cmd->redir_list);
 	if (cmd->type == CMD_SIMPLE)
 	{
-		word_list_remove_all(cmd->content.simple.words);
+		if (cmd->content.simple.words != NULL)
+			word_list_remove_all(cmd->content.simple.words);
 		free(cmd);
 	}
 	else if (cmd->type == CMD_CONNECT)

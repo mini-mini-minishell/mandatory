@@ -190,7 +190,7 @@ void			heredoc_list_remove_head_node(t_heredoc_list *list);
 t_heredoc_node	*heredoc_list_pop_back(t_heredoc_list *list);
 void			heredoc_list_push_back(t_heredoc_list *list, \
 				t_heredoc_node *new);
-t_heredoc_node	*heredoc_list_new_node(t_list *data);
+t_heredoc_node	*heredoc_list_new_node(t_node *data);
 void			heredoc_list_init(t_heredoc_list *list);
 
 /* list_stack.c */
