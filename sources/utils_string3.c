@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:23:12 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:23:12 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:40:15 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,23 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	else
 		return (NULL);
+}
+
+char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char	*str;
+
+	if (!s1)
+		s1 = ft_strdup_gnl("");
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) \
+						*(ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	if (!str)
+		return (NULL);
+	ft_strlcpy_gnl(str, s1, ft_strlen_gnl(s1) + 1);
+	ft_strlcpy_gnl(&str[ft_strlen_gnl(s1)], s2, ft_strlen_gnl(s2) + 1);
+	free(s1);
+	free(s2);
+	return (str);
 }

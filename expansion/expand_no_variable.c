@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:15 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:21:15 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:41:19 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	no_variable_expansion(char *word, t_expansion_flag flag, \
 {
 	char		char_to_append;
 	char		*str;
-	char		*temp;
 
 	char_to_append = get_char_to_append(*word, flag, info->quote_flag);
 	if (char_to_append)
@@ -46,10 +45,7 @@ void	no_variable_expansion(char *word, t_expansion_flag flag, \
 		str = ft_malloc(2);
 		str[0] = char_to_append;
 		str[1] = '\0';
-		temp = info->curr_word;
-		info->curr_word = ft_strjoin(info->curr_word, str);
-		free(str);
-		free(temp);
+		info->curr_word = ft_strjoin_free(info->curr_word, str);
 		update_last_node_word(info->new_list, info->curr_word);
 	}
 }

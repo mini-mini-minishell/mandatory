@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:51 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/20 10:52:23 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:40:40 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,6 +318,7 @@ int				ft_strncmp(const char *s1, const char *s2, t_size n);
 char			*ft_strdup(const char *s);
 void			ft_putstr_fd(char *s, int fd);
 char			*ft_strchr(const char *s, int c);
+char			*ft_strjoin_free(char *s1, char *s2);
 
 /* execute_connect */
 int				execute_connect(t_cmd *cmd, int fd_info[3]);
