@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:37 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/23 15:26:21 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/09/26 20:50:01 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int	parse_and_execute(t_all_data *all_data)
 			return_value = execute_command(parser->final_cmd, fd_info);
 	}
 	free_parser(&all_data->parser);
+	free_token(&all_data->token_list);
 	return (return_value);
 }

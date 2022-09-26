@@ -1,5 +1,11 @@
 #include "../includes/minishell.h"
 
+void	free_token(t_list *token_list)
+{
+	while (token_list->count)
+		list_remove_head_token(token_list);
+}
+
 void	free_redir(t_list *redir_list)
 {
 	t_node			*temp;

@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:40 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:41 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 20:49:39 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	process_line(t_all_data *all_data, char *input)
 	list_init(&all_data->token_list);
 	if (run_lexer(all_data) < 0)
 	{
+		free_token(&all_data->token_list);
 		ft_putstr_fd("Syntax Error\n", 2);
 		return_value = EX_USAGE;
 	}
