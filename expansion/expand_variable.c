@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:22 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 12:42:19 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 21:12:25 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,11 @@ void	update_last_node_word(t_list *new_list, char *curr_word)
 	}
 }
 
-void	expand_variable(char **word, t_list *env, t_expansion_info *info)
+static void	if_no_value(t_expansion_info *info, char **word, char *name)
 {
-	char	*name;
-	char	*value;
 	char	*temp;
 
-	++(*word);
-	name = NULL;
-	value = get_expanded_string(env, word, &name);
-	if (value)
-		do_variable_expansion(value, info);
-	else if (name)
+	if (name)
 	{
 		if (info->quote_flag != QUOT_NON)
 		{
@@ -75,7 +68,21 @@ void	expand_variable(char **word, t_list *env, t_expansion_info *info)
 		else
 			temp = ft_strjoin_free(ft_strdup("$"), info->curr_word);
 		update_last_node_word(info->new_list, temp);
-	}
+	}	
+}
+
+void	expand_variable(char **word, t_list *env, t_expansion_info *info)
+{
+	char	*name;
+	char	*value;
+
+	++(*word);
+	name = NULL;
+	value = get_expanded_string(env, word, &name);
+	if (value)
+		do_variable_expansion(value, info);
+	else
+		if_no_value(info, word, name);
 	if (name)
 		free(name);
 }

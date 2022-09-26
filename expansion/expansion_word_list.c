@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_word_list.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:33 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/19 19:04:21 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 21:12:00 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ static void	join_new_list(t_list *new_list, t_list *temp)
 	temp->head->prev = new_list->tail;
 	new_list->tail = temp->tail;
 	new_list->count += temp->count;
+}
+
+static void	free_expand_word_list(t_word_data *word_data, t_node *current)
+{
+	free(word_data->word);
+	free(word_data->variables);
+	free(current->data);
+	free(current);
 }
 
 t_list	*expand_word_list(t_list *words, t_list *env, \
@@ -43,10 +51,7 @@ t_list	*expand_word_list(t_list *words, t_list *env, \
 		else
 			new_list = temp;
 		word_data = current->data;
-		free(word_data->word);
-		free(word_data->variables);
-		free(current->data);
-		free(current);
+		free_expand_word_list(word_data, current);
 		current = next;
 	}
 	free(words);

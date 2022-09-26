@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:10 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 13:20:29 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 20:57:57 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ static void	write_free(char *input_line, char *prompt, char *eof)
 	free(eof);
 }
 
-// leaks : 첫번 째 인자를 list -> data 로 수정 (형변환 할 때 쓴 data 지우기)
 static void	write_heredoc_to_pipe(t_redir_data *data, int fd)
 {
-	// t_redir_data	*data;
 	char			*input_line;
 	char			*eof;
 	char			*prompt;
 
-	// data = redir_list->head->data;
 	eof = check_heredoc_eof(data->heredoc_eof);
 	if (!eof)
 		eof = ft_strdup("");
@@ -53,10 +50,8 @@ static void	write_heredoc_to_pipe(t_redir_data *data, int fd)
 	exit(0);
 }
 
-// leaks : 첫번 째 인자를 list -> data 로 수정 (형변환 할 때 쓴 data 지우기)
 static void	receive_heredoc_from_pipe(t_redir_data *data, int fd)
 {
-	// t_redir_data	*data;
 	char			*doc;
 	char			*input_line;
 
@@ -69,7 +64,6 @@ static void	receive_heredoc_from_pipe(t_redir_data *data, int fd)
 		doc = ft_strjoin_gnl(doc, input_line);
 		free(input_line);
 	}
-	// data = redir_list->head->data;
 	data->file_content = doc;
 }
 

@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:47 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/23 12:53:33 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 21:00:28 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_return_value	reduce_rule_8(t_all_data *all_data)
 	tree = &parser->tree_stack;
 	content.cmd = make_simple(all_data, \
 							tree->tail->prev->data, tree->tail->data);
-	data =tree->tail->data;
+	data = tree->tail->data;
 	for_free = data->content.element;
 	stack_pop_back(&parser->tree_stack, 2);
 	free(for_free);

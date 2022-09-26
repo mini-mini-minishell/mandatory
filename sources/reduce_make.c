@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reduce_make.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:54 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/19 17:15:18 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 20:59:47 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_cmd	*make_simple(t_all_data *all_data, \
 	data = element_data;
 	element = data->content.element;
 	if (!simple)
-		new_simple = make_new_simple(all_data); // rule 9 in here, malloc redir_list
+		new_simple = make_new_simple(all_data);
 	else
-		new_simple = simple; // rule 8
+		new_simple = simple;
 	if (element->word)
 		append_word_list(new_simple, element);
 	else if (element->redir_list)
