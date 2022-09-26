@@ -6,7 +6,7 @@
 #    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 20:23:14 by hogkim            #+#    #+#              #
-#    Updated: 2022/09/26 21:10:30 by hogkim           ###   ########.fr        #
+#    Updated: 2022/09/26 21:28:36 by hogkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,7 @@ EXPANSION_FILE_DIR_B	=	./expansion_bonus/
 SRC_DIR_B 				= 	./sources_bonus/
 
 FILES_B					=	exit_bonus.c \
+							free_bonus.c \
 							get_next_line_utils_bonus.c \
 							get_next_line_bonus.c \
 							goto_func1_bonus.c \
