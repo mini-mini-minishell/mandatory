@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:10 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 12:16:26 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 13:20:29 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ static int	fork_receive_heredoc(t_parser *parser, int heredoc_fd[2])
 	pid = ft_fork();
 	if (pid == 0)
 	{
-		set_handler_for_heredoc(1);
+		set_handler_for_heredoc();
 		ft_close(heredoc_fd[READ_END]);
 		write_heredoc_to_pipe(heredoc_list->head->data, heredoc_fd[WRITE_END]);
 	}
 	ft_close(heredoc_fd[WRITE_END]);
-	set_prompt_handler(1);
+	set_prompt_handler();
 	receive_heredoc_from_pipe(heredoc_list->head->data, heredoc_fd[READ_END]);
 	ft_close(heredoc_fd[READ_END]);
 	if (waitpid(pid, &status, 0) < 0)

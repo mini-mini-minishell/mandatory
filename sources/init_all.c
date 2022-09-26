@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:12 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:12 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 13:16:11 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,4 @@ void	init_all(t_all_data *all_data, char **envp)
 	set_lexer_table(&all_data->lexer);
 	set_reducer_table(&all_data->parser);
 	get_envp(all_data, envp);
-	signal(SIGINT, set_prompt_handler);
-	signal(SIGQUIT, SIG_IGN);
 }

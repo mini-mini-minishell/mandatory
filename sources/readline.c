@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:42 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/19 17:15:19 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 13:19:17 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	prompt_loop(t_all_data *all_data)
 
 	while (1)
 	{
+		set_prompt_handler();
 		line = readline("minishell > ");
 		if (line)
 		{

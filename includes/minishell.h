@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:51 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 12:40:40 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 13:20:15 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,8 +287,8 @@ int				run_lexer(t_all_data *all_data);
 int				run_parser(t_all_data *all_data);
 
 /* signal_handler.c */
-void			set_prompt_handler(int sig);
-void			set_handler_for_heredoc(int sig);
+void			set_prompt_handler(void);
+void			set_handler_for_heredoc(void);
 void			set_handler_for_default(void);
 void			set_handler_for_ignore(void);
 

@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:23:02 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:23:03 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 13:25:23 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,14 @@ static void	set_handler_reset_minishline(int sig)
 	}
 }
 
-void	set_prompt_handler(int sig)
+void	set_prompt_handler(void)
 {
-	(void) sig;
 	signal(SIGINT, set_handler_reset_minishline);
 	signal(SIGQUIT, SIG_IGN);
 }
 
-void	set_handler_for_heredoc(int sig)
+void	set_handler_for_heredoc(void)
 {
-	(void) sig;
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_IGN);
 }

@@ -2,6 +2,7 @@
 	"files.associations": {
 		"readline.h": "c",
 		"__functional_03": "c",
-		"functional": "c"
+		"functional": "c",
+		"stdlib.h": "c"
 	}
 }
