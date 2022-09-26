@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:53 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 21:12:26 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 21:13:35 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,6 @@ struct s_token_data
 	char			*content;
 };
 
-// leaks : list -> redir_data 로 변경함
 struct s_heredoc_node
 {
 	t_redir_data			*data;

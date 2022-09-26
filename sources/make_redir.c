@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:36 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:36 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 21:13:31 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	make_redir_append(t_redir_data *data, char *word)
 	data->heredoc_eof = NULL;
 }
 
-// quote removal for eof needed
 static void	make_redir_heredoc(t_redir_data *data, char *word)
 {
 	data->redir_type = REDIR_HEREDOC;
