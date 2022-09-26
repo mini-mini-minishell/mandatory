@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:10 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/23 13:40:22 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:16:26 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	write_heredoc_to_pipe(t_redir_data *data, int fd)
 		input_line = readline(prompt);
 		if (!input_line)
 			break ;
-		if (ft_strncmp(input_line, data->heredoc_eof, \
+		if (ft_strncmp(input_line, eof, \
 				ft_strlen(data->heredoc_eof) + 1) == 0)
 			break ;
 		write(fd, input_line, ft_strlen(input_line));

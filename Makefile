@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 20:23:14 by hogkim            #+#    #+#              #
-#    Updated: 2022/09/23 15:44:41 by hjeong           ###   ########.fr        #
+#    Updated: 2022/09/26 12:18:34 by hogkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ NAME 				=	minishell
 CC 					=	cc
 CFLAGS				=	-Wall -Wextra -Werror -g
 
-RL_LINK				=	-L/usr/local/opt/readline/lib -lreadline
-RL_INCLUDE			=	-I/usr/local/opt/readline/include
-# RL_LINK				=	-L/opt/homebrew/opt/readline/lib -lreadline
-# RL_INCLUDE			=	-I/opt/homebrew/opt/readline/include
+# RL_LINK				=	-L/usr/local/opt/readline/lib -lreadline
+# RL_INCLUDE			=	-I/usr/local/opt/readline/include
+RL_LINK				=	-L/opt/homebrew/opt/readline/lib -lreadline
+RL_INCLUDE			=	-I/opt/homebrew/opt/readline/include
 
 RM					=	rm -f
 BUILTIN_FILE_DIR	=	./built_in/

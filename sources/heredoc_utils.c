@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:09 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:22:09 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:17:09 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*check_heredoc_eof(char *str)
 		{
 			temp = ft_malloc(sizeof(char) * 2);
 			ft_strlcpy(temp, str, 2);
-			ft_strjoin(new_str, temp);
+			new_str = ft_strjoin_gnl(new_str, temp);
 			free(temp);
 			temp = NULL;
 		}

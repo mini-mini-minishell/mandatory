@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:20:53 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:20:54 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:00:13 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	find_builtin_func(const char *word)
 	i = 0;
 	while (i < 7)
 	{
-		if (!ft_strncmp(word, shell_builtins[i], \
+		if (word && !ft_strncmp(word, shell_builtins[i], \
 			ft_strlen(shell_builtins[i]) + 1))
 			break ;
 		++i;

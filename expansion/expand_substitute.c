@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:20 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:21:21 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 10:28:40 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	do_substitute(t_list **info_new_addr, \
 				list_push_back(temp_list, \
 					list_pop_head(word_data->variables));
 			free(word_data->variables);
+			word_data->variables = NULL;
 		}
 		curr = curr->next;
 	}

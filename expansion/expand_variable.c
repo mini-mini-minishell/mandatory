@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:22 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:21:22 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 11:22:31 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	expand_variable(char **word, t_list *env, t_expansion_info *info)
 	{
 		if (info->quote_flag != QUOT_NON)
 		{
-			temp = ft_strjoin(info->curr_word, ft_strdup(""));
+			temp = ft_strjoin_gnl(info->curr_word, ft_strdup(""));
 			update_last_node_word(info->new_list, temp);
 		}
 	}
 	else
 	{
-		temp = ft_strjoin(ft_strdup("$"), info->curr_word);
+		temp = ft_strjoin_gnl(ft_strdup("$"), info->curr_word);
 		update_last_node_word(info->new_list, temp);
 	}
 	if (name)
