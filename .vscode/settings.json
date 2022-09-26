@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"readline.h": "c"
+		"readline.h": "c",
+		"__functional_03": "c",
+		"functional": "c"
 	}
 }

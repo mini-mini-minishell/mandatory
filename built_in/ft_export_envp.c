@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:20:41 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/14 20:20:41 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 12:27:33 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ t_node	*cut_and_make_envp_node(char *str)
 
 	key_and_value = ft_split(str, "=");
 	data = create_envp_data(key_and_value[0], key_and_value[1]);
+	free(key_and_value);
 	return (list_new_node(data));
 }
