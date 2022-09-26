@@ -6,7 +6,7 @@
 /*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:23:02 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 13:25:23 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/26 20:10:59 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	set_handler_reset_minishline(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
+	if (sig == SIGINT)
+		g_exit_status = 1;
 }
 
 void	set_prompt_handler(void)
