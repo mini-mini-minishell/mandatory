@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   expand_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:22 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 21:13:01 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/27 14:40:55 by hjeong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+#include <stdio.h>
 
 static void	substitute_asterisk(char *value)
 {
@@ -63,10 +64,16 @@ static void	if_no_value(t_expansion_info *info, char **word, char *name)
 	}
 	else
 	{
-		if (!ft_strlen(*word))
+		if (!ft_strlen(*word) || ft_strlen(info->curr_word))
+		{
 			temp = ft_strjoin_free(info->curr_word, ft_strdup("$"));
+			info->curr_word = temp;
+		}
 		else
-			temp = ft_strjoin_free(ft_strdup("$"), info->curr_word);
+		{
+			temp = ft_strjoin("$", info->curr_word);
+			info->curr_word = temp;
+		}
 		update_last_node_word(info->new_list, temp);
 	}	
 }
