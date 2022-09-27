@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:20:28 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/16 16:29:42 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/27 19:56:06 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include <stdio.h>
 
 static int	check_opt(t_list *list)
 {
@@ -28,9 +27,12 @@ static int	check_opt(t_list *list)
 static void	print_echo(t_node *current, t_word_data *word_data)
 {
 	if (current->next)
-		printf("%s ", word_data->word);
+	{
+		ft_putstr_fd(word_data->word, STDOUT_FILENO);
+		ft_putstr_fd(" ", STDOUT_FILENO);
+	}
 	else
-		printf("%s", word_data->word);
+		ft_putstr_fd(word_data->word, STDOUT_FILENO);
 }
 
 int	ft_echo(t_cmd *cmd)
@@ -43,7 +45,7 @@ int	ft_echo(t_cmd *cmd)
 	word_list = cmd->content.simple.words;
 	if (!word_list->head)
 	{
-		printf("\n");
+		ft_putstr_fd("\n", STDOUT_FILENO);
 		return (EXECUTION_SUCCESS);
 	}
 	word_data = word_list->head->data;
@@ -58,6 +60,6 @@ int	ft_echo(t_cmd *cmd)
 		current = current->next;
 	}
 	if (display_return)
-		printf("\n");
+		ft_putstr_fd("\n", STDOUT_FILENO);
 	return (EXECUTION_SUCCESS);
 }

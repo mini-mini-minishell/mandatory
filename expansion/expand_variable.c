@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand_variable.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjeong <hjeong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:21:22 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/27 14:40:55 by hjeong           ###   ########.fr       */
+/*   Updated: 2022/09/27 19:57:18 by hogkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-#include <stdio.h>
 
 static void	substitute_asterisk(char *value)
 {

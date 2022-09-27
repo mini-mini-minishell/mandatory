@@ -6,14 +6,14 @@
 #    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 20:23:14 by hogkim            #+#    #+#              #
-#    Updated: 2022/09/26 21:28:36 by hogkim           ###   ########.fr        #
+#    Updated: 2022/09/27 19:38:16 by hogkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 				=	minishell
 
 CC 					=	cc
-CFLAGS				=	-Wall -Wextra -Werror
+CFLAGS				=	-Wall -Wextra -Werror -g3
 
 # RL_LINK				=	-L/usr/local/opt/readline/lib -lreadline
 # RL_INCLUDE			=	-I/usr/local/opt/readline/include
