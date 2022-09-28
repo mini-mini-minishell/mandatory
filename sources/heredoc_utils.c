@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:22:09 by hogkim            #+#    #+#             */
-/*   Updated: 2022/09/26 12:17:09 by hogkim           ###   ########.fr       */
+/*   Updated: 2022/09/28 09:28:07 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@ t_quot_state	check_quote(char word, int quote_flag)
 	if (word == '\'')
 	{
 		if (!(quote_flag & QUOT_DOUBLE))
-		{
 			quote_flag ^= QUOT_SINGLE;
-		}
 	}
 	else if (word == '"')
 	{
 		if (!(quote_flag & QUOT_SINGLE))
-		{
 			quote_flag ^= QUOT_DOUBLE;
-		}
 	}
 	return (quote_flag);
 }
