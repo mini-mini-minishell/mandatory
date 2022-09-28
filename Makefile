@@ -3,22 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hogkim <hogkim@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: hogkim <hogkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/14 20:23:14 by hogkim            #+#    #+#              #
-#    Updated: 2022/09/27 19:38:16 by hogkim           ###   ########.fr        #
+#    Updated: 2022/09/28 12:55:02 by hogkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 				=	minishell
 
 CC 					=	cc
-CFLAGS				=	-Wall -Wextra -Werror -g3
+CFLAGS				=	-Wall -Wextra -Werror
 
-# RL_LINK				=	-L/usr/local/opt/readline/lib -lreadline
-# RL_INCLUDE			=	-I/usr/local/opt/readline/include
-RL_LINK				=	-L/opt/homebrew/opt/readline/lib -lreadline
-RL_INCLUDE			=	-I/opt/homebrew/opt/readline/include
+RL_LINK				=	-L/Users/hogkim/.brew/opt/readline/lib -lreadline
+RL_INCLUDE			=	-I/Users/hogkim/.brew/opt/readline/include
 
 RM					=	rm -f
 BUILTIN_FILE_DIR	=	./built_in/
